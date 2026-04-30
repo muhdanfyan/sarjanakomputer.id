@@ -1,0 +1,29 @@
+# Kesiapan Sumber Daya Manusia (SDM)
+
+Keberhasilan implementasi visi Kota 4.0 sangat bergantung pada ketersediaan dan kemampuan SDM yang kompeten. Rencana ini didukung oleh ekosistem talenta lokal yang solid, terdiri dari berbagai pihak:
+
+### 1. Lembaga Pendidikan
+-   **Pondok Informatika:** Beserta tim alumni, berperan sebagai sumber daya manusia yang terampil dan siap pakai, yang secara langsung berkontribusi pada program transformasi digital.
+
+### 2. Organisasi Komunitas
+-   **Komunitas Programmer Baubau:** Menjadi wadah bagi para talenta IT lokal untuk berkolaborasi, bertukar pengetahuan, dan mengembangkan inovasi-inovasi berbasis teknologi.
+
+### 3. Korporasi
+Kontribusi korporasi lokal menjadi elemen kunci dalam penyediaan solusi dan SDM.
+-   **CV Ghonim:** Memiliki pengalaman bertahun-tahun dalam pengembangan solusi SMARTCITY SPLP dan Jaringan Fiber Optik.
+-   **CV Sarjana Komputer:** Berperan dalam menyediakan SDM IT yang siap mendukung inisiatif ini.
+
+### 4. Praktisi
+Keahlian individual dari para praktisi memberikan dukungan teknis dan manajerial yang berharga.
+-   **Irvan, S.Kom:** Seorang Network Expert dengan lebih dari 20 tahun pengalaman, mantan Staf Ahli Diskominfo Sulawesi Selatan, owner dari CV. Ghonim, dan penggagas infrastruktur Smart City Baubau.
+-   **Hayatul Habirun, S.Kom:** Seorang FullStack Developer yang berpengalaman lebih dari 10 tahun sebagai staf ahli di Diskominfo, dengan keahlian sebagai Programmer, Sysadmin, dan IT Support.
+-   **Muhdan Fyan Syah Sofian:** Perwakilan dari Komunitas dan Pondok Informatika, serta owner dari CV. Sarjana Komputer Indonesia.
+-   **Hermawan Safrin:** Seorang Backend Developer dengan lebih dari 5 tahun pengalaman membangun Scalable RESTful APIs, dengan pengalaman di perusahaan internasional.
+-   **Ahmad Dahsan:** Seorang Frontend Developer dengan pengalaman dalam pengembangan aplikasi dan juga penanggung jawab akademik di Pondok Informatika.
+-   **Arif Rizal:** Seorang Backend Developer dengan pengalaman dalam pengembangan aplikasi berbasis RESTful API, serta pengguna teknologi seperti Node.js, Express.js, dan MongoDB.
+
+
+### 5. Akademisi
+Keterlibatan akademisi memastikan bahwa inisiatif ini didukung oleh landasan teoretis dan keahlian teknis tingkat tinggi.
+-   **Muh. Awaluddin, S.Kom, M.Kom:** Seorang Linux, Server, SysAdmin, & DevOps Expert dari LPSI UM Buton.
+-   **Lalu Abdurrahman:** Seorang Back End Engineer, alumni angkatan pertama Pondok Informatika, Developer Smart School Disdik Sulsel, dan Kepala Sekolah PI Boarding School.

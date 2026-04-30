@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Anggaran Upgrade Sipanda v2.0 - Visi Baubau 4.0</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap-5.0.0-alpha-2.min.css" />
+    <link rel="stylesheet" href="../assets/css/LineIcons.2.0.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Garamond:wght@700&family=Times+New+Roman&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #e0e0e0;
+            font-family: 'Times New Roman', Times, serif;
+            color: #000;
+        }
+        .page {
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 1.5cm;
+            margin: 1.5cm auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+            position: relative;
+            page-break-after: always;
+        }
+        .page:last-of-type {
+            page-break-after: avoid;
+        }
+        .page-header-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .page-footer-img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        .page-footer {
+            position: absolute;
+            bottom: 1cm;
+            left: 1.5cm;
+            right: 1.5cm;
+            text-align: center;
+            font-size: 9pt;
+            color: #999;
+        }
+        .content-container {
+            padding-top: 2.5cm; 
+            padding-bottom: 2.5cm; 
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            color: #1a237e;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #dfe3ee;
+            padding-bottom: 6px;
+        }
+        h1 { font-size: 22pt; }
+        h2 { font-size: 18pt; }
+        h3 { font-size: 15pt; }
+        h4 { font-size: 13pt; border-bottom: 1px solid #eee; }
+        p, li {
+            font-size: 12pt;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        .table thead th {
+            background-color: #f8f9fa;
+        }
+        .total-row td {
+            font-weight: bold;
+        }
+        .letter-header, .letter-body, .letter-footer {
+            padding-left: 1cm;
+            padding-right: 1cm;
+        }
+        .letter-body p {
+            margin-bottom: 1rem;
+        }
+        .signature-block {
+            margin-top: 10px;
+            text-align: right;
+        }
+        .signature-block .signature-image {
+            width: 220px; /* Enlarged image */
+            height: auto;
+        }
+        .signature-block .name {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        @media print {
+            body { background: white; }
+            .page {
+                width: auto;
+                min-height: 29.7cm; /* Ensure height for printing */
+                margin: 0;
+                padding: 1.5cm;
+                box-shadow: none;
+                border: none;
+                page-break-after: always;
+            }
+            .print-fab { display: none; }
+        }
+        .print-fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            background-color: #3B5998;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- Halaman 1: Surat Permohonan -->
+  <div class="page">
+    <img src="header dan footer/header.png" class="page-header-img">
+    <div class="content-container">
+        <div class="letter-header">
+            <div style="display: flex; justify-content: space-between;">
+                <div>
+                    <p id="dynamic-number">Nomor: 002/SKI/XI/2025<br>
+                    Lampiran: 1 (satu) Berkas<br>
+                    Perihal: <strong>Permohonan Anggaran Upgrade Aplikasi Sipanda v2.0</strong></p>
+                </div>
+                <div>
+                    <p id="dynamic-date">Baubau, 19 November 2025</p>
+                </div>
+            </div>
+        </div>
+        <div class="letter-body" style="margin-top: 30px;">
+            <p>Kepada Yth.,<br>
+            <strong>Kepala Badan Pendapatan Daerah (Bapenda) Kota Baubau</strong><br>
+            di-<br>
+            Tempat</p>
+
+            <p>Dengan hormat,</p>
+            <p>Dalam rangka mendukung Visi Baubau 4.0 dan percepatan transformasi digital layanan publik, kami dari CV. Sarjana Komputer Indonesia mengajukan proposal upgrade (evolusi) <strong>Aplikasi Sistem Informasi Pendapatan Daerah (Sipanda) versi 2.0</strong>.</p>
+            <p>Pendekatan ini kami ajukan sebagai alternatif untuk melakukan penguatan arsitektur, penambahan fitur esensial, dan memastikan keberlanjutan operasional sistem yang sudah berjalan dengan biaya yang lebih efisien.</p>
+            <p>Sehubungan dengan hal tersebut, kami mengajukan permohonan dukungan anggaran sebesar <strong>Rp 74.900.000,- (Tujuh Puluh Empat Juta Sembilan Ratus Ribu Rupiah)</strong>. Rincian teknis dan justifikasi anggaran terlampir dalam dokumen ini.</p>
+            <p>Besar harapan kami, Bapak Kepala Bapenda dapat menyetujui permohonan ini demi terwujudnya tata kelola pendapatan daerah yang lebih baik. Atas perhatian dan dukungan Bapak, kami ucapkan terima kasih.</p>
+        </div>
+        <div class="letter-footer">
+            <p style="text-align: right;">Hormat kami,</p>
+            <div class="signature-block">
+                <img src="header dan footer/ttd+stempel+nama.png" class="signature-image" alt="Tanda Tangan dan Stempel">
+            </div>
+        </div>
+    </div>
+    <img src="header dan footer/footer.png" class="page-footer-img">
+    <div class="page-footer">Halaman 1</div>
+  </div>
+
+  <!-- Halaman 2: Opsi Upgrade -->
+  <div class="page">
+    <img src="header dan footer/header.png" class="page-header-img">
+    <div class="content-container">
+        <header class="mb-4 text-center">
+        <h1>Rincian Anggaran Upgrade Sipanda v2.0</h1>
+        </header>
+
+        <section id="opsi-upgrade">
+            <h2>Opsi Upgrade (Evolusi)</h2>
+            <h3 class="mt-3">💰 Total Anggaran: Rp 74.900.000</h3>
+            <p>Opsi ini berfokus pada penguatan arsitektur, penambahan fitur, serta memastikan keberlanjutan sistem yang sudah ada tanpa merombak total. Pendekatan ini lebih hemat biaya namun memiliki keterbatasan skalabilitas jangka panjang.</p>
+            <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Deskripsi & Alokasi</th>
+                    <th scope="col">Total Biaya</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>1. Refactoring & Penguatan Arsitektur (40%)</strong></td>
+                    <td>Rekayasa ulang kode basis Sipanda 1.0, migrasi ke arsitektur modular, dan optimisasi database.</td>
+                    <td><strong>Rp 26.750.000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>2. Pengembangan Fitur Baru & UI/UX (30%)</strong></td>
+                    <td>Implementasi fitur baru, penyempurnaan alur pengguna (UX), dan modul Business Intelligence.</td>
+                    <td><strong>Rp 20.062.500</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>3. Integrasi & Pengujian Lanjutan (15%)</strong></td>
+                    <td>Memperkuat API, konektivitas ke OPD terkait, serta pengujian keamanan dan beban.</td>
+                    <td><strong>Rp 10.031.250</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>4. Manajemen & Knowledge Transfer (15%)</strong></td>
+                    <td>Manajemen proyek, dokumentasi teknis, dan pelatihan kepada tim IT internal.</td>
+                    <td><strong>Rp 10.031.250</strong></td>
+                </tr>
+                <tr class="table-light">
+                    <td colspan="2" class="text-end"><strong>Subtotal</strong></td>
+                    <td><strong>Rp 66.875.000</strong></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-end">PPN (12%)</td>
+                    <td>Rp 8.025.000</td>
+                </tr>
+                <tr class="total-row table-light">
+                    <td colspan="2" class="text-end"><strong>Total Anggaran</strong></td>
+                    <td><strong>Rp 74.900.000</strong></td>
+                </tr>
+                </tbody>
+            </table>
+            </div>
+            <div id="proyeksi-pemeliharaan-upgrade">
+            <h4 class="mt-4">Proyeksi Biaya Pemeliharaan Tahunan</h4>
+            <p>Biaya pemeliharaan tahunan diperkirakan sekitar <strong>15-20%</strong> dari total biaya pengembangan, yaitu <strong>Rp 11,2 - 15 juta per tahun</strong>.</p>
+            </div>
+        </section>
+    </div>
+    <img src="header dan footer/footer.png" class="page-footer-img">
+    <div class="page-footer">Halaman 2 - Lampiran Anggaran</div>
+  </div>
+
+  <div class="print-fab" onclick="window.print()">
+      <i class="lni lni-printer"></i>
+  </div>
+
+  <script src="../assets/js/bootstrap.5.0.0.alpha-2-min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dateElement = document.getElementById('dynamic-date');
+        const numberElement = document.getElementById('dynamic-number');
+
+        if (dateElement) {
+            const today = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = today.toLocaleDateString('id-ID', options);
+            dateElement.innerHTML = `Baubau, ${formattedDate}`;
+        }
+
+        if (numberElement) {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = today.getMonth() + 1;
+            
+            const toRoman = (num) => {
+                const roman = { M: 1000, CM: 900, D: 500, CD: 400, C: 100, XC: 90, L: 50, XL: 40, X: 10, IX: 9, V: 5, IV: 4, I: 1 };
+                let str = '';
+                for (let i of Object.keys(roman)) {
+                    let q = Math.floor(num / roman[i]);
+                    num -= q * roman[i];
+                    str += i.repeat(q);
+                }
+                return str;
+            };
+
+            const romanMonth = toRoman(month);
+            numberElement.innerHTML = `Nomor: 002/SKI/${romanMonth}/${year}<br>`;
+        }
+    });
+  </script>
+</body>
+</html>
