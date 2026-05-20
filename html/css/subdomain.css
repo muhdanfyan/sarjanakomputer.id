@@ -90,8 +90,31 @@ img{max-width:100%;height:auto}
     transform:scaleX(0);
     transition:0.3s;
 }
+.navbar-custom .nav-link.dropdown-toggle::after{display:none}
 .navbar-custom .nav-link:hover::after,
 .navbar-custom .nav-link.active::after{transform:scaleX(1)}
+.navbar-custom .dropdown-menu{
+    border:none;
+    border-radius:var(--radius-sm);
+    box-shadow:0 10px 40px rgba(0,0,0,0.1);
+    padding:0.5rem 0;
+    border:1px solid rgba(0,0,0,0.04);
+}
+.navbar-custom .dropdown-item{
+    font-size:0.85rem;
+    padding:0.45rem 1.2rem;
+    color:var(--gray-700);
+    transition:0.2s;
+}
+.navbar-custom .dropdown-item:hover{
+    background:rgba(49,46,95,0.06);
+    color:var(--primary);
+}
+.navbar-custom .dropdown-item:active{
+    background:var(--primary);
+    color:white;
+}
+.navbar-custom .dropdown-divider{margin:0.35rem 0;opacity:0.5}
 .navbar-custom .navbar-toggler{
     border:none;
     padding:0.5rem;
