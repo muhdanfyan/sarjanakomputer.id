@@ -2,6 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
+
+  <!-- Google Search Console Verification (isi dengan code dari Search Console) -->
+  <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
   <meta name="keywords" content="jasa pembuatan aplikasi, jasa website, aplikasi Android, aplikasi desktop, sistem informasi, jasa IT murah, buat aplikasi, pengembang aplikasi Indonesia">
   <link rel="canonical" href="https://aplikasi.sarjanakomputer.id/aplikasi/">
 
@@ -21,6 +24,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jasa Aplikasi — Sarjana Komputer Indonesia</title>
+
+  <!-- Google Analytics (GA4 - ganti G-XXXXXXXXXX dengan ID asli) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+  </script> -->
     <meta name="description" content="Jasa pembuatan aplikasi web, mobile Android, dan desktop custom dari CV. Sarjana Komputer Indonesia">
     <link rel="shortcut icon" href="../images/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -76,6 +88,27 @@
   ]
 }
 </script>
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Beranda",
+      "item": "https://sarjanakomputer.id/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Jasa Aplikasi",
+      "item": "https://aplikasi.sarjanakomputer.id/aplikasi/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -110,7 +143,7 @@
         <div class="row align-items-center">
             <div class="col-lg-7" data-aos="fade-up">
                 <div class="hero-badge"><i class="bi bi-window-stack"></i> Jasa Aplikasi</div>
-                <h1>Bikin Aplikasi Impian Anda</h1>
+                <h1>Jasa Pembuatan Aplikasi <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Professional & Terjangkau</span></h1>
                 <p>Dari konsultasi hingga peluncuran — kami bantu Anda mewujudkan aplikasi web, mobile, dan desktop sesuai kebutuhan bisnis.</p>
                 <div class="d-flex flex-wrap gap-2 mt-3">
                     <a href="#pricing" class="btn-primary-custom"><i class="bi bi-tags"></i> Lihat Paket</a>
@@ -324,6 +357,47 @@
 AOS.init({once:true,duration:600,offset:20});
 window.addEventListener('scroll',()=>{document.querySelector('.navbar-custom').classList.toggle('navbar-scrolled',window.scrollY>50)});
 function toggleFaq(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('show')}
+</script>
+<!-- FAQ Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Berapa biaya pembuatan aplikasi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Biaya mulai dari Rp3.000.000 untuk paket Basic, Rp8.000.000 – Rp15.000.000 untuk paket Business, dan custom untuk Enterprise. Konsultasi gratis terlebih dahulu untuk menyesuaikan kebutuhan Anda."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Berapa lama proses pembuatan aplikasi?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tergantung kompleksitas. Aplikasi sederhana 2-4 minggu, aplikasi menengah 1-2 bulan, dan aplikasi kompleks 2-4 bulan. Kami akan memberikan timeline detail setelah konsultasi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Apica menyediakan maintenance setelah aplikasi selesai?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ya, kami menyediakan layanan maintenance bulanan dengan harga terjangkau. Termasuk update fitur, perbaikan bug, dan monitoring performa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Teknologi apa yang digunakan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kami menggunakan teknologi modern seperti Laravel, React JS, Next.js, Flutter, dan Node.js sesuai kebutuhan proyek Anda."
+      }
+    }
+  ]
+}
 </script>
 </body>
 </html>

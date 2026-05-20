@@ -2,6 +2,9 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
+
+  <!-- Google Search Console Verification (isi dengan code dari Search Console) -->
+  <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
   <meta name="keywords" content="bootcamp IT, kursus coding, bimbingan skripsi, pelatihan IT, belajar programming, academy IT Indonesia, kursus programming online, bootcamp Indonesia">
   <link rel="canonical" href="https://academy.sarjanakomputer.id/academy/">
 
@@ -21,6 +24,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sarjana Komputer Academy — Bootcamp & Pelatihan IT</title>
+
+  <!-- Google Analytics (GA4 - ganti G-XXXXXXXXXX dengan ID asli) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+  </script> -->
     <meta name="description" content="Sarjana Komputer Academy — Bootcamp IT, bimbingan skripsi, dan pelatihan digital untuk mencetak talenta IT profesional.">
     <link rel="shortcut icon" href="../images/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -81,6 +93,27 @@
   ]
 }
 </script>
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Beranda",
+      "item": "https://sarjanakomputer.id/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Academy",
+      "item": "https://academy.sarjanakomputer.id/academy/"
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -115,7 +148,7 @@
         <div class="row align-items-center">
             <div class="col-lg-7" data-aos="fade-up">
                 <div class="hero-badge"><i class="bi bi-mortarboard-fill"></i> Sarjana Komputer Academy</div>
-                <h1>Jadi Sarjana Komputer Profesional</h1>
+                <h1>Bootcamp IT <h1>Jadi Sarjana Komputer Profesional</h1> Bimbingan Skripsi — Jadi Sarjana Komputer <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Profesional</span></h1>
                 <p>Wadah pendidikan dan pelatihan IT untuk mencetak talenta digital unggulan — dari bootcamp intensif hingga bimbingan skripsi dan magang project-based.</p>
                 <div class="d-flex flex-wrap gap-2 mt-3">
                     <a href="#program" class="btn-primary-custom"><i class="bi bi-book"></i> Lihat Program</a>
@@ -210,19 +243,19 @@
         </div>
         <div class="row g-3 justify-content-center">
             <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up">
-                <div class="mentor-card"><img src="../images/team/direktur.png" alt="Muhdan"><h6>Muhdan Fyan</h6><div class="role">Direktur / Mentor</div></div>
+                <div class="mentor-card"><img loading="lazy" src="../images/team/direktur.png" alt="Muhdan"><h6>Muhdan Fyan</h6><div class="role">Direktur / Mentor</div></div>
             </div>
             <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="50">
-                <div class="mentor-card"><img src="../images/team/hayat.png" alt="Hayatul"><h6>Hayatul Habirun</h6><div class="role">IT Infra. Lead</div></div>
+                <div class="mentor-card"><img loading="lazy" src="../images/team/hayat.png" alt="Hayatul"><h6>Hayatul Habirun</h6><div class="role">IT Infra. Lead</div></div>
             </div>
             <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="100">
-                <div class="mentor-card"><img src="../images/team/arif-rizal.png" alt="Arif"><h6>Arif Rizal</h6><div class="role">Backend & QA</div></div>
+                <div class="mentor-card"><img loading="lazy" src="../images/team/arif-rizal.png" alt="Arif"><h6>Arif Rizal</h6><div class="role">Backend & QA</div></div>
             </div>
             <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="150">
-                <div class="mentor-card"><img src="../images/team/ahmad-dahsan.jpg" alt="Ahmad"><h6>Ahmad Dahsan</h6><div class="role">DevOps Engineer</div></div>
+                <div class="mentor-card"><img loading="lazy" src="../images/team/ahmad-dahsan.jpg" alt="Ahmad"><h6>Ahmad Dahsan</h6><div class="role">DevOps Engineer</div></div>
             </div>
             <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="200">
-                <div class="mentor-card"><img src="../images/team/andi-rifqial-nur.jpg" alt="Andi"><h6>Andi Rifqial N.</h6><div class="role">Software Eng.</div></div>
+                <div class="mentor-card"><img loading="lazy" src="../images/team/andi-rifqial-nur.jpg" alt="Andi"><h6>Andi Rifqial N.</h6><div class="role">Software Eng.</div></div>
             </div>
         </div>
     </div>
@@ -260,19 +293,24 @@
         </div>
         <div class="row g-3">
             <div class="col-md-4" data-aos="fade-up">
-                <div class="testimonial-card"><div class="quote">"Bootcamp Full-stack di Sarjana Komputer Academy benar-benar mengubah karir saya. Dari nol bisa bikin web sendiri dalam 3 bulan."</div><div class="author"><img src="../images/team/arif-rizal.png" alt="Alumni"><span>— Rifaldi, <span style="font-weight:400;color:var(--gray-500)">Alumni 2025</span></span></div></div>
+                <div class="testimonial-card"><div class="quote">"Bootcamp Full-stack di Sarjana Komputer Academy benar-benar mengubah karir saya. Dari nol bisa bikin web sendiri dalam 3 bulan."</div><div class="author"><img loading="lazy" src="../images/team/arif-rizal.png" alt="Alumni"><span>— Rifaldi, <span style="font-weight:400;color:var(--gray-500)">Alumni 2025</span></span></div></div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
-                <div class="testimonial-card"><div class="quote">"Bimbingan skripsinya sangat membantu. Dari bingung mau buat apa, jadi punya aplikasi jadi dan lulus tepat waktu."</div><div class="author"><img src="../images/team/hayat.png" alt="Alumni"><span>— St. Rahma, <span style="font-weight:400;color:var(--gray-500)">Alumni Bimbingan 2025</span></span></div></div>
+                <div class="testimonial-card"><div class="quote">"Bimbingan skripsinya sangat membantu. Dari bingung mau buat apa, jadi punya aplikasi jadi dan lulus tepat waktu."</div><div class="author"><img loading="lazy" src="../images/team/hayat.png" alt="Alumni"><span>— St. Rahma, <span style="font-weight:400;color:var(--gray-500)">Alumni Bimbingan 2025</span></span></div></div>
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="testimonial-card"><div class="quote">"Program magang di sini beneran ngerjain proyek nyata, bukan cuma teori. Portfolio saya jadi kuat."</div><div class="author"><img src="../images/team/direktur.png" alt="Alumni"><span>— Akbar, <span style="font-weight:400;color:var(--gray-500)">Peserta Magang 2025</span></span></div></div>
+                <div class="testimonial-card"><div class="quote">"Program magang di sini beneran ngerjain proyek nyata, bukan cuma teori. Portfolio saya jadi kuat."</div><div class="author"><img loading="lazy" src="../images/team/direktur.png" alt="Alumni"><span>— Akbar, <span style="font-weight:400;color:var(--gray-500)">Peserta Magang 2025</span></span></div></div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- DAFTAR -->
+<!-- Cross Link -->
+<div class="text-center mt-4" data-aos="fade-up">
+  <p style="font-size:0.85rem;color:var(--gray-500)">Lihat juga <a href="../aplikasi/" style="color:var(--primary);font-weight:600">Jasa Aplikasi</a> · <a href="../automasi/" style="color:var(--primary);font-weight:600">Automasi & AI</a> · <a href="../blog/" style="color:var(--primary);font-weight:600">Blog Teknologi</a></p>
+</div>
+
 <section class="section section-alt" id="daftar">
     <div class="container">
         <div class="row justify-content-center">
