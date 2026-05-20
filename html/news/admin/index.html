@@ -5,13 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager — SKI News</title>
   <link rel="icon" href="https://sarjanakomputer.id/images/favicon.png" type="image/png">
+  <script>
+    // ===== CRITICAL: Handle auth token BEFORE React Router modifies the URL =====
+    // When Decap CMS redirects back from the auth proxy, the URL has:
+    //   /news/admin/#access_token=TOKEN
+    // or (after React Router messes with it):
+    //   /news/admin/#/access_token=TOKEN
+    //
+    // We parse both formats here (in <head>, before any React code runs),
+    // store the token in localStorage, and clean the URL.
+
+    (function() {
+      var hash = window.location.hash || '';
+
+      if (hash && hash.indexOf('access_token') !== -1) {
+        // Remove leading # or #/ or #! or just #
+        var cleaned = hash.replace(/^#[!\/]*/, '');
+        var params = new URLSearchParams(cleaned);
+        var token = params.get('access_token');
+
+        if (token) {
+          // Store in ALL possible localStorage keys Decap CMS might check
+          var val = JSON.stringify({ token: token });
+          var keys = [
+            'cms.auth',
+            'cms.auth.github.muhdanfyan/sarjanakomputer.id',
+            'cms.auth.github.muhdanfyan.sarjanakomputer.id',
+            'ghost:github:muhdanfyan/sarjanakomputer.id:token'
+          ];
+          keys.forEach(function(k) {
+            try { localStorage.setItem(k, val); } catch(e) {}
+          });
+
+          // Clean the URL so React Router doesn't see the token
+          history.replaceState({}, '', '/news/admin/');
+        }
+      }
+    })();
+  </script>
 </head>
 <body>
-  <!-- Pre-load config to avoid async race condition during React init -->
   <script>
-    // Prevent auto-init — wait for token fetch to complete first
-    window.CMS_MANUAL_INIT = true;
-
     window.CMS_CONFIG = {
       backend: {
         name: "github",
@@ -49,38 +83,5 @@
     };
   </script>
   <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
-  <script>
-    // ===== Step 2: Fetch token from auth proxy, store, then init CMS =====
-    (function() {
-      var BACKEND = 'github';
-      var REPO = 'muhdanfyan/sarjanakomputer.id';
-
-      fetch('/api/auth?json=1')
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          if (data && data.token) {
-            // Store token in possible localStorage key formats
-            var keys = [
-              'cms.auth.' + BACKEND + '.' + REPO,
-              'cms.auth.' + BACKEND + '.' + REPO.replace('/', '.'),
-              'ghost:' + BACKEND + ':' + REPO + ':token',
-            ];
-            var val = JSON.stringify({ token: data.token });
-            keys.forEach(function(k) {
-              try { localStorage.setItem(k, val); } catch(e) {}
-            });
-          }
-        })
-        .catch(function(err) {
-          console.error('Auth fetch failed:', err);
-        })
-        .finally(function() {
-          // Now init CMS (regardless of auth success, CMS handles the UI)
-          if (window.initCMS) {
-            window.initCMS();
-          }
-        });
-    })();
-  </script>
 </body>
 </html>
