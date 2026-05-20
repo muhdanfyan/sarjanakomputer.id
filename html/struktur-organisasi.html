@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Organisasi — CV. Sarjana Komputer Indonesia</title>
+    <meta name="description" content="Struktur organisasi CV. Sarjana Komputer Indonesia - Baubau, Sulawesi Tenggara">
+    <link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --primary-light: #3b82f6;
+            --secondary: #06b6d4;
+            --dark: #0f172a;
+            --gray-500: #64748b;
+            --gray-700: #334155;
+            --gray-100: #f1f5f9;
+            --white: #ffffff;
+            --gradient: linear-gradient(135deg, #1a56db 0%, #06b6d4 100%);
+            --radius: 16px;
+            --radius-sm: 8px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-700);
+            background: var(--gray-100);
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, #0b1120 0%, #162a50 100%);
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .page-header-content { position: relative; z-index: 1; }
+        .page-header h1 { color: white; font-size: 2.2rem; }
+        .page-header p { color: rgba(255,255,255,0.6); font-size: 1rem; }
+        .back-link {
+            color: rgba(255,255,255,0.7); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            margin-bottom: 1rem; font-size: 0.9rem;
+        }
+        .back-link:hover { color: white; }
+
+        /* Content */
+        section { padding: 3rem 0; }
+
+        /* Tree line */
+        .org-tree {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        /* Director card */
+        .director-card {
+            text-align: center;
+            max-width: 300px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+        .director-card::after {
+            content: '';
+            position: absolute;
+            bottom: -2.5rem;
+            left: 50%;
+            width: 2px;
+            height: 2rem;
+            background: var(--primary);
+            transform: translateX(-50%);
+        }
+        .director-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 4px solid rgba(26,86,219,0.2);
+            box-shadow: 0 8px 30px rgba(26,86,219,0.2);
+        }
+        .director-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+        .director-badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Horizontal connector */
+        .horizontal-line {
+            position: relative;
+            height: 2px;
+            background: var(--primary);
+            margin: 0 auto 2rem;
+            max-width: 800px;
+            opacity: 0.3;
+        }
+        .horizontal-line::before,
+        .horizontal-line::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+        .horizontal-line::before { left: 0; }
+        .horizontal-line::after { right: 0; }
+
+        /* Team cards under director */
+        .org-member {
+            text-align: center;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.75rem 1.25rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s;
+            height: 100%;
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+        }
+        .org-member::before {
+            content: '';
+            position: absolute;
+            top: -1rem;
+            left: 50%;
+            width: 2px;
+            height: 1rem;
+            background: var(--primary);
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+        .org-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        .org-member-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 0.85rem;
+            border: 3px solid rgba(26,86,219,0.12);
+            box-shadow: 0 4px 15px rgba(26,86,219,0.1);
+            transition: all 0.3s;
+        }
+        .org-member:hover .org-member-img {
+            border-color: var(--primary);
+            box-shadow: 0 6px 25px rgba(26,86,219,0.2);
+        }
+        .org-member h5 {
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+        .org-member .dept {
+            font-size: 0.72rem;
+            color: var(--gray-500);
+            margin-bottom: 0.25rem;
+        }
+        .org-member .role-badge {
+            display: inline-block;
+            padding: 0.15rem 0.7rem;
+            background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(6,182,212,0.08));
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .org-member p {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin: 0;
+            line-height: 1.6;
+        }
+        .org-member svg {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 0.85rem;
+        }
+
+        /* Section label */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--primary);
+            opacity: 0.2;
+        }
+
+        /* Timeline info */
+        .info-section {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+        .info-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .info-section ul { list-style: none; padding: 0; }
+        .info-section ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+        }
+        .info-section ul li:last-child { border-bottom: none; }
+        .info-section ul li i { color: var(--primary); font-size: 1.1rem; }
+
+        @media (max-width: 767px) {
+            .page-header { padding: 4rem 0 2rem; }
+            .page-header h1 { font-size: 1.6rem; }
+            .director-img { width: 110px; height: 110px; }
+            .org-member-img { width: 85px; height: 85px; }
+            .org-member { padding: 1.25rem 1rem; }
+            .org-member::before { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <div class="page-header">
+        <div class="container page-header-content">
+            <a href="index.html" class="back-link"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
+            <h1>Struktur Organisasi</h1>
+            <p>CV. Sarjana Komputer Indonesia</p>
+        </div>
+    </div>
+
+    <!-- ========== ORG STRUCTURE ========== -->
+    <section>
+        <div class="container">
+            <!-- Director -->
+            <div class="org-tree" data-aos="fade-up">
+                <div class="director-card">
+                    <img src="images/team/direktur.png" alt="Muhdan Fyan Syah Sofian" class="director-img">
+                    <h3>Muhdan Fyan Syah Sofian, S.Kom</h3>
+                    <span class="director-badge">Direktur</span>
+                    <p style="font-size: 0.85rem; color: var(--gray-500); margin-top: 0.5rem;">
+                        Ahli strategi dan manajemen proyek, mengarahkan kolaborasi untuk mencapai tujuan transformasi digital.
+                    </p>
+                </div>
+
+                <!-- Horizontal line -->
+                <div class="horizontal-line"></div>
+
+                <!-- Team Members -->
+                <div class="row g-3 justify-content-center">
+                    <!-- Hayatul Habirun -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                        <div class="org-member">
+                            <img src="images/team/hayat.png" alt="Hayatul Habirun" class="org-member-img">
+                            <h5>Hayatul Habirun, S.Kom</h5>
+                            <div class="dept">Divisi Infrastruktur</div>
+                            <span class="role-badge">IT Infrastructure Lead</span>
+                            <p>Spesialis jaringan dan infrastruktur, menjaga stabilitas konektivitas digital.</p>
+                        </div>
+                    </div>
+
+                    <!-- Irvan -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="org-member">
+                            <img src="images/team/irvan.png" alt="Irvan" class="org-member-img">
+                            <h5>Irvan, S.Kom</h5>
+                            <div class="dept">Divisi Manajemen Proyek</div>
+                            <span class="role-badge">Project Manager</span>
+                            <p>Implementasi sistem, memastikan solusi teknologi berjalan efektif dan tepat waktu.</p>
+                        </div>
+                    </div>
+
+                    <!-- Arif Rizal -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
+                        <div class="org-member">
+                            <img src="images/team/arif-rizal.png" alt="Arif Rizal" class="org-member-img">
+                            <h5>Arif Rizal</h5>
+                            <div class="dept">Divisi Pengembangan</div>
+                            <span class="role-badge">Backend Developer Lead</span>
+                            <p>Pengembang backend, perancangan database dan API yang kuat dan skalabel.</p>
+                        </div>
+                    </div>
+
+                    <!-- Ahmad Dahsan -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="org-member">
+                            <img src="images/team/ahmad-dahsan.svg" alt="Ahmad Dahsan" class="org-member-img">
+                            <h5>Ahmad Dahsan</h5>
+                            <div class="dept">Divisi Data & Analitik</div>
+                            <span class="role-badge">Data Analyst</span>
+                            <p>Analis data, menerjemahkan data kompleks menjadi wawasan strategis.</p>
+                        </div>
+                    </div>
+
+                    <!-- Andi Rifqial Nur -->
+                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
+                        <div class="org-member">
+                            <img src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial Nur" class="org-member-img">
+                            <h5>Andi Rifqial Nur</h5>
+                            <div class="dept">Divisi Pengembangan</div>
+                            <span class="role-badge">Frontend Developer</span>
+                            <p>Pengembang frontend, antarmuka modern, bersih, dan intuitif untuk pengalaman optimal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info tambahan -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="info-section">
+                        <h4><i class="bi bi-info-circle"></i> Tentang Struktur Ini</h4>
+                        <ul>
+                            <li><i class="bi bi-building"></i> <strong>Perusahaan:</strong> CV. Sarjana Komputer Indonesia</li>
+                            <li><i class="bi bi-geo-alt"></i> <strong>Lokasi:</strong> Baubau, Sulawesi Tenggara</li>
+                            <li><i class="bi bi-people"></i> <strong>Total Personil:</strong> 6 orang (1 direktur + 5 staf)</li>
+                            <li><i class="bi bi-calendar"></i> <strong>Role/Posisi:</strong> Masih bersifat sementara, akan ditentukan secara resmi oleh direktur</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 600, offset: 40 });</script>
+</body>
+</html>
