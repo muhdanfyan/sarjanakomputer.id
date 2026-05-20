@@ -9,13 +9,12 @@
 **Pendiri/Direktur:** Muhdan Fyan Syah Sofian, S.Kom
 
 ## Visi
-Menjadi mitra terdepan dalam transformasi digital dan pengembangan SDM IT di Indonesia Timur.
+Mitra terdepan transformasi digital dan jembatan karier talenta IT Indonesia Timur.
 
 ## Misi
-1. Menyediakan solusi IT berkualitas tinggi untuk pemerintah dan swasta
-2. Mengembangkan talenta digital lokal melalui pelatihan dan pendampingan
-3. Mendorong adopsi teknologi digital di berbagai sektor
-4. Menjembatani dunia pendidikan dengan industri IT
+1. Menyediakan solusi IT berkualitas untuk pemerintah, swasta, dan masyarakat.
+2. Menghubungkan mahasiswa dan talenta IT Indonesia Timur ke industri teknologi.
+3. Mendorong adopsi digital untuk kemajuan daerah.
 
 ## Afiliasi & Jaringan
 - **Pondok Informatika** — Pusat inkubasi talenta digital
