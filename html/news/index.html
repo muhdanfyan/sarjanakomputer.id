@@ -132,6 +132,15 @@
     </script>
   <link rel="manifest" href="/manifest.json">
   <script defer src="/_vercel/insights/script.js"></script>
+  <script>
+    // Bersihin URL: sembunyikan /news/ dari address bar
+    if (window.location.pathname !== '/' && window.location.pathname !== '/news/' && window.location.pathname !== '/news/index.html') {
+      var cleanPath = window.location.pathname.replace(/^\/news/, '') || '/';
+      history.replaceState(null, '', cleanPath + window.location.search + window.location.hash);
+    } else if (window.location.pathname === '/news/' || window.location.pathname === '/news/index.html') {
+      history.replaceState(null, '', '/' + window.location.search + window.location.hash);
+    }
+  </script>
 </head>
 <body>
 

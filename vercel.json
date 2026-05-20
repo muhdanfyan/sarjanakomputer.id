@@ -9,10 +9,10 @@
     { "source": "/", "destination": "/automasi/", "permanent": false, "has": [{ "type": "host", "value": "automasi.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/academy/", "permanent": false, "has": [{ "type": "host", "value": "academy.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/blog/", "permanent": false, "has": [{ "type": "host", "value": "blog.sarjanakomputer.id" }] },
+    { "source": "/", "destination": "/news/", "permanent": false, "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] },
     { "source": "/admin/", "destination": "/admin", "permanent": true, "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] }
   ],
   "rewrites": [
-    { "source": "/", "destination": "/news/index.html", "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] },
     { "source": "/admin/:path*", "destination": "/news/admin/:path*", "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] },
     { "source": "/artikel.html", "destination": "/news/artikel.html", "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] },
     { "source": "/content/:path*", "destination": "/news/content/:path*", "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] }
