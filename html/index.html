@@ -236,8 +236,11 @@
             font-weight: 600;
         }
         @media(max-width:576px){
-            .team-grid-home{grid-template-columns:repeat(2,1fr);gap:.8rem}
+            .team-grid-home{grid-template-columns:repeat(2,1fr);gap:.8rem;max-width:100%}
             .team-card-home .tch-body{padding:.8rem}
+        }
+        @media(max-width:480px){
+            .topbar .container span:last-child{display:none}
         }
 
         /* ===== Client Cards ===== */
