@@ -8,6 +8,18 @@ backend:
 media_folder: "html/images/news"
 public_folder: "/images/news"
 
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: ddhgtgsed
+    api_key: 684916711959441
+    default_transformations:
+      - - fetch_format: auto
+          quality: auto
+          width: 1200
+          crop: fill
+          gravity: auto
+
 publish_mode: editorial_workflow
 
 collections:
