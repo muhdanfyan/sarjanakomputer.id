@@ -18,9 +18,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ token: TOKEN });
   }
 
-  // Navigate back to admin page with token in hash.
-  // Admin page will read #access_token before React Router initializes.
-  const redirectUrl = `/news/admin/#access_token=${TOKEN}`;
+  // Navigate to the dedicated auth_popup page (not the main admin page).
+  // auth_popup.html reads the token from URL hash and sends it to the
+  // main Decap CMS window via window.opener.postMessage, then closes.
+  // This avoids React Router's hash history corrupting the #access_token param.
+  const redirectUrl = `/news/admin/auth_popup.html#access_token=${TOKEN}`;
   res.writeHead(302, { Location: redirectUrl });
   return res.end();
 }
