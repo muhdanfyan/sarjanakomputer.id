@@ -2,5 +2,12 @@
   "version": 2,
   "buildCommand": "",
   "outputDirectory": "html",
-  "framework": null
+  "framework": null,
+  "rewrites": [
+    { "source": "/", "has": [{ "type": "host", "value": "profil.sarjanakomputer.id" }], "destination": "/profil/" },
+    { "source": "/", "has": [{ "type": "host", "value": "aplikasi.sarjanakomputer.id" }], "destination": "/aplikasi/" },
+    { "source": "/", "has": [{ "type": "host", "value": "automasi.sarjanakomputer.id" }], "destination": "/automasi/" },
+    { "source": "/", "has": [{ "type": "host", "value": "academy.sarjanakomputer.id" }], "destination": "/academy/" },
+    { "source": "/", "has": [{ "type": "host", "value": "blog.sarjanakomputer.id" }], "destination": "/blog/" }
+  ]
 }

@@ -23,7 +23,6 @@
             --white: #ffffff;
             --gradient: linear-gradient(135deg, #1a56db 0%, #06b6d4 100%);
             --radius: 16px;
-            --radius-sm: 8px;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -64,151 +63,94 @@
         }
         .back-link:hover { color: white; }
 
-        /* Content */
         section { padding: 3rem 0; }
 
-        /* Tree line */
-        .org-tree {
-            position: relative;
-            padding-bottom: 2rem;
+        /* Team grid — all equal */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 960px;
+            margin: 0 auto;
         }
 
-        /* Director card */
-        .director-card {
-            text-align: center;
-            max-width: 300px;
-            margin: 0 auto 3rem;
-            position: relative;
-        }
-        .director-card::after {
-            content: '';
-            position: absolute;
-            bottom: -2.5rem;
-            left: 50%;
-            width: 2px;
-            height: 2rem;
-            background: var(--primary);
-            transform: translateX(-50%);
-        }
-        .director-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 4px solid rgba(26,86,219,0.2);
-            box-shadow: 0 8px 30px rgba(26,86,219,0.2);
-        }
-        .director-card h3 {
-            font-size: 1.15rem;
-            margin-bottom: 0.2rem;
-        }
-        .director-badge {
-            display: inline-block;
-            padding: 0.25rem 1rem;
-            background: var(--gradient);
-            color: white;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        /* Horizontal connector */
-        .horizontal-line {
-            position: relative;
-            height: 2px;
-            background: var(--primary);
-            margin: 0 auto 2rem;
-            max-width: 800px;
-            opacity: 0.3;
-        }
-        .horizontal-line::before,
-        .horizontal-line::after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            width: 10px;
-            height: 10px;
-            background: var(--primary);
-            border-radius: 50%;
-        }
-        .horizontal-line::before { left: 0; }
-        .horizontal-line::after { right: 0; }
-
-        /* Team cards under director */
-        .org-member {
+        .team-card {
             text-align: center;
             background: var(--white);
             border-radius: var(--radius);
-            padding: 1.75rem 1.25rem;
+            padding: 2rem 1.25rem;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: all 0.4s;
-            height: 100%;
             border: 1px solid rgba(0,0,0,0.04);
-            position: relative;
         }
-        .org-member::before {
-            content: '';
-            position: absolute;
-            top: -1rem;
-            left: 50%;
-            width: 2px;
-            height: 1rem;
-            background: var(--primary);
-            transform: translateX(-50%);
-            opacity: 0.3;
-        }
-        .org-member:hover {
+        .team-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
         }
-        .org-member-img {
+        .team-card-img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 0.85rem;
+            margin: 0 auto 1rem;
             border: 3px solid rgba(26,86,219,0.12);
             box-shadow: 0 4px 15px rgba(26,86,219,0.1);
             transition: all 0.3s;
         }
-        .org-member:hover .org-member-img {
+        .team-card:hover .team-card-img {
             border-color: var(--primary);
             box-shadow: 0 6px 25px rgba(26,86,219,0.2);
+            transform: scale(1.05);
         }
-        .org-member h5 {
-            font-size: 0.95rem;
-            margin-bottom: 0.15rem;
+        .team-card h5 {
+            font-size: 0.92rem;
+            margin-bottom: 0.2rem;
         }
-        .org-member .dept {
-            font-size: 0.72rem;
-            color: var(--gray-500);
-            margin-bottom: 0.25rem;
-        }
-        .org-member .role-badge {
+        .team-card .role-badge {
             display: inline-block;
-            padding: 0.15rem 0.7rem;
+            padding: 0.2rem 0.8rem;
             background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(6,182,212,0.08));
             color: var(--primary);
             border-radius: 50px;
             font-size: 0.72rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-top: 0.15rem;
         }
-        .org-member p {
+        .team-card p {
             font-size: 0.8rem;
             color: var(--gray-500);
-            margin: 0;
+            margin: 0.5rem 0 0;
             line-height: 1.6;
         }
-        .org-member svg {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin: 0 auto 0.85rem;
-        }
 
-        /* Section label */
+        /* Info section */
+        .info-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-top: 2rem;
+        }
+        .info-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .info-card ul { list-style: none; padding: 0; }
+        .info-card ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+        }
+        .info-card ul li:last-child { border-bottom: none; }
+        .info-card ul li i { color: var(--primary); font-size: 1.1rem; }
+
         .section-label {
             display: flex;
             align-items: center;
@@ -227,37 +169,12 @@
             opacity: 0.2;
         }
 
-        /* Timeline info */
-        .info-section {
-            background: var(--white);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            margin-top: 2rem;
-        }
-        .info-section h4 {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-        .info-section ul { list-style: none; padding: 0; }
-        .info-section ul li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.04);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-size: 0.9rem;
-        }
-        .info-section ul li:last-child { border-bottom: none; }
-        .info-section ul li i { color: var(--primary); font-size: 1.1rem; }
-
         @media (max-width: 767px) {
             .page-header { padding: 4rem 0 2rem; }
             .page-header h1 { font-size: 1.6rem; }
-            .director-img { width: 110px; height: 110px; }
-            .org-member-img { width: 85px; height: 85px; }
-            .org-member { padding: 1.25rem 1rem; }
-            .org-member::before { display: none; }
+            .team-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+            .team-card { padding: 1.5rem 1rem; }
+            .team-card-img { width: 85px; height: 85px; }
         }
     </style>
 </head>
@@ -272,92 +189,66 @@
         </div>
     </div>
 
-    <!-- ========== ORG STRUCTURE ========== -->
+    <!-- ========== TEAM GRID ========== -->
     <section>
         <div class="container">
-            <!-- Director -->
-            <div class="org-tree" data-aos="fade-up">
-                <div class="director-card">
-                    <img src="images/team/direktur.png" alt="Muhdan Fyan Syah Sofian" class="director-img">
-                    <h3>Muhdan Fyan Syah Sofian, S.Kom</h3>
-                    <span class="director-badge">Direktur</span>
-                    <p style="font-size: 0.85rem; color: var(--gray-500); margin-top: 0.5rem;">
-                        Ahli strategi dan manajemen proyek, mengarahkan kolaborasi untuk mencapai tujuan transformasi digital.
-                    </p>
+            <div class="text-center" data-aos="fade-up">
+                <div class="section-label">Tim Kami</div>
+            </div>
+            <div class="team-grid" data-aos="fade-up">
+                <!-- Muhdan Fyan -->
+                <div class="team-card">
+                    <img src="images/team/direktur.png" alt="Muhdan Fyan" class="team-card-img">
+                    <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
+                    <div class="role-badge">Direktur</div>
+                    <p>Ahli strategi dan manajemen proyek, mengarahkan kolaborasi untuk mencapai tujuan transformasi digital.</p>
                 </div>
-
-                <!-- Horizontal line -->
-                <div class="horizontal-line"></div>
-
-                <!-- Team Members -->
-                <div class="row g-3 justify-content-center">
-                    <!-- Hayatul Habirun -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
-                        <div class="org-member">
-                            <img src="images/team/hayat.png" alt="Hayatul Habirun" class="org-member-img">
-                            <h5>Hayatul Habirun, S.Kom</h5>
-                            <div class="dept">Divisi Infrastruktur</div>
-                            <span class="role-badge">IT Infrastructure Lead</span>
-                            <p>Spesialis jaringan dan infrastruktur, menjaga stabilitas konektivitas digital.</p>
-                        </div>
-                    </div>
-
-                    <!-- Irvan -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="org-member">
-                            <img src="images/team/irvan.png" alt="Irvan" class="org-member-img">
-                            <h5>Irvan, S.Kom</h5>
-                            <div class="dept">Divisi Manajemen Proyek</div>
-                            <span class="role-badge">Komisaris</span>
-                            <p>Pengawas dan penasehat perusahaan, memastikan arah strategis berjalan sesuai visi.</p>
-                        </div>
-                    </div>
-
-                    <!-- Arif Rizal -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="150">
-                        <div class="org-member">
-                            <img src="images/team/arif-rizal.png" alt="Arif Rizal" class="org-member-img">
-                            <h5>Arif Rizal</h5>
-                            <div class="dept">Divisi Pengembangan</div>
-                            <span class="role-badge">Backend & QA Engineer</span>
-                            <p>Pengembang backend sekaligus quality assurance, memastikan kode berkualitas dan sistem stabil.</p>
-                        </div>
-                    </div>
-
-                    <!-- Ahmad Dahsan -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="org-member">
-                            <img src="images/team/ahmad-dahsan.jpg" alt="Ahmad Dahsan" class="org-member-img">
-                            <h5>Ahmad Dahsan</h5>
-                            <div class="dept">Divisi DevOps & Software</div>
-                            <span class="role-badge">DevOps & Software Engineer</span>
-                            <p>Tenaga ahli di bidang DevOps dan pengembangan software, mengelola infrastruktur dan pipeline deployment.</p>
-                        </div>
-                    </div>
-
-                    <!-- Andi Rifqial Nur -->
-                    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="250">
-                        <div class="org-member">
-                            <img src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial Nur" class="org-member-img">
-                            <h5>Andi Rifqial Nur</h5>
-                            <div class="dept">Divisi Pengembangan</div>
-                            <span class="role-badge">Software Engineer</span>
-                            <p>Software engineer dengan fokus pada pengembangan aplikasi dan antarmuka yang modern dan efisien.</p>
-                        </div>
-                    </div>
+                <!-- Irvan -->
+                <div class="team-card">
+                    <img src="images/team/irvan.png" alt="Irvan" class="team-card-img">
+                    <h5>Irvan, S.Kom</h5>
+                    <div class="role-badge">Komisaris</div>
+                    <p>Pengawas dan penasehat perusahaan, memastikan arah strategis berjalan sesuai visi.</p>
+                </div>
+                <!-- Hayatul -->
+                <div class="team-card">
+                    <img src="images/team/hayat.png" alt="Hayatul" class="team-card-img">
+                    <h5>Hayatul Habirun, S.Kom</h5>
+                    <div class="role-badge">IT Infrastructure Lead</div>
+                    <p>Spesialis jaringan dan infrastruktur, menjaga stabilitas konektivitas digital.</p>
+                </div>
+                <!-- Arif Rizal -->
+                <div class="team-card">
+                    <img src="images/team/arif-rizal.png" alt="Arif Rizal" class="team-card-img">
+                    <h5>Arif Rizal</h5>
+                    <div class="role-badge">Backend & QA Engineer</div>
+                    <p>Pengembang backend sekaligus quality assurance, memastikan kode berkualitas dan sistem stabil.</p>
+                </div>
+                <!-- Ahmad Dahsan -->
+                <div class="team-card">
+                    <img src="images/team/ahmad-dahsan.jpg" alt="Ahmad Dahsan" class="team-card-img">
+                    <h5>Ahmad Dahsan</h5>
+                    <div class="role-badge">DevOps & Software Engineer</div>
+                    <p>Tenaga ahli di bidang DevOps dan pengembangan software, mengelola infrastruktur dan pipeline deployment.</p>
+                </div>
+                <!-- Andi Rifqial -->
+                <div class="team-card">
+                    <img src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial" class="team-card-img">
+                    <h5>Andi Rifqial Nur</h5>
+                    <div class="role-badge">Software Engineer</div>
+                    <p>Software engineer dengan fokus pada pengembangan aplikasi dan antarmuka yang modern dan efisien.</p>
                 </div>
             </div>
 
             <!-- Info tambahan -->
             <div class="row justify-content-center mt-4">
                 <div class="col-lg-8" data-aos="fade-up">
-                    <div class="info-section">
-                        <h4><i class="bi bi-info-circle"></i> Tentang Struktur Ini</h4>
+                    <div class="info-card">
+                        <h4><i class="bi bi-info-circle"></i> Tentang Tim</h4>
                         <ul>
                             <li><i class="bi bi-building"></i> <strong>Perusahaan:</strong> CV. Sarjana Komputer Indonesia</li>
                             <li><i class="bi bi-geo-alt"></i> <strong>Lokasi:</strong> Baubau, Sulawesi Tenggara</li>
-                            <li><i class="bi bi-people"></i> <strong>Total Personil:</strong> 6 orang (1 direktur + 5 staf)</li>
-                            <li><i class="bi bi-calendar"></i> <strong>Role/Posisi:</strong> Masih bersifat sementara, akan ditentukan secara resmi oleh direktur</li>
+                            <li><i class="bi bi-people"></i> <strong>Total Personil:</strong> 6 orang</li>
                         </ul>
                     </div>
                 </div>

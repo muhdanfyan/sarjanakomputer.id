@@ -16,17 +16,12 @@
         .about-item{padding:1.5rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100)}
         .about-item .label{font-size:0.75rem;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.5px;font-weight:600}
         .about-item .value{font-size:1rem;font-weight:600;color:var(--dark);margin-top:0.15rem}
-        .org-chart{display:flex;flex-direction:column;align-items:center;gap:2rem;padding:2rem 0}
-        .org-dir{text-align:center;padding:2rem 2.5rem;border-radius:var(--radius);background:var(--gradient);color:white;position:relative;min-width:260px}
-        .org-dir h4{color:white;margin-bottom:0.2rem}
-        .org-dir p{color:rgba(255,255,255,0.75);font-size:0.85rem;margin:0}
-        .org-line{width:2px;height:40px;background:var(--primary);opacity:0.3}
-        .org-team{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem}
-        .org-member{text-align:center;padding:1.25rem 1rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);min-width:140px;transition:0.3s}
-        .org-member:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-        .org-member .avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:0.5rem;border:3px solid rgba(26,86,219,0.1)}
-        .org-member h6{font-size:0.85rem;margin-bottom:0.1rem}
-        .org-member .role{font-size:0.72rem;color:var(--primary);font-weight:600}
+        .org-member{text-align:center;padding:1.5rem 1rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);transition:all 0.3s}
+        .org-member:hover{box-shadow:var(--shadow);transform:translateY(-4px);border-color:var(--primary)}
+        .org-member .avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:0.75rem;border:3px solid rgba(26,86,219,0.12);transition:0.3s}
+        .org-member:hover .avatar{border-color:var(--primary);transform:scale(1.05)}
+        .org-member h6{font-size:0.82rem;margin-bottom:0.15rem;line-height:1.3}
+        .org-member .role{font-size:0.7rem;color:var(--primary);font-weight:600;background:rgba(26,86,219,0.08);display:inline-block;padding:0.2rem 0.65rem;border-radius:50px}
         .legal-list{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
         .legal-item{display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:var(--radius-sm);background:var(--white);border:1px solid var(--gray-100)}
         .legal-item i{font-size:1.5rem;color:var(--primary)}
@@ -152,19 +147,13 @@
             <h2 class="section-title">Struktur Organisasi</h2>
             <p class="section-subtitle">Para profesional di balik CV. Sarjana Komputer Indonesia</p>
         </div>
-        <div class="org-chart" data-aos="fade-up">
-            <div class="org-dir">
-                <h4>Muhdan Fyan Syah Sofian, S.Kom</h4>
-                <p>Direktur</p>
-            </div>
-            <div class="org-line"></div>
-            <div class="org-team">
-                <div class="org-member"><img src="../images/team/hayat.png" alt="Hayatul" class="avatar"><h6>Hayatul Habirun, S.Kom</h6><div class="role">IT Infrastructure Lead</div></div>
-                <div class="org-member"><img src="../images/team/irvan.png" alt="Irvan" class="avatar"><h6>Irvan, S.Kom</h6><div class="role">Komisaris</div></div>
-                <div class="org-member"><img src="../images/team/arif-rizal.png" alt="Arif" class="avatar"><h6>Arif Rizal</h6><div class="role">Backend & QA Engineer</div></div>
-                <div class="org-member"><img src="../images/team/ahmad-dahsan.jpg" alt="Ahmad" class="avatar"><h6>Ahmad Dahsan</h6><div class="role">DevOps & Software Engineer</div></div>
-                <div class="org-member"><img src="../images/team/andi-rifqial-nur.jpg" alt="Andi" class="avatar"><h6>Andi Rifqial Nur</h6><div class="role">Software Engineer</div></div>
-            </div>
+        <div class="org-team" data-aos="fade-up" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.25rem;max-width:900px;margin:0 auto">
+            <div class="org-member"><img src="../images/team/direktur.png" alt="Muhdan Fyan" class="avatar"><h6>Muhdan Fyan Syah Sofian, S.Kom</h6><div class="role">Direktur</div></div>
+            <div class="org-member"><img src="../images/team/irvan.png" alt="Irvan" class="avatar"><h6>Irvan, S.Kom</h6><div class="role">Komisaris</div></div>
+            <div class="org-member"><img src="../images/team/hayat.png" alt="Hayatul" class="avatar"><h6>Hayatul Habirun, S.Kom</h6><div class="role">IT Infrastructure Lead</div></div>
+            <div class="org-member"><img src="../images/team/arif-rizal.png" alt="Arif" class="avatar"><h6>Arif Rizal</h6><div class="role">Backend & QA Engineer</div></div>
+            <div class="org-member"><img src="../images/team/ahmad-dahsan.jpg" alt="Ahmad" class="avatar"><h6>Ahmad Dahsan</h6><div class="role">DevOps & Software Engineer</div></div>
+            <div class="org-member"><img src="../images/team/andi-rifqial-nur.jpg" alt="Andi" class="avatar"><h6>Andi Rifqial Nur</h6><div class="role">Software Engineer</div></div>
         </div>
     </div>
 </section>
