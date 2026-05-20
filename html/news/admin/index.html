@@ -9,6 +9,9 @@
 <body>
   <!-- Pre-load config to avoid async race condition during React init -->
   <script>
+    // Prevent auto-init — wait for token fetch to complete first
+    window.CMS_MANUAL_INIT = true;
+
     window.CMS_CONFIG = {
       backend: {
         name: "github",
@@ -46,5 +49,38 @@
     };
   </script>
   <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // ===== Step 2: Fetch token from auth proxy, store, then init CMS =====
+    (function() {
+      var BACKEND = 'github';
+      var REPO = 'muhdanfyan/sarjanakomputer.id';
+
+      fetch('/api/auth?json=1')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data && data.token) {
+            // Store token in possible localStorage key formats
+            var keys = [
+              'cms.auth.' + BACKEND + '.' + REPO,
+              'cms.auth.' + BACKEND + '.' + REPO.replace('/', '.'),
+              'ghost:' + BACKEND + ':' + REPO + ':token',
+            ];
+            var val = JSON.stringify({ token: data.token });
+            keys.forEach(function(k) {
+              try { localStorage.setItem(k, val); } catch(e) {}
+            });
+          }
+        })
+        .catch(function(err) {
+          console.error('Auth fetch failed:', err);
+        })
+        .finally(function() {
+          // Now init CMS (regardless of auth success, CMS handles the UI)
+          if (window.initCMS) {
+            window.initCMS();
+          }
+        });
+    })();
+  </script>
 </body>
 </html>
