@@ -17,28 +17,73 @@
   </div>
   <script>
     (function() {
-      // Read access_token from URL hash: #access_token=TOKEN or #/access_token=TOKEN
+      // ===== Decap CMS OAuth Protocol =====
+      // Decap CMS (v3.0.0) GitHub backend uses a 2-step postMessage handshake:
+      // 1. Popup sends  "authorizing:{provider}"     → main window echoes it back
+      // 2. Popup sends  "authorization:{provider}:success:{json}"  → main window completes auth
+      // Provider is "github" for GitHub backend.
+
+      var PROVIDER = 'github';
+      var TOKEN = null;
+
+      // Extract token from URL hash: #access_token=TOKEN or #/access_token=TOKEN
       var hash = window.location.hash;
-      var token = null;
-
-      // Try both formats (with and without leading /)
       if (hash) {
-        var cleaned = hash.replace(/^#\/?/, ''); // strip # or #/
+        var cleaned = hash.replace(/^#\//, '').replace(/^#/, '');
         var params = new URLSearchParams(cleaned);
-        token = params.get('access_token');
+        TOKEN = params.get('access_token');
       }
 
-      if (token && window.opener) {
-        // Send token to main CMS window via postMessage
-        window.opener.postMessage({ token: token }, '*');
-        // Small delay then close
-        setTimeout(function() {
-          window.close();
-        }, 300);
-      } else {
-        document.querySelector('.loader p').textContent =
-          token ? 'Token found, but no opener window. Close this tab.' : 'No access token found in URL.';
+      if (!TOKEN) {
+        document.querySelector('.loader p').textContent = 'No access token found. Close this tab.';
+        return;
       }
+
+      if (!window.opener) {
+        document.querySelector('.loader p').textContent =
+          'No opener window found. You can close this tab.';
+        return;
+      }
+
+      // Step 1: Listen for handshake echo from main window
+      function waitForHandshake() {
+        window.addEventListener('message', function onMessage(event) {
+          // Main window echoes back "authorizing:github" to confirm handshake
+          if (event.data === 'authorizing:' + PROVIDER) {
+            window.removeEventListener('message', onMessage);
+
+            // Step 2: Send authorization payload
+            var authPayload = JSON.stringify({
+              token: TOKEN,
+              provider: PROVIDER
+            });
+
+            window.opener.postMessage(
+              'authorization:' + PROVIDER + ':success:' + authPayload,
+              '*'
+            );
+
+            // Close popup shortly after
+            setTimeout(function() {
+              window.close();
+            }, 200);
+          }
+        });
+      }
+
+      // Step 0: Initiate handshake by sending "authorizing:github"
+      var openerOrigin = '*';
+      try {
+        // Try to use a more specific origin if possible (same origin)
+        if (window.opener.location) {
+          openerOrigin = window.opener.location.origin;
+        }
+      } catch(e) {
+        // Cross-origin, fall back to '*'
+      }
+
+      waitForHandshake();
+      window.opener.postMessage('authorizing:' + PROVIDER, openerOrigin);
     })();
   </script>
 </body>

@@ -5,44 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager — SKI News</title>
   <link rel="icon" href="https://sarjanakomputer.id/images/favicon.png" type="image/png">
-  <script>
-    // ===== CRITICAL: Handle auth token BEFORE React Router modifies the URL =====
-    // When Decap CMS redirects back from the auth proxy, the URL has:
-    //   /news/admin/#access_token=TOKEN
-    // or (after React Router messes with it):
-    //   /news/admin/#/access_token=TOKEN
-    //
-    // We parse both formats here (in <head>, before any React code runs),
-    // store the token in localStorage, and clean the URL.
-
-    (function() {
-      var hash = window.location.hash || '';
-
-      if (hash && hash.indexOf('access_token') !== -1) {
-        // Remove leading # or #/ or #! or just #
-        var cleaned = hash.replace(/^#[!\/]*/, '');
-        var params = new URLSearchParams(cleaned);
-        var token = params.get('access_token');
-
-        if (token) {
-          // Store in ALL possible localStorage keys Decap CMS might check
-          var val = JSON.stringify({ token: token });
-          var keys = [
-            'cms.auth',
-            'cms.auth.github.muhdanfyan/sarjanakomputer.id',
-            'cms.auth.github.muhdanfyan.sarjanakomputer.id',
-            'ghost:github:muhdanfyan/sarjanakomputer.id:token'
-          ];
-          keys.forEach(function(k) {
-            try { localStorage.setItem(k, val); } catch(e) {}
-          });
-
-          // Clean the URL so React Router doesn't see the token
-          history.replaceState({}, '', '/news/admin/');
-        }
-      }
-    })();
-  </script>
 </head>
 <body>
   <script>
