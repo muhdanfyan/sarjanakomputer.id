@@ -8,7 +8,9 @@
 </head>
 <body>
   <script>
-    window.CMS_CONFIG = {
+    window.CMS_MANUAL_INIT = true;
+
+    var CMS_CONFIG = {
       backend: {
         name: "github",
         repo: "muhdanfyan/sarjanakomputer.id",
@@ -45,6 +47,9 @@
       ]
     };
   </script>
-  <script src="https://unpkg.com/decap-cms@3.8.1/dist/decap-cms.js"></script>
+  <script src="https://unpkg.com/decap-cms@3.12.2/dist/decap-cms.js"></script>
+  <script>
+    CMS.init({ config: CMS_CONFIG });
+  </script>
 </body>
 </html>
