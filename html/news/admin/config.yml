@@ -2,7 +2,7 @@ backend:
   name: github
   repo: muhdanfyan/sarjanakomputer.id
   branch: main
-  base_url: https://sarjanakomputer.id
+  base_url: https://news.sarjanakomputer.id
   auth_endpoint: /api/auth
 
 media_folder: "html/images/news"
