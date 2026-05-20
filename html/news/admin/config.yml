@@ -32,7 +32,6 @@ collections:
     slug: "{{slug}}"
     identifier_field: title
     format: "frontmatter"
-    sortable_fields: ["title", "date", "author"]
     editor:
       preview: false
     fields:
