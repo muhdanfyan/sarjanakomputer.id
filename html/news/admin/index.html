@@ -7,6 +7,44 @@
   <link rel="icon" href="https://sarjanakomputer.id/images/favicon.png" type="image/png">
 </head>
 <body>
+  <!-- Pre-load config to avoid async race condition during React init -->
+  <script>
+    window.CMS_CONFIG = {
+      backend: {
+        name: "github",
+        repo: "muhdanfyan/sarjanakomputer.id",
+        branch: "main",
+        base_url: "https://news.sarjanakomputer.id",
+        auth_endpoint: "/api/auth"
+      },
+      media_folder: "html/images/news",
+      public_folder: "/images/news",
+      publish_mode: "editorial_workflow",
+      load_config_file: false,
+      collections: [
+        {
+          name: "berita",
+          label: "Berita",
+          label_singular: "Berita",
+          folder: "html/news/content",
+          create: true,
+          slug: "{{slug}}",
+          identifier_field: "title",
+          format: "frontmatter",
+          editor: { preview: false },
+          fields: [
+            { label: "Judul", name: "title", widget: "string" },
+            { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD" },
+            { label: "Kategori", name: "category", widget: "select", options: ["Teknologi", "Pendidikan", "Bisnis", "Pemerintahan", "Startup"] },
+            { label: "Gambar Sampul", name: "image", widget: "image", required: false },
+            { label: "Deskripsi Singkat", name: "description", widget: "text" },
+            { label: "Konten", name: "body", widget: "markdown" },
+            { label: "Penulis", name: "author", widget: "string", default: "Tim SKI" }
+          ]
+        }
+      ]
+    };
+  </script>
   <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
 </body>
 </html>
