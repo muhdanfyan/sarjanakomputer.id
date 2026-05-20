@@ -96,9 +96,9 @@
         /* Team grid — all equal */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
-            max-width: 960px;
+            max-width: 750px;
             margin: 0 auto;
         }
 
@@ -106,10 +106,11 @@
             text-align: center;
             background: var(--white);
             border-radius: var(--radius);
-            padding: 2rem 1.25rem;
+            overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: all 0.4s;
             border: 1px solid rgba(0,0,0,0.04);
+            height: 100%;
         }
         .team-card:hover {
             transform: translateY(-5px);
@@ -117,23 +118,21 @@
             border-color: var(--primary);
         }
         .team-card-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+            width: 100%;
+            aspect-ratio: 3/4;
             object-fit: cover;
-            margin: 0 auto 1rem;
-            border: 3px solid rgba(26,86,219,0.12);
-            box-shadow: 0 4px 15px rgba(26,86,219,0.1);
-            transition: all 0.3s;
+            display: block;
+            transition: all 0.5s;
         }
         .team-card:hover .team-card-img {
-            border-color: var(--primary);
-            box-shadow: 0 6px 25px rgba(26,86,219,0.2);
-            transform: scale(1.05);
+            transform: scale(1.06);
+        }
+        .team-card .tc-body {
+            padding: 1rem 0.8rem 1.1rem;
         }
         .team-card h5 {
-            font-size: 0.92rem;
-            margin-bottom: 0.2rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
         }
         .team-card .role-badge {
             display: inline-block;
@@ -141,15 +140,14 @@
             background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(6,182,212,0.08));
             color: var(--primary);
             border-radius: 50px;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             font-weight: 600;
-            margin-top: 0.15rem;
         }
         .team-card p {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--gray-500);
-            margin: 0.5rem 0 0;
-            line-height: 1.6;
+            margin: 0.25rem 0 0;
+            line-height: 1.5;
         }
 
         /* Info section */
@@ -200,9 +198,8 @@
         @media (max-width: 767px) {
             .page-header { padding: 4rem 0 2rem; }
             .page-header h1 { font-size: 1.6rem; }
-            .team-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
-            .team-card { padding: 1.5rem 1rem; }
-            .team-card-img { width: 85px; height: 85px; }
+            .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .team-card .tc-body { padding: 0.7rem 0.5rem 0.8rem; }
         }
     </style>
 <!-- Organization Schema -->
@@ -278,44 +275,56 @@
                 <!-- Muhdan Fyan -->
                 <div class="team-card">
                     <img loading="lazy" src="images/team/direktur.png" alt="Muhdan Fyan" class="team-card-img">
-                    <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
-                    <div class="role-badge">Direktur</div>
-                    <p>Ahli strategi dan manajemen proyek, mengarahkan kolaborasi untuk mencapai tujuan transformasi digital.</p>
+                    <div class="tc-body">
+                        <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
+                        <div class="role-badge">Direktur</div>
+                        <p>Ahli strategi dan manajemen proyek, mengarahkan kolaborasi untuk mencapai tujuan transformasi digital.</p>
+                    </div>
                 </div>
                 <!-- Irvan -->
                 <div class="team-card">
                     <img loading="lazy" src="images/team/irvan.png" alt="Irvan" class="team-card-img">
-                    <h5>Irvan, S.Kom</h5>
-                    <div class="role-badge">Komisaris</div>
-                    <p>Pengawas dan penasehat perusahaan, memastikan arah strategis berjalan sesuai visi.</p>
+                    <div class="tc-body">
+                        <h5>Irvan, S.Kom</h5>
+                        <div class="role-badge">Komisaris</div>
+                        <p>Pengawas dan penasehat perusahaan, memastikan arah strategis berjalan sesuai visi.</p>
+                    </div>
                 </div>
                 <!-- Hayatul -->
                 <div class="team-card">
                     <img loading="lazy" src="images/team/hayat.png" alt="Hayatul" class="team-card-img">
-                    <h5>Hayatul Habirun, S.Kom</h5>
-                    <div class="role-badge">IT Infrastructure Lead</div>
-                    <p>Spesialis jaringan dan infrastruktur, menjaga stabilitas konektivitas digital.</p>
+                    <div class="tc-body">
+                        <h5>Hayatul Habirun, S.Kom</h5>
+                        <div class="role-badge">IT Infrastructure Lead</div>
+                        <p>Spesialis jaringan dan infrastruktur, menjaga stabilitas konektivitas digital.</p>
+                    </div>
                 </div>
                 <!-- Arif Rizal -->
                 <div class="team-card">
                     <img loading="lazy" src="images/team/arif-rizal.png" alt="Arif Rizal" class="team-card-img">
-                    <h5>Arif Rizal</h5>
-                    <div class="role-badge">Backend & QA Engineer</div>
-                    <p>Pengembang backend sekaligus quality assurance, memastikan kode berkualitas dan sistem stabil.</p>
+                    <div class="tc-body">
+                        <h5>Arif Rizal</h5>
+                        <div class="role-badge">Backend &amp; QA Engineer</div>
+                        <p>Pengembang backend sekaligus quality assurance, memastikan kode berkualitas dan sistem stabil.</p>
+                    </div>
                 </div>
                 <!-- Ahmad Dahsan -->
                 <div class="team-card">
                     <img loading="lazy" src="images/team/ahmad-dahsan.jpg" alt="Ahmad Dahsan" class="team-card-img">
-                    <h5>Ahmad Dahsan</h5>
-                    <div class="role-badge">DevOps & Software Engineer</div>
-                    <p>Tenaga ahli di bidang DevOps dan pengembangan software, mengelola infrastruktur dan pipeline deployment.</p>
+                    <div class="tc-body">
+                        <h5>Ahmad Dahsan</h5>
+                        <div class="role-badge">DevOps &amp; Software Engineer</div>
+                        <p>Tenaga ahli di bidang DevOps dan pengembangan software, mengelola infrastruktur dan pipeline deployment.</p>
+                    </div>
                 </div>
                 <!-- Andi Rifqial -->
                 <div class="team-card">
                     <img loading="lazy" src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial" class="team-card-img">
-                    <h5>Andi Rifqial Nur</h5>
-                    <div class="role-badge">Software Engineer</div>
-                    <p>Software engineer dengan fokus pada pengembangan aplikasi dan antarmuka yang modern dan efisien.</p>
+                    <div class="tc-body">
+                        <h5>Andi Rifqial Nur</h5>
+                        <div class="role-badge">Software Engineer</div>
+                        <p>Software engineer dengan fokus pada pengembangan aplikasi dan antarmuka yang modern dan efisien.</p>
+                    </div>
                 </div>
             </div>
 

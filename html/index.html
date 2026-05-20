@@ -164,19 +164,19 @@
         .project-card h5{font-size:.95rem;margin-bottom:.3rem}
         .project-card p{font-size:.8rem;color:var(--gray-500);line-height:1.6;margin-bottom:.5rem}
 
-        /* ===== Team Cards ===== */
+        /* ===== Team Cards — Square Image Fill ===== */
         .team-grid-home {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            max-width: 700px;
+            gap: 1.5rem;
+            max-width: 750px;
             margin: 0 auto;
         }
         .team-card-home {
             text-align: center;
             background: var(--white);
             border-radius: var(--radius);
-            padding: 1.5rem 1rem;
+            overflow: hidden;
             box-shadow: 0 4px 20px rgba(0,0,0,0.06);
             transition: all 0.4s;
             border: 1px solid rgba(0,0,0,0.04);
@@ -187,24 +187,22 @@
             box-shadow: 0 12px 40px rgba(0,0,0,0.1);
             border-color: var(--primary);
         }
-        .team-card-home img {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
+        .team-card-home .tch-img {
+            width: 100%;
+            aspect-ratio: 3/4;
             object-fit: cover;
-            margin: 0 auto 0.8rem;
-            border: 3px solid rgba(26,86,219,0.1);
-            box-shadow: 0 4px 15px rgba(26,86,219,0.08);
-            transition: all 0.3s;
+            display: block;
+            transition: all 0.5s;
         }
-        .team-card-home:hover img {
-            border-color: var(--primary);
-            box-shadow: 0 6px 25px rgba(26,86,219,0.18);
-            transform: scale(1.05);
+        .team-card-home:hover .tch-img {
+            transform: scale(1.06);
+        }
+        .team-card-home .tch-body {
+            padding: 1rem 0.8rem 1.1rem;
         }
         .team-card-home h5 {
-            font-size: 0.88rem;
-            margin-bottom: 0.15rem;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
         }
         .team-card-home .role-badge {
             display: inline-block;
@@ -212,13 +210,12 @@
             background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(6,182,212,0.08));
             color: var(--primary);
             border-radius: 50px;
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             font-weight: 600;
         }
         @media(max-width:576px){
             .team-grid-home{grid-template-columns:repeat(2,1fr);gap:.8rem}
-            .team-card-home{padding:1rem .5rem}
-            .team-card-home img{width:75px;height:75px}
+            .team-card-home .tch-body{padding:.7rem .5rem .8rem}
         }
 
         /* ===== Client Cards ===== */
@@ -571,34 +568,46 @@
         </div>
         <div class="team-grid-home" data-aos="fade-up">
             <div class="team-card-home">
-                <img loading="lazy" src="images/team/direktur.png" alt="Muhdan Fyan Syah Sofian - Direktur">
-                <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
-                <div class="role-badge">Direktur</div>
+                <img loading="lazy" src="images/team/direktur.png" alt="Muhdan Fyan Syah Sofian - Direktur" class="tch-img">
+                <div class="tch-body">
+                    <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
+                    <div class="role-badge">Direktur</div>
+                </div>
             </div>
             <div class="team-card-home">
-                <img loading="lazy" src="images/team/irvan.png" alt="Irvan - Komisaris">
-                <h5>Irvan, S.Kom</h5>
-                <div class="role-badge">Komisaris</div>
+                <img loading="lazy" src="images/team/irvan.png" alt="Irvan - Komisaris" class="tch-img">
+                <div class="tch-body">
+                    <h5>Irvan, S.Kom</h5>
+                    <div class="role-badge">Komisaris</div>
+                </div>
             </div>
             <div class="team-card-home">
-                <img loading="lazy" src="images/team/hayat.png" alt="Hayatul Habirun - IT Infrastructure Lead">
-                <h5>Hayatul Habirun, S.Kom</h5>
-                <div class="role-badge">IT Infrastructure Lead</div>
+                <img loading="lazy" src="images/team/hayat.png" alt="Hayatul Habirun - IT Infrastructure Lead" class="tch-img">
+                <div class="tch-body">
+                    <h5>Hayatul Habirun, S.Kom</h5>
+                    <div class="role-badge">IT Infrastructure Lead</div>
+                </div>
             </div>
             <div class="team-card-home">
-                <img loading="lazy" src="images/team/arif-rizal.png" alt="Arif Rizal - Backend & QA Engineer">
-                <h5>Arif Rizal</h5>
-                <div class="role-badge">Backend &amp; QA Engineer</div>
+                <img loading="lazy" src="images/team/arif-rizal.png" alt="Arif Rizal - Backend & QA Engineer" class="tch-img">
+                <div class="tch-body">
+                    <h5>Arif Rizal</h5>
+                    <div class="role-badge">Backend &amp; QA Engineer</div>
+                </div>
             </div>
             <div class="team-card-home">
-                <img loading="lazy" src="images/team/ahmad-dahsan.jpg" alt="Ahmad Dahsan - DevOps & Software Engineer">
-                <h5>Ahmad Dahsan</h5>
-                <div class="role-badge">DevOps &amp; Software Engineer</div>
+                <img loading="lazy" src="images/team/ahmad-dahsan.jpg" alt="Ahmad Dahsan - DevOps & Software Engineer" class="tch-img">
+                <div class="tch-body">
+                    <h5>Ahmad Dahsan</h5>
+                    <div class="role-badge">DevOps &amp; Software Engineer</div>
+                </div>
             </div>
             <div class="team-card-home">
-                <img loading="lazy" src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial Nur - Software Engineer">
-                <h5>Andi Rifqial Nur</h5>
-                <div class="role-badge">Software Engineer</div>
+                <img loading="lazy" src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial Nur - Software Engineer" class="tch-img">
+                <div class="tch-body">
+                    <h5>Andi Rifqial Nur</h5>
+                    <div class="role-badge">Software Engineer</div>
+                </div>
             </div>
         </div>
         <div class="text-center mt-3" data-aos="fade-up">
