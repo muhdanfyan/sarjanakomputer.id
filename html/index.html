@@ -1,579 +1,1230 @@
 <!DOCTYPE html>
-<html lang="en">
-<!-- Basic -->
-
+<html lang="id">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV. Sarjana Komputer Indonesia — Solusi IT & Pengembangan SDM Digital</title>
+    <meta name="description" content="CV. Sarjana Komputer Indonesia - Lembaga Pengembangan Mahasiswa IT dan Sarjana Komputer di Baubau, Sulawesi Tenggara. Solusi E-Government, Aplikasi Web & Android.">
+    <meta name="keywords" content="sarjana komputer indonesia, skomindo, pengembangan IT, e-government, baubau, pondok informatika, web development">
+    <meta name="author" content="CV. Sarjana Komputer Indonesia">
 
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Open Graph -->
+    <meta property="og:title" content="CV. Sarjana Komputer Indonesia">
+    <meta property="og:description" content="Solusi IT & Pengembangan SDM Digital">
+    <meta property="og:image" content="images/logo.png">
+    <meta property="og:type" content="website">
 
-    <!-- Site Metas -->
-    <title>CV. Sarjana Komputer Indonesia - Lembaga Pengembangan Mahasiswa IT dan Sarjana Komputer</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="#" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="#" />
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+    /* ========== ROOT & RESET ========== */
+    :root {
+        --primary: #1a56db;
+        --primary-dark: #0f3a8e;
+        --primary-light: #3b82f6;
+        --secondary: #06b6d4;
+        --accent: #f59e0b;
+        --dark: #0f172a;
+        --gray-900: #1e293b;
+        --gray-700: #334155;
+        --gray-500: #64748b;
+        --gray-300: #cbd5e1;
+        --gray-100: #f1f5f9;
+        --white: #ffffff;
+        --gradient: linear-gradient(135deg, #1a56db 0%, #06b6d4 100%);
+        --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+        --shadow-md: 0 4px 20px rgba(0,0,0,0.1);
+        --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+        --radius: 16px;
+        --radius-sm: 8px;
+    }
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Pogo Slider CSS -->
-    <link rel="stylesheet" href="css/pogo-slider.min.css" />
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css" />
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    html { scroll-behavior: smooth; }
 
+    body {
+        font-family: 'Inter', sans-serif;
+        color: var(--gray-700);
+        background: var(--white);
+        overflow-x: hidden;
+        line-height: 1.7;
+    }
+
+    /* ========== TYPOGRAPHY ========== */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 700;
+        color: var(--dark);
+        line-height: 1.3;
+    }
+
+    .section-title {
+        font-size: 2.25rem;
+        margin-bottom: 0.75rem;
+    }
+    .section-subtitle {
+        color: var(--gray-500);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto 3rem;
+    }
+
+    /* ========== NAVBAR ========== */
+    .navbar {
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+        background: transparent;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+    .navbar.scrolled {
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 0.6rem 0;
+        box-shadow: 0 2px 30px rgba(0,0,0,0.15);
+    }
+    .navbar-brand img {
+        height: 45px;
+        transition: all 0.3s;
+    }
+    .navbar.scrolled .navbar-brand img {
+        height: 38px;
+    }
+    .navbar .nav-link {
+        color: rgba(255,255,255,0.85) !important;
+        font-weight: 500;
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem !important;
+        transition: all 0.3s;
+        position: relative;
+    }
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+        color: var(--white) !important;
+    }
+    .navbar .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 1rem;
+        right: 1rem;
+        height: 2px;
+        background: var(--secondary);
+        transform: scaleX(0);
+        transition: transform 0.3s;
+    }
+    .navbar .nav-link:hover::after,
+    .navbar .nav-link.active::after {
+        transform: scaleX(1);
+    }
+    .navbar-toggler {
+        border: none;
+        padding: 0;
+    }
+    .navbar-toggler:focus {
+        box-shadow: none;
+    }
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: var(--gradient-dark);
+        overflow: hidden;
+    }
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 70%;
+        height: 150%;
+        background: radial-gradient(ellipse, rgba(26,86,219,0.3) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .hero::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 60%;
+        height: 100%;
+        background: radial-gradient(ellipse, rgba(6,182,212,0.2) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    /* Animated grid */
+    .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 60px 60px;
+        pointer-events: none;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        padding-top: 80px;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(6,182,212,0.15);
+        border: 1px solid rgba(6,182,212,0.3);
+        color: var(--secondary);
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 1.25rem;
+        line-height: 1.15;
+    }
+    .hero h1 .highlight {
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    .hero p {
+        font-size: 1.15rem;
+        color: rgba(255,255,255,0.7);
+        max-width: 560px;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+    }
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    /* ========== BUTTONS ========== */
+    .btn-primary-custom {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--gradient);
+        color: var(--white);
+        padding: 0.85rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: none;
+        transition: all 0.3s;
+        text-decoration: none;
+        box-shadow: 0 4px 15px rgba(26,86,219,0.4);
+    }
+    .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 30px rgba(26,86,219,0.5);
+        color: var(--white);
+    }
+    .btn-outline-custom {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: var(--white);
+        padding: 0.85rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.95rem;
+        border: 2px solid rgba(255,255,255,0.3);
+        transition: all 0.3s;
+        text-decoration: none;
+    }
+    .btn-outline-custom:hover {
+        border-color: var(--white);
+        background: rgba(255,255,255,0.1);
+        color: var(--white);
+    }
+
+    /* ========== SECTIONS ========== */
+    section {
+        padding: 5rem 0;
+    }
+
+    section.bg-light-custom {
+        background: var(--gray-100);
+    }
+
+    /* ========== ABOUT ========== */
+    .about-image {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+    }
+    .about-image::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--gradient);
+        opacity: 0.1;
+        border-radius: var(--radius);
+    }
+    .about-image img {
+        width: 100%;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+    }
+    .about-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    .about-stat {
+        text-align: center;
+        padding: 1.25rem;
+        background: var(--white);
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-sm);
+    }
+    .about-stat h3 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.25rem;
+    }
+    .about-stat p {
+        font-size: 0.85rem;
+        color: var(--gray-500);
+        margin: 0;
+    }
+
+    /* ========== SERVICES ========== */
+    .service-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.4s;
+        height: 100%;
+        border: 1px solid rgba(0,0,0,0.04);
+        position: relative;
+        overflow: hidden;
+    }
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+    }
+    .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+    .service-card:hover::before {
+        transform: scaleX(1);
+    }
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(26,86,219,0.1), rgba(6,182,212,0.1));
+        border-radius: var(--radius-sm);
+        margin-bottom: 1.25rem;
+        font-size: 1.75rem;
+        color: var(--primary);
+    }
+    .service-card h5 {
+        font-size: 1.15rem;
+        margin-bottom: 0.75rem;
+    }
+    .service-card p {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+        margin: 0;
+        line-height: 1.7;
+    }
+
+    /* ========== PROJECTS ========== */
+    .project-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        transition: all 0.4s;
+        height: 100%;
+        border: 1px solid rgba(0,0,0,0.04);
+    }
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+    .project-card-img {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: var(--white);
+        position: relative;
+    }
+    .project-card-body {
+        padding: 1.5rem;
+    }
+    .project-card-body h5 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .project-card-body p {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+        margin: 0;
+        line-height: 1.7;
+    }
+    .project-tag {
+        display: inline-block;
+        padding: 0.2rem 0.75rem;
+        background: rgba(26,86,219,0.1);
+        color: var(--primary);
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+    }
+
+    /* ========== WHY US ========== */
+    .why-card {
+        text-align: center;
+        padding: 2rem 1.5rem;
+        border-radius: var(--radius);
+        background: var(--white);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.4s;
+        height: 100%;
+    }
+    .why-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+    .why-icon {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gradient);
+        border-radius: 50%;
+        font-size: 1.75rem;
+        color: var(--white);
+        box-shadow: 0 4px 15px rgba(26,86,219,0.3);
+    }
+    .why-card h5 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .why-card p {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+        margin: 0;
+    }
+
+    /* ========== STATS ========== */
+    .stats-section {
+        background: var(--gradient-dark);
+        position: relative;
+        overflow: hidden;
+    }
+    .stats-section::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: 
+            linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+    .stat-item {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 1.5rem;
+    }
+    .stat-item h2 {
+        font-size: 2.75rem;
+        font-weight: 800;
+        color: var(--white);
+        margin-bottom: 0.25rem;
+    }
+    .stat-item p {
+        color: rgba(255,255,255,0.7);
+        font-size: 1rem;
+        margin: 0;
+        font-weight: 400;
+    }
+    .stat-item i {
+        font-size: 2rem;
+        color: var(--secondary);
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact-info-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        border: 1px solid rgba(0,0,0,0.04);
+        transition: all 0.3s;
+    }
+    .contact-info-card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateX(5px);
+    }
+    .contact-info-icon {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(26,86,219,0.1), rgba(6,182,212,0.1));
+        border-radius: var(--radius-sm);
+        font-size: 1.25rem;
+        color: var(--primary);
+    }
+    .contact-info-card h6 {
+        font-size: 0.95rem;
+        margin-bottom: 0.25rem;
+    }
+    .contact-info-card p {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+        margin: 0;
+    }
+
+    .contact-form {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 2rem;
+        box-shadow: var(--shadow-md);
+        border: 1px solid rgba(0,0,0,0.04);
+    }
+    .contact-form .form-control {
+        border-radius: var(--radius-sm);
+        border: 1.5px solid var(--gray-300);
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+    }
+    .contact-form .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(26,86,219,0.1);
+    }
+    .contact-form .form-label {
+        font-weight: 500;
+        color: var(--gray-900);
+        font-size: 0.9rem;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+        background: var(--dark);
+        color: rgba(255,255,255,0.7);
+        padding: 4rem 0 0;
+    }
+    .footer h5 {
+        color: var(--white);
+        font-size: 1.1rem;
+        margin-bottom: 1.25rem;
+        font-weight: 700;
+    }
+    .footer p, .footer li {
+        font-size: 0.9rem;
+        line-height: 1.8;
+    }
+    .footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .footer ul li {
+        margin-bottom: 0.5rem;
+    }
+    .footer ul li a {
+        color: rgba(255,255,255,0.6);
+        text-decoration: none;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .footer ul li a:hover {
+        color: var(--secondary);
+        transform: translateX(5px);
+    }
+    .footer-social {
+        display: flex;
+        gap: 0.75rem;
+        margin-top: 1rem;
+    }
+    .footer-social a {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        color: rgba(255,255,255,0.7);
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .footer-social a:hover {
+        background: var(--primary);
+        color: var(--white);
+        transform: translateY(-3px);
+    }
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding: 1.5rem 0;
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.4);
+    }
+
+    /* ========== WHATSAPP FLOAT ========== */
+    .whatsapp-float {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 56px;
+        height: 56px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        font-size: 1.75rem;
+        box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+        z-index: 999;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 30px rgba(37,211,102,0.5);
+        color: var(--white);
+    }
+
+    /* ========== DARK SECTION TITLE OVERRIDE ========== */
+    .text-white .section-subtitle {
+        color: rgba(255,255,255,0.6);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 991px) {
+        .hero h1 { font-size: 2.5rem; }
+        .section-title { font-size: 1.75rem; }
+        .navbar-collapse {
+            background: rgba(15,23,42,0.98);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            margin-top: 0.5rem;
+        }
+        .stat-item h2 { font-size: 2rem; }
+    }
+
+    @media (max-width: 767px) {
+        .hero h1 { font-size: 2rem; }
+        .hero p { font-size: 1rem; }
+        .hero-buttons { flex-direction: column; }
+        .hero-buttons .btn-primary-custom,
+        .hero-buttons .btn-outline-custom { width: 100%; justify-content: center; }
+        section { padding: 3rem 0; }
+        .about-stats { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+        .about-stat { padding: 1rem; }
+        .about-stat h3 { font-size: 1.25rem; }
+        .section-title { font-size: 1.5rem; }
+        .section-subtitle { font-size: 0.95rem; }
+        .stat-item h2 { font-size: 1.75rem; }
+        .stat-item p { font-size: 0.85rem; }
+    }
+
+    @media (max-width: 380px) {
+        .about-stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Scroll animation helper */
+    [data-aos] {
+        pointer-events: none;
+    }
+    [data-aos].aos-animate {
+        pointer-events: auto;
+    }
+    </style>
 </head>
+<body>
 
-<body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
-
-    <!-- LOADER -->
-    <div id="preloader">
-        <div class="loader">
-            <img src="images/loader.gif" alt="#" />
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar navbar-expand-lg" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.png" alt="Sarjana Komputer Indonesia">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyek">Proyek</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <!-- end loader -->
-    <!-- END LOADER -->
+    </nav>
 
-    <!-- Start header -->
-    <header class="top-header">
-        <nav class="navbar header-nav navbar-expand-lg">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="image"></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-wd" aria-controls="navbar-wd" aria-expanded="false" aria-label="Toggle navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbar-wd">
-                    <ul class="navbar-nav">
-                        <li><a class="nav-link active" href="index.html">Home</a></li>
-                        <li><a class="nav-link" href="about.html">About</a></li>
-                        <li><a class="nav-link" href="courses.html">Courses</a></li>
-                        <li><a class="nav-link" href="reaserch.html">Reaserch</a></li>
-						<li><a class="nav-link" href="news.html">News</a></li>
-						<li><a class="nav-link" href="contact.html">Contact us</a></li>
-                    </ul>
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+        <div class="hero-grid"></div>
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="hero-badge">
+                        <i class="bi bi-mortarboard-fill"></i>
+                        Lembaga Pengembangan IT
+                    </div>
+                    <h1>
+                        Solusi <span class="highlight">Teknologi</span> &<br>
+                        Pengembangan <span class="highlight">SDM Digital</span>
+                    </h1>
+                    <p>
+                        CV. Sarjana Komputer Indonesia — mitra terpercaya dalam pengembangan aplikasi web & Android, 
+                        solusi E-Government, dan pelatihan SDM berbasis teknologi di Baubau, Sulawesi Tenggara.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#layanan" class="btn-primary-custom">
+                            Lihat Layanan <i class="bi bi-arrow-right"></i>
+                        </a>
+                        <a href="#kontak" class="btn-outline-custom">
+                            <i class="bi bi-whatsapp"></i> Hubungi Kami
+                        </a>
+                    </div>
                 </div>
-                <div class="search-box">
-                    <input type="text" class="search-txt" placeholder="Search">
-                    <a class="search-btn">
-                        <img src="images/search_icon.png" alt="#" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TENTANG ========== -->
+    <section id="tentang">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="800">
+                    <div class="about-image">
+                        <img src="images/logo.png" alt="CV. Sarjana Komputer Indonesia" style="max-width: 80%; display: block; margin: 0 auto; padding: 2rem;">
+                    </div>
+                    <div class="about-stats" data-aos="fade-up" data-aos-delay="200">
+                        <div class="about-stat">
+                            <h3>5+</h3>
+                            <p>Tahun Pengalaman</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3>10+</h3>
+                            <p>Proyek IT</p>
+                        </div>
+                        <div class="about-stat">
+                            <h3>20+</h3>
+                            <p>Tenaga IT Tersalurkan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
+                    <span class="hero-badge" style="background: rgba(26,86,219,0.1); color: var(--primary); border-color: rgba(26,86,219,0.2); margin-bottom: 1rem;">
+                        <i class="bi bi-info-circle"></i> Tentang Kami
+                    </span>
+                    <h2 class="section-title">CV. Sarjana Komputer Indonesia</h2>
+                    <p class="mb-3">
+                        Kami adalah lembaga pengembangan mahasiswa IT dan sarjana komputer yang berfokus pada 
+                        pengembangan teknologi informasi, solusi E-Government, dan penyediaan SDM digital berkualitas.
+                    </p>
+                    <p class="mb-3">
+                        Berbasis di <strong>Baubau, Sulawesi Tenggara</strong>, kami telah dipercaya mengerjakan 
+                        berbagai proyek pemerintah dan swasta, termasuk sistem informasi pendapatan daerah, 
+                        manajemen kesehatan, dan platform retribusi online.
+                    </p>
+                    <p class="mb-4">
+                        Didukung oleh jaringan <strong>Pondok Informatika</strong> dan <strong>Komunitas Programmer Baubau</strong>, 
+                        kami siap membantu transformasi digital Anda.
+                    </p>
+                    <a href="#proyek" class="btn-primary-custom">
+                        Lihat Proyek Kami <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>
             </div>
-        </nav>
-    </header>
-    <!-- End header -->
+        </div>
+    </section>
 
-    <!-- Start Banner -->
-    <div class="ulockd-home-slider">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="pogoSlider" id="js-main-slider">
-                    <div class="pogoSlider-slide" style="background-image:url(images/banner_img.png);">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="slide_text">
-                                        <h3><span span class="theme_color">You only have know one thing</span><br>you can learn anything</h3>
-                                        <h4>Program ini dirancang khusus bagi mahasiswa IT yang ingin memiliki skill di bidang IT, seperti web dan android programming, graphic designer, internet marketing, dan masih banyak lagi.</h4>
-                                        <br>
-                                        <div class="full center">
-										    <a class="contact_bt" href="courses.html">Start a Course</a>
-										</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pogoSlider-slide" style="background-image:url(images/banner_img.png);">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="slide_text">
-                                        <h3><span span class="theme_color">You only have know one thing</span><br>you can learn anything</h3>
-                                        <h4>Free Educations</h4>
-                                        <br>
-                                        <div class="full center">
-										    <a class="contact_bt" href="courses.html">Start a Course</a>
-										</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- .pogoSlider -->
-            </div>
-        </div>
-    </div>
-    <!-- End Banner -->
-    <!-- section -->
-	<div class="section tabbar_menu">
-	   <div class="container">
-	      <div class="row">
-		      <div class="col-md-12">
-			     <div class="tab_menu">
-				    <ul>
-					   <li><a href="#"><span class="icon"><img src="images/i1.png" alt="#" /></span><span>University Life</span></a></li>
-					   <li><a href="#"><span class="icon"><img src="images/i2.png" alt="#" /></span><span>Graduation</span></a></li>
-					   <li><a href="#"><span class="icon"><img src="images/i3.png" alt="#" /></span><span>Athletics</span></a></li>
-					   <li><a href="#"><span class="icon"><img src="images/i4.png" alt="#" /></span><span>Social</span></a></li>
-					   <li><a href="#"><span class="icon"><img src="images/i5.png" alt="#" /></span><span>Location</span></a></li>
-					   <li><a href="#"><span class="icon"><img src="images/i6.png" alt="#" /></span><span>Call us</span></a></li>
-					   <li><a href="#"><span class="icon"><img src="images/i7.png" alt="#" /></span><span>Email</span></a></li>
-					</ul>
-				 </div>
-			  </div>
-		  </div>
-	   </div>
-	</div>
-	<!-- end section -->
-	<!-- section -->
-    <div class="section margin-top_50">
+    <!-- ========== LAYANAN ========== -->
+    <section id="layanan" class="bg-light-custom">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 layout_padding_2">
-                    <div class="full">
-                        <div class="heading_main text_align_left">
-						   <h2><span>Welcome To</span> Education</h2>
-                        </div>
-						<div class="full">
-						  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-						  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-						  Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-						</div>
-						<div class="full">
-						   <a class="hvr-radial-out button-theme" href="#">About more</a>
-						</div>
+            <div class="text-center" data-aos="fade-up">
+                <span class="hero-badge" style="background: rgba(26,86,219,0.1); color: var(--primary); border-color: rgba(26,86,219,0.2); margin-bottom: 1rem; display: inline-flex;">
+                    <i class="bi bi-grid-3x3-gap"></i> Layanan
+                </span>
+                <h2 class="section-title">Apa Yang Kami Tawarkan</h2>
+                <p class="section-subtitle">Solusi IT lengkap untuk kebutuhan bisnis dan pemerintahan Anda</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="bi bi-globe"></i></div>
+                        <h5>Web Development</h5>
+                        <p>Pengembangan website perusahaan, sistem informasi, portal berita, dan aplikasi web custom sesuai kebutuhan.</p>
                     </div>
                 </div>
-				<div class="col-md-6">
-                    <div class="full">
-                        <img src="images/img2.png" alt="#" />
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="bi bi-phone"></i></div>
+                        <h5>Android Development</h5>
+                        <p>Aplikasi Android native untuk mobile workforce, pelaporan lapangan, dan layanan publik berbasis mobile.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="bi bi-building"></i></div>
+                        <h5>E-Government</h5>
+                        <p>Sistem informasi pemerintahan daerah, manajemen pendapatan, perizinan online, dan administrasi digital.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="bi bi-people"></i></div>
+                        <h5>Pelatihan IT & SDM</h5>
+                        <p>Workshop dan pelatihan programming, desain grafis, dan digital marketing untuk mahasiswa dan umum.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="bi bi-database-gear"></i></div>
+                        <h5>Sistem Informasi Manajemen</h5>
+                        <p>Aplikasi manajemen data kesehatan, inventaris, kepegawaian, dan sistem informasi organisasi lainnya.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card">
+                        <div class="service-icon"><i class="bi bi-cloud-arrow-up"></i></div>
+                        <h5>IT Consulting</h5>
+                        <p>Konsultasi infrastruktur TI, migrasi cloud, keamanan siber, dan perencanaan transformasi digital.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-	<!-- end section -->
-	<!-- section -->
-    <div class="section layout_padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="heading_main text_align_center">
-						   <h2><span>Popular </span>Courses</h2>
-                        </div>
-					  </div>
-                </div>
-				<div class="col-md-4">
-                    <div class="full blog_img_popular">
-                       <img class="img-responsive" src="images/p1.png" alt="#" /> 
-					   <h4>Financial Accounting</h4>
-                    </div>
-                </div>
-				<div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="images/p2.png" alt="#" />
-						<h4>Managerial Accounting</h4>
-                    </div>
-                </div>
-				<div class="col-md-4">
-                    <div class="full blog_img_popular">
-                        <img class="img-responsive" src="images/p3.png" alt="#" />
-						<h4>Intermediate Accounting</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	<!-- end section -->
-	<!-- section -->
-    <div class="section margin-top_50 silver_bg">
-        <div class="container">
-            <div class="row">
-			    <div class="col-md-6">
-                    <div class="full float-right_img">
-                        <img src="images/img6.png" alt="#" />
-                    </div>
-                </div>
-                <div class="col-md-6 layout_padding_2">
-                    <div class="full">
-                        <div class="heading_main text_align_left">
-						   <h2><span>Apply for Admission</h2>
-                        </div>
-						<div class="full">
-						  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-						  in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
-						  sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-						</div>
-						<div class="full">
-						   <a class="hvr-radial-out button-theme" href="#">Apply</a>
-						</div>
-                    </div>
-                </div>
-			</div>
-        </div>
-    </div>
-	<!-- end section -->
-	<!-- section -->
-    <div class="section layout_padding padding_bottom-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="full">
-                        <div class="heading_main text_align_left">
-						   <h2><span>Reaserch</span></h2>
-                        </div>
-						<div class="full">
-						  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-						  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-						  reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-						</div>
-						<div class="full">
-						   <a class="hvr-radial-out button-theme" href="#">See More</a>
-						</div>
-                    </div>
-                </div>
-				<div class="col-md-6">
-                    <div class="full">
-                        <img class="img-responsive" src="images/img7.png" alt="#" />
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	<!-- end section -->
-	<!-- section -->
-    <div class="section layout_padding padding_bottom-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="heading_main text_align_center">
-						   <h2><span>News</span></h2>
-                        </div>
-					  </div>
-                </div>
-			  </div>
-               <div class="row">
-                <div class="col-lg-12">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
+    </section>
 
-                        <!-- The slideshow -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-									   <div class="full blog_img_popular">
-                                          <img class="img-responsive" src="images/img9.png" alt="#" />
-										  <h4>Technology</h4>
-										  <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-										</div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="full blog_img_popular">
-                                          <img class="img-responsive" src="images/img8.png" alt="#" />
-										  <h4>Education</h4>
-										  <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-										</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-									   <div class="full blog_img_popular">
-                                          <img class="img-responsive" src="images/img9.png" alt="#" />
-										  <h4>Technology</h4>
-										  <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-										</div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
-                                        <div class="full blog_img_popular">
-                                          <img class="img-responsive" src="images/img8.png" alt="#" />
-										  <h4>Education</h4>
-										  <p>Pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-										</div>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- ========== PROYEK ========== -->
+    <section id="proyek">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="hero-badge" style="background: rgba(26,86,219,0.1); color: var(--primary); border-color: rgba(26,86,219,0.2); margin-bottom: 1rem; display: inline-flex;">
+                    <i class="bi bi-folder2-open"></i> Proyek
+                </span>
+                <h2 class="section-title">Proyek Unggulan</h2>
+                <p class="section-subtitle">Beberapa proyek yang telah kami kerjakan untuk pemerintah dan swasta</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+                    <div class="project-card">
+                        <div class="project-card-img" style="background: linear-gradient(135deg, #1a56db, #3b82f6);">
+                            <i class="bi bi-bar-chart-line"></i>
                         </div>
+                        <div class="project-card-body">
+                            <span class="project-tag">E-Government</span>
+                            <h5>Sipanda v2.0</h5>
+                            <p>Upgrade Sistem Informasi Pendapatan Daerah — platform digital untuk pengelolaan PAD yang transparan dan akuntabel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="project-card-img" style="background: linear-gradient(135deg, #06b6d4, #22d3ee);">
+                            <i class="bi bi-heart-pulse"></i>
+                        </div>
+                        <div class="project-card-body">
+                            <span class="project-tag">Kesehatan</span>
+                            <h5>SIMKES</h5>
+                            <p>Sistem Informasi Manajemen Kesehatan — solusi digital untuk manajemen data pasien, rekam medis, dan administrasi klinik.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card">
+                        <div class="project-card-img" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                            <i class="bi bi-credit-card-2-front"></i>
+                        </div>
+                        <div class="project-card-body">
+                            <span class="project-tag">Retribusi</span>
+                            <h5>E-Retribusi</h5>
+                            <p>Platform pembayaran retribusi online — memudahkan masyarakat membayar retribusi secara digital tanpa antre.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
+    <!-- ========== KENAPA KAMI ========== -->
+    <section class="bg-light-custom">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="hero-badge" style="background: rgba(26,86,219,0.1); color: var(--primary); border-color: rgba(26,86,219,0.2); margin-bottom: 1rem; display: inline-flex;">
+                    <i class="bi bi-star"></i> Keunggulan
+                </span>
+                <h2 class="section-title">Kenapa Memilih Kami?</h2>
+                <p class="section-subtitle">Komitmen kami terhadap kualitas dan kepuasan klien</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-award"></i></div>
+                        <h5>Berkualitas</h5>
+                        <p>Tim developer berpengalaman dengan standar koding profesional dan best practices terkini.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-clock-history"></i></div>
+                        <h5>Tepat Waktu</h5>
+                        <p>Komitmen terhadap deadline dengan manajemen proyek yang terstruktur dan transparan.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-headset"></i></div>
+                        <h5>Dukungan Penuh</h5>
+                        <p>Layanan pasca-proyek, maintenance, dan technical support yang responsif.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="why-card">
+                        <div class="why-icon"><i class="bi bi-geo-alt"></i></div>
+                        <h5>Lokal & Terjangkau</h5>
+                        <p>Berbasis di Baubau, Sultra — memahami kebutuhan lokal dengan harga yang kompetitif.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats-section">
+        <div class="container position-relative" style="z-index: 1;">
+            <div class="row g-4">
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+                    <div class="stat-item">
+                        <i class="bi bi-journal-code"></i>
+                        <h2 class="counter" data-target="10">0</h2>
+                        <p>Proyek Selesai</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-item">
+                        <i class="bi bi-people"></i>
+                        <h2 class="counter" data-target="30">0</h2>
+                        <p>Tenaga IT Tersalurkan</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-item">
+                        <i class="bi bi-building"></i>
+                        <h2 class="counter" data-target="8">0</h2>
+                        <p>Klien Pemerintah & Swasta</p>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-item">
+                        <i class="bi bi-calendar-check"></i>
+                        <h2 class="counter" data-target="5">0</h2>
+                        <p>Tahun Berdiri</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== KONTAK ========== -->
+    <section id="kontak">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="hero-badge" style="background: rgba(26,86,219,0.1); color: var(--primary); border-color: rgba(26,86,219,0.2); margin-bottom: 1rem; display: inline-flex;">
+                    <i class="bi bi-envelope"></i> Kontak
+                </span>
+                <h2 class="section-title">Hubungi Kami</h2>
+                <p class="section-subtitle">Diskusikan kebutuhan IT Anda bersama tim kami</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-5" data-aos="fade-right" data-aos-duration="800">
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                        <div>
+                            <h6>Alamat</h6>
+                            <p>Baubau, Sulawesi Tenggara, Indonesia</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon"><i class="bi bi-envelope-fill"></i></div>
+                        <div>
+                            <h6>Email</h6>
+                            <p>sarjanakomputer.id@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon"><i class="bi bi-telephone-fill"></i></div>
+                        <div>
+                            <h6>Telepon / WA</h6>
+                            <p>+62 823-4567-8901</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-card">
+                        <div class="contact-info-icon"><i class="bi bi-clock-fill"></i></div>
+                        <div>
+                            <h6>Jam Operasional</h6>
+                            <p>Senin - Jumat, 08:00 - 17:00 WITA</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="#" class="btn-primary-custom" style="padding: 0.7rem 1.5rem; font-size: 0.9rem;">
+                            <i class="bi bi-whatsapp"></i> WhatsApp
                         </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
+                        <a href="mailto:sarjanakomputer.id@gmail.com" class="btn-outline-custom" style="padding: 0.7rem 1.5rem; font-size: 0.9rem; color: var(--primary); border-color: var(--primary);">
+                            <i class="bi bi-envelope"></i> Email
                         </a>
-
                     </div>
                 </div>
-
-            </div>			  
-           </div>
-        </div>
-	<!-- end section -->
-	<!-- section -->
-    <div class="section layout_padding padding_bottom-0">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="full">
-                        <div class="heading_main text_align_center">
-						   <h2><span>Contact</span></h2>
-                        </div>
-					  </div>
-                </div>
-			  </div>
-           </div>
-        </div>
-	<!-- end section -->
-	<!-- section -->
-    <div class="section contact_section" style="background:#312E5F;">
-        <div class="container">
-               <div class="row">
-                 <div class="col-lg-6 col-md-6 col-sm-12">
-				    <div class="full float-right_img">
-                        <img src="images/img10.png" alt="#">
+                <div class="col-lg-7" data-aos="fade-left" data-aos-duration="800">
+                    <div class="contact-form">
+                        <form action="https://formspree.io/f/xqapqkwa" method="POST">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nama Lengkap</label>
+                                    <input type="text" class="form-control" name="nama" placeholder="Nama Anda" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control" name="email" placeholder="email@anda.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Subjek</label>
+                                    <input type="text" class="form-control" name="subjek" placeholder="Subjek pesan">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Pesan</label>
+                                    <textarea class="form-control" name="pesan" rows="5" placeholder="Tulis pesan Anda..." required></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn-primary-custom">
+                                        Kirim Pesan <i class="bi bi-send"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                 </div>
-				 <div class="layout_padding col-lg-6 col-md-6 col-sm-12">
-				    <div class="contact_form">
-					    <form action="contact.html">
-						   <fieldset>
-						       <div class="full field">
-							      <input type="text" placeholder="Your Name" name="your name" />
-							   </div>
-							   <div class="full field">
-							      <input type="email" placeholder="Email Address" name="Email" />
-							   </div>
-							   <div class="full field">
-							      <input type="phn" placeholder="Phone Number" name="Phone number" />
-							   </div>
-							   <div class="full field">
-							      <textarea placeholder="Massage"></textarea>
-							   </div>
-							   <div class="full field">
-							      <div class="center"><button>Send</button></div>
-							   </div>
-						   </fieldset>
-						</form>
-					</div>
-                 </div>
-               </div>			  
-           </div>
+                </div>
+            </div>
         </div>
-	<!-- end section -->
-    <!-- Start Footer -->
-    <footer class="footer-box">
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
         <div class="container">
-		
-		   <div class="row">
-		   
-		      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-			     <div class="footer_blog">
-				    <div class="full margin-bottom_30">
-					   <img src="images/footer_logo.png" alt="#" />
-					 </div>
-					 <div class="full white_fonts">
-					    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip </p>
-					 </div>
-				 </div>
-			  </div>
-			  
-			  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-			       <div class="footer_blog footer_menu white_fonts">
-						    <h3>Quick links</h3>
-						    <ul> 
-							  <li><a href="#">> Join Us</a></li>
-							  <li><a href="#">> Maintenance</a></li>
-							  <li><a href="#">> Language Packs</a></li>
-							  <li><a href="#">> LearnPress</a></li>
-							  <li><a href="#">> Release Status</a></li>
-							</ul>
-						 </div>
-				 </div>
-				 
-				 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-				 <div class="footer_blog full white_fonts">
-						     <h3>Newsletter</h3>
-							 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do</p>
-							 <div class="newsletter_form">
-							    <form action="index.html">
-								   <input type="email" placeholder="Your Email" name="#" required />
-								   <button>Submit</button>
-								</form>
-							 </div>
-						 </div>
-					</div>	 
-			  
-			  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-				 <div class="footer_blog full white_fonts">
-						     <h3>Contact us</h3>
-							 <ul class="full">
-							   <li><img src="images/i5.png"><span>London 145<br>United Kingdom</span></li>
-							   <li><img src="images/i6.png"><span>demo@gmail.com</span></li>
-							   <li><img src="images/i7.png"><span>+12586954775</span></li>
-							 </ul>
-						 </div>
-					</div>	 
-			  
-		   </div>
-		
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="images/footer_logo.png" alt="Sarjana Komputer Indonesia" style="height: 40px; margin-bottom: 1rem;">
+                    <p>CV. Sarjana Komputer Indonesia — lembaga pengembangan mahasiswa IT dan sarjana komputer yang berfokus pada solusi teknologi, E-Government, dan pengembangan SDM digital di Indonesia Timur.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                        <a href="#"><i class="bi bi-github"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5>Menu</h5>
+                    <ul>
+                        <li><a href="#home"><i class="bi bi-chevron-right"></i> Beranda</a></li>
+                        <li><a href="#tentang"><i class="bi bi-chevron-right"></i> Tentang</a></li>
+                        <li><a href="#layanan"><i class="bi bi-chevron-right"></i> Layanan</a></li>
+                        <li><a href="#proyek"><i class="bi bi-chevron-right"></i> Proyek</a></li>
+                        <li><a href="#kontak"><i class="bi bi-chevron-right"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Layanan</h5>
+                    <ul>
+                        <li><a href="#layanan"><i class="bi bi-chevron-right"></i> Web Development</a></li>
+                        <li><a href="#layanan"><i class="bi bi-chevron-right"></i> Android Development</a></li>
+                        <li><a href="#layanan"><i class="bi bi-chevron-right"></i> E-Government</a></li>
+                        <li><a href="#layanan"><i class="bi bi-chevron-right"></i> Pelatihan IT</a></li>
+                        <li><a href="#layanan"><i class="bi bi-chevron-right"></i> IT Consulting</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5>Kontak</h5>
+                    <ul>
+                        <li><i class="bi bi-geo-alt"></i> Baubau, Sulawesi Tenggara</li>
+                        <li><i class="bi bi-envelope"></i> sarjanakomputer.id@gmail.com</li>
+                        <li><i class="bi bi-telephone"></i> +62 823-4567-8901</li>
+                        <li><i class="bi bi-clock"></i> Sen-Jum 08:00-17:00 WITA</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 CV. Sarjana Komputer Indonesia. All rights reserved.</p>
+            </div>
         </div>
     </footer>
-    <!-- End Footer -->
 
-    <div class="footer_bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <p class="crp">© Copyrights 2019 design by html.design</p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- ========== WHATSAPP FLOAT ========== -->
+    <a href="https://wa.me/6282345678901" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
 
-    <a href="#" id="scroll-to-top" class="hvr-radial-out"><i class="fa fa-angle-up"></i></a>
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <!-- ALL JS FILES -->
-    <script src="js/jquery.min.js"></script>
-	<script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/jquery.pogo-slider.min.js"></script>
-    <script src="js/slider-index.js"></script>
-    <script src="js/smoothscroll.js"></script>
-    <script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/images-loded.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script async src="https://whatsform.com/launcher.js" id="wf-widget" data-id="CeGUuy" data-message="Hubungi Kami Di Whatsapp" ></script>
-	<script>
-	/* counter js */
+    <script>
+    // AOS Init
+    AOS.init({
+        once: true,
+        duration: 800,
+        offset: 80,
+    });
 
-(function ($) {
-	$.fn.countTo = function (options) {
-		options = options || {};
-		
-		return $(this).each(function () {
-			// set options for current element
-			var settings = $.extend({}, $.fn.countTo.defaults, {
-				from:            $(this).data('from'),
-				to:              $(this).data('to'),
-				speed:           $(this).data('speed'),
-				refreshInterval: $(this).data('refresh-interval'),
-				decimals:        $(this).data('decimals')
-			}, options);
-			
-			// how many times to update the value, and how much to increment the value on each update
-			var loops = Math.ceil(settings.speed / settings.refreshInterval),
-				increment = (settings.to - settings.from) / loops;
-			
-			// references & variables that will change with each update
-			var self = this,
-				$self = $(this),
-				loopCount = 0,
-				value = settings.from,
-				data = $self.data('countTo') || {};
-			
-			$self.data('countTo', data);
-			
-			// if an existing interval can be found, clear it first
-			if (data.interval) {
-				clearInterval(data.interval);
-			}
-			data.interval = setInterval(updateTimer, settings.refreshInterval);
-			
-			// initialize the element with the starting value
-			render(value);
-			
-			function updateTimer() {
-				value += increment;
-				loopCount++;
-				
-				render(value);
-				
-				if (typeof(settings.onUpdate) == 'function') {
-					settings.onUpdate.call(self, value);
-				}
-				
-				if (loopCount >= loops) {
-					// remove the interval
-					$self.removeData('countTo');
-					clearInterval(data.interval);
-					value = settings.to;
-					
-					if (typeof(settings.onComplete) == 'function') {
-						settings.onComplete.call(self, value);
-					}
-				}
-			}
-			
-			function render(value) {
-				var formattedValue = settings.formatter.call(self, value, settings);
-				$self.html(formattedValue);
-			}
-		});
-	};
-	
-	$.fn.countTo.defaults = {
-		from: 0,               // the number the element should start at
-		to: 0,                 // the number the element should end at
-		speed: 1000,           // how long it should take to count between the target numbers
-		refreshInterval: 100,  // how often the element should be updated
-		decimals: 0,           // the number of decimal places to show
-		formatter: formatter,  // handler for formatting the value before rendering
-		onUpdate: null,        // callback method for every time the element is updated
-		onComplete: null       // callback method for when the element finishes updating
-	};
-	
-	function formatter(value, settings) {
-		return value.toFixed(settings.decimals);
-	}
-}(jQuery));
+    // Navbar scroll effect
+    const navbar = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
 
-jQuery(function ($) {
-  // custom formatting example
-  $('.count-number').data('countToOptions', {
-	formatter: function (value, options) {
-	  return value.toFixed(options.decimals).replace(/\B(?=(?:\d{3})+(?!\d))/g, ',');
-	}
-  });
-  
-  // start all the timers
-  $('.timer').each(count);  
-  
-  function count(options) {
-	var $this = $(this);
-	options = $.extend({}, options || {}, $this.data('countToOptions') || {});
-	$this.countTo(options);
-  }
-});
-	</script>
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const top = section.offsetTop - 150;
+            if (window.scrollY >= top) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('.navbar-nav a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            // Close mobile menu
+            const nav = document.querySelector('.navbar-collapse');
+            if (nav.classList.contains('show')) {
+                new bootstrap.Collapse(nav).toggle();
+            }
+        });
+    });
+
+    // Counter animation
+    function animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            const increment = target / 80;
+            let current = 0;
+            const update = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.ceil(current) + '+';
+                    requestAnimationFrame(update);
+                } else {
+                    counter.textContent = target + '+';
+                }
+            };
+            update();
+        });
+    }
+
+    // Trigger counter animation when stats section is visible
+    const statsSection = document.querySelector('.stats-section');
+    let countersStarted = false;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !countersStarted) {
+                countersStarted = true;
+                animateCounters();
+            }
+        });
+    }, { threshold: 0.3 });
+    if (statsSection) observer.observe(statsSection);
+    </script>
 </body>
-
 </html>
