@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Tech News | Sarjana Komputer Indonesia</title>
+    <meta name="description" content="Blog teknologi — update AI, web dev, mobile, cybersecurity, dan startup dari luar negeri. Ikuti tren IT terkini.">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/subdomain.css">
+    <style>
+        .blog-card{border-radius:var(--radius-sm);overflow:hidden;background:var(--white);border:1px solid var(--gray-100);height:100%;transition:0.4s}
+        .blog-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+        .blog-card-img{height:180px;background-size:cover;background-position:center;position:relative}
+        .blog-card-img .cat-badge{position:absolute;top:0.75rem;left:0.75rem;padding:0.2rem 0.7rem;background:rgba(0,0,0,0.55);backdrop-filter:blur(4px);border-radius:50px;color:white;font-size:0.68rem;font-weight:600;display:flex;align-items:center;gap:0.3rem}
+        .blog-card-body{padding:1.25rem 1.25rem 1.5rem}
+        .blog-card-body .date{font-size:0.73rem;color:var(--gray-400)}
+        .blog-card-body h5{font-size:0.92rem;margin-bottom:0.35rem;line-height:1.4}
+        .blog-card-body p{font-size:0.8rem;color:var(--gray-500);line-height:1.6;margin-bottom:0.5rem}
+        .blog-card-body .read-link{font-size:0.8rem;color:var(--primary);font-weight:600}
+        .blog-card-body .read-link:hover{color:var(--primary-dark)}
+        .sidebar-card{border-radius:var(--radius-sm);padding:1.25rem;background:var(--white);border:1px solid var(--gray-100);margin-bottom:1rem}
+        .sidebar-card h6{font-size:0.85rem;margin-bottom:0.5rem}
+        .sidebar-card .tag{display:inline-block;padding:0.2rem 0.7rem;margin:0.15rem;border-radius:50px;font-size:0.72rem;font-weight:500;background:var(--gray-100);color:var(--gray-600);transition:0.3s;cursor:pointer}
+        .sidebar-card .tag:hover{background:rgba(26,86,219,0.08);color:var(--primary)}
+        .sidebar-card .popular-item{display:flex;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--gray-50)}
+        .sidebar-card .popular-item:last-child{border-bottom:none}
+        .sidebar-card .popular-item img{width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0}
+        .sidebar-card .popular-item div{font-size:0.8rem;font-weight:600;line-height:1.4}
+        .sidebar-card .popular-item span{font-size:0.7rem;font-weight:400;color:var(--gray-400)}
+        .pagination .page-link{border-radius:8px;margin:0 0.15rem;border:1px solid var(--gray-200);color:var(--gray-600);font-size:0.85rem;transition:0.3s}
+        .pagination .page-link:hover{background:var(--primary);color:white;border-color:var(--primary)}
+        .pagination .page-item.active .page-link{background:var(--primary);border-color:var(--primary)}
+        @media(max-width:767px){
+            .blog-card-img{height:160px}
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="container d-flex justify-content-between">
+        <span><i class="bi bi-geo-alt"></i> Baubau, Sulawesi Tenggara</span>
+        <span><i class="bi bi-envelope"></i> info@sarjanakomputer.id</span>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html"><img src="../images/logo.png" alt="SKI"> Sarjana <span>Komputer</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBlog">
+            <i class="bi bi-list"></i><i class="bi bi-x-lg"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navBlog">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="../profil/">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="../aplikasi/">Aplikasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="../automasi/">Automasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="../academy/">Academy</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.html">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<section class="hero-section" style="padding:5rem 0 3rem">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7" data-aos="fade-up">
+                <div class="hero-badge"><i class="bi bi-newspaper"></i> Blog — Tech News</div>
+                <h1>Berita Teknologi <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Dunia IT</span></h1>
+                <p>Update teknologi terbaru dari luar negeri — AI, Web Development, Mobile, Cybersecurity, Cloud Computing, dan Startup. Ikuti tren yang membentuk masa depan digital.</p>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <form action="https://www.google.com/search" method="GET" target="_blank" class="d-flex gap-1" style="max-width:400px">
+                        <input type="hidden" name="q" value="site:theverge.com OR site:techcrunch.com OR site:arstechnica.com">
+                        <input class="form-control" type="text" name="q" placeholder="Cari artikel..." style="border-radius:50px;padding:0.4rem 1rem;font-size:0.85rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:white">
+                        <button class="btn-primary-custom" type="submit" style="padding:0.4rem 1rem;font-size:0.82rem"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAIN CONTENT -->
+<section class="section" style="padding:2rem 0 4rem">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <!-- Featured Post -->
+                <div class="blog-card mb-3" data-aos="fade-up" onclick="openNews('https://www.theverge.com/ai-artificial-intelligence')" style="cursor:pointer">
+                    <div class="blog-card-img" style="height:220px;background-image:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80')">
+                        <span class="cat-badge"><i class="bi bi-cpu"></i> AI & ML</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <div class="date"><i class="bi bi-calendar3"></i> 20 Mei 2026</div>
+                        <h5 style="font-size:1.05rem">Perkembangan AI 2026: Model Open Source Mendominasi Industri Teknologi Global</h5>
+                        <p>Perusahaan teknologi besar dan startup berlomba merilis model AI open source, mengubah lanskap kompetisi industri kecerdasan buatan secara fundamental. Dari Llama, DeepSeek, hingga model terbaru dari kolaborasi riset global.</p>
+                        <a class="read-link" href="https://www.theverge.com/ai-artificial-intelligence" target="_blank">Baca selengkapnya <i class="bi bi-box-arrow-up-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Article Grid -->
+                <div class="row g-3" id="articles">
+                    <!-- Row 1 -->
+                    <div class="col-md-6" data-aos="fade-up">
+                        <div class="blog-card" onclick="openNews('https://developer.chrome.com/blog')" style="cursor:pointer">
+                            <div class="blog-card-img" style="background-image:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&q=80')"><span class="cat-badge"><i class="bi bi-browser-chrome"></i> Web Dev</span></div>
+                            <div class="blog-card-body"><div class="date"><i class="bi bi-calendar3"></i> 19 Mei 2026</div><h5>React 19 Resmi Rilis: Fitur Baru yang Wajib Dicoba Developer</h5><p>Rilis terbaru React membawa peningkatan performa signifikan dan fitur-fitur revolusioner untuk developer.</p><a class="read-link" href="https://developer.chrome.com/blog" target="_blank">Baca <i class="bi bi-box-arrow-up-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
+                        <div class="blog-card" onclick="openNews('https://thehackernews.com')" style="cursor:pointer">
+                            <div class="blog-card-img" style="background-image:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80')"><span class="cat-badge"><i class="bi bi-shield-check"></i> Security</span></div>
+                            <div class="blog-card-body"><div class="date"><i class="bi bi-calendar3"></i> 19 Mei 2026</div><h5>Ancaman Siber 2026: Serangan Ransomware Makin Canggih</h5><p>Laporan keamanan terbaru mengungkap tren serangan siber yang perlu diwaspadai perusahaan dan individu.</p><a class="read-link" href="https://thehackernews.com" target="_blank">Baca <i class="bi bi-box-arrow-up-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-up">
+                        <div class="blog-card" onclick="openNews('https://techcrunch.com/category/cloud')" style="cursor:pointer">
+                            <div class="blog-card-img" style="background-image:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&q=80')"><span class="cat-badge"><i class="bi bi-cloud"></i> Cloud</span></div>
+                            <div class="blog-card-body"><div class="date"><i class="bi bi-calendar3"></i> 18 Mei 2026</div><h5>Cloud Computing 2026: Edge Computing Menggeser Arsitektur Tradisional</h5><p>Edge computing jadi primadona baru di dunia cloud dan infrastruktur IT modern.</p><a class="read-link" href="https://techcrunch.com/category/cloud" target="_blank">Baca <i class="bi bi-box-arrow-up-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
+                        <div class="blog-card" onclick="openNews('https://techcrunch.com/category/startups')" style="cursor:pointer">
+                            <div class="blog-card-img" style="background-image:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&q=80')"><span class="cat-badge"><i class="bi bi-rocket-takeoff"></i> Startup</span></div>
+                            <div class="blog-card-body"><div class="date"><i class="bi bi-calendar3"></i> 18 Mei 2026</div><h5>Startup Indonesia Raih Pendanaan Series A $50 Juta untuk AI HealthTech</h5><p>Pencapaian baru startup lokal di kancah global dengan solusi AI untuk diagnosa kesehatan.</p><a class="read-link" href="https://techcrunch.com/category/startups" target="_blank">Baca <i class="bi bi-box-arrow-up-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-up">
+                        <div class="blog-card" onclick="openNews('https://openai.com/blog')" style="cursor:pointer">
+                            <div class="blog-card-img" style="background-image:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80')"><span class="cat-badge"><i class="bi bi-cpu"></i> AI & ML</span></div>
+                            <div class="blog-card-body"><div class="date"><i class="bi bi-calendar3"></i> 17 Mei 2026</div><h5>GPT-5 Diumumkan: Kemampuan Baru yang Mendekati Kecerdasan Manusia</h5><p>Model AI terbaru OpenAI hadir dengan kemampuan multimodal dan reasoning yang jauh lebih baik.</p><a class="read-link" href="https://openai.com/blog" target="_blank">Baca <i class="bi bi-box-arrow-up-right"></i></a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
+                        <div class="blog-card" onclick="openNews('https://www.android.com/whats-new')" style="cursor:pointer">
+                            <div class="blog-card-img" style="background-image:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.2)),url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80')"><span class="cat-badge"><i class="bi bi-phone"></i> Mobile</span></div>
+                            <div class="blog-card-body"><div class="date"><i class="bi bi-calendar3"></i> 16 Mei 2026</div><h5>Android 17: Fitur Terbaru untuk Developer dan Pengguna</h5><p>Update besar Android dengan peningkatan privasi, performa, dan tools untuk developer.</p><a class="read-link" href="https://www.android.com/whats-new" target="_blank">Baca <i class="bi bi-box-arrow-up-right"></i></a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-4" data-aos="fade-up">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled"><a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+                        <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="sidebar-card">
+                    <h6><i class="bi bi-grid"></i> Kategori</h6>
+                    <a class="tag" href="#" onclick="filterBlog('all')">Semua</a>
+                    <a class="tag" href="#" onclick="filterBlog('ai')">AI & ML</a>
+                    <a class="tag" href="#" onclick="filterBlog('web')">Web Dev</a>
+                    <a class="tag" href="#" onclick="filterBlog('mobile')">Mobile</a>
+                    <a class="tag" href="#" onclick="filterBlog('security')">Cybersecurity</a>
+                    <a class="tag" href="#" onclick="filterBlog('cloud')">Cloud</a>
+                    <a class="tag" href="#" onclick="filterBlog('startup')">Startup</a>
+                </div>
+
+                <div class="sidebar-card">
+                    <h6><i class="bi bi-fire"></i> Populer</h6>
+                    <div class="popular-item" onclick="openNews('https://www.theverge.com/ai-artificial-intelligence')" style="cursor:pointer">
+                        <div style="width:60px;height:60px;border-radius:8px;background:linear-gradient(135deg,#1a56db,#3b82f6);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem"><i class="bi bi-cpu"></i></div>
+                        <div>AI Open Source 2026<span>AI & ML</span></div>
+                    </div>
+                    <div class="popular-item" onclick="openNews('https://thehackernews.com')" style="cursor:pointer">
+                        <div style="width:60px;height:60px;border-radius:8px;background:linear-gradient(135deg,#ef4444,#f87171);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem"><i class="bi bi-shield-check"></i></div>
+                        <div>Ancaman Ransomware Terbaru<span>Security</span></div>
+                    </div>
+                    <div class="popular-item" onclick="openNews('https://techcrunch.com/category/startups')" style="cursor:pointer">
+                        <div style="width:60px;height:60px;border-radius:8px;background:linear-gradient(135deg,#10b981,#059669);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:white;font-size:1.2rem"><i class="bi bi-rocket-takeoff"></i></div>
+                        <div>Startup AI Indonesia Dapat Pendanaan<span>Startup</span></div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h6><i class="bi bi-link-45deg"></i> Sumber Berita</h6>
+                    <p style="font-size:0.82rem;color:var(--gray-500);margin-bottom:0.5rem">Artikel dikurasi dari sumber-sumber terpercaya:</p>
+                    <div style="display:grid;gap:0.3rem">
+                        <a class="read-link" style="font-size:0.8rem" href="https://www.theverge.com" target="_blank"><i class="bi bi-box-arrow-up-right"></i> The Verge</a>
+                        <a class="read-link" style="font-size:0.8rem" href="https://techcrunch.com" target="_blank"><i class="bi bi-box-arrow-up-right"></i> TechCrunch</a>
+                        <a class="read-link" style="font-size:0.8rem" href="https://arstechnica.com" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Ars Technica</a>
+                        <a class="read-link" style="font-size:0.8rem" href="https://thehackernews.com" target="_blank"><i class="bi bi-box-arrow-up-right"></i> The Hacker News</a>
+                        <a class="read-link" style="font-size:0.8rem" href="https://www.freecodecamp.org/news" target="_blank"><i class="bi bi-box-arrow-up-right"></i> freeCodeCamp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-4"><span class="brand-footer">Sarjana <span>Komputer</span></span><p style="font-size:0.85rem;margin:0.5rem 0 1rem">CV. Sarjana Komputer Indonesia — Solusi IT profesional.</p><div class="social-links"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i class="bi bi-youtube"></i></a><a href="#"><i class="bi bi-github"></i></a><a href="#"><i class="bi bi-linkedin"></i></a></div></div>
+            <div class="col-md-6 col-lg-2"><h5>Layanan</h5><a href="../aplikasi/">Jasa Aplikasi</a><a href="../automasi/">Automasi & AI</a><a href="../academy/">Academy</a></div>
+            <div class="col-md-6 col-lg-2"><h5>Informasi</h5><a href="../profil/">Profil Perusahaan</a><a href="index.html">Blog</a><a href="../profil/#kontak">Kontak</a></div>
+            <div class="col-md-6 col-lg-4"><h5>Kontak</h5><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-geo-alt"></i> Baubau, Sulawesi Tenggara</p><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-envelope"></i> info@sarjanakomputer.id</p><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-whatsapp"></i> +62 8XX-XXXX-XXXX</p></div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom d-flex flex-wrap justify-content-between"><span>&copy; 2026 CV. Sarjana Komputer Indonesia</span><span>Built with <i class="bi bi-heart-fill" style="color:#ef4444"></i> in Baubau</span></div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({once:true,duration:600,offset:20});
+window.addEventListener('scroll',()=>{document.querySelector('.navbar-custom').classList.toggle('navbar-scrolled',window.scrollY>50)});
+function openNews(url){window.open(url,'_blank')}
+function filterBlog(cat){}
+</script>
+</body>
+</html>

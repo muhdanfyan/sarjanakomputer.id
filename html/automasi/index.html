@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automasi & AI — Sarjana Komputer Indonesia</title>
+    <meta name="description" content="Jasa automasi bisnis dan AI — chatbot, document processing, workflow automation dari Sarjana Komputer Indonesia">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/subdomain.css">
+    <style>
+        .problem-card{text-align:center;padding:1.5rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%;transition:0.4s}
+        .problem-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+        .problem-card .icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 0.75rem;font-size:1.4rem;color:white}
+        .problem-card h5{font-size:0.92rem;margin-bottom:0.3rem}
+        .problem-card p{font-size:0.8rem;color:var(--gray-500);margin:0}
+        .solution-card{padding:1.5rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%;transition:0.4s}
+        .solution-card:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
+        .solution-card .icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:white;margin-bottom:0.75rem}
+        .solution-card h5{font-size:0.92rem;margin-bottom:0.25rem}
+        .solution-card p{font-size:0.8rem;color:var(--gray-500);margin:0}
+        .tier-card{text-align:center;padding:2rem 1.5rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%;transition:0.4s}
+        .tier-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+        .tier-card .tier-icon{font-size:2.5rem;margin-bottom:0.5rem}
+        .tier-card h5{font-size:1rem;margin-bottom:0.2rem}
+        .tier-card .tier-price{font-size:1.5rem;font-weight:800;color:var(--dark);margin:0.5rem 0}
+        .tier-card .tier-price span{font-size:0.8rem;font-weight:400;color:var(--gray-500)}
+        .tier-card ul{text-align:left;list-style:none;padding:0;margin:1rem 0}
+        .tier-card ul li{padding:0.35rem 0;font-size:0.82rem;display:flex;align-items:center;gap:0.5rem}
+        .tier-card ul li i{color:#10b981}
+        .case-study{padding:1.5rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%}
+        .case-study .tag{display:inline-block;padding:0.15rem 0.6rem;background:rgba(26,86,219,0.08);color:var(--primary);border-radius:4px;font-size:0.7rem;font-weight:600;margin-bottom:0.5rem}
+        @media(max-width:767px){
+            .tier-card{padding:1.5rem 1rem}
+        }
+    </style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="container d-flex justify-content-between">
+        <span><i class="bi bi-geo-alt"></i> Baubau, Sulawesi Tenggara</span>
+        <span><i class="bi bi-envelope"></i> info@sarjanakomputer.id</span>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="../index.html"><img src="../images/logo.png" alt="SKI"> Sarjana <span>Komputer</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navAuto">
+            <i class="bi bi-list"></i><i class="bi bi-x-lg"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navAuto">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="../index.html">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="../profil/">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="../aplikasi/">Aplikasi</a></li>
+                <li class="nav-item"><a class="nav-link active" href="index.html">Automasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="../academy/">Academy</a></li>
+                <li class="nav-item"><a class="nav-link" href="../blog/">Blog</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7" data-aos="fade-up">
+                <div class="hero-badge"><i class="bi bi-robot"></i> Automasi & AI</div>
+                <h1>Automasi Bisnis dengan Kecerdasan Buatan</h1>
+                <p>Transformasi operasional perusahaan Anda — dari tugas manual berulang menjadi sistem otomatis yang efisien dengan bantuan AI.</p>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <a href="#solusi" class="btn-primary-custom"><i class="bi bi-lightbulb"></i> Lihat Solusi</a>
+                    <a href="#tier" class="btn-outline-custom" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);">Paket & Harga <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center d-none d-lg-block" data-aos="fade-left">
+                <i class="bi bi-gear-wide-connected" style="font-size:10rem;color:rgba(255,255,255,0.1)"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MASALAH -->
+<section class="section" id="masalah">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <div class="hero-badge" style="background:rgba(245,158,11,0.08);color:var(--accent);border-color:rgba(245,158,11,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-exclamation-triangle"></i> Masalah</div>
+            <h2 class="section-title">Apakah Bisnis Anda Mengalami Ini?</h2>
+            <p class="section-subtitle">Jika iya, saatnya beralih ke automasi</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="problem-card">
+                    <div class="icon" style="background:linear-gradient(135deg,#ef4444,#f87171)"><i class="bi bi-clock-history"></i></div>
+                    <h5>Proses Manual Memakan Waktu</h5>
+                    <p>Data entry berulang, approval berjenjang via kertas, laporan diketik manual — semuanya lambat.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="problem-card">
+                    <div class="icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><i class="bi bi-emoji-frown"></i></div>
+                    <h5>Sering Terjadi Human Error</h5>
+                    <p>Kesalahan input data, duplikasi, laporan tidak akurat — risiko yang selalu ada saat dikerjakan manual.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="problem-card">
+                    <div class="icon" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)"><i class="bi bi-bar-chart-line"></i></div>
+                    <h5>Sulit Memonitor Kinerja</h5>
+                    <p>Data tersebar di banyak file, laporan tidak real-time, pengambilan keputusan jadi lambat dan tidak akurat.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUSI -->
+<section class="section section-alt" id="solusi">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <div class="hero-badge" style="background:rgba(16,185,129,0.08);color:#10b981;border-color:rgba(16,185,129,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-check-circle"></i> Solusi</div>
+            <h2 class="section-title">Solusi Automasi dari Kami</h2>
+            <p class="section-subtitle">Tiga level solusi yang bisa disesuaikan dengan kebutuhan perusahaan Anda</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-4" data-aos="fade-up">
+                <div class="solution-card">
+                    <div class="icon" style="background:linear-gradient(135deg,#1a56db,#3b82f6)"><i class="bi bi-file-earmark-text"></i></div>
+                    <h5>Otomasi Administratif</h5>
+                    <p>Automasi tugas-tugas administrasi kantor: absensi digital (QR/kartu), surat menyurat otomatis, pengarsipan dokumen, approval workflow (cuti, reimbursement, pengajuan).</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="solution-card">
+                    <div class="icon" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h5>Otomasi Operasional</h5>
+                    <p>Automasi proses bisnis inti: laporan keuangan otomatis dari transaksi harian, inventory management (stok update, reorder alert), scheduling, customer follow-up via WA/email.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="solution-card">
+                    <div class="icon" style="background:linear-gradient(135deg,#8b5cf6,#06b6d4)"><i class="bi bi-cpu"></i></div>
+                    <h5>AI-Powered Automasi</h5>
+                    <p>Solusi berbasis AI: chatbot customer service 24 jam, AI document processing (scan KTP/NPWP → auto-fill form), AI report generator (data mentah → laporan Bahasa Indonesia), AI rekomendasi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PAKET -->
+<section class="section" id="tier">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <div class="hero-badge" style="background:rgba(26,86,219,0.08);color:var(--primary);border-color:rgba(26,86,219,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-layers"></i> Paket</div>
+            <h2 class="section-title">Pilih Level Automasi</h2>
+            <p class="section-subtitle">Sesuaikan dengan skala bisnis Anda</p>
+        </div>
+        <div class="row g-3 justify-content-center">
+            <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                <div class="tier-card">
+                    <div class="tier-icon">🥉</div>
+                    <h5>Bronze — Otomasi Dasar</h5>
+                    <div class="tier-price">3-5jt <span>build + 500rb/bln</span></div>
+                    <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Cocok untuk UMKM dan toko kecil</p>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> 1-2 proses otomasi</li>
+                        <li><i class="bi bi-check-circle"></i> Dashboard monitoring</li>
+                        <li><i class="bi bi-check-circle"></i> Support email</li>
+                        <li><i class="bi bi-check-circle"></i> Maintenance bulanan</li>
+                    </ul>
+                    <a href="../profil/#kontak" class="btn-outline-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem">Pilih Bronze</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="50">
+                <div class="tier-card" style="border-color:var(--primary);box-shadow:0 0 0 2px var(--primary);position:relative">
+                    <div class="popular-badge" style="position:absolute;top:-0.75rem;left:50%;transform:translateX(-50%);padding:0.25rem 1rem;background:var(--gradient);color:white;border-radius:50px;font-size:0.7rem;font-weight:700">REKOMENDASI</div>
+                    <div class="tier-icon">🥈</div>
+                    <h5>Silver — Otomasi Bisnis</h5>
+                    <div class="tier-price">8-15jt <span>build + 1-2jt/bln</span></div>
+                    <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Cocok untuk perusahaan menengah</p>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> 3-5 proses otomasi + integrasi</li>
+                        <li><i class="bi bi-check-circle"></i> Dashboard + laporan otomatis</li>
+                        <li><i class="bi bi-check-circle"></i> Support WA/telepon prioritas</li>
+                        <li><i class="bi bi-check-circle"></i> Pelatihan staf</li>
+                        <li><i class="bi bi-check-circle"></i> SLA 2x24 jam</li>
+                    </ul>
+                    <a href="../profil/#kontak" class="btn-primary-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem">Pilih Silver</a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="tier-card">
+                    <div class="tier-icon">🥇</div>
+                    <h5>Gold — Enterprise AI</h5>
+                    <div class="tier-price">Custom <span>konsultasi</span></div>
+                    <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Cocok untuk pemerintah/korporasi</p>
+                    <ul>
+                        <li><i class="bi bi-check-circle"></i> Semua fitur Silver + AI</li>
+                        <li><i class="bi bi-check-circle"></i> AI chatbot / document processing</li>
+                        <li><i class="bi bi-check-circle"></i> Integrasi sistem existing</li>
+                        <li><i class="bi bi-check-circle"></i> Dedicated support</li>
+                        <li><i class="bi bi-check-circle"></i> SLA 1x24 jam prioritas</li>
+                    </ul>
+                    <a href="../profil/#kontak" class="btn-outline-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem">Hubungi Kami</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="section section-alt" id="kasus">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <div class="hero-badge" style="background:rgba(26,86,219,0.08);color:var(--primary);border-color:rgba(26,86,219,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-journal-text"></i> Studi Kasus</div>
+            <h2 class="section-title">Contoh Implementasi</h2>
+            <p class="section-subtitle">Bagaimana automasi membantu klien kami</p>
+        </div>
+        <div class="row g-3">
+            <div class="col-md-6" data-aos="fade-up">
+                <div class="case-study">
+                    <span class="tag">Otomasi Administratif</span>
+                    <h5 style="font-size:0.95rem;margin-bottom:0.3rem">Automasi Surat Menyurat — Instansi Pemerintah</h5>
+                    <p style="font-size:0.82rem;color:var(--gray-500);line-height:1.7">Sebelum: Pembuatan surat manual 15-20 menit/surat, approval antar ruangan. Sesudah: Template digital + approval online, 3 menit/surat. Efisiensi 80%.</p>
+                </div>
+            </div>
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="50">
+                <div class="case-study">
+                    <span class="tag">AI-Powered</span>
+                    <h5 style="font-size:0.95rem;margin-bottom:0.3rem">Chatbot Customer Service — Perusahaan Jasa</h5>
+                    <p style="font-size:0.82rem;color:var(--gray-500);line-height:1.7">Chatbot mampu menjawab 70% pertanyaan umum secara otomatis 24 jam. Tim CS hanya menangani pertanyaan kompleks. Kepuasan pelanggan meningkat 40%.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+    <div class="container">
+        <div class="text-center" data-aos="fade-up">
+            <div class="hero-badge" style="background:rgba(26,86,219,0.08);color:var(--primary);border-color:rgba(26,86,219,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-question-circle"></i> FAQ</div>
+            <h2 class="section-title">Pertanyaan Umum</h2>
+            <p class="section-subtitle">Seputar layanan automasi & AI</p>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8" data-aos="fade-up">
+                <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apa itu automasi bisnis? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Automasi bisnis adalah penggunaan teknologi untuk mengotomatiskan tugas-tugas yang sebelumnya dilakukan manual, sehingga menghemat waktu, mengurangi error, dan meningkatkan efisiensi.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah data perusahaan aman? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tentu. Kami menerapkan enkripsi data, akses berbasis peran (RBAC), backup rutin, dan server di Indonesia. Data perusahaan sepenuhnya milik Anda.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Berapa lama implementasi automasi? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tergantung kompleksitas. Otomasi dasar 1-2 minggu, otomasi bisnis 3-6 minggu, enterprise AI 1-3 bulan termasuk konsultasi dan penyesuaian.</div></div>
+                <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah bisa integrasi dengan sistem yang sudah ada? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Ya. Kami bisa mengintegrasikan solusi automasi dengan sistem existing (database, aplikasi, API) yang sudah berjalan di perusahaan Anda.</div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section section-alt">
+    <div class="container text-center" data-aos="fade-up">
+        <h2 class="section-title">Siap Efisienkan Bisnis Anda?</h2>
+        <p class="section-subtitle">Konsultasi gratis — ceritakan masalah operasional Anda, kami tawarkan solusi automasi yang tepat.</p>
+        <a href="../profil/#kontak" class="btn-primary-custom"><i class="bi bi-whatsapp"></i> Konsultasi Gratis</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-4"><span class="brand-footer">Sarjana <span>Komputer</span></span><p style="font-size:0.85rem;margin:0.5rem 0 1rem">CV. Sarjana Komputer Indonesia — Solusi IT profesional.</p><div class="social-links"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i class="bi bi-youtube"></i></a><a href="#"><i class="bi bi-github"></i></a><a href="#"><i class="bi bi-linkedin"></i></a></div></div>
+            <div class="col-md-6 col-lg-2"><h5>Layanan</h5><a href="../aplikasi/">Jasa Aplikasi</a><a href="index.html#solusi">Solusi Automasi</a><a href="../academy/">Academy</a></div>
+            <div class="col-md-6 col-lg-2"><h5>Informasi</h5><a href="../profil/">Profil Perusahaan</a><a href="../blog/">Blog</a><a href="../profil/#kontak">Kontak</a></div>
+            <div class="col-md-6 col-lg-4"><h5>Kontak</h5><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-geo-alt"></i> Baubau, Sulawesi Tenggara</p><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-envelope"></i> info@sarjanakomputer.id</p><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-whatsapp"></i> +62 8XX-XXXX-XXXX</p></div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom d-flex flex-wrap justify-content-between"><span>&copy; 2026 CV. Sarjana Komputer Indonesia</span><span>Built with <i class="bi bi-heart-fill" style="color:#ef4444"></i> in Baubau</span></div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({once:true,duration:600,offset:20});
+window.addEventListener('scroll',()=>{document.querySelector('.navbar-custom').classList.toggle('navbar-scrolled',window.scrollY>50)});
+function toggleFaq(el){el.classList.toggle('open');el.nextElementSibling.classList.toggle('show')}
+</script>
+</body>
+</html>

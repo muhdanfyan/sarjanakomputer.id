@@ -4,45 +4,110 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layanan — CV. Sarjana Komputer Indonesia</title>
-    <meta name="description" content="Layanan CV. Sarjana Komputer Indonesia - Web Development, Android, E-Government, Pelatihan IT">
+    <meta name="description" content="Layanan CV. Sarjana Komputer Indonesia — Jasa pembuatan aplikasi, automasi, dan pelatihan IT">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/subdomain.css">
     <style>
-        :root { --primary: #1a56db; --secondary: #06b6d4; --dark: #0f172a; --gray-500: #64748b; --gray-700: #334155; --gradient: linear-gradient(135deg, #1a56db 0%, #06b6d4 100%); }
-        body { font-family: 'Inter', sans-serif; color: var(--gray-700); }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; }
-        .page-header { background: var(--gradient); padding: 6rem 0 3rem; color: white; text-align: center; }
-        .page-header h1 { color: white; font-size: 2.5rem; }
-        .back-link { color: rgba(255,255,255,0.8); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-        .back-link:hover { color: white; }
-        section { padding: 4rem 0; }
-        .service-card { padding: 2rem; border-radius: 16px; border: 1px solid rgba(0,0,0,0.04); transition: all 0.3s; height: 100%; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
-        .service-icon { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, rgba(26,86,219,0.1), rgba(6,182,212,0.1)); border-radius: 8px; font-size: 1.75rem; color: var(--primary); margin-bottom: 1rem; }
+        .page-header{background:linear-gradient(135deg,#0b1120,#162a50);padding:5rem 0 3rem;text-align:center;position:relative;overflow:hidden}
+        .page-header::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03)1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03)1px,transparent 1px);background-size:40px 40px}
+        .page-header .container{position:relative;z-index:1}
+        .page-header h1{color:white}
+        .page-header p{color:rgba(255,255,255,0.6)}
     </style>
 </head>
 <body>
-    <div class="page-header">
-        <div class="container">
-            <a href="index.html" class="back-link"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
-            <h1>Layanan Kami</h1>
-            <p>Solusi IT lengkap untuk bisnis dan pemerintahan</p>
+<div class="topbar">
+    <div class="container d-flex justify-content-between">
+        <span><i class="bi bi-geo-alt"></i> Baubau, Sulawesi Tenggara</span>
+        <span><i class="bi bi-envelope"></i> info@sarjanakomputer.id</span>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="SKI"> Sarjana <span>Komputer</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navService">
+            <i class="bi bi-list"></i><i class="bi bi-x-lg"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navService">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                <li class="nav-item"><a class="nav-link" href="profil/">Profil</a></li>
+                <li class="nav-item"><a class="nav-link" href="aplikasi/">Aplikasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="automasi/">Automasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="academy/">Academy</a></li>
+                <li class="nav-item"><a class="nav-link" href="blog/">Blog</a></li>
+            </ul>
         </div>
     </div>
-    <section>
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4"><div class="service-card shadow-sm"><div class="service-icon"><i class="bi bi-globe"></i></div><h5>Web Development</h5><p style="color: var(--gray-500);">Website perusahaan, sistem informasi, portal berita, dan aplikasi web custom.</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="service-card shadow-sm"><div class="service-icon"><i class="bi bi-phone"></i></div><h5>Android Development</h5><p style="color: var(--gray-500);">Aplikasi Android untuk mobile workforce dan layanan publik.</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="service-card shadow-sm"><div class="service-icon"><i class="bi bi-building"></i></div><h5>E-Government</h5><p style="color: var(--gray-500);">Sistem informasi pemerintahan, manajemen pendapatan, perizinan digital.</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="service-card shadow-sm"><div class="service-icon"><i class="bi bi-people"></i></div><h5>Pelatihan IT & SDM</h5><p style="color: var(--gray-500);">Workshop programming, desain grafis, digital marketing.</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="service-card shadow-sm"><div class="service-icon"><i class="bi bi-database-gear"></i></div><h5>Sistem Informasi Manajemen</h5><p style="color: var(--gray-500);">Aplikasi kesehatan, inventaris, kepegawaian.</p></div></div>
-                <div class="col-md-6 col-lg-4"><div class="service-card shadow-sm"><div class="service-icon"><i class="bi bi-cloud-arrow-up"></i></div><h5>IT Consulting</h5><p style="color: var(--gray-500);">Konsultasi infrastruktur TI, migrasi cloud, keamanan siber.</p></div></div>
+</nav>
+
+<div class="page-header">
+    <div class="container">
+        <a href="index.html" style="color:rgba(255,255,255,0.7);text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;margin-bottom:1rem;font-size:0.9rem"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
+        <h1>Layanan Kami</h1>
+        <p>Solusi IT lengkap untuk kebutuhan digital Anda</p>
+    </div>
+</div>
+
+<section style="padding:3rem 0">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-3">
+                <div class="card-custom text-center" style="padding:2rem 1.5rem">
+                    <div class="card-icon" style="background:var(--gradient);margin:0 auto 1rem"><i class="bi bi-building"></i></div>
+                    <h5 style="font-size:0.95rem">Profil Perusahaan</h5>
+                    <p style="font-size:0.82rem;color:var(--gray-500)">Informasi lengkap tentang CV. Sarjana Komputer Indonesia, tim, dan portofolio.</p>
+                    <a href="profil/" class="read-more" style="font-size:0.82rem;color:var(--primary);font-weight:600">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card-custom text-center" style="padding:2rem 1.5rem">
+                    <div class="card-icon" style="background:linear-gradient(135deg,#8b5cf6,#6366f1);margin:0 auto 1rem"><i class="bi bi-window-stack"></i></div>
+                    <h5 style="font-size:0.95rem">Jasa Aplikasi</h5>
+                    <p style="font-size:0.82rem;color:var(--gray-500)">Pembuatan aplikasi web, mobile Android, dan desktop sesuai kebutuhan bisnis.</p>
+                    <a href="aplikasi/" class="read-more" style="font-size:0.82rem;color:var(--primary);font-weight:600">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card-custom text-center" style="padding:2rem 1.5rem">
+                    <div class="card-icon" style="background:linear-gradient(135deg,#f59e0b,#f97316);margin:0 auto 1rem"><i class="bi bi-robot"></i></div>
+                    <h5 style="font-size:0.95rem">Automasi & AI</h5>
+                    <p style="font-size:0.82rem;color:var(--gray-500)">Solusi automasi bisnis dan kecerdasan buatan untuk efisiensi operasional.</p>
+                    <a href="automasi/" class="read-more" style="font-size:0.82rem;color:var(--primary);font-weight:600">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="card-custom text-center" style="padding:2rem 1.5rem">
+                    <div class="card-icon" style="background:linear-gradient(135deg,#10b981,#059669);margin:0 auto 1rem"><i class="bi bi-mortarboard-fill"></i></div>
+                    <h5 style="font-size:0.95rem">Academy</h5>
+                    <p style="font-size:0.82rem;color:var(--gray-500)">Bootcamp IT, bimbingan skripsi, dan pelatihan digital untuk talenta Indonesia.</p>
+                    <a href="academy/" class="read-more" style="font-size:0.82rem;color:var(--primary);font-weight:600">Selengkapnya <i class="bi bi-arrow-right"></i></a>
+                </div>
             </div>
         </div>
-    </section>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="row g-3">
+            <div class="col-md-6 col-lg-4"><span class="brand-footer">Sarjana <span>Komputer</span></span><p style="font-size:0.85rem;margin:0.5rem 0 1rem">CV. Sarjana Komputer Indonesia — Solusi IT profesional.</p><div class="social-links"><a href="#"><i class="bi bi-instagram"></i></a><a href="#"><i class="bi bi-youtube"></i></a><a href="#"><i class="bi bi-github"></i></a><a href="#"><i class="bi bi-linkedin"></i></a></div></div>
+            <div class="col-md-6 col-lg-2"><h5>Layanan</h5><a href="aplikasi/">Jasa Aplikasi</a><a href="automasi/">Automasi & AI</a><a href="academy/">Academy</a></div>
+            <div class="col-md-6 col-lg-2"><h5>Informasi</h5><a href="struktur-organisasi.html">Struktur Organisasi</a><a href="blog/">Blog</a><a href="profil/#kontak">Kontak</a></div>
+            <div class="col-md-6 col-lg-4"><h5>Kontak</h5><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-geo-alt"></i> Baubau, Sulawesi Tenggara</p><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-envelope"></i> info@sarjanakomputer.id</p><p style="font-size:0.85rem;margin-bottom:0.3rem"><i class="bi bi-whatsapp"></i> +62 8XX-XXXX-XXXX</p></div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom d-flex flex-wrap justify-content-between"><span>&copy; 2026 CV. Sarjana Komputer Indonesia</span><span>Built with <i class="bi bi-heart-fill" style="color:#ef4444"></i> in Baubau</span></div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({once:true,duration:600,offset:20});
+window.addEventListener('scroll',()=>{document.querySelector('.navbar-custom').classList.toggle('navbar-scrolled',window.scrollY>50)});
+</script>
 </body>
 </html>
