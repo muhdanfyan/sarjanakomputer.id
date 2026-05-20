@@ -1,0 +1,26 @@
+{
+  "name": "CV. Sarjana Komputer Indonesia",
+  "short_name": "SKI",
+  "description": "Mitra Transformasi Digital & Jembatan Karier Menuju Industri Global",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#312E5F",
+  "orientation": "any",
+  "categories": ["business", "technology", "education"],
+  "lang": "id-ID",
+  "icons": [
+    {
+      "src": "/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

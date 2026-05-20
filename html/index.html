@@ -2,6 +2,10 @@
 <html lang="id">
 <head>
     <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Search Console -->
@@ -366,6 +370,8 @@
       }
     }
     </script>
+  <link rel="manifest" href="/manifest.json">
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -759,6 +765,9 @@ AOS.init({once:true,duration:600,offset:20});
 window.addEventListener('scroll',function(){
     document.querySelector('.navbar-custom').classList.toggle('navbar-scrolled',window.scrollY>50);
 });
+</script>
+<script>
+if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
 </script>
 </body>
 </html>
