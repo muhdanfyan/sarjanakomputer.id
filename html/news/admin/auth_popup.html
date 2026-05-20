@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Authenticating...</title>
+  <style>
+    body { font-family: system-ui, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f5f5f5; color: #333; }
+    .loader { text-align: center; }
+    .spinner { border: 3px solid #e0e0e0; border-top: 3px solid #312E5F; border-radius: 50%; width: 30px; height: 30px; animation: spin .8s linear infinite; margin: 0 auto 12px; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="loader">
+    <div class="spinner"></div>
+    <p>Authenticating...</p>
+  </div>
+  <script>
+    (function() {
+      // Read access_token from URL hash: #access_token=TOKEN or #/access_token=TOKEN
+      var hash = window.location.hash;
+      var token = null;
+
+      // Try both formats (with and without leading /)
+      if (hash) {
+        var cleaned = hash.replace(/^#\/?/, ''); // strip # or #/
+        var params = new URLSearchParams(cleaned);
+        token = params.get('access_token');
+      }
+
+      if (token && window.opener) {
+        // Send token to main CMS window via postMessage
+        window.opener.postMessage({ token: token }, '*');
+        // Small delay then close
+        setTimeout(function() {
+          window.close();
+        }, 300);
+      } else {
+        document.querySelector('.loader p').textContent =
+          token ? 'Token found, but no opener window. Close this tab.' : 'No access token found in URL.';
+      }
+    })();
+  </script>
+</body>
+</html>
