@@ -8,7 +8,7 @@ backend:
 media_folder: "html/images/news"
 public_folder: "/images/news"
 
-# Cloudinary media library will be re-added after CMS is confirmed working
+# Cloudinary media library — akan diaktifkan lagi setelah CMS confirmed working
 # media_library:
 #   name: cloudinary
 #   config:
@@ -21,9 +21,10 @@ public_folder: "/images/news"
 #           crop: fill
 #           gravity: auto
 
+publish_mode: editorial_workflow
+
 logo_url: https://sarjanakomputer.id/images/logo.png
 display_url: https://sarjanakomputer.id
-publish_mode: editorial_workflow
 
 collections:
   - name: "berita"
@@ -34,6 +35,7 @@ collections:
     slug: "{{slug}}"
     identifier_field: title
     format: "frontmatter"
+    # sortable_fields dihapus — tidak didukung di CMS 3.3.0
     editor:
       preview: false
     fields:
