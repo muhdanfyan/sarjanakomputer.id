@@ -27,6 +27,9 @@ self.addEventListener('fetch', e => {
   const {request} = e;
   const url = new URL(request.url);
 
+  // Skip non-http(s) requests (chrome-extension://, etc.)
+  if (!url.protocol.startsWith('http')) return;
+
   // Cache-first for static assets
   if (/\.(css|js|png|jpg|webp|svg|woff2?|ico)$/i.test(url.pathname)) {
     e.respondWith(
