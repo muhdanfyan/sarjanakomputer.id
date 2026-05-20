@@ -164,23 +164,62 @@
         .project-card h5{font-size:.95rem;margin-bottom:.3rem}
         .project-card p{font-size:.8rem;color:var(--gray-500);line-height:1.6;margin-bottom:.5rem}
 
-        /* ===== Team Home ===== */
-        .team-card-home{
-            text-align:center;
-            padding:1.3rem .8rem;
-            border-radius:var(--radius);
-            background:var(--white);
-            border:1px solid var(--gray-100);
-            transition:.3s;height:100%;
+        /* ===== Team Cards ===== */
+        .team-grid-home {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        .team-card-home:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-        .team-card-home img{
-            width:70px;height:70px;
-            border-radius:50%;object-fit:cover;
-            margin-bottom:.6rem;
+        .team-card-home {
+            text-align: center;
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 1.5rem 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.4s;
+            border: 1px solid rgba(0,0,0,0.04);
+            height: 100%;
         }
-        .team-card-home h6{font-size:.8rem;margin-bottom:.1rem}
-        .team-card-home .role{font-size:.72rem;color:var(--gray-500);font-weight:500}
+        .team-card-home:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+        }
+        .team-card-home img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 0.8rem;
+            border: 3px solid rgba(26,86,219,0.1);
+            box-shadow: 0 4px 15px rgba(26,86,219,0.08);
+            transition: all 0.3s;
+        }
+        .team-card-home:hover img {
+            border-color: var(--primary);
+            box-shadow: 0 6px 25px rgba(26,86,219,0.18);
+            transform: scale(1.05);
+        }
+        .team-card-home h5 {
+            font-size: 0.88rem;
+            margin-bottom: 0.15rem;
+        }
+        .team-card-home .role-badge {
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(6,182,212,0.08));
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        @media(max-width:576px){
+            .team-grid-home{grid-template-columns:repeat(2,1fr);gap:.8rem}
+            .team-card-home{padding:1rem .5rem}
+            .team-card-home img{width:75px;height:75px}
+        }
 
         /* ===== Client Cards ===== */
         .client-card-home{
@@ -530,13 +569,37 @@
             <h2 class="section-title">Tenaga Ahli Profesional</h2>
             <p class="section-subtitle">Tim muda, kreatif, dan kompeten yang siap mewujudkan solusi digital Anda.</p>
         </div>
-        <div class="row g-2 justify-content-center">
-            <div class="col-4 col-md-2" data-aos="fade-up"><div class="team-card-home"><img loading="lazy" src="images/team/direktur.png" alt="Muhdan Fyan Syah Sofian - Direktur CV. Sarjana Komputer Indonesia"><h6>Muhdan Fyan</h6><div class="role">Direktur</div></div></div>
-            <div class="col-4 col-md-2" data-aos="fade-up" data-aos-delay="30"><div class="team-card-home"><img loading="lazy" src="images/team/irvan.png" alt="Irvan - Komisaris"><h6>Irvan, S.Kom</h6><div class="role">Komisaris</div></div></div>
-            <div class="col-4 col-md-2" data-aos="fade-up" data-aos-delay="60"><div class="team-card-home"><img loading="lazy" src="images/team/hayat.png" alt="Hayatul Habirun - IT Infrastructure Lead"><h6>Hayatul Habirun</h6><div class="role">IT Infra. Lead</div></div></div>
-            <div class="col-4 col-md-2" data-aos="fade-up" data-aos-delay="90"><div class="team-card-home"><img loading="lazy" src="images/team/arif-rizal.png" alt="Arif Rizal - Backend & QA Engineer"><h6>Arif Rizal</h6><div class="role">Backend & QA</div></div></div>
-            <div class="col-4 col-md-2" data-aos="fade-up" data-aos-delay="120"><div class="team-card-home"><img loading="lazy" src="images/team/ahmad-dahsan.jpg" alt="Ahmad Dahsan - DevOps & Software Engineer"><h6>Ahmad Dahsan</h6><div class="role">DevOps Engineer</div></div></div>
-            <div class="col-4 col-md-2" data-aos="fade-up" data-aos-delay="150"><div class="team-card-home"><img loading="lazy" src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial Nur - Software Engineer"><h6>Andi Rifqial N.</h6><div class="role">Software Eng.</div></div></div>
+        <div class="team-grid-home" data-aos="fade-up">
+            <div class="team-card-home">
+                <img loading="lazy" src="images/team/direktur.png" alt="Muhdan Fyan Syah Sofian - Direktur">
+                <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
+                <div class="role-badge">Direktur</div>
+            </div>
+            <div class="team-card-home">
+                <img loading="lazy" src="images/team/irvan.png" alt="Irvan - Komisaris">
+                <h5>Irvan, S.Kom</h5>
+                <div class="role-badge">Komisaris</div>
+            </div>
+            <div class="team-card-home">
+                <img loading="lazy" src="images/team/hayat.png" alt="Hayatul Habirun - IT Infrastructure Lead">
+                <h5>Hayatul Habirun, S.Kom</h5>
+                <div class="role-badge">IT Infrastructure Lead</div>
+            </div>
+            <div class="team-card-home">
+                <img loading="lazy" src="images/team/arif-rizal.png" alt="Arif Rizal - Backend & QA Engineer">
+                <h5>Arif Rizal</h5>
+                <div class="role-badge">Backend &amp; QA Engineer</div>
+            </div>
+            <div class="team-card-home">
+                <img loading="lazy" src="images/team/ahmad-dahsan.jpg" alt="Ahmad Dahsan - DevOps & Software Engineer">
+                <h5>Ahmad Dahsan</h5>
+                <div class="role-badge">DevOps &amp; Software Engineer</div>
+            </div>
+            <div class="team-card-home">
+                <img loading="lazy" src="images/team/andi-rifqial-nur.jpg" alt="Andi Rifqial Nur - Software Engineer">
+                <h5>Andi Rifqial Nur</h5>
+                <div class="role-badge">Software Engineer</div>
+            </div>
         </div>
         <div class="text-center mt-3" data-aos="fade-up">
             <a href="profil/#struktur" class="btn-outline-custom">Lihat Struktur Organisasi <i class="bi bi-arrow-right"></i></a>
