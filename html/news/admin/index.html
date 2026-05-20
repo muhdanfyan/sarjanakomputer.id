@@ -7,7 +7,13 @@
   <link rel="icon" href="https://sarjanakomputer.id/images/favicon.png" type="image/png">
 </head>
 <body>
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <script>CMS.init()</script>
+  <script src="https://unpkg.com/decap-cms@3.0.0/dist/decap-cms.js"></script>
+  <script>
+    // Decap CMS v3 auto-inits after loading the script.
+    // If CMS.init() fails, show error in the page.
+    if (typeof CMS === 'undefined') {
+      document.body.innerHTML = '<pre style="color:#c00;padding:2rem">ERROR: Decap CMS failed to load (CMS object not found)</pre>';
+    }
+  </script>
 </body>
 </html>
