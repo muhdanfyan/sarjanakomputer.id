@@ -3,6 +3,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+  var host = window.location.hostname;
+  var subs = {profil:1, aplikasi:1, automasi:1, academy:1, blog:1};
+  var main = host.replace('.sarjanakomputer.id','');
+  if(subs[main] && !window.location.pathname.startsWith('/'+main+'/')) {
+    window.location.replace('/'+main+'/');
+  }
+})();
+</script>
     <title>Sarjana Komputer Indonesia — Tech News & Solusi IT</title>
     <meta name="description" content="Portal berita teknologi terbaru dan solusi IT profesional dari CV. Sarjana Komputer Indonesia">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
