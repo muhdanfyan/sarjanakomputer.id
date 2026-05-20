@@ -21,6 +21,8 @@ public_folder: "/images/news"
 #           crop: fill
 #           gravity: auto
 
+logo_url: https://sarjanakomputer.id/images/logo.png
+display_url: https://sarjanakomputer.id
 publish_mode: editorial_workflow
 
 collections:
