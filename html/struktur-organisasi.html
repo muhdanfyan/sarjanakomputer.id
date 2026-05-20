@@ -111,6 +111,7 @@
             transition: all 0.4s;
             border: 1px solid rgba(0,0,0,0.04);
             height: 100%;
+            position: relative;
         }
         .team-card:hover {
             transform: translateY(-5px);
@@ -128,26 +129,44 @@
             transform: scale(1.06);
         }
         .team-card .tc-body {
-            padding: 1rem 0.8rem 1.1rem;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 1.2rem;
+            background: linear-gradient(transparent 40%, rgba(0,0,0,0.75));
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+        .team-card:hover .tc-body {
+            opacity: 1;
+            transform: translateY(0);
         }
         .team-card h5 {
             font-size: 0.85rem;
             margin-bottom: 0.25rem;
+            color: #fff;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
         .team-card .role-badge {
             display: inline-block;
             padding: 0.2rem 0.8rem;
-            background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(6,182,212,0.08));
-            color: var(--primary);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            color: #fff;
             border-radius: 50px;
             font-size: 0.68rem;
             font-weight: 600;
         }
         .team-card p {
             font-size: 0.78rem;
-            color: var(--gray-500);
+            color: rgba(255,255,255,0.8);
             margin: 0.25rem 0 0;
-            line-height: 1.5;
+            line-height: 1.4;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
 
         /* Info section */
@@ -199,7 +218,7 @@
             .page-header { padding: 4rem 0 2rem; }
             .page-header h1 { font-size: 1.6rem; }
             .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-            .team-card .tc-body { padding: 0.7rem 0.5rem 0.8rem; }
+            .team-card .tc-body { padding: 0.8rem; }
         }
     </style>
 <!-- Organization Schema -->

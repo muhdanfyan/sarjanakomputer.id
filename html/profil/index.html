@@ -60,6 +60,7 @@
             transition: all 0.4s;
             border: 1px solid rgba(0,0,0,0.04);
             height: 100%;
+            position: relative;
         }
         .team-card-home:hover {
             transform: translateY(-5px);
@@ -77,17 +78,34 @@
             transform: scale(1.06);
         }
         .team-card-home .tch-body {
-            padding: 1rem 0.8rem 1.1rem;
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 1.2rem;
+            background: linear-gradient(transparent 40%, rgba(0,0,0,0.75));
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.4s ease;
+        }
+        .team-card-home:hover .tch-body {
+            opacity: 1;
+            transform: translateY(0);
         }
         .team-card-home h5 {
             font-size: 0.85rem;
             margin-bottom: 0.25rem;
+            color: #fff;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
         }
         .team-card-home .role-badge {
             display: inline-block;
             padding: 0.2rem 0.8rem;
-            background: linear-gradient(135deg, rgba(26,86,219,0.08), rgba(6,182,212,0.08));
-            color: var(--primary);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            color: #fff;
             border-radius: 50px;
             font-size: 0.68rem;
             font-weight: 600;
@@ -108,7 +126,7 @@
         }
         @media(max-width:576px){
             .team-grid-home{grid-template-columns:repeat(2,1fr)!important;gap:.8rem}
-            .team-card-home .tch-body{padding:.7rem .5rem .8rem}
+            .team-card-home .tch-body{padding:.8rem}
         }
     </style>
 <!-- Organization Schema -->
