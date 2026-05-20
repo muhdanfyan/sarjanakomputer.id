@@ -35,8 +35,9 @@
         .testimoni-card .position{font-size:0.75rem;color:var(--gray-400)}
         @media(max-width:767px){
             .about-grid,.legal-list{grid-template-columns:1fr}
-            .org-team{gap:0.75rem}
-            .org-member{min-width:100px}
+        }
+        @media(max-width:576px){
+            .org-team{grid-template-columns:repeat(2,1fr)!important}
         }
     </style>
 </head>
@@ -147,7 +148,7 @@
             <h2 class="section-title">Struktur Organisasi</h2>
             <p class="section-subtitle">Para profesional di balik CV. Sarjana Komputer Indonesia</p>
         </div>
-        <div class="org-team" data-aos="fade-up" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1.25rem;max-width:900px;margin:0 auto">
+        <div class="org-team" data-aos="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;max-width:700px;margin:0 auto">
             <div class="org-member"><img src="../images/team/direktur.png" alt="Muhdan Fyan" class="avatar"><h6>Muhdan Fyan Syah Sofian, S.Kom</h6><div class="role">Direktur</div></div>
             <div class="org-member"><img src="../images/team/irvan.png" alt="Irvan" class="avatar"><h6>Irvan, S.Kom</h6><div class="role">Komisaris</div></div>
             <div class="org-member"><img src="../images/team/hayat.png" alt="Hayatul" class="avatar"><h6>Hayatul Habirun, S.Kom</h6><div class="role">IT Infrastructure Lead</div></div>
