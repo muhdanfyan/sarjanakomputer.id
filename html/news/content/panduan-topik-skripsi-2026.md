@@ -2,7 +2,7 @@
 title: "Panduan Memilih Topik Skripsi yang Relevan dengan Industri 2026"
 date: 2026-05-20
 category: "Pendidikan"
-image: "/images/news/skripsi.jpg"
+image: "/images/news/skripsi.svg"
 description: "Bingung milih topik skripsi? Simak panduan lengkap memilih judul tugas akhir yang relevan dengan kebutuhan industri teknologi saat ini."
 author: "Tim SKI"
 ---

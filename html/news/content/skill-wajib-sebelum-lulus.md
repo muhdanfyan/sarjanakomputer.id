@@ -2,7 +2,7 @@
 title: "10 Skill yang Wajib Dikuasai Mahasiswa TI Sebelum Lulus"
 date: 2026-05-19
 category: "Pendidikan"
-image: "/images/news/skill-ti.jpg"
+image: "/images/news/skill-ti.svg"
 description: "Biar siap terjun ke industri, kuasai 10 skill teknis dan non-teknis ini sebelum kamu wisuda."
 author: "Tim SKI"
 ---

@@ -2,7 +2,7 @@
 title: "Kisaran Gaji Fresh Graduate IT 2026: Panduan Negosiasi"
 date: 2026-05-14
 category: "Bisnis"
-image: "/images/news/gaji.jpg"
+image: "/images/news/gaji.svg"
 description: "Tahu kisaran gaji sebelum negosiasi itu penting. Ini data gaji fresh graduate IT di Indonesia tahun 2026 berdasarkan role dan kota."
 author: "Tim SKI"
 ---
