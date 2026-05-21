@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/news/">
 
     <!-- Google Search Console -->
     <meta name="google-site-verification" content="8LhHyQEI3JOpMZzNfgizhx15sgzjHvGPAAu7sbXtnME" />
@@ -141,6 +142,8 @@
       history.replaceState(null, '', '/' + window.location.search + window.location.hash);
     }
   </script>
+<!-- Fix URL: strip /news/ from path after redirect -->
+<script>if(window.location.pathname==='/news/'||window.location.pathname==='/news')history.replaceState(null,'','/');</script>
 </head>
 <body>
 

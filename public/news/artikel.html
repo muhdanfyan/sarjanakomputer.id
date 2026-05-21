@@ -55,6 +55,8 @@
         .category-badge.bisnis { background: #fef3c7; color: #d97706; }
         .category-badge.startup { background: #f3e8ff; color: #9333ea; }
     </style>
+    <!-- Fix URL: strip /news/ prefix if present -->
+    <script>(function(){var p=window.location.pathname;if(p.startsWith('/news/'))history.replaceState(null,'',p.slice(5)+window.location.search);})();</script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
