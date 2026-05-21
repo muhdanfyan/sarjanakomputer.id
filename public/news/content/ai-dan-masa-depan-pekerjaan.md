@@ -1,10 +1,11 @@
 ---
 title: "Dampak AI pada Pekerjaan IT: Antara Ancaman dan Peluang"
 date: 2026-05-13
-category: "Teknologi"
-image: "/images/news/ai-job.svg"
-description: "AI mengubah lanskap pekerjaan IT. Sebagai calon sarjana komputer, bagaimana cara kamu tetap relevan di era AI?"
-author: "Tim SKI"
+category: Teknologi
+image: /images/news/whatsapp-image-2026-05-18-at-10.52.54.jpeg
+description: AI mengubah lanskap pekerjaan IT. Sebagai calon sarjana komputer,
+  bagaimana cara kamu tetap relevan di era AI?
+author: Tim SKI
 ---
 
 Ada kekhawatiran di kalangan mahasiswa IT: **"Apakah AI akan menggantikan pekerjaan saya?"** Jawabannya: beberapa pekerjaan akan berubah, tapi banyak peluang baru juga muncul.
