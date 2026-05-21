@@ -1,0 +1,348 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
+  <style is:global>
+    /* ===== News Portal Refinements ===== */
+    .news-hero {
+        padding: 8rem 0 6rem;
+        background: linear-gradient(135deg, #050a20 0%, #0f172a 100%);
+        position: relative;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .news-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: 
+            radial-gradient(circle at 20% 30%, rgba(227,56,106,0.1) 0%, transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(59,130,246,0.05) 0%, transparent 40%);
+    }
+    .news-hero .hero-content { position: relative; z-index: 2; }
+    .news-hero h1 { 
+        font-size: 3.5rem; 
+        font-weight: 800; 
+        letter-spacing: -1.5px;
+        margin-bottom: 1.5rem;
+    }
+    .news-hero p { 
+        font-size: 1.15rem; 
+        color: rgba(255,255,255,0.6); 
+        max-width: 600px;
+        line-height: 1.8;
+    }
+
+    /* Category Buttons */
+    .category-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-top: -2.5rem;
+        position: relative;
+        z-index: 10;
+    }
+    .cat-btn {
+        background: var(--white);
+        border: 1px solid var(--gray-100);
+        padding: 0.6rem 1.4rem;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--gray-600);
+        box-shadow: var(--shadow-sm);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .cat-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+    .cat-btn.active {
+        background: var(--primary);
+        color: var(--white);
+        border-color: var(--primary);
+        box-shadow: 0 10px 20px rgba(49, 46, 95, 0.2);
+    }
+
+    /* Card Designs */
+    .news-grid-container { padding: 4rem 0; }
+    
+    .news-card-v2 {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--gray-100);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        transition: all 0.4s ease;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .news-card-v2:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        border-color: rgba(49, 46, 95, 0.1);
+    }
+    
+    .card-img-wrapper {
+        position: relative;
+        padding-top: 60%;
+        overflow: hidden;
+        background: #f1f5f9;
+    }
+    .card-img-wrapper img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+    }
+    .news-card-v2:hover .card-img-wrapper img { transform: scale(1.1); }
+    
+    .card-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        padding: 0.4rem 0.8rem;
+        background: rgba(255,255,255,0.95);
+        backdrop-filter: blur(4px);
+        border-radius: 50px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: var(--primary);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        z-index: 2;
+    }
+
+    .card-content {
+        padding: 1.75rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .card-meta {
+        font-size: 0.8rem;
+        color: var(--gray-400);
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 800;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+        color: var(--dark);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .card-desc {
+        font-size: 0.9rem;
+        color: var(--gray-500);
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .card-footer {
+        margin-top: auto;
+        padding-top: 1.25rem;
+        border-top: 1px solid var(--gray-50);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .read-link {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+    }
+    .read-link i { transition: transform 0.2s; }
+    .read-link:hover i { transform: translateX(4px); }
+
+    /* Masonry/Featured Section */
+    .featured-section { padding-top: 0; }
+    .featured-card-v2 {
+        background: var(--white);
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid var(--gray-100);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    @media (min-width: 992px) {
+        .featured-card-v2 { flex-direction: row; }
+        .featured-card-v2 .card-img-wrapper { width: 50%; padding-top: 0; min-height: 400px; }
+        .featured-card-v2 .card-content { width: 50%; padding: 3rem; justify-content: center; }
+        .featured-card-v2 .card-title { font-size: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+        .news-hero h1 { font-size: 2.2rem; }
+        .news-hero { padding: 6rem 0 4rem; }
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  </style>
+
+  <!-- ===== HERO ===== -->
+  <section class="news-hero">
+      <div class="container hero-content">
+          <div class="row">
+              <div class="col-lg-8">
+                  <div class="hero-badge"><i class="bi bi-lightning-fill"></i> Portal Berita Teknologi</div>
+                  <h1>Informasi <span>Teknologi</span> Terkini & Insight Digital</h1>
+                  <p>Temukan kabar terbaru seputar AI, Web Development, Cybersecurity, dan tren ekosistem Startup di Indonesia untuk memperluas wawasan digital Anda.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- ===== CATEGORIES ===== -->
+  <section class="section" style="padding:0">
+      <div class="container">
+          <div class="category-nav">
+              <button class="cat-btn active" id="btn-all"><i class="bi bi-grid-fill"></i> Semua</button>
+              <button class="cat-btn" id="btn-Teknologi"><i class="bi bi-cpu-fill"></i> Teknologi</button>
+              <button class="cat-btn" id="btn-Pendidikan"><i class="bi bi-book-fill"></i> Pendidikan</button>
+              <button class="cat-btn" id="btn-Bisnis"><i class="bi bi-briefcase-fill"></i> Karir & Bisnis</button>
+              <button class="cat-btn" id="btn-Startup"><i class="bi bi-rocket-takeoff-fill"></i> Startup</button>
+          </div>
+      </div>
+  </section>
+
+  <!-- ===== FEATURED SECTION ===== -->
+  <section class="section featured-section">
+      <div class="container">
+          <div id="featuredArea">
+              <div class="col-12 text-center py-5">
+                  <div style="width:40px;height:40px;border:3px solid #f1f5f9;border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem"></div>
+                  <p style="color:var(--gray-500);font-weight:500">Menyiapkan berita pilihan...</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <!-- ===== ALL NEWS GRID ===== -->
+  <section class="section section-alt news-grid-container">
+      <div class="container">
+          <div class="d-flex justify-content-between align-items-end mb-5">
+              <div>
+                  <h2 class="section-title" style="margin:0">Eksplorasi Berita</h2>
+                  <p style="color:var(--gray-500);margin:0.25rem 0 0">Arsip lengkap artikel dan publikasi kami</p>
+              </div>
+          </div>
+          <div class="row g-4" id="newsGrid"></div>
+      </div>
+  </section>
+
+  <script is:inline>
+    function openArticle(slug){
+        window.location.href = '/news/artikel?id=' + encodeURIComponent(slug);
+    }
+
+    function formatDate(dateStr){
+        var d = new Date(dateStr);
+        var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+        return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+    }
+
+    function filterNews(cat){
+        document.querySelectorAll('.cat-btn').forEach(function(b){ b.classList.remove('active'); });
+        var targetId = 'btn-' + (cat === 'all' ? 'all' : cat);
+        var btn = document.getElementById(targetId);
+        if(btn) btn.classList.add('active');
+        
+        document.querySelectorAll('.news-item').forEach(function(item){
+            var match = cat === 'all' || (item.dataset.category && item.dataset.category.toLowerCase() === cat.toLowerCase());
+            item.style.display = match ? 'block' : 'none';
+        });
+    }
+
+    document.getElementById('btn-all').onclick = function() { filterNews('all'); };
+    document.getElementById('btn-Teknologi').onclick = function() { filterNews('Teknologi'); };
+    document.getElementById('btn-Pendidikan').onclick = function() { filterNews('Pendidikan'); };
+    document.getElementById('btn-Bisnis').onclick = function() { filterNews('Bisnis'); };
+    document.getElementById('btn-Startup').onclick = function() { filterNews('Startup'); };
+
+    function renderPortal(articles){
+        var featuredArea = document.getElementById('featuredArea');
+        var gridContainer = document.getElementById('newsGrid');
+
+        if (!articles || articles.length === 0) {
+            featuredArea.innerHTML = '<div class="text-center py-5"><p>Belum ada artikel publikasi.</p></div>';
+            return;
+        }
+
+        var first = articles[0];
+        featuredArea.innerHTML = `
+            <div class="featured-card-v2" style="cursor:pointer" onclick="openArticle('${first.slug}')">
+                <div class="card-img-wrapper">
+                    <img src="${first.image.startsWith('/') ? first.image : '/' + first.image}" alt="${first.title}">
+                    <span class="card-badge">${first.category}</span>
+                </div>
+                <div class="card-content">
+                    <div class="card-meta"><i class="bi bi-calendar3"></i> ${formatDate(first.date)}</div>
+                    <h2 class="card-title">${first.title}</h2>
+                    <p class="card-desc">${first.description}</p>
+                    <div class="card-footer">
+                        <span class="read-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        var gridHtml = '';
+        articles.forEach(function(item) {
+            gridHtml += `
+                <div class="col-md-6 col-lg-4 news-item" data-category="${item.category}">
+                    <div class="news-card-v2" onclick="openArticle('${item.slug}')" style="cursor:pointer">
+                        <div class="card-img-wrapper">
+                            <img src="${item.image.startsWith('/') ? item.image : '/' + item.image}" alt="${item.title}">
+                            <span class="card-badge">${item.category}</span>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-meta"><i class="bi bi-calendar3"></i> ${formatDate(item.date)}</div>
+                            <h3 class="card-title">${item.title}</h3>
+                            <p class="card-desc">${item.description}</p>
+                            <div class="card-footer">
+                                <span class="read-link">Baca Artikel <i class="bi bi-arrow-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        gridContainer.innerHTML = gridHtml;
+    }
+
+    (function(){
+        fetch('/news/content/content-index.json')
+            .then(function(r){ return r.json(); })
+            .then(function(data){
+                data.sort(function(a, b){ return new Date(b.date) - new Date(a.date); });
+                renderPortal(data);
+            });
+    })();
+  </script>
+</Layout>

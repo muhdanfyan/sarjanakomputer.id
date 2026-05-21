@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: muhdanfyan/sarjanakomputer.id
+  branch: main
+  base_url: https://news.sarjanakomputer.id
+  auth_endpoint: /api/auth
+
+local_backend: true
+
+media_folder: "public/images/news"
+public_folder: "/images/news"
+
+publish_mode: editorial_workflow
+
+logo_url: https://sarjanakomputer.id/images/logo.png
+display_url: https://sarjanakomputer.id
+
+collections:
+  - name: "berita"
+    label: "Berita & Artikel"
+    label_singular: "Berita"
+    folder: "public/news/content"
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    format: "frontmatter"
+    editor:
+      preview: true
+    fields:
+      - {label: "Judul Berita", name: "title", widget: "string", hint: "Gunakan judul yang menarik dan informatif"}
+      - {label: "Tanggal Publikasi", name: "date", widget: "datetime", format: "YYYY-MM-DD", default: ""}
+      - {label: "Kategori", name: "category", widget: "select", options: ["Teknologi", "Pendidikan", "Bisnis", "Pemerintahan", "Startup", "Karier"]}
+      - {label: "Gambar Sampul", name: "image", widget: "image", required: true, hint: "Rekomendasi ukuran 1200x630 pixel"}
+      - {label: "Deskripsi Singkat", name: "description", widget: "text", hint: "Ringkasan artikel untuk ditampilkan di halaman depan"}
+      - {label: "Konten Artikel", name: "body", widget: "markdown"}
+      - {label: "Penulis", name: "author", widget: "string", default: "Tim Sarjana Komputer"}
