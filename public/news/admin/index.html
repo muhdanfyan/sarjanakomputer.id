@@ -7,9 +7,10 @@
   <link rel="icon" href="https://sarjanakomputer.id/images/favicon.png" type="image/png">
   <link href="config.yml" type="text/yaml" rel="cms-config-url">
   <script>
-    // Force trailing slash for Decap CMS to resolve relative paths (config.yml) correctly
-    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
-      window.history.replaceState(null, '', window.location.pathname + '/' + window.location.search + window.location.hash);
+    // Ensure trailing slash so relative 'config.yml' resolves correctly to /admin/config.yml
+    if (!window.location.pathname.endsWith('/')) {
+      var newPath = window.location.pathname + '/';
+      window.history.replaceState(null, '', newPath + window.location.search + window.location.hash);
     }
   </script>
   <!--
