@@ -10,6 +10,8 @@
     if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
       window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
     }
+    // 2. Prevent auto-init so we can inject inline config
+    window.CMS_MANUAL_INIT = true;
   </script>
 </head>
 <body>
@@ -57,7 +59,6 @@
     };
 
     if (typeof CMS !== 'undefined') {
-      window.CMS_MANUAL_INIT = true;
       CMS.init({ config: cmsConfig });
     } else {
       document.body.innerHTML = '<pre style="color:#c00;padding:2rem">ERROR: Decap CMS failed to load</pre>';
