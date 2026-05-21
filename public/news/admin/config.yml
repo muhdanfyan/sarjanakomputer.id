@@ -5,7 +5,9 @@ backend:
   base_url: https://news.sarjanakomputer.id
   auth_endpoint: /api/auth
 
-media_folder: "html/images/news"
+local_backend: true
+
+media_folder: "public/images/news"
 public_folder: "/images/news"
 
 # Cloudinary media library — akan diaktifkan lagi setelah CMS confirmed working
@@ -30,7 +32,7 @@ collections:
   - name: "berita"
     label: "Berita"
     label_singular: "Berita"
-    folder: "html/news/content"
+    folder: "public/news/content"
     create: true
     slug: "{{slug}}"
     identifier_field: title
