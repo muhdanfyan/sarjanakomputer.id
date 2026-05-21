@@ -5,24 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Panel — Sarjana Komputer</title>
   <link rel="icon" href="https://sarjanakomputer.id/images/logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
-    /* CLEAN & MINIMALIST DASHBOARD THEME */
+    /* ULTRA-CLEAN & ICON-DRIVEN DASHBOARD THEME */
     :root {
       --primary: #312E5F;
       --secondary: #E3386A;
-      --bg-body: #f8fafc;
+      --bg-body: #fdfdfd;
       --bg-sidebar: #ffffff;
-      --text-main: #334155;
-      --text-muted: #64748b;
-      --border-light: #f1f5f9;
-      --border-medium: #e2e8f0;
-      --sidebar-width: 260px;
-      --sidebar-mini: 80px;
-      --header-height: 64px;
-      --radius-lg: 16px;
-      --radius-md: 12px;
+      --text-main: #1e293b;
+      --text-muted: #94a3b8;
+      --border-soft: #f1f5f9;
+      --sidebar-width: 240px;
+      --sidebar-mini: 70px;
+      --header-height: 60px;
+      --radius-ui: 12px;
     }
 
     body {
@@ -30,30 +28,6 @@
       font-family: 'Inter', sans-serif !important;
       color: var(--text-main) !important;
       margin: 0;
-    }
-
-    h1, h2, h3, h4, .nc-app-header-title {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      font-weight: 700 !important;
-    }
-
-    /* --- TOPBAR REFINEMENT --- */
-    header, [class*="AppHeader"] {
-      height: var(--header-height) !important;
-      background: rgba(255, 255, 255, 0.8) !important;
-      backdrop-filter: blur(12px) !important;
-      border-bottom: 1px solid var(--border-light) !important;
-      position: fixed !important;
-      left: var(--sidebar-width) !important;
-      width: calc(100% - var(--sidebar-width)) !important;
-      z-index: 100 !important;
-      transition: all 0.3s ease !important;
-      box-shadow: none !important;
-    }
-
-    body.sidebar-collapsed header {
-      left: var(--sidebar-mini) !important;
-      width: calc(100% - var(--sidebar-mini)) !important;
     }
 
     /* --- SIDEBAR REFINEMENT --- */
@@ -65,201 +39,186 @@
       top: 0 !important;
       left: 0 !important;
       z-index: 110 !important;
-      border-right: 1px solid var(--border-light) !important;
+      border-right: 1px solid var(--border-soft) !important;
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
       display: flex !important;
       flex-direction: column !important;
       box-shadow: none !important;
     }
 
-    body.sidebar-collapsed aside {
-      width: var(--sidebar-mini) !important;
-    }
+    body.sidebar-collapsed aside { width: var(--sidebar-mini) !important; }
 
-    /* Brand Logo Area */
-    .brand-area {
+    /* Compact Brand Logo */
+    .brand-box {
       height: var(--header-height);
       display: flex;
       align-items: center;
-      padding: 0 24px;
-      gap: 12px;
-      border-bottom: 1px solid var(--border-light);
+      padding: 0 20px;
+      gap: 10px;
       overflow: hidden;
       white-space: nowrap;
     }
-    .brand-area img { width: 32px; height: 32px; }
-    .brand-area span { 
-      font-weight: 800; 
-      font-size: 1rem; 
-      color: var(--primary); 
-      letter-spacing: -0.5px;
-    }
-    body.sidebar-collapsed .brand-area span { opacity: 0; }
+    .brand-box img { width: 28px; height: 28px; }
+    .brand-box span { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--primary); letter-spacing: -0.5px; transition: 0.2s; }
+    body.sidebar-collapsed .brand-box span { opacity: 0; }
 
-    /* Navigation Links */
+    /* Sidebar Links with Icons */
     [class*="SidebarNavLink"] {
-      margin: 4px 16px !important;
-      padding: 10px 16px !important;
-      border-radius: var(--radius-md) !important;
+      margin: 4px 12px !important;
+      padding: 10px 14px !important;
+      border-radius: 10px !important;
       color: var(--text-muted) !important;
       font-weight: 500 !important;
-      font-size: 0.9rem !important;
+      font-size: 0.85rem !important;
       transition: all 0.2s !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
       border: none !important;
     }
 
-    [class*="SidebarNavLink"]:hover {
-      background: var(--border-light) !important;
-      color: var(--primary) !important;
+    /* Inject dynamic icons using CSS pseudo-elements for Decap CMS collections */
+    [class*="SidebarNavLink"]::before {
+      font-family: "bootstrap-icons" !important;
+      font-size: 1.1rem;
+      flex-shrink: 0;
     }
+    
+    /* Mapping: Berita -> Newspaper Icon */
+    [class*="SidebarNavLink"][href*="berita"]::before { content: "\F491"; }
+    
+    /* Mapping: Media -> Image Icon (if present) */
+    [class*="SidebarNavLink"][href*="media"]::before { content: "\F433"; }
 
-    [class*="SidebarNavLink-active"], [class*="active"] {
-      background: rgba(49, 46, 95, 0.05) !important;
-      color: var(--primary) !important;
-      font-weight: 600 !important;
-    }
+    [class*="SidebarNavLink"]:hover { background: #f8fafc !important; color: var(--primary) !important; }
+    [class*="SidebarNavLink-active"], [class*="active"] { background: rgba(49, 46, 95, 0.05) !important; color: var(--primary) !important; font-weight: 600 !important; }
 
-    body.sidebar-collapsed [class*="SidebarNavLink"] {
-      justify-content: center !important;
-      padding: 12px 0 !important;
-      margin: 4px 12px !important;
-    }
+    body.sidebar-collapsed [class*="SidebarNavLink"] span { display: none !important; }
+    body.sidebar-collapsed [class*="SidebarNavLink"] { justify-content: center !important; margin: 4px 10px !important; }
 
-    /* --- SIDEBAR TOGGLE --- */
+    /* --- TOGGLE BUTTON --- */
     #sidebar-toggle {
       position: absolute;
-      right: -14px;
-      top: 20px;
-      width: 28px;
-      height: 28px;
+      right: -12px;
+      top: 18px;
+      width: 24px;
+      height: 24px;
       background: var(--white);
       color: var(--text-muted);
-      border-radius: 50%;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border: 1px solid var(--border-medium);
+      border: 1px solid var(--border-soft);
       z-index: 120;
-      transition: all 0.2s;
+      transition: 0.2s;
     }
     #sidebar-toggle:hover { color: var(--primary); border-color: var(--primary); }
+
+    /* --- HEADER & TOPBAR --- */
+    header, [class*="AppHeader"] {
+      height: var(--header-height) !important;
+      background: rgba(255, 255, 255, 0.7) !important;
+      backdrop-filter: blur(10px) !important;
+      border-bottom: 1px solid var(--border-soft) !important;
+      position: fixed !important;
+      left: var(--sidebar-width) !important;
+      width: calc(100% - var(--sidebar-width)) !important;
+      z-index: 100 !important;
+      transition: all 0.3s ease !important;
+      box-shadow: none !important;
+      padding: 0 30px !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    body.sidebar-collapsed header { left: var(--sidebar-mini) !important; width: calc(100% - var(--sidebar-mini)) !important; }
 
     /* --- CONTENT AREA --- */
     main, [class*="AppMainContainer"] {
       margin-left: var(--sidebar-width) !important;
       margin-top: var(--header-height) !important;
-      padding: 2.5rem !important;
+      padding: 2rem 3rem !important;
       transition: all 0.3s ease !important;
     }
-    body.sidebar-collapsed main {
-      margin-left: var(--sidebar-mini) !important;
-    }
+    body.sidebar-collapsed main { margin-left: var(--sidebar-mini) !important; }
 
-    /* Minimalist Cards */
+    /* Elegant Minimalist Cards */
     [class*="Card"], [class*="card"] {
       background: var(--white) !important;
-      border-radius: var(--radius-lg) !important;
-      border: 1px solid var(--border-light) !important;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.02) !important;
-      padding: 24px !important;
-      margin-bottom: 24px !important;
-      transition: all 0.3s ease !important;
+      border-radius: var(--radius-ui) !important;
+      border: 1px solid var(--border-soft) !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.01) !important;
+      padding: 20px !important;
+      margin-bottom: 20px !important;
+      transition: 0.2s ease !important;
     }
-    [class*="Card"]:hover {
-      border-color: var(--border-medium) !important;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.03) !important;
-      transform: translateY(-2px);
-    }
+    [class*="Card"]:hover { border-color: #cbd5e1 !important; transform: translateY(-1px); }
 
-    /* Buttons */
+    /* Clean Buttons */
     button[class*="Button"] {
-      border-radius: 50px !important;
-      padding: 10px 24px !important;
+      border-radius: 8px !important;
+      padding: 8px 18px !important;
       font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      transition: all 0.2s !important;
+      font-size: 0.8rem !important;
+      text-transform: none !important;
+      letter-spacing: 0;
     }
-    button[class*="primary"] {
-      background: var(--primary) !important;
-      box-shadow: 0 4px 12px rgba(49, 46, 95, 0.15) !important;
-    }
-    button[class*="primary"]:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 15px rgba(49, 46, 95, 0.2) !important;
-    }
+    button[class*="primary"] { background: var(--primary) !important; border: none !important; }
 
-    /* --- BRAND BAR --- */
-    #brand-bar {
+    /* Brand Accent Line */
+    #top-line {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
+      top: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
       z-index: 1001;
     }
 
-    /* Login Screen Refinement */
-    [class*="Login-page"] {
-      background: #0f172a !important;
-    }
-    [class*="Login-card"] {
-      border-radius: 24px !important;
-      padding: 3.5rem !important;
-      border: none !important;
+    /* Editor Styling */
+    [class*="EditorContainer"] {
+      border-radius: 12px !important;
+      border: 1px solid var(--border-soft) !important;
+      overflow: hidden !important;
     }
   </style>
 </head>
 <body>
-  <div id="brand-bar"></div>
+  <div id="top-line"></div>
   <script src="/js/decap-cms.js"></script>
   <script>
     if (typeof CMS !== 'undefined') {
-      // 1:1 Live Preview Styles
+      // Minimal Preview
       CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap");
       CMS.registerPreviewStyle(`
-        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #334155; padding: 3rem 1rem; }
-        .article-preview { 
-          max-width: 800px; 
-          margin: 0 auto; 
-          background: #fff; 
-          border-radius: 20px; 
-          overflow: hidden; 
-          box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-          border: 1px solid #f1f5f9;
-        }
-        .hero-img { width: 100%; height: 380px; object-fit: cover; }
-        .content { padding: 3rem; }
-        .badge { display: inline-block; padding: 0.4rem 1rem; background: rgba(227, 56, 106, 0.08); color: #E3386A; border-radius: 50px; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; margin-bottom: 1.25rem; }
-        .title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.25rem; font-weight: 800; color: #1e293b; line-height: 1.25; margin-bottom: 1.5rem; }
-        .info { display: flex; gap: 1.5rem; color: #64748b; font-size: 0.9rem; margin-bottom: 2rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 1.5rem; }
-        .body-text { line-height: 1.8; font-size: 1.05rem; }
-        .body-text h2 { font-family: 'Plus Jakarta Sans', sans-serif; color: #1e293b; margin-top: 2.5rem; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; padding: 2rem; }
+        .p-card { max-width: 750px; margin: 0 auto; }
+        .p-badge { color: #E3386A; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
+        .p-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
+        .p-img { width: 100%; border-radius: 12px; margin-bottom: 2rem; height: 350px; object-fit: cover; }
+        .p-body { line-height: 1.7; font-size: 1rem; color: #475569; }
       `, { raw: true });
 
-      // Sidebar & UI Injection
+      // Sidebar & Icon Logic
       document.addEventListener('DOMContentLoaded', function() {
         const observer = new MutationObserver(() => {
           const sidebar = document.querySelector('aside, [class*="Sidebar-container"]');
-          if (sidebar && !document.getElementById('sidebar-brand')) {
-            // Brand Logo
+          if (sidebar && !document.getElementById('brand-header')) {
             const brand = document.createElement('div');
-            brand.id = 'sidebar-brand';
-            brand.className = 'brand-area';
-            brand.innerHTML = `<img src="https://sarjanakomputer.id/images/logo.png" alt="SKI"><span>Sarjana Komputer</span>`;
+            brand.id = 'brand-header';
+            brand.className = 'brand-box';
+            brand.innerHTML = `<img src="https://sarjanakomputer.id/images/logo.png" alt="S"><span>Sarjana <strong>Komputer</strong></span>`;
             sidebar.insertBefore(brand, sidebar.firstChild);
 
-            // Collapse Toggle
             const toggle = document.createElement('div');
             toggle.id = 'sidebar-toggle';
-            toggle.innerHTML = '<i class="bi bi-chevron-left"></i>';
+            toggle.innerHTML = '<i class="bi bi-list"></i>';
             sidebar.appendChild(toggle);
             
             toggle.onclick = () => {
               document.body.classList.toggle('sidebar-collapsed');
               toggle.innerHTML = document.body.classList.contains('sidebar-collapsed') 
-                ? '<i class="bi bi-chevron-right"></i>' : '<i class="bi bi-chevron-left"></i>';
+                ? '<i class="bi bi-grid-fill"></i>' : '<i class="bi bi-list"></i>';
             };
           }
         });
@@ -272,23 +231,17 @@
           var image = entry.getIn(['data', 'image']);
           var bgImage = image ? this.props.getAsset(image) : '';
           
-          return h('div', { className: 'article-preview' },
-            bgImage ? h('img', { src: bgImage.toString(), className: 'hero-img' }) : null,
-            h('div', { className: 'content' },
-              h('span', { className: 'badge' }, entry.getIn(['data', 'category']) || 'Teknologi'),
-              h('h1', { className: 'title' }, entry.getIn(['data', 'title']) || 'Judul Artikel'),
-              h('div', { className: 'info' },
-                h('span', {}, h('i', { className: 'bi bi-calendar3' }), ' ' + (entry.getIn(['data', 'date']) || 'Tanggal')),
-                h('span', {}, h('i', { className: 'bi bi-person' }), ' ' + (entry.getIn(['data', 'author']) || 'Admin'))
-              ),
-              h('div', { className: 'body-text' }, this.props.widgetFor('body'))
-            )
+          return h('div', { className: 'p-card' },
+            h('span', { className: 'p-badge' }, entry.getIn(['data', 'category'])),
+            h('h1', { className: 'p-title' }, entry.getIn(['data', 'title'])),
+            bgImage ? h('img', { src: bgImage.toString(), className: 'p-img' }) : null,
+            h('div', { className: 'p-body' }, this.props.widgetFor('body'))
           );
         }
       });
       CMS.registerPreviewTemplate("berita", NewsPreview);
     } else {
-      document.body.innerHTML = '<div style="background:#0f172a;height:100vh;display:flex;align-items:center;justify-content:center;color:#fff;font-family:sans-serif;">CMS Loading Error</div>';
+      document.body.innerHTML = '<div style="background:#0f172a;height:100vh;display:flex;align-items:center;justify-content:center;color:#fff;">Loading...</div>';
     }
   </script>
 </body>
