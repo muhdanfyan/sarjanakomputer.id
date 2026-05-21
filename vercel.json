@@ -4,6 +4,10 @@
   "outputDirectory": "dist",
   "framework": "astro",
   "redirects": [
+    { "source": "/about.html", "destination": "/about/", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact/", "permanent": true },
+    { "source": "/services.html", "destination": "/services/", "permanent": true },
+    { "source": "/struktur-organisasi.html", "destination": "/struktur-organisasi/", "permanent": true },
     { "source": "/", "destination": "/profil/", "permanent": false, "has": [{ "type": "host", "value": "profil.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/aplikasi/", "permanent": false, "has": [{ "type": "host", "value": "aplikasi.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/automasi/", "permanent": false, "has": [{ "type": "host", "value": "automasi.sarjanakomputer.id" }] },
