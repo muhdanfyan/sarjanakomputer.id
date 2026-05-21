@@ -1,3 +1,5 @@
+.astro/
+.vercel/
 node_modules/
 dist/
 public/news/content/
