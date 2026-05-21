@@ -19,6 +19,8 @@
 
     { "source": "/news/:path*", "destination": "/:path*", "permanent": true, "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] },
 
+    { "source": "/admin", "destination": "/admin/", "permanent": true, "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] },
+
     { "source": "/", "destination": "/profil/", "permanent": false, "has": [{ "type": "host", "value": "profil.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/aplikasi/", "permanent": false, "has": [{ "type": "host", "value": "aplikasi.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/automasi/", "permanent": false, "has": [{ "type": "host", "value": "automasi.sarjanakomputer.id" }] },
