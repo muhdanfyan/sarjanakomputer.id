@@ -183,6 +183,25 @@ const waLink = "https://wa.me/628xx";
     document.querySelector('.navbar-custom')?.classList.toggle('navbar-scrolled',window.scrollY>50);
   });
 </script>
+<!-- Fallback: if AOS fails to load, make all elements visible -->
+<script>
+  setTimeout(function(){
+    if(typeof AOS === 'undefined' || !AOS){
+      document.querySelectorAll('[data-aos]').forEach(function(el){
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  }, 100);
+  setTimeout(function(){
+    if(typeof AOS === 'undefined' || !AOS){
+      document.querySelectorAll('[data-aos]').forEach(function(el){
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  }, 1000);
+</script>
 <script>
   if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
 </script>
