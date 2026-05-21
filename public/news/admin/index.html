@@ -6,49 +6,61 @@
   <title>Content Manager — SKI News</title>
   <link rel="icon" href="https://sarjanakomputer.id/images/favicon.png" type="image/png">
   <script>
-    (function() {
-      var h = window.location.hostname;
-      var p = window.location.pathname;
-      var s = window.location.search;
-      var f = window.location.hash;
-      var changed = false;
-
-      // 1. Remove redundant /news/ prefix on news subdomain
-      if (h.startsWith('news.') && p.startsWith('/news/')) {
-        p = p.replace('/news/', '/');
-        changed = true;
-      }
-
-      // 2. Force trailing slash for correct relative path resolution
-      if (!p.endsWith('/') && !p.endsWith('.html')) {
-        p += '/';
-        changed = true;
-      }
-
-      if (changed) {
-        window.location.replace(window.location.origin + p + s + f);
-      }
-    })();
+    // 1. Force trailing slash for correct relative path resolution
+    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
+      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+    }
   </script>
-  <script>
-    // Add cache buster to config URL
-    var link = document.createElement('link');
-    link.rel = 'cms-config-url';
-    link.type = 'text/yaml';
-    link.href = 'https://sarjanakomputer.id/news/admin/config.yml?cb=' + new Date().getTime();
-    document.head.appendChild(link);
-  </script>
-  <!--
-    Decap CMS 3.3.0 — versi stabil. Versi ≥3.8.1 memiliki Immer.js toJS() regression.
-    Config otomatis di-load dari config.yml (load_config_file: default true).
-  -->
 </head>
 <body>
   <script src="/js/decap-cms.js"></script>
   <script>
-    // Decap CMS v3 auto-inits after loading the script.
-    if (typeof CMS === 'undefined') {
-      document.body.innerHTML = '<pre style="color:#c00;padding:2rem">ERROR: Decap CMS failed to load (CMS object not found)</pre>';
+    // INLINE CONFIGURATION - Bypasses config.yml fetch (Fixes 404 errors)
+    var cmsConfig = {
+      backend: {
+        name: "github",
+        repo: "muhdanfyan/sarjanakomputer.id",
+        branch: "main",
+        base_url: "https://news.sarjanakomputer.id",
+        auth_endpoint: "/api/auth"
+      },
+      local_backend: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1',
+      media_folder: "public/images/news",
+      public_folder: "/images/news",
+      publish_mode: "editorial_workflow",
+      logo_url: "https://sarjanakomputer.id/images/logo.png",
+      display_url: "https://sarjanakomputer.id",
+      collections: [
+        {
+          name: "berita",
+          label: "Berita",
+          label_singular: "Berita",
+          folder: "public/news/content",
+          create: true,
+          slug: "{{slug}}",
+          identifier_field: "title",
+          format: "frontmatter",
+          editor: {
+            preview: false
+          },
+          fields: [
+            { label: "Judul", name: "title", widget: "string" },
+            { label: "Tanggal", name: "date", widget: "datetime", format: "YYYY-MM-DD" },
+            { label: "Kategori", name: "category", widget: "select", options: ["Teknologi", "Pendidikan", "Bisnis", "Pemerintahan", "Startup"] },
+            { label: "Gambar Sampul", name: "image", widget: "image", required: false },
+            { label: "Deskripsi Singkat", name: "description", widget: "text" },
+            { label: "Konten", name: "body", widget: "markdown" },
+            { label: "Penulis", name: "author", widget: "string", default: "Tim SKI" }
+          ]
+        }
+      ]
+    };
+
+    if (typeof CMS !== 'undefined') {
+      window.CMS_MANUAL_INIT = true;
+      CMS.init({ config: cmsConfig });
+    } else {
+      document.body.innerHTML = '<pre style="color:#c00;padding:2rem">ERROR: Decap CMS failed to load</pre>';
     }
   </script>
 </body>
