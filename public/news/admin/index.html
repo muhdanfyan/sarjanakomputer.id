@@ -6,19 +6,31 @@
   <title>Content Manager — SKI News</title>
   <link rel="icon" href="https://sarjanakomputer.id/images/favicon.png" type="image/png">
   <script>
-    // 1. Force trailing slash for correct relative path resolution
-    if (!window.location.pathname.endsWith('/') && !window.location.pathname.endsWith('.html')) {
-      window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
-    }
-    // 2. Dynamically set config URL to be absolute-path-safe for subdomains
-    var configLink = document.createElement('link');
-    configLink.rel = 'cms-config-url';
-    configLink.type = 'text/yaml';
-    // If on news subdomain, config is at /admin/config.yml. Otherwise (local) at /news/admin/config.yml
-    var isSubdomain = window.location.hostname.startsWith('news.');
-    configLink.href = isSubdomain ? '/admin/config.yml' : '/news/admin/config.yml';
-    document.head.appendChild(configLink);
+    (function() {
+      var h = window.location.hostname;
+      var p = window.location.pathname;
+      var s = window.location.search;
+      var f = window.location.hash;
+      var changed = false;
+
+      // 1. Remove redundant /news/ prefix on news subdomain
+      if (h.startsWith('news.') && p.startsWith('/news/')) {
+        p = p.replace('/news/', '/');
+        changed = true;
+      }
+
+      // 2. Force trailing slash for correct relative path resolution
+      if (!p.endsWith('/') && !p.endsWith('.html')) {
+        p += '/';
+        changed = true;
+      }
+
+      if (changed) {
+        window.location.replace(window.location.origin + p + s + f);
+      }
+    })();
   </script>
+  <link href="config.yml" type="text/yaml" rel="cms-config-url">
   <!--
     Decap CMS 3.3.0 — versi stabil. Versi ≥3.8.1 memiliki Immer.js toJS() regression.
     Config otomatis di-load dari config.yml (load_config_file: default true).
