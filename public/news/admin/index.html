@@ -30,7 +30,14 @@
       }
     })();
   </script>
-  <link href="https://sarjanakomputer.id/news/admin/config.yml" type="text/yaml" rel="cms-config-url">
+  <script>
+    // Add cache buster to config URL
+    var link = document.createElement('link');
+    link.rel = 'cms-config-url';
+    link.type = 'text/yaml';
+    link.href = 'https://sarjanakomputer.id/news/admin/config.yml?cb=' + new Date().getTime();
+    document.head.appendChild(link);
+  </script>
   <!--
     Decap CMS 3.3.0 — versi stabil. Versi ≥3.8.1 memiliki Immer.js toJS() regression.
     Config otomatis di-load dari config.yml (load_config_file: default true).
