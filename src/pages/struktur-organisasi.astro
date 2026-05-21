@@ -1,0 +1,101 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="CV. Sarjana Komputer Indonesia — Struktur Organisasi">
+<!-- ========== HEADER ========== -->
+    <div class="page-header">
+        <div class="container page-header-content">
+            <a href="index.html" class="back-link"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
+            <h1>Struktur Organisasi</h1>
+            <p>CV. Sarjana Komputer Indonesia</p>
+        </div>
+    </div>
+
+    <!-- ========== TEAM GRID ========== -->
+    <section>
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <div class="section-label">Tim Kami</div>
+            </div>
+            <div class="team-grid" data-aos="fade-up">
+                <!-- Muhdan Fyan -->
+                <div class="team-card">
+                    <img loading="lazy" src="images/team/direktur.webp" alt="Muhdan Fyan" class="team-card-img">
+                    <div class="tc-body">
+                        <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
+                        <div class="role-badge">Direktur</div>
+                        <p>Ahli strategi dan manajemen proyek, mengarahkan kolaborasi untuk mencapai tujuan transformasi digital.</p>
+                    </div>
+                </div>
+                <!-- Irvan -->
+                <div class="team-card">
+                    <img loading="lazy" src="images/team/irvan.webp" alt="Irvan" class="team-card-img">
+                    <div class="tc-body">
+                        <h5>Irvan, S.Kom</h5>
+                        <div class="role-badge">Komisaris</div>
+                        <p>Pengawas dan penasehat perusahaan, memastikan arah strategis berjalan sesuai visi.</p>
+                    </div>
+                </div>
+                <!-- Hayatul -->
+                <div class="team-card">
+                    <img loading="lazy" src="images/team/hayat.webp" alt="Hayatul" class="team-card-img">
+                    <div class="tc-body">
+                        <h5>Hayatul Habirun, S.Kom</h5>
+                        <div class="role-badge">IT Infrastructure Lead</div>
+                        <p>Spesialis jaringan dan infrastruktur, menjaga stabilitas konektivitas digital.</p>
+                    </div>
+                </div>
+                <!-- Arif Rizal -->
+                <div class="team-card">
+                    <img loading="lazy" src="images/team/arif-rizal.webp" alt="Arif Rizal" class="team-card-img">
+                    <div class="tc-body">
+                        <h5>Arif Rizal</h5>
+                        <div class="role-badge">Backend &amp; QA Engineer</div>
+                        <p>Pengembang backend sekaligus quality assurance, memastikan kode berkualitas dan sistem stabil.</p>
+                    </div>
+                </div>
+                <!-- Ahmad Dahsan -->
+                <div class="team-card">
+                    <img loading="lazy" src="images/team/ahmad-dahsan.webp" alt="Ahmad Dahsan" class="team-card-img">
+                    <div class="tc-body">
+                        <h5>Ahmad Dahsan</h5>
+                        <div class="role-badge">DevOps &amp; Software Engineer</div>
+                        <p>Tenaga ahli di bidang DevOps dan pengembangan software, mengelola infrastruktur dan pipeline deployment.</p>
+                    </div>
+                </div>
+                <!-- Andi Rifqial -->
+                <div class="team-card">
+                    <img loading="lazy" src="images/team/andi-rifqial-nur.webp" alt="Andi Rifqial" class="team-card-img">
+                    <div class="tc-body">
+                        <h5>Andi Rifqial Nur</h5>
+                        <div class="role-badge">Software Engineer</div>
+                        <p>Software engineer dengan fokus pada pengembangan aplikasi dan antarmuka yang modern dan efisien.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info tambahan -->
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <div class="info-card">
+                        <h4><i class="bi bi-info-circle"></i> Tentang Tim</h4>
+                        <ul>
+                            <li><i class="bi bi-building"></i> <strong>Perusahaan:</strong> CV. Sarjana Komputer Indonesia</li>
+                            <li><i class="bi bi-geo-alt"></i> <strong>Lokasi:</strong> Baubau, Sulawesi Tenggara</li>
+                            <li><i class="bi bi-people"></i> <strong>Total Personil:</strong> 6 orang</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ once: true, duration: 600, offset: 40 });</script>
+<script>
+if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
+</script>
+</Layout>

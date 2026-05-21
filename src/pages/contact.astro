@@ -1,33 +1,9 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="utf-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak — CV. Sarjana Komputer Indonesia</title>
-    <meta name="description" content="Hubungi CV. Sarjana Komputer Indonesia - Baubau, Sulawesi Tenggara">
-    <link rel="shortcut icon" href="images/logo.png" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary: #312E5F; --secondary: #E3386A; --dark: #1A1838; --gray-500: #64748b; --gray-700: #334155; --gradient: linear-gradient(135deg, #312E5F 0%, #E3386A 100%); }
-        body { font-family: 'Inter', sans-serif; color: var(--gray-700); }
-        h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: var(--dark); }
-        .page-header { background: var(--gradient); padding: 6rem 0 3rem; color: white; text-align: center; }
-        .page-header h1 { color: white; font-size: 2.5rem; }
-        .back-link { color: rgba(255,255,255,0.8); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; }
-        .back-link:hover { color: white; }
-        section { padding: 4rem 0; }
-    </style>
-  <link rel="manifest" href="/manifest.json">
-  <script defer src="/_vercel/insights/script.js"></script>
-</head>
-<body>
-    <div class="page-header">
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="CV. Sarjana Komputer Indonesia — Kontak">
+<div class="page-header">
         <div class="container">
             <a href="index.html" class="back-link"><i class="bi bi-arrow-left"></i> Kembali ke Beranda</a>
             <h1>Hubungi Kami</h1>
@@ -88,5 +64,4 @@
 <script>
 if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}
 </script>
-</body>
-</html>
+</Layout>

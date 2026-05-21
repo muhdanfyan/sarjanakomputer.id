@@ -1,0 +1,25 @@
+{
+  "name": "sarjanakomputer.id",
+  "version": "2.0.0",
+  "description": "CV. Sarjana Komputer Indonesia \u2014 Solusi IT & Pengembangan SDM Digital",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhdanfyan/sarjanakomputer.id.git"
+  },
+  "keywords": [
+    "IT",
+    "solusi digital",
+    "CV Sarjana Komputer Indonesia"
+  ],
+  "author": "Muhdan Fyan Syah Sofian",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "astro": "^6.3.6"
+  }
+}

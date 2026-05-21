@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "",
-  "outputDirectory": "html",
-  "framework": null,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "astro",
   "redirects": [
     { "source": "/", "destination": "/profil/", "permanent": false, "has": [{ "type": "host", "value": "profil.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/aplikasi/", "permanent": false, "has": [{ "type": "host", "value": "aplikasi.sarjanakomputer.id" }] },
