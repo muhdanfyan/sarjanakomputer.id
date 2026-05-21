@@ -8,7 +8,6 @@
     { "source": "/", "destination": "/aplikasi/", "permanent": false, "has": [{ "type": "host", "value": "aplikasi.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/automasi/", "permanent": false, "has": [{ "type": "host", "value": "automasi.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/academy/", "permanent": false, "has": [{ "type": "host", "value": "academy.sarjanakomputer.id" }] },
-    { "source": "/", "destination": "/blog/", "permanent": false, "has": [{ "type": "host", "value": "blog.sarjanakomputer.id" }] },
     { "source": "/", "destination": "/news/", "permanent": false, "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] },
     { "source": "/admin/", "destination": "/admin", "permanent": true, "has": [{ "type": "host", "value": "news.sarjanakomputer.id" }] }
   ],
