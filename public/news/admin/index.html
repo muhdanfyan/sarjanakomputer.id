@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Panel — Sarjana Komputer</title>
+  <title>Admin — Sarjana Komputer</title>
   <link rel="icon" href="https://sarjanakomputer.id/images/logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
-    /* ULTRA-CLEAN & ICON-DRIVEN DASHBOARD THEME */
+    /* HIGH-PRECISION COMPACT DASHBOARD THEME */
     :root {
       --primary: #312E5F;
       --secondary: #E3386A;
-      --bg-body: #fdfdfd;
-      --bg-sidebar: #ffffff;
-      --text-main: #1e293b;
-      --text-muted: #94a3b8;
-      --border-soft: #f1f5f9;
-      --sidebar-width: 240px;
-      --sidebar-mini: 70px;
-      --header-height: 60px;
-      --radius-ui: 12px;
+      --bg-body: #ffffff;
+      --bg-sidebar: #fafafa;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border-color: #eeeeee;
+      --sidebar-width: 220px;
+      --sidebar-mini: 60px;
+      --header-height: 48px; /* Compact Header */
+      --radius-ui: 8px; /* Precise corners */
     }
 
     body {
@@ -28,9 +28,10 @@
       font-family: 'Inter', sans-serif !important;
       color: var(--text-main) !important;
       margin: 0;
+      overflow-x: hidden;
     }
 
-    /* --- SIDEBAR REFINEMENT --- */
+    /* --- SIDEBAR: COMPACT & FIXED --- */
     aside, [class*="Sidebar-container"] {
       width: var(--sidebar-width) !important;
       background: var(--bg-sidebar) !important;
@@ -38,187 +39,238 @@
       position: fixed !important;
       top: 0 !important;
       left: 0 !important;
-      z-index: 110 !important;
-      border-right: 1px solid var(--border-soft) !important;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      z-index: 1000 !important;
+      border-right: 1px solid var(--border-color) !important;
+      transition: width 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
       display: flex !important;
       flex-direction: column !important;
-      box-shadow: none !important;
     }
 
     body.sidebar-collapsed aside { width: var(--sidebar-mini) !important; }
 
-    /* Compact Brand Logo */
-    .brand-box {
+    .brand-mini {
       height: var(--header-height);
       display: flex;
       align-items: center;
-      padding: 0 20px;
-      gap: 10px;
-      overflow: hidden;
+      padding: 0 16px;
+      gap: 8px;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .brand-mini img { width: 20px; height: 20px; }
+    .brand-mini span { 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      font-weight: 700; 
+      font-size: 0.85rem; 
+      color: var(--primary); 
       white-space: nowrap;
+      opacity: 1;
+      transition: opacity 0.2s;
     }
-    .brand-box img { width: 28px; height: 28px; }
-    .brand-box span { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 0.95rem; color: var(--primary); letter-spacing: -0.5px; transition: 0.2s; }
-    body.sidebar-collapsed .brand-box span { opacity: 0; }
+    body.sidebar-collapsed .brand-mini span { opacity: 0; pointer-events: none; }
 
-    /* Sidebar Links with Icons */
+    /* Compact Nav Links */
     [class*="SidebarNavLink"] {
-      margin: 4px 12px !important;
-      padding: 10px 14px !important;
-      border-radius: 10px !important;
+      margin: 2px 8px !important;
+      padding: 8px 12px !important;
+      border-radius: 6px !important;
       color: var(--text-muted) !important;
+      font-size: 0.8rem !important;
       font-weight: 500 !important;
-      font-size: 0.85rem !important;
-      transition: all 0.2s !important;
-      display: flex !important;
-      align-items: center !important;
-      gap: 12px !important;
-      border: none !important;
+      transition: all 0.15s ease !important;
     }
-
-    /* Inject dynamic icons using CSS pseudo-elements for Decap CMS collections */
     [class*="SidebarNavLink"]::before {
-      font-family: "bootstrap-icons" !important;
-      font-size: 1.1rem;
-      flex-shrink: 0;
+      font-family: "bootstrap-icons";
+      font-size: 1rem;
+      margin-right: 10px;
     }
-    
-    /* Mapping: Berita -> Newspaper Icon */
     [class*="SidebarNavLink"][href*="berita"]::before { content: "\F491"; }
     
-    /* Mapping: Media -> Image Icon (if present) */
-    [class*="SidebarNavLink"][href*="media"]::before { content: "\F433"; }
-
-    [class*="SidebarNavLink"]:hover { background: #f8fafc !important; color: var(--primary) !important; }
-    [class*="SidebarNavLink-active"], [class*="active"] { background: rgba(49, 46, 95, 0.05) !important; color: var(--primary) !important; font-weight: 600 !important; }
+    [class*="SidebarNavLink"]:hover { background: #f1f5f9 !important; color: var(--primary) !important; }
+    [class*="SidebarNavLink-active"], [class*="active"] { 
+      background: #fff !important; 
+      color: var(--primary) !important; 
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05) !important;
+      font-weight: 600 !important;
+    }
 
     body.sidebar-collapsed [class*="SidebarNavLink"] span { display: none !important; }
-    body.sidebar-collapsed [class*="SidebarNavLink"] { justify-content: center !important; margin: 4px 10px !important; }
+    body.sidebar-collapsed [class*="SidebarNavLink"] { justify-content: center !important; margin: 2px 6px !important; padding: 10px 0 !important; }
+    body.sidebar-collapsed [class*="SidebarNavLink"]::before { margin-right: 0; }
 
-    /* --- TOGGLE BUTTON --- */
+    /* --- HEADER: FIXED & MINIMAL --- */
+    header, [class*="AppHeader"] {
+      height: var(--header-height) !important;
+      background: rgba(255, 255, 255, 0.8) !important;
+      backdrop-filter: blur(16px) saturate(180%) !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      position: fixed !important;
+      left: var(--sidebar-width) !important;
+      width: calc(100% - var(--sidebar-width)) !important;
+      z-index: 999 !important;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      padding: 0 1.5rem !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      box-shadow: none !important;
+    }
+
+    [class*="AppHeader-container"] {
+      padding: 0 !important;
+      max-width: none !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    /* Style the CMS Title/Breadcrumbs */
+    [class*="AppHeader-title"] {
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-size: 0.85rem !important;
+      font-weight: 700 !important;
+      color: var(--text-main) !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    [class*="AppHeader-title"]::before {
+      content: 'Admin';
+      font-weight: 500;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    [class*="AppHeader-title"]::after {
+      content: '/';
+      color: #ddd;
+      margin: 0 2px;
+    }
+
+    /* Custom Header Right Side */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .user-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      background: #f1f5f9;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .user-pill i { font-size: 0.9rem; }
+
+    body.sidebar-collapsed header { left: var(--sidebar-mini) !important; width: calc(100% - var(--sidebar-mini)) !important; }
+
+    /* --- CONTENT AREA: ZERO WASTE SPACE --- */
+    main, [class*="AppMainContainer"] {
+      margin-left: var(--sidebar-width) !important;
+      margin-top: var(--header-height) !important;
+      padding: 1.5rem !important; /* Tightened padding */
+      transition: all 0.2s ease !important;
+      max-width: none !important;
+    }
+    body.sidebar-collapsed main { margin-left: var(--sidebar-mini) !important; }
+
+    /* Precise List Cards */
+    [class*="Card"], [class*="card"] {
+      background: #fff !important;
+      border-radius: var(--radius-ui) !important;
+      border: 1px solid var(--border-color) !important;
+      box-shadow: none !important;
+      padding: 12px 16px !important; /* Reduced from 24px */
+      margin-bottom: 8px !important; /* Tighter gap */
+      transition: border-color 0.2s ease !important;
+    }
+    [class*="Card"]:hover { border-color: #cbd5e1 !important; background-color: #fcfcfc !important; }
+
+    /* Compact Buttons */
+    button[class*="Button"] {
+      border-radius: 4px !important;
+      padding: 6px 14px !important;
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      text-transform: none !important;
+    }
+    button[class*="primary"] { background: var(--primary) !important; }
+
+    /* Sidebar Toggle */
     #sidebar-toggle {
       position: absolute;
-      right: -12px;
-      top: 18px;
-      width: 24px;
-      height: 24px;
-      background: var(--white);
-      color: var(--text-muted);
-      border-radius: 6px;
+      right: -10px;
+      top: 12px;
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      border: 1px solid var(--border-soft);
-      z-index: 120;
-      transition: 0.2s;
+      z-index: 1100;
+      font-size: 0.7rem;
+      color: var(--text-muted);
     }
     #sidebar-toggle:hover { color: var(--primary); border-color: var(--primary); }
 
-    /* --- HEADER & TOPBAR --- */
-    header, [class*="AppHeader"] {
-      height: var(--header-height) !important;
-      background: rgba(255, 255, 255, 0.7) !important;
-      backdrop-filter: blur(10px) !important;
-      border-bottom: 1px solid var(--border-soft) !important;
-      position: fixed !important;
-      left: var(--sidebar-width) !important;
-      width: calc(100% - var(--sidebar-width)) !important;
-      z-index: 100 !important;
-      transition: all 0.3s ease !important;
-      box-shadow: none !important;
-      padding: 0 30px !important;
-      display: flex !important;
-      align-items: center !important;
-    }
-
-    body.sidebar-collapsed header { left: var(--sidebar-mini) !important; width: calc(100% - var(--sidebar-mini)) !important; }
-
-    /* --- CONTENT AREA --- */
-    main, [class*="AppMainContainer"] {
-      margin-left: var(--sidebar-width) !important;
-      margin-top: var(--header-height) !important;
-      padding: 2rem 3rem !important;
-      transition: all 0.3s ease !important;
-    }
-    body.sidebar-collapsed main { margin-left: var(--sidebar-mini) !important; }
-
-    /* Elegant Minimalist Cards */
-    [class*="Card"], [class*="card"] {
-      background: var(--white) !important;
-      border-radius: var(--radius-ui) !important;
-      border: 1px solid var(--border-soft) !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.01) !important;
-      padding: 20px !important;
-      margin-bottom: 20px !important;
-      transition: 0.2s ease !important;
-    }
-    [class*="Card"]:hover { border-color: #cbd5e1 !important; transform: translateY(-1px); }
-
-    /* Clean Buttons */
-    button[class*="Button"] {
-      border-radius: 8px !important;
-      padding: 8px 18px !important;
-      font-weight: 600 !important;
-      font-size: 0.8rem !important;
-      text-transform: none !important;
-      letter-spacing: 0;
-    }
-    button[class*="primary"] { background: var(--primary) !important; border: none !important; }
-
-    /* Brand Accent Line */
-    #top-line {
-      position: fixed;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      z-index: 1001;
-    }
-
-    /* Editor Styling */
+    /* Editor Spacing */
     [class*="EditorContainer"] {
-      border-radius: 12px !important;
-      border: 1px solid var(--border-soft) !important;
-      overflow: hidden !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: var(--radius-ui) !important;
+    }
+
+    /* Responsive Grid Fix */
+    @media (max-width: 768px) {
+      main, [class*="AppMainContainer"] { padding: 1rem !important; }
+      aside { width: var(--sidebar-mini) !important; }
+      header { left: var(--sidebar-mini) !important; width: calc(100% - var(--sidebar-mini)) !important; }
+      main { margin-left: var(--sidebar-mini) !important; }
+      .brand-mini span { display: none; }
     }
   </style>
 </head>
 <body>
-  <div id="top-line"></div>
   <script src="/js/decap-cms.js"></script>
   <script>
     if (typeof CMS !== 'undefined') {
-      // Minimal Preview
+      // Precise Preview
       CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap");
       CMS.registerPreviewStyle(`
-        body { font-family: 'Inter', sans-serif; background: #fff; color: #1e293b; padding: 2rem; }
-        .p-card { max-width: 750px; margin: 0 auto; }
-        .p-badge { color: #E3386A; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
-        .p-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; }
-        .p-img { width: 100%; border-radius: 12px; margin-bottom: 2rem; height: 350px; object-fit: cover; }
-        .p-body { line-height: 1.7; font-size: 1rem; color: #475569; }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: #0f172a; padding: 2rem 1rem; }
+        .preview-box { max-width: 700px; margin: 0 auto; }
+        .p-cat { color: #E3386A; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.25rem; display: block; }
+        .p-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; letter-spacing: -0.5px; }
+        .p-img { width: 100%; border-radius: 6px; margin-bottom: 1.5rem; height: 300px; object-fit: cover; }
+        .p-body { line-height: 1.6; font-size: 0.95rem; color: #334155; }
       `, { raw: true });
 
-      // Sidebar & Icon Logic
+      // Observer for Dynamic UI
       document.addEventListener('DOMContentLoaded', function() {
         const observer = new MutationObserver(() => {
           const sidebar = document.querySelector('aside, [class*="Sidebar-container"]');
-          if (sidebar && !document.getElementById('brand-header')) {
+          if (sidebar && !document.getElementById('compact-brand')) {
             const brand = document.createElement('div');
-            brand.id = 'brand-header';
-            brand.className = 'brand-box';
-            brand.innerHTML = `<img src="https://sarjanakomputer.id/images/logo.png" alt="S"><span>Sarjana <strong>Komputer</strong></span>`;
+            brand.id = 'compact-brand';
+            brand.className = 'brand-mini';
+            brand.innerHTML = `<img src="https://sarjanakomputer.id/images/logo.png" alt="S"><span>Sarjana Admin</span>`;
             sidebar.insertBefore(brand, sidebar.firstChild);
 
             const toggle = document.createElement('div');
             toggle.id = 'sidebar-toggle';
-            toggle.innerHTML = '<i class="bi bi-list"></i>';
+            toggle.innerHTML = '<i class="bi bi-layout-sidebar-inset"></i>';
             sidebar.appendChild(toggle);
             
             toggle.onclick = () => {
               document.body.classList.toggle('sidebar-collapsed');
-              toggle.innerHTML = document.body.classList.contains('sidebar-collapsed') 
-                ? '<i class="bi bi-grid-fill"></i>' : '<i class="bi bi-list"></i>';
             };
           }
         });
@@ -231,8 +283,8 @@
           var image = entry.getIn(['data', 'image']);
           var bgImage = image ? this.props.getAsset(image) : '';
           
-          return h('div', { className: 'p-card' },
-            h('span', { className: 'p-badge' }, entry.getIn(['data', 'category'])),
+          return h('div', { className: 'preview-box' },
+            h('span', { className: 'p-cat' }, entry.getIn(['data', 'category'])),
             h('h1', { className: 'p-title' }, entry.getIn(['data', 'title'])),
             bgImage ? h('img', { src: bgImage.toString(), className: 'p-img' }) : null,
             h('div', { className: 'p-body' }, this.props.widgetFor('body'))
@@ -241,7 +293,7 @@
       });
       CMS.registerPreviewTemplate("berita", NewsPreview);
     } else {
-      document.body.innerHTML = '<div style="background:#0f172a;height:100vh;display:flex;align-items:center;justify-content:center;color:#fff;">Loading...</div>';
+      document.body.innerHTML = '<div style="background:#fff;height:100vh;display:flex;align-items:center;justify-content:center;font-family:sans-serif;">Memuat...</div>';
     }
   </script>
 </body>
