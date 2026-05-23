@@ -2,7 +2,7 @@
 title: "Sertifikasi IT yang Paling Dicari Perusahaan di 2026"
 date: 2026-05-15
 category: "Pendidikan"
-image: "/images/news/sertifikasi.svg"
+image: "/images/news/sertifikasi-it-terbaru.jpg"
 description: "Lihat sertifikasi IT paling bernilai di mata perusahaan tahun 2026 — dari cloud, cybersecurity, sampai AI."
 author: "Tim SKI"
 ---

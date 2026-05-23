@@ -2,7 +2,7 @@
 title: "Panduan Lengkap Bikin Portofolio yang Dilirik HRD"
 date: 2026-05-16
 category: "Pendidikan"
-image: "/images/news/portofolio.svg"
+image: "/images/news/panduan-portofolio-hrd.jpg"
 description: "Portofolio yang bagus bisa membuka pintu karir. Simak cara bikin portofolio yang bikin HRD terkesan."
 author: "Tim SKI"
 ---

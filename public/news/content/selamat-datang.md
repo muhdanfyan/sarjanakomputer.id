@@ -2,7 +2,7 @@
 title: "Selamat Datang di Portal Berita SKI"
 date: 2026-05-20
 category: "Teknologi"
-image: "/images/news/welcome.svg"
+image: "/images/news/selamat-datang.jpg"
 description: "Portal berita resmi Sarjana Komputer Indonesia — sumber informasi teknologi, pendidikan, dan inovasi digital."
 author: "Tim SKI"
 ---

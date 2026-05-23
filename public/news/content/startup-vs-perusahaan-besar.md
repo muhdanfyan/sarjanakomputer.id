@@ -2,7 +2,7 @@
 title: "Startup vs Perusahaan Besar: Mana yang Cocok untukmu?"
 date: 2026-05-17
 category: "Startup"
-image: "/images/news/startup-vs-corp.svg"
+image: "/images/news/startup-vs-perusahaan-besar.jpg"
 description: "Bingung milih kerja di startup atau perusahaan besar? Simak perbandingan lengkap dari sisi gaji, karir, dan work-life balance."
 author: "Tim SKI"
 ---

@@ -2,7 +2,7 @@
 title: "Cara Dapat Beasiswa Sertifikasi IT Gratis untuk Mahasiswa"
 date: 2026-05-12
 category: "Pendidikan"
-image: "/images/news/beasiswa.svg"
+image: "/images/news/cara-dapat-beasiswa-sertifikasi-it.jpg"
 description: "Gak punya budget untuk ikut ujian sertifikasi? Tenang, ini dia cara dapetin voucher gratis dari berbagai provider."
 author: "Tim SKI"
 ---

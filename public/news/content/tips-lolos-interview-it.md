@@ -2,7 +2,7 @@
 title: "Tips Lolos Interview Kerja untuk Fresh Graduate IT"
 date: 2026-05-18
 category: "Bisnis"
-image: "/images/news/interview.svg"
+image: "/images/news/tips-lolos-interview-it.jpg"
 description: "Dari CV hingga negosiasi gaji — panduan lengkap lolos interview kerja di perusahaan teknologi untuk fresh graduate."
 author: "Tim SKI"
 ---
