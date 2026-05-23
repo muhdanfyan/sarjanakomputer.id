@@ -19,3 +19,17 @@
 ## Afiliasi:
 - Pondok Informatika
 - Komunitas Programmer Baubau
+
+## KBLI:
+| Kode | Bidang |
+|------|--------|
+| 62011 | Jasa Pembuatan Perangkat Lunak |
+| 62012 | Jasa Pengembangan Aplikasi Mobile & Web |
+| 62021 | Konsultasi Teknologi Informasi |
+| 62022 | Konsultasi Komunikasi & TI |
+| 62023 | Pengelolaan Infrastruktur TI |
+| 63112 | Portal Web & Platform Digital |
+| 63122 | Pengelolaan Data & Server |
+| 85491 | Kursus & Pelatihan Komputer |
+| 70201 | Konsultasi Manajemen Bisnis |
+| 47991 | E-Commerce |

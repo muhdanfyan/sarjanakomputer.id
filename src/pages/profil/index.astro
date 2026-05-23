@@ -133,6 +133,34 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- KBLI -->
+  <section class="section" id="kbli">
+    <div class="container">
+      <div class="text-center">
+        <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem">
+          <i class="bi bi-list-check"></i> KBLI
+        </div>
+        <h2 class="section-title">Klasifikasi Baku Lapangan Usaha</h2>
+        <p class="section-subtitle">Bidang usaha yang dikelola CV. Sarjana Komputer Indonesia</p>
+      </div>
+      <div class="kbli-grid">
+        <div class="kbli-item"><span class="kbli-code">62011</span><div><strong>Jasa Pembuatan Perangkat Lunak</strong><span>Software house — pengembangan aplikasi (Sipanda, SIMKES, E-Retribusi)</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">62012</span><div><strong>Jasa Pengembangan Aplikasi Mobile & Web</strong><span>Pembuatan aplikasi berbasis web dan mobile</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">62021</span><div><strong>Konsultasi Teknologi Informasi</strong><span>Konsultan IT, analisis sistem, perencanaan digital</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">62022</span><div><strong>Konsultasi Komunikasi & TI</strong><span>Solusi e-government, infrastruktur digital</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">62023</span><div><strong>Pengelolaan Infrastruktur TI</strong><span>Jaringan, server, IT infrastructure management</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">63112</span><div><strong>Portal Web & Platform Digital</strong><span>Pengelolaan website dan platform digital</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">63122</span><div><strong>Pengelolaan Data & Server</strong><span>Hosting, backup, database management</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">85491</span><div><strong>Kursus & Pelatihan Komputer</strong><span>Academy, pelatihan SDM digital, sertifikasi IT</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">70201</span><div><strong>Konsultasi Manajemen Bisnis</strong><span>Konsultasi digitalisasi bisnis & transformasi digital</span></div></div>
+        <div class="kbli-item"><span class="kbli-code">47991</span><div><strong>E-Commerce</strong><span>Perdagangan layanan & produk IT melalui media elektronik</span></div></div>
+      </div>
+      <div class="text-center mt-3">
+        <p style="font-size:0.8rem;color:var(--gray-400)">* KBLI (Klasifikasi Baku Lapangan Usaha Indonesia) — siap didaftarkan ke OSS</p>
+      </div>
+    </div>
+  </section>
+
   <!-- KLIEN & TESTIMONI -->
   <section class="section" id="klien">
     <div class="container">
@@ -236,8 +264,14 @@ import Layout from '../../layouts/Layout.astro';
     .testimoni-card p{font-size:0.85rem;font-style:italic;color:var(--gray-600);line-height:1.7}
     .testimoni-card .author{font-weight:600;font-size:0.85rem;margin-top:0.5rem}
     .testimoni-card .position{font-size:0.75rem;color:var(--gray-400)}
+    .kbli-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .kbli-item{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;border-radius:var(--radius-sm);background:var(--white);border:1px solid var(--gray-100)}
+    .kbli-code{display:inline-block;background:rgba(49,46,95,0.08);color:var(--primary);font-weight:700;font-size:0.8rem;padding:0.2rem 0.6rem;border-radius:6px;white-space:nowrap;margin-top:0.1rem}
+    .kbli-item div{font-size:0.85rem}
+    .kbli-item strong{display:block;margin-bottom:0.15rem}
+    .kbli-item span{font-size:0.78rem;color:var(--gray-500)}
     @media(max-width:767px){
-      .about-grid,.legal-list{grid-template-columns:1fr}
+      .about-grid,.legal-list,.kbli-grid{grid-template-columns:1fr}
     }
   </style>
 </Layout>

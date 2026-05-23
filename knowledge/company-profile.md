@@ -22,6 +22,21 @@
 - **Email:** info@sarjanakomputer.id
 - **Alamat:** Jl. Syaikh Abdul Wahid, Kel. Nganganaumala, Kec. Batupoaro, Kota Baubau 93717
 
+## KBLI (Klasifikasi Baku Lapangan Usaha)
+
+| Kode | Bidang Usaha | Keterangan |
+|------|-------------|------------|
+| **62011** | Jasa Pembuatan Perangkat Lunak | Software house — pengembangan aplikasi (Sipanda, SIMKES, E-Retribusi) |
+| **62012** | Jasa Pengembangan Aplikasi Mobile & Web | Pembuatan aplikasi berbasis web dan mobile |
+| **62021** | Konsultasi Teknologi Informasi | Konsultan IT, analisis sistem, perencanaan digital |
+| **62022** | Konsultasi Komunikasi & TI | Solusi e-government, infrastruktur digital |
+| **62023** | Pengelolaan Infrastruktur TI | Jaringan, server, IT infrastructure management |
+| **63112** | Portal Web & Platform Digital | Pengelolaan website dan platform digital |
+| **63122** | Pengelolaan Data & Server | Hosting, backup, database management |
+| **85491** | Kursus & Pelatihan Komputer | Academy, pelatihan SDM digital, sertifikasi IT |
+| **70201** | Konsultasi Manajemen Bisnis | Konsultasi digitalisasi bisnis & transformasi digital |
+| **47991** | E-Commerce | Perdagangan layanan & produk IT melalui media elektronik |
+
 ## Visi
 Mitra terdepan transformasi digital dan jembatan karier menuju industri global.
 
