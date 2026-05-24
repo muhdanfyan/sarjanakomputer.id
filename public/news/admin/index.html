@@ -97,56 +97,118 @@
     body.sidebar-collapsed [class*="SidebarNavLink"] { justify-content: center !important; margin: 2px 6px !important; padding: 10px 0 !important; }
     body.sidebar-collapsed [class*="SidebarNavLink"]::before { margin-right: 0; }
 
-    /* --- HEADER: FIXED & MINIMAL --- */
+    /* --- HEADER: MINIMALIST & CLEAN --- */
     header, [class*="AppHeader"] {
       height: var(--header-height) !important;
-      background: rgba(255, 255, 255, 0.8) !important;
-      backdrop-filter: blur(16px) saturate(180%) !important;
+      background: rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
       border-bottom: 1px solid var(--border-color) !important;
       position: fixed !important;
       left: var(--sidebar-width) !important;
       width: calc(100% - var(--sidebar-width)) !important;
       z-index: 999 !important;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      transition: all 0.3s ease !important;
       padding: 0 1.5rem !important;
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
-      box-shadow: none !important;
+      box-shadow: none !important; /* Cleaner look without shadow */
     }
 
-    [class*="AppHeader-container"] {
-      padding: 0 !important;
-      max-width: none !important;
-      width: 100% !important;
-      display: flex !important;
-      align-items: center !important;
-      justify-content: space-between !important;
-    }
-
-    /* Style the CMS Title/Breadcrumbs */
+    /* Clean Breadcrumbs */
     [class*="AppHeader-title"] {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
-      font-size: 0.85rem !important;
-      font-weight: 700 !important;
-      color: var(--text-main) !important;
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.8rem !important;
+      font-weight: 500 !important;
+      color: var(--text-muted) !important;
       margin: 0 !important;
       display: flex !important;
       align-items: center !important;
+      background: transparent !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      border: none !important;
       gap: 8px !important;
     }
 
     [class*="AppHeader-title"]::before {
       content: 'Admin';
-      font-weight: 500;
-      color: var(--text-muted);
+      font-weight: 600;
+      color: var(--primary);
       font-size: 0.75rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
 
     [class*="AppHeader-title"]::after {
       content: '/';
-      color: #ddd;
-      margin: 0 2px;
+      color: #cbd5e1;
+      margin: 0 4px;
+      font-weight: 300;
+    }
+
+    /* Target the text inside the title */
+    [class*="AppHeader-title"] span {
+      color: var(--text-main) !important;
+      font-weight: 600 !important;
+    }
+
+    /* Header Right Section */
+    .header-right-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* Minimal Status Indicator */
+    .header-info-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      background: #f0fdf4;
+      color: #16a34a;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      border: 1px solid #dcfce7;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .header-info-pill i { font-size: 0.6rem; }
+
+    /* User Profile Refinement */
+    [class*="AppHeader-user"] {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 10px !important;
+      font-weight: 500 !important;
+      font-size: 0.8rem !important;
+      color: var(--text-main) !important;
+    }
+
+    [class*="AppHeader-userAvatar"] {
+      width: 28px !important;
+      height: 28px !important;
+      border-radius: 8px !important; /* Square-ish modern look */
+      border: 1px solid var(--border-color) !important;
+    }
+
+    body.sidebar-collapsed header, 
+    body.sidebar-collapsed [class*="AppHeader"] { 
+      left: var(--sidebar-mini) !important; 
+      width: calc(100% - var(--sidebar-mini)) !important; 
+    }
+
+    /* Custom Header Right Side */
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
 
     /* Custom Header Right Side */
@@ -180,17 +242,36 @@
     }
     body.sidebar-collapsed main { margin-left: var(--sidebar-mini) !important; }
 
-    /* Precise List Cards */
+    /* Precise List Cards: Borderless & Clean */
     [class*="Card"], [class*="card"] {
-      background: #fff !important;
+      background: #ffffff !important;
       border-radius: var(--radius-ui) !important;
-      border: 1px solid var(--border-color) !important;
-      box-shadow: none !important;
-      padding: 12px 16px !important; /* Reduced from 24px */
-      margin-bottom: 8px !important; /* Tighter gap */
-      transition: border-color 0.2s ease !important;
+      border: none !important;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+      padding: 10px 14px !important;
+      margin-bottom: 4px !important;
+      transition: all 0.15s ease !important;
+      display: flex !important;
+      align-items: center !important;
     }
-    [class*="Card"]:hover { border-color: #cbd5e1 !important; background-color: #fcfcfc !important; }
+    
+    [class*="Card"]:hover {
+      background-color: #f8fafc !important;
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+    }
+
+    /* Style the list items to feel more integrated */
+    [class*="ViewListing-list"] {
+      padding: 0 !important;
+      gap: 2px !important;
+    }
+
+    /* Adjust specific text inside cards */
+    [class*="Card"] h2, [class*="Card"] span {
+      border: none !important;
+      padding: 0 !important;
+    }
 
     /* Compact Buttons */
     button[class*="Button"] {
@@ -201,6 +282,96 @@
       text-transform: none !important;
     }
     button[class*="primary"] { background: var(--primary) !important; }
+
+    /* --- TABLE-STYLE LIST VIEW --- */
+    [class*="ViewListing-list"] {
+      background: #fff !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+    [class*="Card"] {
+      display: grid !important;
+      grid-template-columns: 60px 120px 1fr !important; /* Image | Date | Title */
+      align-items: center !important;
+      padding: 12px 16px !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      border-radius: 0 !important;
+      margin: 0 !important;
+      transition: background 0.2s ease !important;
+      cursor: pointer !important;
+      background: #fff !important;
+      height: auto !important;
+      width: 100% !important;
+    }
+
+    [class*="Card"]:last-child {
+      border-bottom: none !important;
+    }
+
+    [class*="Card"]:hover {
+      background-color: #f8fafc !important;
+      transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Thumbnail in Table Row */
+    [class*="CardImage"] {
+      width: 40px !important;
+      height: 40px !important;
+      border-radius: 8px !important;
+      overflow: hidden !important;
+      background: #f1f5f9 !important;
+      border: 1px solid var(--border-color) !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+
+    [class*="CardImage"] img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+    }
+
+    /* Fallback for icon if no image */
+    [class*="CardImage"]:empty::before {
+      content: '\F429';
+      font-family: "bootstrap-icons";
+      font-size: 1.2rem;
+      color: #94a3b8;
+    }
+
+    /* Text Container (Date & Title) */
+    [class*="CardText"] {
+      display: contents !important; /* Allow direct children to align with grid */
+    }
+
+    /* Summary text styling - we split it mentally using CSS */
+    [class*="CardText"] {
+      font-family: 'Inter', sans-serif !important;
+      font-size: 0.85rem !important;
+      color: var(--text-main) !important;
+    }
+
+    /* Date styling (assuming format YYYY-MM-DD | Title) */
+    /* This is a bit tricky as CMS renders it as one text node, 
+       but we can use some clever tricks or just keep it clean. */
+    
+    [class*="Card"] h2 {
+      font-size: 0.85rem !important;
+      font-weight: 500 !important;
+      color: var(--text-muted) !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
 
     /* Sidebar Toggle */
     #sidebar-toggle {
@@ -245,12 +416,38 @@
       // Precise Preview
       CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Inter:wght@400;500;600&display=swap");
       CMS.registerPreviewStyle(`
-        body { font-family: 'Inter', sans-serif; background: #fff; color: #0f172a; padding: 2rem 1rem; }
-        .preview-box { max-width: 700px; margin: 0 auto; }
-        .p-cat { color: #E3386A; font-weight: 700; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 0.25rem; display: block; }
-        .p-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; letter-spacing: -0.5px; }
-        .p-img { width: 100%; border-radius: 6px; margin-bottom: 1.5rem; height: 300px; object-fit: cover; }
-        .p-body { line-height: 1.6; font-size: 0.95rem; color: #334155; }
+        body { font-family: 'Inter', sans-serif; background: #f8fafc; color: #0f172a; padding: 2rem; }
+        .preview-box { max-width: 800px; margin: 0 auto; background: #fff; padding: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .p-cat { 
+          display: inline-block; 
+          padding: 0.25rem 0.75rem; 
+          background: #312E5F; 
+          color: #fff; 
+          font-weight: 700; 
+          font-size: 0.65rem; 
+          text-transform: uppercase; 
+          margin-bottom: 1rem; 
+          border-radius: 4px;
+          letter-spacing: 0.5px;
+        }
+        .p-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 2.25rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.2; letter-spacing: -1px; color: #1e293b; }
+        .p-img-container { width: 100%; border-radius: 10px; overflow: hidden; margin-bottom: 2rem; background: #f1f5f9; position: relative; }
+        .p-img { width: 100%; height: 400px; object-fit: cover; display: block; }
+        .p-img-placeholder { 
+          height: 300px; 
+          display: flex; 
+          flex-direction: column; 
+          align-items: center; 
+          justify-content: center; 
+          background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); 
+          color: #94a3b8;
+          gap: 12px;
+        }
+        .p-img-placeholder i { font-size: 3rem; opacity: 0.5; }
+        .p-img-placeholder span { font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .p-body { line-height: 1.8; font-size: 1.05rem; color: #334155; }
+        .p-body h2 { color: #1e293b; margin-top: 2rem; font-weight: 700; }
+        .p-body p { margin-bottom: 1.25rem; }
       `, { raw: true });
 
       // Observer for Dynamic UI
@@ -273,6 +470,23 @@
               document.body.classList.toggle('sidebar-collapsed');
             };
           }
+
+          // Header Enhancements
+          const header = document.querySelector('header, [class*="AppHeader"]');
+          if (header && !document.getElementById('header-status')) {
+             const status = document.createElement('div');
+             status.id = 'header-status';
+             status.className = 'header-info-pill';
+             status.innerHTML = '<i class="bi bi-check-circle-fill"></i> System Online';
+             
+             // Find a place to insert - ideally before user profile
+             const userProfile = header.querySelector('[class*="AppHeader-user"]');
+             if (userProfile) {
+                header.insertBefore(status, userProfile);
+             } else {
+                header.appendChild(status);
+             }
+          }
         });
         observer.observe(document.body, { childList: true, subtree: true });
       });
@@ -286,7 +500,14 @@
           return h('div', { className: 'preview-box' },
             h('span', { className: 'p-cat' }, entry.getIn(['data', 'category'])),
             h('h1', { className: 'p-title' }, entry.getIn(['data', 'title'])),
-            bgImage ? h('img', { src: bgImage.toString(), className: 'p-img' }) : null,
+            h('div', { className: 'p-img-container' },
+              bgImage ? 
+                h('img', { src: bgImage.toString(), className: 'p-img' }) : 
+                h('div', { className: 'p-img-placeholder' }, 
+                  h('i', { className: 'bi bi-image' }),
+                  h('span', {}, 'No Image Provided')
+                )
+            ),
             h('div', { className: 'p-body' }, this.props.widgetFor('body'))
           );
         }

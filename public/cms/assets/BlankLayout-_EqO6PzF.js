@@ -1,0 +1,1 @@
+import{y as a,o as e,c as t,w as o,a as s,E as n,ak as r,am as c}from"./index-B3IE_rxZ.js";const f=a({__name:"BlankLayout",setup(p){return(u,_)=>(e(),t(r,null,{default:o(()=>[s(n(c))]),_:1}))}});export{f as default};

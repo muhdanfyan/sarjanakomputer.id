@@ -295,10 +295,11 @@ import Layout from '../../layouts/Layout.astro';
         }
 
         var first = articles[0];
+        var firstImg = (first.image && first.image !== '') ? (first.image.startsWith('/') ? first.image : '/' + first.image) : 'https://placehold.co/1200x630?text=No+Image';
         featuredArea.innerHTML = `
             <div class="featured-card-v2" style="cursor:pointer" onclick="openArticle('${first.slug}')">
                 <div class="card-img-wrapper">
-                    <img src="${first.image.startsWith('/') ? first.image : '/' + first.image}" alt="${first.title}">
+                    <img src="${firstImg}" alt="${first.title}">
                     <span class="card-badge">${first.category}</span>
                 </div>
                 <div class="card-content">
@@ -314,11 +315,12 @@ import Layout from '../../layouts/Layout.astro';
 
         var gridHtml = '';
         articles.forEach(function(item) {
+            var itemImg = (item.image && item.image !== '') ? (item.image.startsWith('/') ? item.image : '/' + item.image) : 'https://placehold.co/600x400?text=No+Image';
             gridHtml += `
                 <div class="col-md-6 col-lg-4 news-item" data-category="${item.category}">
                     <div class="news-card-v2" onclick="openArticle('${item.slug}')" style="cursor:pointer">
                         <div class="card-img-wrapper">
-                            <img src="${item.image.startsWith('/') ? item.image : '/' + item.image}" alt="${item.title}">
+                            <img src="${itemImg}" alt="${item.title}">
                             <span class="card-badge">${item.category}</span>
                         </div>
                         <div class="card-content">

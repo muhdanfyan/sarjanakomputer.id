@@ -1,10 +1,12 @@
 {
   "name": "sarjanakomputer.id",
   "version": "2.0.0",
-  "description": "CV. Sarjana Komputer Indonesia \u2014 Solusi IT & Pengembangan SDM Digital",
+  "description": "CV. Sarjana Komputer Indonesia — Solusi IT & Pengembangan SDM Digital",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "dev:cms": "cd cms-admin && npm run dev",
+    "build:cms": "cd cms-admin && npm run build",
+    "build": "npm run build:cms && astro build",
     "preview": "astro preview"
   },
   "repository": {
