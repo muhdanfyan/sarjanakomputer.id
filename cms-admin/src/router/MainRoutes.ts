@@ -9,42 +9,37 @@ const MainRoutes = {
     {
       name: 'LandingPage',
       path: '/',
+      redirect: '/dashboard'
+    },
+    {
+      name: 'Dashboard',
+      path: '/dashboard',
       component: () => import('@/views/dashboards/default/DefaultDashboard.vue')
     },
     {
-      name: 'Default',
-      path: '/dashboard/default',
-      component: () => import('@/views/dashboards/default/DefaultDashboard.vue')
+      name: 'HomeManager',
+      path: '/cms/home',
+      component: () => import('@/views/cms/HomeManager.vue')
     },
     {
-      name: 'Starter',
-      path: '/starter',
-      component: () => import('@/views/StarterPage.vue')
+      name: 'ProfileManager',
+      path: '/cms/profile',
+      component: () => import('@/views/cms/ProfileManager.vue')
     },
     {
-      name: 'Tabler Icons',
-      path: '/icons/tabler',
-      component: () => import('@/views/utilities/icons/TablerIcons.vue')
+      name: 'NewsManager',
+      path: '/cms/news',
+      component: () => import('@/views/cms/NewsManager.vue')
     },
     {
-      name: 'Material Icons',
-      path: '/icons/material',
-      component: () => import('@/views/utilities/icons/MaterialIcons.vue')
+      name: 'TeamManager',
+      path: '/cms/team',
+      component: () => import('@/views/cms/TeamManager.vue')
     },
     {
-      name: 'Typography',
-      path: '/utils/typography',
-      component: () => import('@/views/utilities/typography/TypographyPage.vue')
-    },
-    {
-      name: 'Shadows',
-      path: '/utils/shadows',
-      component: () => import('@/views/utilities/shadows/ShadowPage.vue')
-    },
-    {
-      name: 'Colors',
-      path: '/utils/colors',
-      component: () => import('@/views/utilities/colors/ColorPage.vue')
+      name: 'LegalManager',
+      path: '/cms/legal',
+      component: () => import('@/views/cms/LegalManager.vue')
     }
   ]
 };

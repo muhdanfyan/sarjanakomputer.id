@@ -1,0 +1,1 @@
+import{z as a,o,s as t,a as s,w as n,b as r,C as i,ab as c}from"./index-Bo759gTi.js";const l={class:"logo"},d=a({__name:"LogoDark",setup(m){return(p,e)=>(o(),t("div",l,[s(i(c),{to:"/"},{default:n(()=>e[0]||(e[0]=[r("img",{src:"/images/logo.png",alt:"Sarjana Komputer Indonesia",style:{height:"45px","max-width":"100%","object-fit":"contain"}},null,-1)])),_:1})]))}});export{d as _};

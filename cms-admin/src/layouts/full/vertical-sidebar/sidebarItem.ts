@@ -1,14 +1,10 @@
 import {
-  CircleIcon,
-  WindmillIcon,
-  TypographyIcon,
-  ShadowIcon,
-  PaletteIcon,
-  KeyIcon,
-  BugIcon,
   DashboardIcon,
-  BrandChromeIcon,
-  HelpIcon
+  HomeIcon,
+  UserIcon,
+  NewsIcon,
+  UsersIcon,
+  FileTextIcon
 } from 'vue-tabler-icons';
 
 export interface menu {
@@ -28,82 +24,38 @@ export interface menu {
 }
 
 const sidebarItem: menu[] = [
-  { header: 'Dashboard' },
+  { header: 'CMS Dashboard' },
   {
-    title: 'Default',
+    title: 'Dashboard',
     icon: DashboardIcon,
-    to: '/dashboard/default'
+    to: '/dashboard'
   },
   { divider: true },
-  { header: 'Pages' },
+  { header: 'Manajemen Konten' },
   {
-    title: 'Authentication',
-    icon: KeyIcon,
-    to: '/auth',
-    children: [
-      {
-        title: 'Login',
-        icon: CircleIcon,
-        to: '/login1'
-      },
-      {
-        title: 'Register',
-        icon: CircleIcon,
-        to: '/register'
-      }
-    ]
+    title: 'Halaman Utama',
+    icon: HomeIcon,
+    to: '/cms/home'
   },
   {
-    title: 'Error 404',
-    icon: BugIcon,
-    to: '/error'
-  },
-  { divider: true },
-  { header: 'Utilities' },
-  {
-    title: 'Typography',
-    icon: TypographyIcon,
-    to: '/utils/typography'
+    title: 'Profil Perusahaan',
+    icon: UserIcon,
+    to: '/cms/profile'
   },
   {
-    title: 'Shadows',
-    icon: ShadowIcon,
-    to: '/utils/shadows'
+    title: 'Portal Berita',
+    icon: NewsIcon,
+    to: '/cms/news'
   },
   {
-    title: 'Colors',
-    icon: PaletteIcon,
-    to: '/utils/colors'
-  },
-
-  {
-    title: 'Icons',
-    icon: WindmillIcon,
-    to: '/forms/radio',
-    children: [
-      {
-        title: 'Tabler Icons',
-        icon: CircleIcon,
-        to: '/icons/tabler'
-      },
-      {
-        title: 'Material Icons',
-        icon: CircleIcon,
-        to: '/icons/material'
-      }
-    ]
-  },
-  { divider: true },
-  {
-    title: 'Sample Page',
-    icon: BrandChromeIcon,
-    to: '/starter'
+    title: 'Tim & Staf',
+    icon: UsersIcon,
+    to: '/cms/team'
   },
   {
-    title: 'Documentation',
-    icon: HelpIcon,
-    to: 'https://codedthemes.gitbook.io/berry-vuetify/',
-    type: 'external'
+    title: 'Legalitas',
+    icon: FileTextIcon,
+    to: '/cms/legal'
   }
 ];
 

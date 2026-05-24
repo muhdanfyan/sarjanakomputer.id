@@ -38,6 +38,13 @@ router.beforeEach(async (to, from, next) => {
   const isPublicPage = publicPages.includes(to.path);
   const authRequired = !isPublicPage && to.matched.some((record) => record.meta.requiresAuth);
 
+  const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+
+  // Automatically bypass auth on localhost
+  if (isLocalhost && !auth.user) {
+    auth.user = { id: 1, name: 'Local Admin' };
+  }
+
   // User not logged in and trying to access a restricted page
   if (authRequired && !auth.user) {
     auth.returnUrl = to.fullPath; // Save the intended page
