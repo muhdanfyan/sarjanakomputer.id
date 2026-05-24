@@ -62,3 +62,9 @@ router.beforeEach(async (to, from, next) => {
     next();
   }
 });
+
+router.afterEach((to) => {
+  const baseTitle = 'CMS Sarjana Komputer Indonesia';
+  const pageTitle = typeof to.name === 'string' ? to.name.replace('Manager', '') : '';
+  document.title = pageTitle ? `${pageTitle} — ${baseTitle}` : baseTitle;
+});

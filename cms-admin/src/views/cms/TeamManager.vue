@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { MdEditor } from 'md-editor-v3';
+import 'md-editor-v3/lib/style.css';
+import { uploadToCloudinary } from '@/utils/cloudinary';
+
+const onUploadImg = async (files: File[], callback: (urls: string[]) => void) => {
+  const urls = await uploadToCloudinary(files);
+  callback(urls);
+};
 
 const files = ref<any[]>([]);
 const selectedFile = ref<any>(null);
@@ -95,7 +103,7 @@ onMounted(fetchFiles);
       </v-card>
     </v-col>
 
-    <v-col cols="12" md="8" v-if="selectedFile">
+    <v-col cols="12" md="12" v-if="selectedFile">
       <v-card variant="flat" class="border">
         <v-card-title>
           <v-btn icon size="small" variant="text" @click="closeEditor"><v-icon>mdi-arrow-left</v-icon></v-btn>
@@ -104,15 +112,7 @@ onMounted(fetchFiles);
           <v-btn color="primary" @click="saveFile" :loading="isSaving">Simpan ke GitHub</v-btn>
         </v-card-title>
         <v-card-text>
-          <v-textarea
-            v-model="fileContent"
-            variant="outlined"
-            auto-grow
-            rows="15"
-            label="Isi Konten (Markdown + YAML Frontmatter)"
-            class="font-monospace"
-            style="font-family: monospace;"
-          ></v-textarea>
+<MdEditor v-model="fileContent" language="en-US" style="height: 600px;" @onUploadImg="onUploadImg" />
         </v-card-text>
       </v-card>
     </v-col>

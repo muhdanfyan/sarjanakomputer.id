@@ -1,5 +1,25 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+export const prerender = true;
+
+const allNewsRaw = await Astro.glob('../../content/news/*.md');
+
+const allNews = allNewsRaw.map(news => {
+  const slug = news.file.split('/').pop()?.replace('.md', '');
+  return {
+    ...news.frontmatter,
+    slug
+  };
+}).sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+
+const first = allNews.length > 0 ? allNews[0] : null;
+const restNews = allNews;
+
+function formatDate(dateStr: string) {
+    var d = new Date(dateStr);
+    var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+}
 ---
 
 <Layout title="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
@@ -85,6 +105,13 @@ import Layout from '../../layouts/Layout.astro';
         height: 100%;
         display: flex;
         flex-direction: column;
+    }
+    .news-card-v2 a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
     }
     .news-card-v2:hover {
         transform: translateY(-8px);
@@ -191,8 +218,16 @@ import Layout from '../../layouts/Layout.astro';
         flex-direction: column;
         height: 100%;
     }
+    .featured-card-v2 a {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
     @media (min-width: 992px) {
-        .featured-card-v2 { flex-direction: row; }
+        .featured-card-v2 a { flex-direction: row; }
         .featured-card-v2 .card-img-wrapper { width: 50%; padding-top: 0; min-height: 400px; }
         .featured-card-v2 .card-content { width: 50%; padding: 3rem; justify-content: center; }
         .featured-card-v2 .card-title { font-size: 2rem; }
@@ -202,7 +237,6 @@ import Layout from '../../layouts/Layout.astro';
         .news-hero h1 { font-size: 2.2rem; }
         .news-hero { padding: 6rem 0 4rem; }
     }
-    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   </style>
 
   <!-- ===== HERO ===== -->
@@ -222,11 +256,11 @@ import Layout from '../../layouts/Layout.astro';
   <section class="section" style="padding:0">
       <div class="container">
           <div class="category-nav">
-              <button class="cat-btn active" id="btn-all"><i class="bi bi-grid-fill"></i> Semua</button>
-              <button class="cat-btn" id="btn-Teknologi"><i class="bi bi-cpu-fill"></i> Teknologi</button>
-              <button class="cat-btn" id="btn-Pendidikan"><i class="bi bi-book-fill"></i> Pendidikan</button>
-              <button class="cat-btn" id="btn-Bisnis"><i class="bi bi-briefcase-fill"></i> Karir & Bisnis</button>
-              <button class="cat-btn" id="btn-Startup"><i class="bi bi-rocket-takeoff-fill"></i> Startup</button>
+              <button class="cat-btn active" id="btn-all" onclick="filterNews('all')"><i class="bi bi-grid-fill"></i> Semua</button>
+              <button class="cat-btn" id="btn-Teknologi" onclick="filterNews('Teknologi')"><i class="bi bi-cpu-fill"></i> Teknologi</button>
+              <button class="cat-btn" id="btn-Pendidikan" onclick="filterNews('Pendidikan')"><i class="bi bi-book-fill"></i> Pendidikan</button>
+              <button class="cat-btn" id="btn-Bisnis" onclick="filterNews('Bisnis')"><i class="bi bi-briefcase-fill"></i> Karir & Bisnis</button>
+              <button class="cat-btn" id="btn-Startup" onclick="filterNews('Startup')"><i class="bi bi-rocket-takeoff-fill"></i> Startup</button>
           </div>
       </div>
   </section>
@@ -234,12 +268,28 @@ import Layout from '../../layouts/Layout.astro';
   <!-- ===== FEATURED SECTION ===== -->
   <section class="section featured-section">
       <div class="container">
-          <div id="featuredArea">
-              <div class="col-12 text-center py-5">
-                  <div style="width:40px;height:40px;border:3px solid #f1f5f9;border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 1.5rem"></div>
-                  <p style="color:var(--gray-500);font-weight:500">Menyiapkan berita pilihan...</p>
-              </div>
-          </div>
+          {first ? (
+            <div class="featured-card-v2">
+                <a href={`/news/${first.slug}`}>
+                    <div class="card-img-wrapper">
+                        <img src={first.image && first.image !== '' ? first.image : 'https://placehold.co/1200x630?text=No+Image'} alt={first.title}>
+                        <span class="card-badge">{first.category}</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta"><i class="bi bi-calendar3"></i> {formatDate(first.date)}</div>
+                        <h2 class="card-title">{first.title}</h2>
+                        <p class="card-desc">{first.description}</p>
+                        <div class="card-footer">
+                            <span class="read-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+          ) : (
+            <div class="text-center py-5">
+                <p>Belum ada artikel publikasi.</p>
+            </div>
+          )}
       </div>
   </section>
 
@@ -252,21 +302,32 @@ import Layout from '../../layouts/Layout.astro';
                   <p style="color:var(--gray-500);margin:0.25rem 0 0">Arsip lengkap artikel dan publikasi kami</p>
               </div>
           </div>
-          <div class="row g-4" id="newsGrid"></div>
+          <div class="row g-4" id="newsGrid">
+            {restNews.map((item) => (
+                <div class="col-md-6 col-lg-4 news-item" data-category={item.category}>
+                    <div class="news-card-v2">
+                        <a href={`/news/${item.slug}`}>
+                            <div class="card-img-wrapper">
+                                <img src={item.image && item.image !== '' ? item.image : 'https://placehold.co/600x400?text=No+Image'} alt={item.title}>
+                                <span class="card-badge">{item.category}</span>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-meta"><i class="bi bi-calendar3"></i> {formatDate(item.date)}</div>
+                                <h3 class="card-title">{item.title}</h3>
+                                <p class="card-desc">{item.description}</p>
+                                <div class="card-footer">
+                                    <span class="read-link">Baca Artikel <i class="bi bi-arrow-right"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            ))}
+          </div>
       </div>
   </section>
 
   <script is:inline>
-    function openArticle(slug){
-        window.location.href = '/news/artikel?id=' + encodeURIComponent(slug);
-    }
-
-    function formatDate(dateStr){
-        var d = new Date(dateStr);
-        var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-        return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
-    }
-
     function filterNews(cat){
         document.querySelectorAll('.cat-btn').forEach(function(b){ b.classList.remove('active'); });
         var targetId = 'btn-' + (cat === 'all' ? 'all' : cat);
@@ -278,73 +339,5 @@ import Layout from '../../layouts/Layout.astro';
             item.style.display = match ? 'block' : 'none';
         });
     }
-
-    document.getElementById('btn-all').onclick = function() { filterNews('all'); };
-    document.getElementById('btn-Teknologi').onclick = function() { filterNews('Teknologi'); };
-    document.getElementById('btn-Pendidikan').onclick = function() { filterNews('Pendidikan'); };
-    document.getElementById('btn-Bisnis').onclick = function() { filterNews('Bisnis'); };
-    document.getElementById('btn-Startup').onclick = function() { filterNews('Startup'); };
-
-    function renderPortal(articles){
-        var featuredArea = document.getElementById('featuredArea');
-        var gridContainer = document.getElementById('newsGrid');
-
-        if (!articles || articles.length === 0) {
-            featuredArea.innerHTML = '<div class="text-center py-5"><p>Belum ada artikel publikasi.</p></div>';
-            return;
-        }
-
-        var first = articles[0];
-        var firstImg = (first.image && first.image !== '') ? (first.image.startsWith('/') ? first.image : '/' + first.image) : 'https://placehold.co/1200x630?text=No+Image';
-        featuredArea.innerHTML = `
-            <div class="featured-card-v2" style="cursor:pointer" onclick="openArticle('${first.slug}')">
-                <div class="card-img-wrapper">
-                    <img src="${firstImg}" alt="${first.title}">
-                    <span class="card-badge">${first.category}</span>
-                </div>
-                <div class="card-content">
-                    <div class="card-meta"><i class="bi bi-calendar3"></i> ${formatDate(first.date)}</div>
-                    <h2 class="card-title">${first.title}</h2>
-                    <p class="card-desc">${first.description}</p>
-                    <div class="card-footer">
-                        <span class="read-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></span>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        var gridHtml = '';
-        articles.forEach(function(item) {
-            var itemImg = (item.image && item.image !== '') ? (item.image.startsWith('/') ? item.image : '/' + item.image) : 'https://placehold.co/600x400?text=No+Image';
-            gridHtml += `
-                <div class="col-md-6 col-lg-4 news-item" data-category="${item.category}">
-                    <div class="news-card-v2" onclick="openArticle('${item.slug}')" style="cursor:pointer">
-                        <div class="card-img-wrapper">
-                            <img src="${itemImg}" alt="${item.title}">
-                            <span class="card-badge">${item.category}</span>
-                        </div>
-                        <div class="card-content">
-                            <div class="card-meta"><i class="bi bi-calendar3"></i> ${formatDate(item.date)}</div>
-                            <h3 class="card-title">${item.title}</h3>
-                            <p class="card-desc">${item.description}</p>
-                            <div class="card-footer">
-                                <span class="read-link">Baca Artikel <i class="bi bi-arrow-right"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        });
-        gridContainer.innerHTML = gridHtml;
-    }
-
-    (function(){
-        fetch('/news/content/content-index.json')
-            .then(function(r){ return r.json(); })
-            .then(function(data){
-                data.sort(function(a, b){ return new Date(b.date) - new Date(a.date); });
-                renderPortal(data);
-            });
-    })();
   </script>
 </Layout>

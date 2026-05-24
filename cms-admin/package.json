@@ -24,6 +24,7 @@
     "chance": "1.1.12",
     "date-fns": "4.1.0",
     "lodash": "4.17.21",
+    "md-editor-v3": "^6.5.1",
     "pinia": "2.3.0",
     "remixicon": "4.6.0",
     "vee-validate": "4.15.0",

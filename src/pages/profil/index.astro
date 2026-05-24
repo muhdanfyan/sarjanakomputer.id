@@ -1,16 +1,20 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+export const prerender = true;
+
+const profilesDataRaw = await Astro.glob('../../content/profiles/main.md');
+const profile = profilesDataRaw[0].frontmatter;
 ---
 
-<Layout title="Profil — CV. Sarjana Komputer Indonesia" description="Profil resmi CV. Sarjana Komputer Indonesia — Solusi IT profesional dari Baubau, Sulawesi Tenggara" canonical="https://profil.sarjanakomputer.id/profil/" basePath=".." ogTitle="Profil — CV. Sarjana Komputer Indonesia" ogDescription="Profil resmi CV. Sarjana Komputer Indonesia — mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional dari Baubau, Sulawesi Tenggara.">
+<Layout title={`${profile.title} — ${profile.companyName}`} description={`Profil resmi ${profile.companyName} — Solusi IT profesional dari Baubau, Sulawesi Tenggara`} canonical="https://profil.sarjanakomputer.id/profil/" basePath=".." ogTitle={`${profile.title} — ${profile.companyName}`} ogDescription={`Profil resmi ${profile.companyName} — mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional dari Baubau, Sulawesi Tenggara.`}>
   <!-- HERO -->
   <section class="hero-section">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-7">
           <div class="hero-badge"><i class="bi bi-building"></i> Profil Perusahaan</div>
-          <h1>CV. Sarjana Komputer Indonesia</h1>
-          <p>Mitra terdepan transformasi digital dan jembatan karier menuju industri global — solusi IT, digitalisasi, dan pengembangan talenta sejak 2021.</p>
+          <h1>{profile.companyName}</h1>
+          <p>{profile.heroSubtitle}</p>
           <div class="d-flex flex-wrap gap-2 mt-3">
             <a href="#tentang" class="btn-primary-custom"><i class="bi bi-info-circle"></i> Tentang Kami</a>
             <a href="#kontak" class="btn-outline-custom" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);">Hubungi Kami <i class="bi bi-whatsapp"></i></a>
@@ -31,15 +35,15 @@ import Layout from '../../layouts/Layout.astro';
         <p class="section-subtitle">Bergerak di bidang pengembangan IT, solusi e-government, dan pelatihan SDM digital</p>
       </div>
       <div class="about-grid">
-        <div class="about-item"><div class="label">Nama Resmi</div><div class="value">CV. Sarjana Komputer Indonesia</div></div>
-        <div class="about-item"><div class="label">Bidang Usaha</div><div class="value">Pengembangan IT, Solusi E-Government, Pelatihan SDM Digital</div></div>
-        <div class="about-item"><div class="label">Didirikan</div><div class="value">18 April 2022 (Akta Notaris No. 02)</div></div>
-        <div class="about-item"><div class="label">SK Kemenkumham</div><div class="value">AHU-0028133-AH.01.14 Tahun 2022</div></div>
-        <div class="about-item"><div class="label">NIB</div><div class="value">2806220021235 (Usaha Mikro — PMDN)</div></div>
-        <div class="about-item"><div class="label">NPWP</div><div class="value">OGSI 4842 6381 6000</div></div>
-        <div class="about-item"><div class="label">Lokasi</div><div class="value">Baubau, Sulawesi Tenggara, Indonesia</div></div>
-        <div class="about-item"><div class="label">Pendiri & Direktur</div><div class="value">Muhdan Fyan Syah Sofian, S.Kom</div></div>
-        <div class="about-item"><div class="label">Jumlah Personil</div><div class="value">6 Orang</div></div>
+        <div class="about-item"><div class="label">Nama Resmi</div><div class="value">{profile.namaResmi}</div></div>
+        <div class="about-item"><div class="label">Bidang Usaha</div><div class="value">{profile.bidangUsaha}</div></div>
+        <div class="about-item"><div class="label">Didirikan</div><div class="value">{profile.didirikan}</div></div>
+        <div class="about-item"><div class="label">SK Kemenkumham</div><div class="value">{profile.skKemenkumham}</div></div>
+        <div class="about-item"><div class="label">NIB</div><div class="value">{profile.nib}</div></div>
+        <div class="about-item"><div class="label">NPWP</div><div class="value">{profile.npwp}</div></div>
+        <div class="about-item"><div class="label">Lokasi</div><div class="value">{profile.lokasi}</div></div>
+        <div class="about-item"><div class="label">Pendiri & Direktur</div><div class="value">{profile.pendiri}</div></div>
+        <div class="about-item"><div class="label">Jumlah Personil</div><div class="value">{profile.jumlahPersonil}</div></div>
       </div>
     </div>
   </section>
@@ -57,7 +61,7 @@ import Layout from '../../layouts/Layout.astro';
           <div class="card-custom" style="padding:2rem">
             <div class="card-icon" style="background:linear-gradient(135deg,var(--primary),var(--primary-light))"><i class="bi bi-eye"></i></div>
             <h5 style="font-size:1.1rem">Visi</h5>
-            <p style="font-size:0.85rem;color:var(--gray-500);line-height:1.8">Mitra terdepan transformasi digital dan jembatan karier menuju industri global.</p>
+            <p style="font-size:0.85rem;color:var(--gray-500);line-height:1.8">{profile.visi}</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -65,9 +69,9 @@ import Layout from '../../layouts/Layout.astro';
             <div class="card-icon" style="background:linear-gradient(135deg,var(--secondary),#22d3ee)"><i class="bi bi-bullseye"></i></div>
             <h5 style="font-size:1.1rem">Misi</h5>
             <ol style="font-size:0.85rem;color:var(--gray-500);line-height:2;padding-left:1rem;margin:0">
-              <li>Menyediakan solusi IT dan digitalisasi untuk pemerintah, swasta, dan masyarakat.</li>
-              <li>Menjembatani pendidikan, pengembangan talenta, dan riset dengan industri teknologi.</li>
-              <li>Mendorong digitalisasi untuk kemajuan daerah.</li>
+              {profile.misi.map((m: string) => (
+                <li>{m}</li>
+              ))}
             </ol>
           </div>
         </div>
@@ -83,33 +87,15 @@ import Layout from '../../layouts/Layout.astro';
           <i class="bi bi-diagram-3"></i> Tim Kami
         </div>
         <h2 class="section-title">Struktur Organisasi</h2>
-        <p class="section-subtitle">Para profesional di balik CV. Sarjana Komputer Indonesia</p>
+        <p class="section-subtitle">Para profesional di balik {profile.namaResmi}</p>
       </div>
       <div class="team-grid-home">
-        <div class="team-card-home">
-          <img loading="lazy" src="../images/team/direktur.webp" alt="Muhdan Fyan Syah Sofian - Direktur" class="tch-img">
-          <div class="tch-body"><h5>Muhdan Fyan Syah Sofian, S.Kom</h5><div class="role-badge">Direktur</div></div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="../images/team/irvan.webp" alt="Irvan - Komisaris" class="tch-img">
-          <div class="tch-body"><h5>Irvan, S.Kom</h5><div class="role-badge">Komisaris</div></div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="../images/team/hayat.webp" alt="Hayatul Habirun - IT Infrastructure Lead" class="tch-img">
-          <div class="tch-body"><h5>Hayatul Habirun, S.Kom</h5><div class="role-badge">IT Infrastructure Lead</div></div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="../images/team/arif-rizal.webp" alt="Arif Rizal - Backend & QA Engineer" class="tch-img">
-          <div class="tch-body"><h5>Arif Rizal</h5><div class="role-badge">Backend &amp; QA Engineer</div></div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="../images/team/ahmad-dahsan.webp" alt="Ahmad Dahsan - DevOps & Software Engineer" class="tch-img">
-          <div class="tch-body"><h5>Ahmad Dahsan</h5><div class="role-badge">DevOps &amp; Software Engineer</div></div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="../images/team/andi-rifqial-nur.webp" alt="Andi Rifqial Nur - Software Engineer" class="tch-img">
-          <div class="tch-body"><h5>Andi Rifqial Nur</h5><div class="role-badge">Software Engineer</div></div>
-        </div>
+        {profile.tim.map((t: any) => (
+            <div class="team-card-home">
+              <img loading="lazy" src={t.image} alt={t.name} class="tch-img">
+              <div class="tch-body"><h5>{t.name}</h5><div class="role-badge">{t.role}</div></div>
+            </div>
+        ))}
       </div>
     </div>
   </section>
@@ -125,10 +111,10 @@ import Layout from '../../layouts/Layout.astro';
         <p class="section-subtitle">Perusahaan berbadan hukum yang terpercaya</p>
       </div>
       <div class="legal-list">
-        <div class="legal-item"><i class="bi bi-file-earmark-text"></i><div><div>Akta Pendirian</div><span>No. 02, 18 Apr 2022 — Notaris Muhamad Ramadhan Makmur Maruf, M.Kn</span></div></div>
-        <div class="legal-item"><i class="bi bi-shield-check"></i><div><div>SK Kemenkumham</div><span>AHU-0028133-AH.01.14 Tahun 2022</span></div></div>
-        <div class="legal-item"><i class="bi bi-card-heading"></i><div><div>NIB</div><span>2806220021235 (Usaha Mikro — PMDN)</span></div></div>
-        <div class="legal-item"><i class="bi bi-file-earmark-check"></i><div><div>NPWP</div><span>OGSI 4842 6381 6000</span></div></div>
+        <div class="legal-item"><i class="bi bi-file-earmark-text"></i><div><div>Akta Pendirian</div><span>{profile.didirikan}</span></div></div>
+        <div class="legal-item"><i class="bi bi-shield-check"></i><div><div>SK Kemenkumham</div><span>{profile.skKemenkumham}</span></div></div>
+        <div class="legal-item"><i class="bi bi-card-heading"></i><div><div>NIB</div><span>{profile.nib}</span></div></div>
+        <div class="legal-item"><i class="bi bi-file-earmark-check"></i><div><div>NPWP</div><span>{profile.npwp}</span></div></div>
       </div>
     </div>
   </section>
@@ -141,19 +127,12 @@ import Layout from '../../layouts/Layout.astro';
           <i class="bi bi-list-check"></i> KBLI
         </div>
         <h2 class="section-title">Klasifikasi Baku Lapangan Usaha</h2>
-        <p class="section-subtitle">Bidang usaha yang dikelola CV. Sarjana Komputer Indonesia</p>
+        <p class="section-subtitle">Bidang usaha yang dikelola {profile.namaResmi}</p>
       </div>
       <div class="kbli-grid">
-        <div class="kbli-item"><span class="kbli-code">62011</span><div><strong>Jasa Pembuatan Perangkat Lunak</strong><span>Software house — pengembangan aplikasi (Sipanda, SIMKES, E-Retribusi)</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">62012</span><div><strong>Jasa Pengembangan Aplikasi Mobile & Web</strong><span>Pembuatan aplikasi berbasis web dan mobile</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">62021</span><div><strong>Konsultasi Teknologi Informasi</strong><span>Konsultan IT, analisis sistem, perencanaan digital</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">62022</span><div><strong>Konsultasi Komunikasi & TI</strong><span>Solusi e-government, infrastruktur digital</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">62023</span><div><strong>Pengelolaan Infrastruktur TI</strong><span>Jaringan, server, IT infrastructure management</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">63112</span><div><strong>Portal Web & Platform Digital</strong><span>Pengelolaan website dan platform digital</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">63122</span><div><strong>Pengelolaan Data & Server</strong><span>Hosting, backup, database management</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">85491</span><div><strong>Kursus & Pelatihan Komputer</strong><span>Academy, pelatihan SDM digital, sertifikasi IT</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">70201</span><div><strong>Konsultasi Manajemen Bisnis</strong><span>Konsultasi digitalisasi bisnis & transformasi digital</span></div></div>
-        <div class="kbli-item"><span class="kbli-code">47991</span><div><strong>E-Commerce</strong><span>Perdagangan layanan & produk IT melalui media elektronik</span></div></div>
+        {profile.kbli.map((k: any) => (
+            <div class="kbli-item"><span class="kbli-code">{k.code}</span><div><strong>{k.title}</strong><span>{k.desc}</span></div></div>
+        ))}
       </div>
       <div class="text-center mt-3">
         <p style="font-size:0.8rem;color:var(--gray-400)">* KBLI (Klasifikasi Baku Lapangan Usaha Indonesia) — siap didaftarkan ke OSS</p>
@@ -232,15 +211,15 @@ import Layout from '../../layouts/Layout.astro';
           <div style="display:grid;gap:1rem">
             <div class="card-custom d-flex align-items-center gap-3" style="padding:1.25rem">
               <div style="width:44px;height:44px;border-radius:12px;background:rgba(49,46,95,0.08);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem"><i class="bi bi-geo-alt-fill"></i></div>
-              <div><div style="font-weight:600;font-size:0.9rem">Alamat</div><div style="font-size:0.82rem;color:var(--gray-500)">Jl. Syaikh Abdul Wahid, Kel. Nganganaumala, Kec. Batupoaro, Kota Baubau 93717</div></div>
+              <div><div style="font-weight:600;font-size:0.9rem">Alamat</div><div style="font-size:0.82rem;color:var(--gray-500)">{profile.alamat}</div></div>
             </div>
             <div class="card-custom d-flex align-items-center gap-3" style="padding:1.25rem">
               <div style="width:44px;height:44px;border-radius:12px;background:rgba(49,46,95,0.08);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem"><i class="bi bi-envelope-fill"></i></div>
-              <div><div style="font-weight:600;font-size:0.9rem">Email</div><div style="font-size:0.82rem;color:var(--gray-500)">info@sarjanakomputer.id</div></div>
+              <div><div style="font-weight:600;font-size:0.9rem">Email</div><div style="font-size:0.82rem;color:var(--gray-500)">{profile.email}</div></div>
             </div>
             <div class="card-custom d-flex align-items-center gap-3" style="padding:1.25rem">
               <div style="width:44px;height:44px;border-radius:12px;background:rgba(49,46,95,0.08);display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:1.2rem"><i class="bi bi-whatsapp"></i></div>
-              <div><div style="font-weight:600;font-size:0.9rem">WhatsApp</div><div style="font-size:0.82rem;color:var(--gray-500)"><a href="https://wa.me/6283134086899" style="color:var(--primary);text-decoration:none">+62 831-3408-6899</a></div></div>
+              <div><div style="font-weight:600;font-size:0.9rem">WhatsApp</div><div style="font-size:0.82rem;color:var(--gray-500)"><a href={profile.whatsapp_link} style="color:var(--primary);text-decoration:none">{profile.whatsapp}</a></div></div>
             </div>
           </div>
         </div>
