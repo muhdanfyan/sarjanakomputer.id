@@ -268,7 +268,7 @@ function formatDate(dateStr: string) {
             <div class="featured-card-v2">
                 <a href={`/news/${first.slug}`}>
                     <div class="card-img-wrapper">
-                        <img src={first.image && first.image !== '' ? first.image : 'https://placehold.co/1200x630?text=No+Image'} alt={first.title}>
+                        <img src={first.imageUrl || first.image || 'https://placehold.co/1200x630?text=No+Image'} alt={first.title}>
                         <span class="card-badge">{first.category}</span>
                     </div>
                     <div class="card-content">
@@ -304,7 +304,7 @@ function formatDate(dateStr: string) {
                     <div class="news-card-v2">
                         <a href={`/news/${item.slug}`}>
                             <div class="card-img-wrapper">
-                                <img src={item.image && item.image !== '' ? item.image : 'https://placehold.co/600x400?text=No+Image'} alt={item.title}>
+                                <img src={item.imageUrl || item.image || 'https://placehold.co/600x400?text=No+Image'} alt={item.title}>
                                 <span class="card-badge">{item.category}</span>
                             </div>
                             <div class="card-content">
