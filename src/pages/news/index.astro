@@ -2,15 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 export const prerender = true;
 
-const allNewsRaw = await Astro.glob('../../content/news/*.md');
+const PB_URL = 'http://103.126.117.20:8095';
 
-const allNews = allNewsRaw.map(news => {
-  const slug = news.file.split('/').pop()?.replace('.md', '');
-  return {
-    ...news.frontmatter,
-    slug
-  };
-}).sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+const res = await fetch(`${PB_URL}/api/collections/news/records?sort=-date`);
+const data = await res.json();
+const allNews = data.items || [];
 
 const first = allNews.length > 0 ? allNews[0] : null;
 const restNews = allNews;

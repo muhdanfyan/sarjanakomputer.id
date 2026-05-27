@@ -2,8 +2,11 @@
 import Layout from '../../layouts/Layout.astro';
 export const prerender = true;
 
-const profilesDataRaw = await Astro.glob('../../content/profiles/main.md');
-const profile = profilesDataRaw[0].frontmatter;
+const PB_URL = 'http://103.126.117.20:8095';
+const res = await fetch(`${PB_URL}/api/collections/profiles/records?limit=1`);
+const data = await res.json();
+const profile = data.items[0] || {};
+profile.email = profile.email_address;
 ---
 
 <Layout title={`${profile.title} — ${profile.companyName}`} description={`Profil resmi ${profile.companyName} — Solusi IT profesional dari Baubau, Sulawesi Tenggara`} canonical="https://profil.sarjanakomputer.id/profil/" basePath=".." ogTitle={`${profile.title} — ${profile.companyName}`} ogDescription={`Profil resmi ${profile.companyName} — mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional dari Baubau, Sulawesi Tenggara.`}>

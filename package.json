@@ -4,9 +4,7 @@
   "description": "CV. Sarjana Komputer Indonesia — Solusi IT & Pengembangan SDM Digital",
   "scripts": {
     "dev": "astro dev",
-    "dev:cms": "cd cms-admin && npm run dev",
-    "build:cms": "cd cms-admin && npm run build",
-    "build": "npm run build:cms && astro build",
+    "build": "astro build",
     "preview": "astro preview"
   },
   "repository": {
@@ -23,6 +21,7 @@
   "type": "module",
   "dependencies": {
     "@astrojs/vercel": "^10.0.7",
-    "astro": "^6.3.6"
+    "astro": "^6.3.6",
+    "marked": "^18.0.4"
   }
 }

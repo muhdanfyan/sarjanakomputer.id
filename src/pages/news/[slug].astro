@@ -1,21 +1,24 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { marked } from 'marked';
 import Layout from '../../layouts/Layout.astro';
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const allNews = await getCollection('news');
+  const res = await fetch('http://103.126.117.20:8095/api/collections/news/records?perPage=100');
+  const data = await res.json();
+  const allNews = data.items || [];
   return allNews.map(news => {
     return {
-      params: { slug: news.id },
+      params: { slug: news.slug },
       props: { news }
     };
   });
 }
 
 const { news } = Astro.props;
-const { title, date, category, author } = news.data;
-const { Content } = await render(news);
+const { title, date, category, author, content, description } = news;
+
+const htmlContent = marked.parse(content || '');
 
 function formatDate(dateStr: string) {
     var d = new Date(dateStr);
@@ -29,7 +32,7 @@ const catIcons: Record<string, string> = { 'teknologi': 'cpu', 'pendidikan': 'bo
 const catIcon = catIcons[catClass] || 'newspaper';
 ---
 
-<Layout title={`${title} — SKI News`} description={news.frontmatter.description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={`https://news.sarjanakomputer.id/news/${Astro.params.slug}`} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={news.frontmatter.description}>
+<Layout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={`https://news.sarjanakomputer.id/news/${Astro.params.slug}`} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description}>
   <style is:global>
     .article-header {
         padding: 7rem 0 3rem;
@@ -96,6 +99,6 @@ const catIcon = catIcons[catClass] || 'newspaper';
   </section>
 
   <section class="article-body">
-      <news.Content />
+      <Fragment set:html={htmlContent} />
   </section>
 </Layout>
