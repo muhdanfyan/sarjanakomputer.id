@@ -111,10 +111,12 @@ function processRecord(record) {
   }
 }
 
-onRecordAfterCreateRequest((e) => {
+onRecordCreateRequest((e) => {
+  e.next();
   processRecord(e.record);
 }, 'news', 'courses');
 
-onRecordAfterUpdateRequest((e) => {
+onRecordUpdateRequest((e) => {
+  e.next();
   processRecord(e.record);
 }, 'news', 'courses');
