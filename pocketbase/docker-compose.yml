@@ -1,0 +1,23 @@
+services:
+  pocketbase:
+    image: ghcr.io/muchobien/pocketbase:latest
+    container_name: pocketbase_skomindo
+    restart: unless-stopped
+    ports:
+      - '8095:8090'
+    volumes:
+      - ./pb_data:/pb_data
+      - ./pb_public:/pb_public
+    networks:
+      - coolify
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=coolify
+      - traefik.http.routers.pocketbase-cms.rule=Host(`cms.sarjanakomputer.id`)
+      - traefik.http.routers.pocketbase-cms.entrypoints=http,https
+      - traefik.http.routers.pocketbase-cms.tls=true
+      - traefik.http.services.pocketbase-cms.loadbalancer.server.port=8090
+
+networks:
+  coolify:
+    external: true
