@@ -32,15 +32,35 @@ function formatDate(dateStr: string) {
         position: absolute;
         inset: 0;
         background-image: 
-            radial-gradient(circle at 20% 30%, rgba(227,56,106,0.1) 0%, transparent 40%),
-            radial-gradient(circle at 80% 70%, rgba(59,130,246,0.05) 0%, transparent 40%);
+            radial-gradient(circle at 20% 30%, rgba(227,56,106,0.15) 0%, transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(59,130,246,0.08) 0%, transparent 40%);
     }
     .news-hero .hero-content { position: relative; z-index: 2; }
+    .news-hero .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(227, 56, 106, 0.15);
+        border: 1px solid rgba(227, 56, 106, 0.3);
+        padding: 0.4rem 1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #f4729a;
+        margin-bottom: 1rem;
+    }
     .news-hero h1 { 
         font-size: 3.5rem; 
         font-weight: 800; 
         letter-spacing: -1.5px;
         margin-bottom: 1.5rem;
+        color: #ffffff;
+    }
+    .news-hero h1 span {
+        background: none;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        color: #ffffff;
     }
     .news-hero p { 
         font-size: 1.15rem; 
