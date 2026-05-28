@@ -22,8 +22,8 @@ export const onRequest = defineMiddleware((context, next) => {
     subdomain = hostname.replace('.sarjanakomputer.id', '');
   }
 
-  // If we have a valid subdomain
-  if (subdomain && subdomains.includes(subdomain)) {
+  // If we have a valid subdomain (local development only; production uses vercel.json rewrites)
+  if (subdomain && subdomains.includes(subdomain) && hostname.endsWith('.sarjanakomputer.local')) {
     // Check if it's a static asset, HMR endpoint, or has a file extension
     const isAsset = pathname.startsWith('/_astro/') || 
                     pathname.startsWith('/images/') || 
@@ -38,9 +38,7 @@ export const onRequest = defineMiddleware((context, next) => {
                     pathname.includes('.');
 
     if (!isAsset) {
-      // Rewrite internally: e.g. news.sarjanakomputer.id/ -> /news/
-      // news.sarjanakomputer.id/slug -> /news/slug
-      // If the path already starts with the subdomain, do not double rewrite
+      // Rewrite internally: e.g. news.sarjanakomputer.local/ -> /news/
       if (!pathname.startsWith(`/${subdomain}/`) && pathname !== `/${subdomain}`) {
         const targetPath = `/${subdomain}${pathname}`;
         console.log(`[Middleware Rewrite] Hostname: ${hostname}, Subdomain: ${subdomain}, Path: ${pathname} -> ${targetPath}`);
