@@ -75,7 +75,7 @@ if (useDocker) {
 startProcess('Astro Dev Server', 'npm', ['run', 'dev']);
 
 // 4. Start Local Subdomain Proxy
-startProcess('Local Subdomain Proxy', 'node', ['scripts/local_proxy.js']);
+startProcess('Local Subdomain Proxy', 'node', ['scripts/local_proxy.cjs']);
 
 // Handle clean shutdown
 let isShuttingDown = false;

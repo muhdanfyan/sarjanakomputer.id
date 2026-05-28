@@ -16,37 +16,8 @@ const server = http.createServer((req, res) => {
 
   if (host === 'cms.sarjanakomputer.local') {
     targetPort = POCKETBASE_PORT;
-  } else if (host.endsWith('.sarjanakomputer.local')) {
-    const subdomain = host.replace('.sarjanakomputer.local', '');
-    const validSubdomains = ['news', 'academy', 'profil', 'aplikasi', 'automasi'];
-    
-    if (validSubdomains.includes(subdomain)) {
-      // Parse pathname
-      const urlParts = req.url.split('?');
-      const pathname = urlParts[0];
-      const query = urlParts[1] ? '?' + urlParts[1] : '';
-
-      // We should NOT rewrite static assets or Vite internal HMR endpoints
-      const isAsset = pathname.startsWith('/_astro/') || 
-                      pathname.startsWith('/images/') || 
-                      pathname.startsWith('/css/') || 
-                      pathname.startsWith('/fonts/') ||
-                      pathname.startsWith('/@vite/') || 
-                      pathname.startsWith('/@fs/') ||
-                      pathname.startsWith('/node_modules/') ||
-                      pathname === '/favicon.ico' ||
-                      pathname === '/manifest.json' ||
-                      pathname === '/sw.js' ||
-                      pathname.includes('.'); // has file extension (e.g. png, css, js)
-
-      if (!isAsset) {
-        // Rewrite internally: e.g. / -> /news/
-        // If it already starts with the subdomain, do not double-prepend
-        if (!pathname.startsWith(`/${subdomain}/`) && pathname !== `/${subdomain}`) {
-          targetPath = `/${subdomain}${pathname}${query}`;
-        }
-      }
-    }
+  } else {
+    targetPort = ASTRO_PORT;
   }
 
   // Set up proxy request headers

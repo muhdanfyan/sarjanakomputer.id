@@ -2,105 +2,113 @@
   "redirects": [
     {
       "source": "/news",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://news.sarjanakomputer.id/",
       "permanent": true
     },
     {
       "source": "/news/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://news.sarjanakomputer.id/:path*",
       "permanent": true
     },
     {
       "source": "/academy",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://academy.sarjanakomputer.id/",
       "permanent": true
     },
     {
       "source": "/academy/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://academy.sarjanakomputer.id/:path*",
       "permanent": true
     },
     {
       "source": "/profil",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://profil.sarjanakomputer.id/",
       "permanent": true
     },
     {
       "source": "/profil/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://profil.sarjanakomputer.id/:path*",
       "permanent": true
     },
     {
       "source": "/aplikasi",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://aplikasi.sarjanakomputer.id/",
       "permanent": true
     },
     {
       "source": "/aplikasi/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://aplikasi.sarjanakomputer.id/:path*",
       "permanent": true
     },
     {
       "source": "/automasi",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://automasi.sarjanakomputer.id/",
       "permanent": true
     },
     {
       "source": "/automasi/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "sarjanakomputer.id"
+        }
+      ],
       "destination": "https://automasi.sarjanakomputer.id/:path*",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "news.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/news/:path*"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/academy/:path*"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "profil.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/profil/:path*"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "aplikasi.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/aplikasi/:path*"
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "automasi.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/automasi/:path*"
     }
   ]
 }

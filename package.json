@@ -4,7 +4,7 @@
   "description": "CV. Sarjana Komputer Indonesia — Solusi IT & Pengembangan SDM Digital",
   "scripts": {
     "dev": "astro dev",
-    "dev:all": "node scripts/dev_all.js",
+    "dev:all": "node scripts/dev_all.cjs",
     "seed:local": "node scripts/migrate_and_seed.js local",
     "build": "astro build",
     "preview": "astro preview"
