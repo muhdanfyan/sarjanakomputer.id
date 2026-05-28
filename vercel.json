@@ -1,10 +1,106 @@
 {
   "redirects": [
     {
-      "source": "https://cms.sarjanakomputer.id/:splat",
-      "destination": "/admin/:splat",
-      "status": 200,
-      "force": true
+      "source": "/news",
+      "destination": "https://news.sarjanakomputer.id/",
+      "permanent": true
+    },
+    {
+      "source": "/news/:path*",
+      "destination": "https://news.sarjanakomputer.id/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/academy",
+      "destination": "https://academy.sarjanakomputer.id/",
+      "permanent": true
+    },
+    {
+      "source": "/academy/:path*",
+      "destination": "https://academy.sarjanakomputer.id/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/profil",
+      "destination": "https://profil.sarjanakomputer.id/",
+      "permanent": true
+    },
+    {
+      "source": "/profil/:path*",
+      "destination": "https://profil.sarjanakomputer.id/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/aplikasi",
+      "destination": "https://aplikasi.sarjanakomputer.id/",
+      "permanent": true
+    },
+    {
+      "source": "/aplikasi/:path*",
+      "destination": "https://aplikasi.sarjanakomputer.id/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/automasi",
+      "destination": "https://automasi.sarjanakomputer.id/",
+      "permanent": true
+    },
+    {
+      "source": "/automasi/:path*",
+      "destination": "https://automasi.sarjanakomputer.id/:path*",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "news.sarjanakomputer.id"
+        }
+      ],
+      "destination": "/news/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "academy.sarjanakomputer.id"
+        }
+      ],
+      "destination": "/academy/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "profil.sarjanakomputer.id"
+        }
+      ],
+      "destination": "/profil/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "aplikasi.sarjanakomputer.id"
+        }
+      ],
+      "destination": "/aplikasi/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "automasi.sarjanakomputer.id"
+        }
+      ],
+      "destination": "/automasi/:path*"
     }
   ]
 }

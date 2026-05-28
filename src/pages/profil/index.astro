@@ -1,15 +1,17 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { PB_URL } from '../../utils/config.js';
+import { getProfilUrl, getAplikasiUrl, getAcademyUrl, getNewsUrl } from '../../utils/routes.js';
+
 export const prerender = true;
 
-const PB_URL = 'http://103.126.117.20:8095';
 const res = await fetch(`${PB_URL}/api/collections/profiles/records?limit=1`);
 const data = await res.json();
 const profile = data.items[0] || {};
 profile.email = profile.email_address;
 ---
 
-<Layout title={`${profile.title} — ${profile.companyName}`} description={`Profil resmi ${profile.companyName} — Solusi IT profesional dari Baubau, Sulawesi Tenggara`} canonical="https://profil.sarjanakomputer.id/profil/" basePath=".." ogTitle={`${profile.title} — ${profile.companyName}`} ogDescription={`Profil resmi ${profile.companyName} — mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional dari Baubau, Sulawesi Tenggara.`}>
+<Layout title={`${profile.title} — ${profile.companyName}`} description={`Profil resmi ${profile.companyName} — Solusi IT profesional dari Baubau, Sulawesi Tenggara`} canonical={getProfilUrl()} basePath=".." ogTitle={`${profile.title} — ${profile.companyName}`} ogDescription={`Profil resmi ${profile.companyName} — mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional dari Baubau, Sulawesi Tenggara.`}>
   <!-- HERO -->
   <section class="hero-section">
     <div class="container">
@@ -53,7 +55,7 @@ profile.email = profile.email_address;
 
   <!-- Cross Link -->
   <div class="text-center mt-4">
-    <p style="font-size:0.85rem;color:var(--gray-500)">Butuh solusi IT? Lihat <a href="../aplikasi/" style="color:var(--primary);font-weight:600">Layanan Aplikasi</a> · <a href="../academy/" style="color:var(--primary);font-weight:600">Akademi</a> · <a href="../news/" style="color:var(--primary);font-weight:600">Blog Teknologi</a></p>
+    <p style="font-size:0.85rem;color:var(--gray-500)">Butuh solusi IT? Lihat <a href={getAplikasiUrl()} style="color:var(--primary);font-weight:600">Layanan Aplikasi</a> · <a href={getAcademyUrl()} style="color:var(--primary);font-weight:600">Akademi</a> · <a href={getNewsUrl()} style="color:var(--primary);font-weight:600">Blog Teknologi</a></p>
   </div>
 
   <!-- VISI MISI -->

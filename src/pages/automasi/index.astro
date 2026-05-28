@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getAutomasiUrl } from '../../utils/routes.js';
 ---
 
-<Layout title="Automasi & AI — Sarjana Komputer Indonesia" description="Jasa automasi bisnis dan AI — chatbot, document processing, workflow automation dari Sarjana Komputer Indonesia" canonical="https://automasi.sarjanakomputer.id/automasi/" basePath=".." ogTitle="Automasi & AI — Sarjana Komputer Indonesia" ogDescription="Layanan automasi bisnis dan AI — chatbot, workflow automasi, document processing. Tingkatkan efisiensi perusahaan dengan solusi cerdas.">
+<Layout title="Automasi & AI — Sarjana Komputer Indonesia" description="Jasa automasi bisnis dan AI — chatbot, document processing, workflow automation dari Sarjana Komputer Indonesia" canonical={getAutomasiUrl()} basePath=".." ogTitle="Automasi & AI — Sarjana Komputer Indonesia" ogDescription="Layanan automasi bisnis dan AI — chatbot, workflow automasi, document processing. Tingkatkan efisiensi perusahaan dengan solusi cerdas.">
   <!-- HERO -->
   <section class="hero-section">
     <div class="container">

@@ -1,5 +1,21 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { PB_URL } from '../utils/config.js';
+import { getNewsDetailUrl, getNewsUrl, getProfilUrl, getAplikasiUrl, getAcademyUrl, getAutomasiUrl } from '../utils/routes.js';
+
+const profileRes = await fetch(`${PB_URL}/api/collections/profiles/records?limit=1`);
+const profileData = await profileRes.json();
+const profile = profileData.items[0] || { visi: '', misi: [], tim: [] };
+
+const newsRes = await fetch(`${PB_URL}/api/collections/news/records?sort=-date&perPage=3`);
+const newsData = await newsRes.json();
+const latestNews = newsData.items || [];
+
+function formatDate(dateStr) {
+    var d = new Date(dateStr);
+    var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+}
 ---
 
 <Layout title="CV. Sarjana Komputer Indonesia — Solusi IT & Pengembangan SDM Digital">
@@ -13,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
           <p class="hero-sub">Kami menyediakan solusi IT profesional — dari pengembangan aplikasi, automasi bisnis berbasis AI, hingga academy IT — untuk pemerintah, korporasi, UMKM, dan masyarakat Indonesia.</p>
           <div class="d-flex flex-wrap gap-2">
             <a href="#layanan" class="btn-primary-custom"><i class="bi bi-grid"></i> Lihat Layanan</a>
-            <a href="/profil/" class="btn-outline-custom" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);">Tentang Kami <i class="bi bi-arrow-right"></i></a>
+            <a href={getProfilUrl()} class="btn-outline-custom" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);">Tentang Kami <i class="bi bi-arrow-right"></i></a>
           </div>
           <div class="hero-meta">
             <span class="hero-meta-item"><i class="bi bi-geo-alt-fill"></i> Baubau, Sulawesi Tenggara</span>
@@ -53,19 +69,34 @@ import Layout from '../layouts/Layout.astro';
           <div class="visi-card">
             <span class="icon">🎯</span>
             <h5>Visi</h5>
-            <p>Mitra terdepan transformasi digital dan jembatan karier menuju industri global.</p>
+            <p>{profile.visi || 'Mitra terdepan transformasi digital dan jembatan karier menuju industri global.'}</p>
           </div>
         </div>
         <div class="col-lg-8">
           <div class="row g-2">
-            <div class="col-12"><div class="misi-card"><div class="num">1</div><div><h6>Menyediakan Solusi IT & Digitalisasi</h6><p>Untuk pemerintah, swasta, dan masyarakat melalui pengembangan aplikasi, sistem informasi, dan infrastruktur digital.</p></div></div></div>
-            <div class="col-12"><div class="misi-card"><div class="num">2</div><div><h6>Menjembatani Pendidikan & Industri</h6><p>Menghubungkan pendidikan, pengembangan talenta, dan riset dengan kebutuhan industri teknologi melalui academy dan program magang.</p></div></div></div>
-            <div class="col-12"><div class="misi-card"><div class="num">3</div><div><h6>Mendorong Digitalisasi Daerah</h6><p>Mempercepat adopsi teknologi digital di berbagai daerah untuk mendorong kemajuan ekonomi dan pelayanan publik yang lebih baik.</p></div></div></div>
+            {profile.misi && profile.misi.length > 0 ? (
+              profile.misi.map((m: string, idx: number) => (
+                <div class="col-12">
+                  <div class="misi-card">
+                    <div class="num">{idx + 1}</div>
+                    <div>
+                      <p style="margin:0; font-size:0.95rem; font-weight: 500; color: var(--gray-600);">{m}</p>
+                    </div>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <>
+                <div class="col-12"><div class="misi-card"><div class="num">1</div><div><h6>Menyediakan Solusi IT & Digitalisasi</h6><p>Untuk pemerintah, swasta, dan masyarakat melalui pengembangan aplikasi, sistem informasi, dan infrastruktur digital.</p></div></div></div>
+                <div class="col-12"><div class="misi-card"><div class="num">2</div><div><h6>Menjembatani Pendidikan & Industri</h6><p>Menghubungkan pendidikan, pengembangan talenta, dan riset dengan kebutuhan industri teknologi melalui academy dan program magang.</p></div></div></div>
+                <div class="col-12"><div class="misi-card"><div class="num">3</div><div><h6>Mendorong Digitalisasi Daerah</h6><p>Mempercepat adopsi teknologi digital di berbagai daerah untuk mendorong kemajuan ekonomi dan pelayanan publik yang lebih baik.</p></div></div></div>
+              </>
+            )}
           </div>
         </div>
       </div>
       <div class="text-center mt-3">
-        <a href="/profil/" class="btn-outline-custom">Profil Lengkap <i class="bi bi-arrow-right"></i></a>
+        <a href={getProfilUrl()} class="btn-outline-custom">Profil Lengkap <i class="bi bi-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -82,7 +113,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="row g-3">
         <div class="col-md-6 col-lg-3">
-          <a href="/aplikasi/" style="text-decoration:none;color:inherit">
+          <a href={getAplikasiUrl()} style="text-decoration:none;color:inherit">
             <div class="service-card-home">
               <div class="serv-icon" style="background:var(--gradient)"><i class="bi bi-window-stack"></i></div>
               <h5>Jasa Aplikasi</h5>
@@ -93,7 +124,7 @@ import Layout from '../layouts/Layout.astro';
           </a>
         </div>
         <div class="col-md-6 col-lg-3">
-          <a href="/automasi/" style="text-decoration:none;color:inherit">
+          <a href={getAutomasiUrl()} style="text-decoration:none;color:inherit">
             <div class="service-card-home">
               <div class="serv-icon" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><i class="bi bi-robot"></i></div>
               <h5>Automasi & AI</h5>
@@ -104,7 +135,7 @@ import Layout from '../layouts/Layout.astro';
           </a>
         </div>
         <div class="col-md-6 col-lg-3">
-          <a href="/academy/" style="text-decoration:none;color:inherit">
+          <a href={getAcademyUrl()} style="text-decoration:none;color:inherit">
             <div class="service-card-home">
               <div class="serv-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="bi bi-mortarboard-fill"></i></div>
               <h5>Academy IT</h5>
@@ -115,7 +146,7 @@ import Layout from '../layouts/Layout.astro';
           </a>
         </div>
         <div class="col-md-6 col-lg-3">
-          <a href="/profil/" style="text-decoration:none;color:inherit">
+          <a href={getProfilUrl()} style="text-decoration:none;color:inherit">
             <div class="service-card-home">
               <div class="serv-icon" style="background:linear-gradient(135deg,#8b5cf6,#6366f1)"><i class="bi bi-building"></i></div>
               <h5>Profil Perusahaan</h5>
@@ -166,7 +197,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
       <div class="text-center mt-3">
-        <a href="/aplikasi/" class="btn-outline-custom">Lihat Portofolio Lengkap <i class="bi bi-arrow-right"></i></a>
+        <a href={getAplikasiUrl()} class="btn-outline-custom">Lihat Portofolio Lengkap <i class="bi bi-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -182,51 +213,65 @@ import Layout from '../layouts/Layout.astro';
         <p class="section-subtitle">Tim muda, kreatif, dan kompeten yang siap mewujudkan solusi digital Anda.</p>
       </div>
       <div class="team-grid-home">
-        <div class="team-card-home">
-          <img loading="lazy" src="/images/team/direktur.webp" alt="Muhdan Fyan Syah Sofian - Direktur" class="tch-img">
-          <div class="tch-body">
-            <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
-            <div class="role-badge">Direktur</div>
-          </div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="/images/team/irvan.webp" alt="Irvan - Komisaris" class="tch-img">
-          <div class="tch-body">
-            <h5>Irvan, S.Kom</h5>
-            <div class="role-badge">Komisaris</div>
-          </div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="/images/team/hayat.webp" alt="Hayatul Habirun - IT Infrastructure Lead" class="tch-img">
-          <div class="tch-body">
-            <h5>Hayatul Habirun, S.Kom</h5>
-            <div class="role-badge">IT Infrastructure Lead</div>
-          </div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="/images/team/arif-rizal.webp" alt="Arif Rizal - Backend & QA Engineer" class="tch-img">
-          <div class="tch-body">
-            <h5>Arif Rizal</h5>
-            <div class="role-badge">Backend &amp; QA Engineer</div>
-          </div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="/images/team/ahmad-dahsan.webp" alt="Ahmad Dahsan - DevOps & Software Engineer" class="tch-img">
-          <div class="tch-body">
-            <h5>Ahmad Dahsan</h5>
-            <div class="role-badge">DevOps &amp; Software Engineer</div>
-          </div>
-        </div>
-        <div class="team-card-home">
-          <img loading="lazy" src="/images/team/andi-rifqial-nur.webp" alt="Andi Rifqial Nur - Software Engineer" class="tch-img">
-          <div class="tch-body">
-            <h5>Andi Rifqial Nur</h5>
-            <div class="role-badge">Software Engineer</div>
-          </div>
-        </div>
+        {profile.tim && profile.tim.length > 0 ? (
+          profile.tim.map((t: any) => (
+            <div class="team-card-home">
+              <img loading="lazy" src={t.image} alt={`${t.name} - ${t.role}`} class="tch-img">
+              <div class="tch-body">
+                <h5>{t.name}</h5>
+                <div class="role-badge">{t.role}</div>
+              </div>
+            </div>
+          ))
+        ) : (
+          <>
+            <div class="team-card-home">
+              <img loading="lazy" src="/images/team/direktur.webp" alt="Muhdan Fyan Syah Sofian - Direktur" class="tch-img">
+              <div class="tch-body">
+                <h5>Muhdan Fyan Syah Sofian, S.Kom</h5>
+                <div class="role-badge">Direktur</div>
+              </div>
+            </div>
+            <div class="team-card-home">
+              <img loading="lazy" src="/images/team/irvan.webp" alt="Irvan - Komisaris" class="tch-img">
+              <div class="tch-body">
+                <h5>Irvan, S.Kom</h5>
+                <div class="role-badge">Komisaris</div>
+              </div>
+            </div>
+            <div class="team-card-home">
+              <img loading="lazy" src="/images/team/hayat.webp" alt="Hayatul Habirun - IT Infrastructure Lead" class="tch-img">
+              <div class="tch-body">
+                <h5>Hayatul Habirun, S.Kom</h5>
+                <div class="role-badge">IT Infrastructure Lead</div>
+              </div>
+            </div>
+            <div class="team-card-home">
+              <img loading="lazy" src="/images/team/arif-rizal.webp" alt="Arif Rizal - Backend & QA Engineer" class="tch-img">
+              <div class="tch-body">
+                <h5>Arif Rizal</h5>
+                <div class="role-badge">Backend &amp; QA Engineer</div>
+              </div>
+            </div>
+            <div class="team-card-home">
+              <img loading="lazy" src="/images/team/ahmad-dahsan.webp" alt="Ahmad Dahsan - DevOps & Software Engineer" class="tch-img">
+              <div class="tch-body">
+                <h5>Ahmad Dahsan</h5>
+                <div class="role-badge">DevOps &amp; Software Engineer</div>
+              </div>
+            </div>
+            <div class="team-card-home">
+              <img loading="lazy" src="/images/team/andi-rifqial-nur.webp" alt="Andi Rifqial Nur - Software Engineer" class="tch-img">
+              <div class="tch-body">
+                <h5>Andi Rifqial Nur</h5>
+                <div class="role-badge">Software Engineer</div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
       <div class="text-center mt-3">
-        <a href="/profil/#struktur" class="btn-outline-custom">Lihat Struktur Organisasi <i class="bi bi-arrow-right"></i></a>
+        <a href={`${getProfilUrl()}#struktur`} class="btn-outline-custom">Lihat Struktur Organisasi <i class="bi bi-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -259,27 +304,29 @@ import Layout from '../layouts/Layout.astro';
           </div>
           <h2 class="section-title" style="margin:0">Update Teknologi Terbaru</h2>
         </div>
-        <a href="/news/" style="font-size:.85rem;color:var(--primary);font-weight:600;">Kunjungi Portal Berita <i class="bi bi-arrow-right"></i></a>
+        <a href={getNewsUrl()} style="font-size:.85rem;color:var(--primary);font-weight:600;">Kunjungi Portal Berita <i class="bi bi-arrow-right"></i></a>
       </div>
       <div class="row g-3 mt-1">
-        <div class="col-md-4">
-          <div class="blog-preview-card" onclick="window.open('https://www.theverge.com/ai-artificial-intelligence','_blank')">
-            <div class="bp-img" style="background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80')"></div>
-            <div class="bp-body"><div class="bp-cat">AI & ML</div><h6>Perkembangan AI 2026: Model Open Source Mendominasi Industri</h6><p style="font-size:.75rem;color:var(--gray-400)">20 Mei 2026</p></div>
+        {latestNews.length > 0 ? (
+          latestNews.map((item: any) => (
+            <div class="col-md-4">
+              <a href={getNewsDetailUrl(item.slug)} style="text-decoration:none;color:inherit">
+                <div class="blog-preview-card">
+                  <div class="bp-img" style={`background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),url('${item.imageUrl || item.image || "https://placehold.co/600x400?text=No+Image"}')`}></div>
+                  <div class="bp-body">
+                    <div class="bp-cat">{item.category}</div>
+                    <h6>{item.title}</h6>
+                    <p style="font-size:.75rem;color:var(--gray-400)">{formatDate(item.date)}</p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          ))
+        ) : (
+          <div class="col-12 text-center py-4">
+            <p style="color:var(--gray-400)">Belum ada berita terbaru.</p>
           </div>
-        </div>
-        <div class="col-md-4">
-          <div class="blog-preview-card" onclick="window.open('https://developer.chrome.com/blog','_blank')">
-            <div class="bp-img" style="background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&q=80')"></div>
-            <div class="bp-body"><div class="bp-cat">Web Dev</div><h6>React 19 Resmi Rilis: Fitur Baru yang Wajib Dicoba Developer</h6><p style="font-size:.75rem;color:var(--gray-400)">19 Mei 2026</p></div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="blog-preview-card" onclick="window.open('https://thehackernews.com','_blank')">
-            <div class="bp-img" style="background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&q=80')"></div>
-            <div class="bp-body"><div class="bp-cat">Cybersecurity</div><h6>Ancaman Siber 2026: Serangan Ransomware Makin Canggih</h6><p style="font-size:.75rem;color:var(--gray-400)">19 Mei 2026</p></div>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   </section>
@@ -290,8 +337,8 @@ import Layout from '../layouts/Layout.astro';
       <h2>Siap Mulai Transformasi Digital?</h2>
       <p>Konsultasi gratis dengan tim kami. Ceritakan kebutuhan Anda, dan kami akan berikan solusi terbaik.</p>
       <div class="d-flex flex-wrap justify-content-center gap-2">
-        <a href="https://wa.me/628xx" class="btn-cta" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Konsultasi Gratis</a>
-        <a href="/profil/#kontak" class="btn-outline-cta"><i class="bi bi-envelope"></i> Hubungi Kami</a>
+        <a href={profile.whatsapp_link || 'https://wa.me/6283134086899'} class="btn-cta" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i> Konsultasi Gratis</a>
+        <a href={`${getProfilUrl()}#kontak`} class="btn-outline-cta"><i class="bi bi-envelope"></i> Hubungi Kami</a>
       </div>
     </div>
   </section>

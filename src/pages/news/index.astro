@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-export const prerender = true;
+import { PB_URL } from '../../utils/config.js';
+import { getNewsDetailUrl } from '../../utils/routes.js';
 
-const PB_URL = 'http://103.126.117.20:8095';
+export const prerender = true;
 
 const res = await fetch(`${PB_URL}/api/collections/news/records?sort=-date`);
 const data = await res.json();
@@ -266,7 +267,7 @@ function formatDate(dateStr: string) {
       <div class="container">
           {first ? (
             <div class="featured-card-v2">
-                <a href={`/news/${first.slug}`}>
+                <a href={getNewsDetailUrl(first.slug)}>
                     <div class="card-img-wrapper">
                         <img src={first.imageUrl || first.image || 'https://placehold.co/1200x630?text=No+Image'} alt={first.title}>
                         <span class="card-badge">{first.category}</span>
@@ -302,7 +303,7 @@ function formatDate(dateStr: string) {
             {restNews.map((item) => (
                 <div class="col-md-6 col-lg-4 news-item" data-category={item.category}>
                     <div class="news-card-v2">
-                        <a href={`/news/${item.slug}`}>
+                        <a href={getNewsDetailUrl(item.slug)}>
                             <div class="card-img-wrapper">
                                 <img src={item.imageUrl || item.image || 'https://placehold.co/600x400?text=No+Image'} alt={item.title}>
                                 <span class="card-badge">{item.category}</span>

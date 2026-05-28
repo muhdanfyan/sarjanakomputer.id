@@ -1,7 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 
-const PB_URL = 'http://103.126.117.20:8095';
+const isLocal = process.argv.includes('local');
+const PB_URL = isLocal ? 'http://127.0.0.1:8095' : 'http://103.126.117.20:8095';
 const EMAIL = 'admin@sarjanakomputer.id';
 const PASS = 'Skomindo2026Admin';
 
@@ -97,6 +98,27 @@ async function run() {
     'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json'
   };
+
+  console.log('\n=== STEP 1.5: Import Schema from pb_schema.json ===');
+  const schemaPath = './pocketbase/pb_schema.json';
+  if (fs.existsSync(schemaPath)) {
+    const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+    const importRes = await fetch(`${PB_URL}/api/collections/import`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({
+        collections: schema.items,
+        deleteMissing: false
+      })
+    });
+    if (importRes.ok) {
+      console.log('Successfully imported collections schema!');
+    } else {
+      console.error('Failed to import collections schema:', await importRes.text());
+    }
+  } else {
+    console.warn('pb_schema.json not found, skipping schema import.');
+  }
 
   console.log('\n=== STEP 2: Recreate Collections (news & courses) with text image fields ===');
   const collectionsRes = await fetch(`${PB_URL}/api/collections`, { headers });

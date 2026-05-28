@@ -4,3 +4,10 @@ node_modules/
 dist/
 .vercel
 .env*.local
+
+# PocketBase local database and binaries
+pocketbase/pocketbase
+pocketbase/pb_data/
+pocketbase/pb.zip
+pocketbase/CHANGELOG.md
+pocketbase/LICENSE.md

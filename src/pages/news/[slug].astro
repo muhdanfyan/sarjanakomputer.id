@@ -1,10 +1,13 @@
 ---
 import { marked } from 'marked';
 import Layout from '../../layouts/Layout.astro';
+import { PB_URL } from '../../utils/config.js';
+import { getNewsUrl, getNewsDetailUrl } from '../../utils/routes.js';
+
 export const prerender = true;
 
 export async function getStaticPaths() {
-  const res = await fetch('http://103.126.117.20:8095/api/collections/news/records?perPage=100');
+  const res = await fetch(`${PB_URL}/api/collections/news/records?perPage=100`);
   const data = await res.json();
   const allNews = data.items || [];
   return allNews.map(news => {
@@ -32,7 +35,7 @@ const catIcons: Record<string, string> = { 'teknologi': 'cpu', 'pendidikan': 'bo
 const catIcon = catIcons[catClass] || 'newspaper';
 ---
 
-<Layout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={`https://news.sarjanakomputer.id/news/${Astro.params.slug}`} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description}>
+<Layout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description}>
   <style is:global>
     .article-header {
         padding: 7rem 0 3rem;
@@ -81,7 +84,7 @@ const catIcon = catIcons[catClass] || 'newspaper';
 
   <section class="section">
     <div class="container" style="max-width:800px">
-      <a href="/news" class="back-btn"><i class="bi bi-arrow-left"></i> Kembali ke Berita</a>
+      <a href={getNewsUrl()} class="back-btn"><i class="bi bi-arrow-left"></i> Kembali ke Berita</a>
     </div>
   </section>
 

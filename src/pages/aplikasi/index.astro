@@ -1,8 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getAplikasiUrl } from '../../utils/routes.js';
 ---
 
-<Layout title="Jasa Aplikasi — Sarjana Komputer Indonesia" description="Jasa pembuatan aplikasi web, mobile Android, dan desktop custom dari CV. Sarjana Komputer Indonesia" canonical="https://aplikasi.sarjanakomputer.id/aplikasi/" basePath=".." ogTitle="Jasa Aplikasi — Sarjana Komputer Indonesia" ogDescription="Jasa pembuatan aplikasi web, mobile Android, dan desktop custom. Dari sistem informasi, aplikasi desa, hingga platform digital — harga terjangkau, kualitas profesional.">
+<Layout title="Jasa Aplikasi — Sarjana Komputer Indonesia" description="Jasa pembuatan aplikasi web, mobile Android, dan desktop custom dari CV. Sarjana Komputer Indonesia" canonical={getAplikasiUrl()} basePath=".." ogTitle="Jasa Aplikasi — Sarjana Komputer Indonesia" ogDescription="Jasa pembuatan aplikasi web, mobile Android, dan desktop custom. Dari sistem informasi, aplikasi desa, hingga platform digital — harga terjangkau, kualitas profesional.">
   <!-- HERO -->
   <section class="hero-section">
     <div class="container">

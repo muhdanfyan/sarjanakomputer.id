@@ -19,16 +19,26 @@ const {
   ogImage = "https://sarjanakomputer.id/images/logo.png",
 } = Astro.props;
 
+import { 
+  getHomeUrl, 
+  getProfilUrl, 
+  getAplikasiUrl, 
+  getAcademyUrl, 
+  getAutomasiUrl, 
+  getNewsUrl, 
+  getStrukturUrl 
+} from '../utils/routes.js';
+
 const logoPath = basePath ? `${basePath}/images/logo.png` : "/images/logo.png";
 const cssPath = "/css/subdomain.min.css";
-const newsPath = basePath ? `${basePath}/news/` : "news/";
-const aplikasiPath = basePath ? `${basePath}/aplikasi/` : "aplikasi/";
-const academyPath = basePath ? `${basePath}/academy/` : "academy/";
-const automasiPath = basePath ? `${basePath}/automasi/` : "automasi/";
-const profilPath = basePath ? `${basePath}/profil/` : "/profil/";
-const homePath = basePath ? `${basePath}/` : "/";
-const strukturPath = basePath ? `${basePath}/struktur-organisasi/` : "/struktur-organisasi/";
-const waLink = "https://wa.me/628xx";
+const newsPath = getNewsUrl();
+const aplikasiPath = getAplikasiUrl();
+const academyPath = getAcademyUrl();
+const automasiPath = getAutomasiUrl();
+const profilPath = getProfilUrl();
+const homePath = getHomeUrl();
+const strukturPath = getStrukturUrl();
+const waLink = "https://wa.me/6282299882200";
 ---
 
 <!DOCTYPE html>

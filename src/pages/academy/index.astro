@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-const PB_URL = 'http://103.126.117.20:8095';
+import { PB_URL } from '../../utils/config.js';
+import { getAcademyUrl } from '../../utils/routes.js';
 
 // Fetch courses
 const coursesRes = await fetch(`${PB_URL}/api/collections/courses/records?sort=created`);
@@ -31,7 +32,7 @@ const icons = {
 };
 ---
 
-<Layout title="Sarjana Komputer Academy — Bootcamp & Pelatihan IT" description="Sarjana Komputer Academy — Bootcamp IT, bimbingan skripsi, dan pelatihan digital untuk mencetak talenta IT profesional." canonical="https://academy.sarjanakomputer.id/academy/" basePath=".." ogTitle="Sarjana Komputer Academy — Bootcamp & Pelatihan IT" ogDescription="Sarjana Komputer Academy — bootcamp coding, bimbingan skripsi, pelatihan IT, dan pengembangan talenta digital untuk siap bersaing di industri teknologi.">
+<Layout title="Sarjana Komputer Academy — Bootcamp & Pelatihan IT" description="Sarjana Komputer Academy — Bootcamp IT, bimbingan skripsi, dan pelatihan digital untuk mencetak talenta IT profesional." canonical={getAcademyUrl()} basePath=".." ogTitle="Sarjana Komputer Academy — Bootcamp & Pelatihan IT" ogDescription="Sarjana Komputer Academy — bootcamp coding, bimbingan skripsi, pelatihan IT, dan pengembangan talenta digital untuk siap bersaing di industri teknologi.">
   <!-- HERO -->
   <section class="hero-section">
     <div class="container">
