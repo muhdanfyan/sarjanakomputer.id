@@ -10,6 +10,22 @@ const allNews = data.items || [];
 const first = allNews.length > 0 ? allNews[0] : null;
 const restNews = allNews;
 
+// Fallback images from Unsplash based on category
+const categoryImages = {
+  'Teknologi': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&fit=crop',
+  'Pendidikan': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80&fit=crop',
+  'Bisnis': 'https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=600&q=80&fit=crop',
+  'Startup': 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80&fit=crop',
+};
+const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop';
+
+function getNewsImage(item) {
+  // If PocketBase has an image URL, use it
+  if (item.imageUrl || item.image) return item.imageUrl || item.image;
+  // Otherwise use category-based Unsplash image
+  return categoryImages[item.category] || defaultImage;
+}
+
 function formatDate(dateStr: string) {
     var d = new Date(dateStr);
     var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
@@ -287,7 +303,7 @@ function formatDate(dateStr: string) {
             <div class="featured-card-v2">
                 <a href={getNewsDetailUrl(first.slug)}>
                     <div class="card-img-wrapper">
-                        <img src={first.imageUrl || first.image || 'https://placehold.co/1200x630?text=No+Image'} alt={first.title}>
+                        <img src={getNewsImage(first)} alt={first.title}>
                         <span class="card-badge">{first.category}</span>
                     </div>
                     <div class="card-content">
@@ -323,7 +339,7 @@ function formatDate(dateStr: string) {
                     <div class="news-card-v2">
                         <a href={getNewsDetailUrl(item.slug)}>
                             <div class="card-img-wrapper">
-                                <img src={item.imageUrl || item.image || 'https://placehold.co/600x400?text=No+Image'} alt={item.title}>
+                                <img src={getNewsImage(item)} alt={item.title}>
                                 <span class="card-badge">{item.category}</span>
                             </div>
                             <div class="card-content">
