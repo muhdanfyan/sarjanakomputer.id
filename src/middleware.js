@@ -22,8 +22,12 @@ export const onRequest = defineMiddleware((context, next) => {
     subdomain = hostname.replace('.sarjanakomputer.id', '');
   }
 
-  // If we have a valid subdomain (local development only; production uses vercel.json rewrites)
-  if (subdomain && subdomains.includes(subdomain) && hostname.endsWith('.sarjanakomputer.local')) {
+  // Detect if this is already an internal Astro rewrite (x-astro-rewrite header set by prior rewrite)
+  // Avoid infinite loop: only rewrite if not already rewritten
+  const alreadyRewritten = context.request.headers.get('x-astro-rewrite');
+
+  // If we have a valid subdomain and haven't already been rewritten
+  if (subdomain && subdomains.includes(subdomain) && !alreadyRewritten) {
     // Check if it's a static asset, HMR endpoint, or has a file extension
     const isAsset = pathname.startsWith('/_astro/') || 
                     pathname.startsWith('/images/') || 
@@ -38,9 +42,14 @@ export const onRequest = defineMiddleware((context, next) => {
                     pathname.includes('.');
 
     if (!isAsset) {
-      // Rewrite internally: e.g. news.sarjanakomputer.local/ -> /news/
+      // Build the target path: handle root path specially
+      // e.g. news.sarjanakomputer.id/ -> /news/
+      // e.g. news.sarjanakomputer.id/slug -> /news/slug
+      const cleanPath = pathname === '/' ? '' : pathname;
+      const targetPath = `/${subdomain}${cleanPath}`;
+      
+      // Only rewrite if path doesn't already start with the subdomain prefix
       if (!pathname.startsWith(`/${subdomain}/`) && pathname !== `/${subdomain}`) {
-        const targetPath = `/${subdomain}${pathname}`;
         console.log(`[Middleware Rewrite] Hostname: ${hostname}, Subdomain: ${subdomain}, Path: ${pathname} -> ${targetPath}`);
         return context.rewrite(targetPath);
       }
