@@ -20,9 +20,7 @@ const categoryImages = {
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop';
 
 function getNewsImage(item) {
-  // If PocketBase has an image URL, use it
-  if (item.imageUrl || item.image) return item.imageUrl || item.image;
-  // Otherwise use category-based Unsplash image
+  // Always use category-based Unsplash image for now
   return categoryImages[item.category] || defaultImage;
 }
 
