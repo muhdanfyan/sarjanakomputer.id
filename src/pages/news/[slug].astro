@@ -38,9 +38,9 @@ const categoryImages: Record<string, string> = {
 };
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80&fit=crop';
 const ogImageRaw = categoryImages[category] || defaultImage;
-// Use a consistent image URL without query params for og:image to avoid &amp; issues
-// Unsplash provides clean image URLs - we just need the photo ID format
-const ogImage = ogImageRaw.split('?')[0] + '?w=1200&q=80';
+// Use Unsplash URL with ?w=1200 only (single param) to avoid Astro escaping & to &amp;
+// which breaks social media crawlers that read og:image
+const ogImage = ogImageRaw.split('?')[0] + '?w=1200';
 ---
 
 <Layout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description} ogImage={ogImage}>
