@@ -3,8 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import { PB_URL } from '../../utils/config.js';
 import { getNewsDetailUrl } from '../../utils/routes.js';
 
-export const prerender = true;
-
 const res = await fetch(`${PB_URL}/api/collections/news/records?sort=-date`);
 const data = await res.json();
 const allNews = data.items || [];

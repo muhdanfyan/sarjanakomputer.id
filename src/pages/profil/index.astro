@@ -3,8 +3,6 @@ import Layout from '../../layouts/Layout.astro';
 import { PB_URL } from '../../utils/config.js';
 import { getProfilUrl, getAplikasiUrl, getAcademyUrl, getNewsUrl } from '../../utils/routes.js';
 
-export const prerender = true;
-
 const res = await fetch(`${PB_URL}/api/collections/profiles/records?limit=1`);
 const data = await res.json();
 const profile = data.items[0] || {};

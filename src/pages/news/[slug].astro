@@ -4,21 +4,15 @@ import Layout from '../../layouts/Layout.astro';
 import { PB_URL } from '../../utils/config.js';
 import { getNewsUrl, getNewsDetailUrl } from '../../utils/routes.js';
 
-export const prerender = true;
+const { slug } = Astro.params;
+const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(slug='${slug}')&limit=1`);
+const data = await res.json();
+const news = data.items && data.items[0];
 
-export async function getStaticPaths() {
-  const res = await fetch(`${PB_URL}/api/collections/news/records?perPage=100`);
-  const data = await res.json();
-  const allNews = data.items || [];
-  return allNews.map(news => {
-    return {
-      params: { slug: news.slug },
-      props: { news }
-    };
-  });
+if (!news) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
 }
 
-const { news } = Astro.props;
 const { title, date, category, author, content, description } = news;
 
 const htmlContent = marked.parse(content || '');
