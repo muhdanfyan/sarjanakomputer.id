@@ -29,6 +29,7 @@ const catIcons: Record<string, string> = { 'teknologi': 'cpu', 'pendidikan': 'bo
 const catIcon = catIcons[catClass] || 'newspaper';
 
 // Fallback images from Unsplash based on category (same as index)
+// Note: Astro auto-escapes & in attributes, so we use a helper to set og:image safely
 const categoryImages: Record<string, string> = {
   'Teknologi': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&fit=crop',
   'Pendidikan': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80&fit=crop',
@@ -36,7 +37,10 @@ const categoryImages: Record<string, string> = {
   'Startup': 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80&fit=crop',
 };
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80&fit=crop';
-const ogImage = categoryImages[category] || defaultImage;
+const ogImageRaw = categoryImages[category] || defaultImage;
+// Use a consistent image URL without query params for og:image to avoid &amp; issues
+// Unsplash provides clean image URLs - we just need the photo ID format
+const ogImage = ogImageRaw.split('?')[0] + '?w=1200&q=80';
 ---
 
 <Layout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description} ogImage={ogImage}>
