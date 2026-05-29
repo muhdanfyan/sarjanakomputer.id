@@ -34,11 +34,11 @@ function formatDate(dateStr: string) {
 
 <NewsLayout title="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
   <style is:global>
-    /* ===== SLIDER HERO — Premium Breaking News ===== */
+    /* ===== SLIDER HERO — Premium Card Style ===== */
     .slider-hero {
       position: relative;
       width: 100%;
-      height: 520px;
+      height: 480px;
       overflow: hidden;
       background: #050a20;
     }
@@ -46,7 +46,7 @@ function formatDate(dateStr: string) {
       display: flex;
       width: 100%;
       height: 100%;
-      transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+      transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
       will-change: transform;
     }
     .slider-hero .slide {
@@ -54,111 +54,119 @@ function formatDate(dateStr: string) {
       height: 100%;
       position: relative;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
     }
-    .slider-hero .slide-img {
+    .slider-hero .slide-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .slider-hero .slide-bg img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
-    .slider-hero .slide-overlay {
+    .slider-hero .slide-bg .overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(5,10,32,0.92) 0%, rgba(5,10,32,0.4) 50%, rgba(5,10,32,0.6) 100%);
+      background: linear-gradient(135deg, rgba(5,10,32,0.88) 0%, rgba(5,10,32,0.35) 45%, rgba(5,10,32,0.65) 100%);
     }
-    .slider-hero .slide-overlay::after {
+    .slider-hero .slide-bg .overlay::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 60%;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
       background: linear-gradient(0deg, #050a20 0%, transparent 100%);
     }
-    .slider-hero .slide-content {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+    .slider-hero .slide-inner {
+      position: relative;
       z-index: 3;
-      padding: 3rem 1.5rem;
-    }
-    .slider-hero .slide-content .container {
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .slider-hero .slide-body {
+      max-width: 680px;
     }
     .slider-hero .slide-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.35rem;
       background: var(--secondary);
       color: #fff;
-      padding: 0.25rem 0.9rem;
+      padding: 0.2rem 0.85rem;
       border-radius: 50px;
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
     }
     .slider-hero .slide-title {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 800;
       color: #fff;
-      line-height: 1.2;
-      max-width: 720px;
-      margin-bottom: 0.75rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .slider-hero .slide-meta {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.8rem;
       display: flex;
       align-items: center;
       gap: 1rem;
+      flex-wrap: wrap;
     }
-    .slider-hero .slide-meta i { margin-right: 0.3rem; }
-    .slider-hero .slide-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      color: #fff;
-      background: rgba(227,56,106,0.2);
-      border: 1px solid rgba(227,56,106,0.4);
-      padding: 0.4rem 1.2rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
+    .slider-hero .slide-meta i { margin-right: 0.25rem; }
+    .slider-hero .slide-action {
       margin-top: 0.75rem;
     }
-    .slider-hero .slide-link:hover {
+    .slider-hero .slide-action a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: #fff;
+      background: rgba(227,56,106,0.15);
+      border: 1px solid rgba(227,56,106,0.3);
+      padding: 0.35rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.25s;
+    }
+    .slider-hero .slide-action a:hover {
       background: var(--secondary);
       border-color: var(--secondary);
     }
 
-    /* ===== SLIDER NAV ===== */
+    /* ===== SLIDER NAV (kanan bawah) ===== */
     .slider-nav {
       position: absolute;
-      bottom: 2rem;
-      right: 2rem;
+      bottom: 1.5rem;
+      right: 1.5rem;
       z-index: 10;
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
     .slider-nav button {
-      width: 42px;
-      height: 42px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
       color: #fff;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
-      transition: all 0.3s;
-      backdrop-filter: blur(8px);
+      transition: all 0.25s;
+      backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -166,33 +174,33 @@ function formatDate(dateStr: string) {
     .slider-nav button:hover {
       background: var(--secondary);
       border-color: var(--secondary);
-      transform: scale(1.05);
     }
 
-    /* ===== SLIDER DOTS ===== */
+    /* ===== SLIDER DOTS (kiri bawah) ===== */
     .slider-dots {
       position: absolute;
-      bottom: 2.2rem;
+      bottom: 1.65rem;
       left: 1.5rem;
       z-index: 10;
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
+      align-items: center;
     }
     .slider-dots .dot {
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.25);
       cursor: pointer;
-      transition: all 0.4s;
+      transition: all 0.35s;
     }
     .slider-dots .dot.active {
-      width: 28px;
+      width: 24px;
       border-radius: 4px;
       background: var(--secondary);
     }
 
-    /* ===== THUMBNAIL PREVIEW DI SAMPING ===== */
+    /* ===== THUMBNAIL PREVIEW (samping kanan, tengah) ===== */
     .slider-thumbs {
       position: absolute;
       right: 1.5rem;
@@ -201,53 +209,56 @@ function formatDate(dateStr: string) {
       z-index: 10;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
     .slider-thumbs .thumb-item {
-      width: 80px;
-      height: 56px;
-      border-radius: 8px;
+      width: 72px;
+      height: 50px;
+      border-radius: 6px;
       overflow: hidden;
       border: 2px solid transparent;
       cursor: pointer;
-      transition: all 0.4s;
-      opacity: 0.5;
+      transition: all 0.35s;
+      opacity: 0.45;
       position: relative;
     }
     .slider-thumbs .thumb-item.active {
       border-color: var(--secondary);
       opacity: 1;
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(227,56,106,0.3);
+      transform: scale(1.08);
+      box-shadow: 0 0 16px rgba(227,56,106,0.25);
     }
     .slider-thumbs .thumb-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .slider-thumbs .thumb-item .thumb-label {
+    .slider-thumbs .thumb-item .thumb-num {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.45);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       font-weight: 700;
       color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
-    .slider-thumbs .thumb-item.active .thumb-label {
+    .slider-thumbs .thumb-item.active .thumb-num {
       background: transparent;
     }
 
-    @media (max-width: 768px) {
-      .slider-hero { height: 380px; }
-      .slider-hero .slide-title { font-size: 1.4rem; }
+    @media (max-width: 992px) {
       .slider-thumbs { display: none; }
+    }
+    @media (max-width: 768px) {
+      .slider-hero { height: 340px; }
+      .slider-hero .slide-title { font-size: 1.3rem; }
+      .slider-hero .slide-inner { padding: 0 1rem; }
       .slider-nav { bottom: 1rem; right: 1rem; }
-      .slider-hero .slide-content { padding: 1.5rem; }
+      .slider-nav button { width: 32px; height: 32px; font-size: 0.85rem; }
+      .slider-dots { bottom: 1.15rem; left: 1rem; }
+      .slider-dots .dot.active { width: 18px; }
     }
 
     /* Category Buttons */
@@ -440,17 +451,21 @@ function formatDate(dateStr: string) {
     <div class="slide-track" id="slideTrack">
       {restNews.slice(0, 5).map((item, i) => (
         <div class="slide">
-          <img class="slide-img" src={getNewsImage(item)} alt={item.title} />
-          <div class="slide-overlay"></div>
-          <div class="slide-content">
-            <div class="container">
-              <span class="slide-badge"><i class={`bi bi-${i === 0 ? 'lightning-fill' : i === 1 ? 'fire' : 'newspaper'}`}></i> {i === 0 ? 'Breaking' : item.category}</span>
+          <div class="slide-bg">
+            <img src={getNewsImage(item)} alt={item.title} />
+            <div class="overlay"></div>
+          </div>
+          <div class="slide-inner">
+            <div class="slide-body">
+              <span class="slide-badge"><i class={`bi bi-${i === 0 ? 'lightning-fill' : 'fire'}`}></i> {i === 0 ? 'BREAKING' : item.category.toUpperCase()}</span>
               <h2 class="slide-title">{item.title}</h2>
               <div class="slide-meta">
                 <span><i class="bi bi-calendar3"></i> {formatDate(item.date)}</span>
                 <span><i class="bi bi-person"></i> {item.author || 'Tim SKI'}</span>
               </div>
-              <a href={getNewsDetailUrl(item.slug)} class="slide-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+              <div class="slide-action">
+                <a href={getNewsDetailUrl(item.slug)}>Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+              </div>
             </div>
           </div>
         </div>
@@ -475,7 +490,7 @@ function formatDate(dateStr: string) {
       {restNews.slice(0, 5).map((item, i) => (
         <div class="thumb-item {i === 0 ? 'active' : ''}" data-index={i}>
           <img src={getNewsImage(item)} alt="" />
-          <div class="thumb-label">{i === 0 ? 'Sekarang' : `#${i + 1}`}</div>
+          <div class="thumb-num">{i === 0 ? '1' : `#${i + 1}`}</div>
         </div>
       ))}
     </div>
