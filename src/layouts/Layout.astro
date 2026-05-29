@@ -105,7 +105,15 @@ const waLink = "https://wa.me/6282299882200";
 <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
   <div class="container">
     <a class="navbar-brand" href={homePath}>
-      <img src={logoPath} alt="Logo CV. Sarjana Komputer Indonesia" width="36" height="36"> Sarjana <span>Komputer</span>
+      <div style="position:relative; display:inline-flex; align-items:center; gap:0.5rem;">
+        <img src={logoPath} alt="Logo CV. Sarjana Komputer Indonesia" width="36" height="36">
+        <div>
+          <div style="font-size:0.6rem; font-weight:700; color:var(--secondary); letter-spacing:1px; line-height:1; margin-bottom:-2px;">
+            <a href={newsPath} style="color:var(--secondary); text-decoration:none;">NEWS</a>
+          </div>
+          Sarjana <span>Komputer</span>
+        </div>
+      </div>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <i class="bi bi-list"></i>
