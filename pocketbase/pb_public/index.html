@@ -13,10 +13,10 @@
       --secondary: #E3386A;
       
       /* Light Theme (Default) */
-      --bg-color: #F8FAFC;
+      --bg-color: #FFFFFF;
       --card-bg: rgba(255, 255, 255, 0.85);
       --card-hover: rgba(255, 255, 255, 0.98);
-      --text: #1E293B;
+      --text: #0A0817;
       --text-muted: #64748B;
       --border: rgba(49, 46, 95, 0.15);
       --success: #10B981;
@@ -766,6 +766,9 @@
         </div>
       </div>
       <div class="header-right">
+        <button id="logout-btn" class="theme-toggle-btn" style="background: rgba(239, 68, 68, 0.15); color: var(--danger); border-color: rgba(239, 68, 68, 0.3);" aria-label="Logout" title="Keluar">
+          <i class="bi bi-box-arrow-right"></i>
+        </button>
         <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
           <i class="bi bi-moon-fill" id="theme-icon"></i>
         </button>
@@ -1217,10 +1220,28 @@
       }
     }
 
+    // Logout functionality
+    function initLogout() {
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          if (confirm('Apakah Anda yakin ingin keluar dari CMS?')) {
+            // Hapus token autentikasi bawaan PocketBase
+            localStorage.removeItem('pocketbase_auth');
+            // Hapus cookie jika ada
+            document.cookie = "pb_auth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            // Arahkan ke halaman login PocketBase Admin
+            window.location.href = '/_/';
+          }
+        });
+      }
+    }
+
     // Initialize Dashboard
     window.addEventListener('DOMContentLoaded', () => {
       loadDashboardData();
       initTheme();
+      initLogout();
       renderSubdomains();
       initSubdomainActions();
     });
