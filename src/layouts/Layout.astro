@@ -41,9 +41,9 @@ const strukturPath = getStrukturUrl();
 const waLink = "https://wa.me/6282299882200";
 
 // Deteksi apakah ini halaman news subdomain
-const Astro = /* @type {typeof import('astro')} */ (null);
-const isNewsSubdomain = Astro.request?.headers?.get('host')?.startsWith('news.') || false;
-const currentPath = Astro.request?.url || '';
+const hostname = Astro.request?.headers?.get('host') || '';
+const isNewsSubdomain = hostname.startsWith('news.') || false;
+const currentUrl = Astro.request?.url || '';
 ---
 
 <!DOCTYPE html>
