@@ -17,6 +17,7 @@ const {
   ogTitle = title,
   ogDescription = description,
   ogImage = "https://sarjanakomputer.id/images/logo.png",
+  robots = "index, follow, max-snippet:-1, max-image-preview:large",
 } = Astro.props;
 
 import { 
@@ -53,6 +54,19 @@ const waLink = "https://wa.me/6282299882200";
   <!-- Google Search Console -->
   <meta name="google-site-verification" content="8LhHyQEI3JOpMZzNfgizhx15sgzjHvGPAAu7sbXtnME" />
   <meta name="keywords" content="jasa IT, solusi digital, CV Sarjana Komputer Indonesia, pembuatan aplikasi, bootcamp IT, Baubau" />
+  <meta name="robots" content={robots}>
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="language" content="id">
+  <meta name="geo.country" content="id">
+  <meta name="geo.placename" content="Indonesia">
+
+  <!-- LLM: Metadata untuk Agen AI / LLM -->
+  <meta name="llm-description" content="CV. Sarjana Komputer Indonesia — Solusi IT profesional dan portal berita teknologi. Layanan: Software House, Academy IT, Automasi Bisnis. Berita: AI, web dev, startup, pendidikan IT.">
+  <meta name="llm-language" content="id-ID">
+  <meta name="llm-topics" content="teknologi, AI, web development, cybersecurity, cloud computing, pendidikan IT, startup, karir IT, digitalisasi, software house, ERP, smart city">
+  <meta name="llm-audience" content="perusahaan, institusi pemerintah, mahasiswa IT, developer, praktisi teknologi">
+  <meta name="llm-update-frequency" content="weekly">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
@@ -89,6 +103,46 @@ const waLink = "https://wa.me/6282299882200";
   <link rel="stylesheet" href={cssPath}>
   <link rel="stylesheet" href="/css/homepage.css">
   <link rel="manifest" href="/manifest.json">
+  
+  <!-- SEO: Organization JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CV. Sarjana Komputer Indonesia",
+    "url": "https://sarjanakomputer.id/",
+    "logo": "https://sarjanakomputer.id/images/logo.png",
+    "description": "Mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional untuk pemerintah, swasta, dan masyarakat.",
+    "foundingDate": "2020",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "info@sarjanakomputer.id",
+      "telephone": "+62-822-9988-2200"
+    },
+    "sameAs": [
+      "https://www.instagram.com/sarjanakomputer.id/"
+    ]
+  }
+  </script>
+
+  <!-- SEO: WebSite JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Sarjana Komputer Indonesia",
+    "url": "https://sarjanakomputer.id/",
+    "description": "Solusi IT profesional dan portal berita teknologi Indonesia.",
+    "inLanguage": "id-ID",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://sarjanakomputer.id/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  
   <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>

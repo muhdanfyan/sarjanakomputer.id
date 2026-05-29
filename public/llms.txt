@@ -1,0 +1,78 @@
+# Sarjana Komputer Indonesia — LLMs.txt
+> Portal berita teknologi, pendidikan IT, dan startup Indonesia. Website utama: CV. Sarjana Komputer Indonesia — Solusi IT & Pengembangan SDM Digital.
+
+## About
+CV. Sarjana Komputer Indonesia (SKI) adalah perusahaan solusi IT dan portal berita teknologi yang berfokus pada perkembangan AI, web development, cybersecurity, cloud computing, pendidikan IT, karir teknologi, dan startup digital Indonesia. Berbasis di Baubau, Sulawesi Tenggara.
+
+Layanan utama: Software House (pembuatan aplikasi, ERP, E-Gov/Smart City, SuperApp Satu Data), Academy (bootcamp IT), Automasi Bisnis & AI.
+
+## Navigation — Website Utama (sarjanakomputer.id)
+- Beranda: https://sarjanakomputer.id/
+- Profil Perusahaan: https://profil.sarjanakomputer.id/
+- Software House / Aplikasi: https://aplikasi.sarjanakomputer.id/
+- Automasi & AI: https://automasi.sarjanakomputer.id/
+- Academy IT: https://academy.sarjanakomputer.id/
+- Portal Berita: https://news.sarjanakomputer.id/
+- Struktur Organisasi: https://sarjanakomputer.id/struktur-organisasi/
+- Tentang Kami: https://sarjanakomputer.id/about/
+- Kontak: https://sarjanakomputer.id/contact/
+- Layanan: https://sarjanakomputer.id/services/
+
+## Navigation — Portal Berita (news.sarjanakomputer.id)
+- Beranda News: https://news.sarjanakomputer.id/
+- Kategori Teknologi: https://news.sarjanakomputer.id/kategori/teknologi
+- Kategori Pendidikan: https://news.sarjanakomputer.id/kategori/pendidikan
+- Kategori Bisnis: https://news.sarjanakomputer.id/kategori/bisnis
+- Kategori Startup: https://news.sarjanakomputer.id/kategori/startup
+
+## Featured Articles (Latest News)
+1. Cognition AI (Devin) Raup $1B Pendanaan di Valuasi $25 Miliar — Pasar AI coding assistant makin panas. Cognition Labs, perusahaan di balik Devin AI coding agent pertama, raih pendanaan $1 miliar. https://news.sarjanakomputer.id/cognition-ai-devin-raup-1b-pendanaan-valuasi-25-miliar
+
+2. Robinhood Izinkan AI Agent Lakukan Trading Saham Secara Otonom — Platform trading Robinhood membuka akses API untuk AI agents melakukan trading saham mandiri. https://news.sarjanakomputer.id/robinhood-izinkan-ai-agent-trading-saham-otonom
+
+3. YouTube Wajibkan Label Konten Buatan AI — YouTube mewajibkan label untuk semua konten AI. Regulasi konten digital semakin ketat secara global. https://news.sarjanakomputer.id/youtube-wajibkan-label-konten-ai-regulasi
+
+4. OpenRouter Raih Valuasi $1.3 Miliar — Platform gateway AI yang menghubungkan developer ke berbagai model LLM. Infrastruktur AI jadi ladang emas baru. https://news.sarjanakomputer.id/openrouter-raih-valuasi-13-miliar-infrastruktur-ai-gateway
+
+5. Bandung dan Banyuwangi Jadi Rujukan Smart City Indonesia — Inspirasi digitalisasi pesantren dan smart city dari dua kota percontohan. https://news.sarjanakomputer.id/bandung-banyuwangi-rujukan-smart-city-indonesia-digitalisasi-pesantren
+
+6. Panduan Memilih Topik Skripsi yang Relevan dengan Industri 2026 — Tips dan rekomendasi topik skripsi IT yang sesuai tren industri terkini. https://news.sarjanakomputer.id/panduan-topik-skripsi-2026
+
+7. 10 Skill yang Wajib Dikuasai Mahasiswa TI Sebelum Lulus — Skill teknis dan non-teknis yang harus dikuasai sebelum memasuki dunia kerja. https://news.sarjanakomputer.id/skill-wajib-sebelum-lulus
+
+8. Tips Lolos Interview Kerja untuk Fresh Graduate IT — Panduan wawancara kerja di perusahaan teknologi untuk lulusan baru. https://news.sarjanakomputer.id/tips-lolos-interview-it
+
+9. Startup vs Perusahaan Besar: Mana yang Cocok untukmu? — Perbandingan karir di startup vs perusahaan besar untuk profesional IT. https://news.sarjanakomputer.id/startup-vs-perusahaan-besar
+
+10. Panduan Lengkap Bikin Portofolio yang Dilirik HRD — Cara membuat portofolio IT yang menarik perhatian perekrut. https://news.sarjanakomputer.id/panduan-portofolio-hrd
+
+11. Sertifikasi IT yang Paling Dicari Perusahaan di 2026 — Daftar sertifikasi IT dengan permintaan tinggi di pasar kerja. https://news.sarjanakomputer.id/sertifikasi-it-terbaru
+
+12. Kisaran Gaji Fresh Graduate IT 2026 — Panduan negosiasi gaji untuk lulusan baru TI. https://news.sarjanakomputer.id/gaji-fresh-graduate-ti-2026
+
+13. Dampak AI pada Pekerjaan IT: Antara Ancaman dan Peluang — Analisis dampak AI terhadap profesi IT dan cara beradaptasi. https://news.sarjanakomputer.id/ai-dan-masa-depan-pekerjaan
+
+14. Cara Dapat Beasiswa Sertifikasi IT Gratis untuk Mahasiswa — Informasi beasiswa dan program sertifikasi IT gratis. https://news.sarjanakomputer.id/cara-dapat-beasiswa-sertifikasi-it
+
+## Content Categories
+- **Teknologi**: AI, web development, cybersecurity, cloud computing, programming, coding tools, infrastructure, regulasi teknologi
+- **Pendidikan**: Tips kuliah IT, skripsi, sertifikasi, beasiswa, skill development, bootcamp
+- **Bisnis**: Karir IT, gaji, startup, perusahaan, negosiasi, portofolio, interview
+- **Startup**: Pendanaan, valuasi, inovasi, entrepreneurship, tech startup Indonesia & global
+
+## LLM Metadata
+- Language: id-ID (Indonesian)
+- Topics: teknologi, AI, artificial intelligence, web development, cybersecurity, cloud computing, pendidikan IT, startup, karir IT, digitalisasi, smart city, coding, programming
+- Audience: mahasiswa IT, developer, praktisi teknologi, akademisi, pengusaha, investor
+- Update frequency: daily
+- Content type: berita, artikel, panduan, tutorial, analisis
+
+## Sitemap & Feeds
+- XML Sitemap: https://sarjanakomputer.id/sitemap.xml (dynamic — includes all news articles)
+- RSS Feed: https://news.sarjanakomputer.id/rss.xml (latest 20 articles)
+- robots.txt: https://sarjanakomputer.id/robots.txt
+
+## Contact
+- Email: info@sarjanakomputer.id
+- WhatsApp: https://wa.me/6282299882200
+- Lokasi: Baubau, Sulawesi Tenggara, Indonesia

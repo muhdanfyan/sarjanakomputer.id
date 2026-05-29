@@ -2,5 +2,26 @@ User-agent: *
 Allow: /
 Allow: /images/
 Disallow: /cdn-cgi/
+Disallow: /api/
+Disallow: /admin/
+
+# LLM Crawlers — please use llms.txt for structured site overview
+User-agent: GPTBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Bytespider
+Allow: /
 
 Sitemap: https://sarjanakomputer.id/sitemap.xml
+
+# LLM-friendly content guide
+# See https://sarjanakomputer.id/llms.txt for comprehensive site overview

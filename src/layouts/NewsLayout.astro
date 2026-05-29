@@ -5,6 +5,9 @@ export interface Props {
   canonical?: string;
   ogImage?: string;
   basePath?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  article?: any; // For NewsArticle JSON-LD
 }
 
 const {
@@ -36,6 +39,124 @@ const categories = [
   <title>{title}</title>
   <meta name="description" content={description}>
   <link rel="canonical" href={canonical}>
+
+  <!-- SEO: Robots -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large">
+
+  <!-- SEO: Language & Geo -->
+  <meta name="language" content="id">
+  <meta name="geo.country" content="id">
+  <meta name="geo.placename" content="Indonesia">
+
+  <!-- SEO: Verification -->
+  <meta name="google-site-verification" content="G-9JTNZXFB0E">
+
+  <!-- SEO: Sitemap & RSS -->
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://sarjanakomputer.id/sitemap.xml">
+  <link rel="alternate" type="application/rss+xml" title="SKI News RSS Feed" href="https://news.sarjanakomputer.id/rss.xml">
+
+  <!-- SEO: Breadcrumbs JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Beranda", "item": "https://sarjanakomputer.id/" },
+      { "@type": "ListItem", "position": 2, "name": "News", "item": "https://news.sarjanakomputer.id/" }
+    ]
+  }
+  </script>
+
+  <!-- SEO: Organization JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "CV. Sarjana Komputer Indonesia",
+    "url": "https://sarjanakomputer.id/",
+    "logo": "https://sarjanakomputer.id/images/logo.png",
+    "description": "Pusat informasi teknologi, pendidikan IT, dan startup digital Indonesia.",
+    "foundingDate": "2020",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "email": "info@sarjanakomputer.id"
+    },
+    "sameAs": [
+      "https://www.instagram.com/sarjanakomputer.id/",
+      "https://www.linkedin.com/company/sarjanakomputer"
+    ]
+  }
+  </script>
+
+  <!-- SEO: WebSite JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Sarjana Komputer Indonesia",
+    "url": "https://sarjanakomputer.id/",
+    "description": "Portal berita teknologi, pendidikan IT, dan startup digital Indonesia.",
+    "inLanguage": "id-ID",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://news.sarjanakomputer.id/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- LLM: Metadata untuk Agen AI / LLM -->
+  <meta name="llm-description" content="Portal berita teknologi Indonesia dari Sarjana Komputer Indonesia. Fokus pada AI, web development, cybersecurity, cloud computing, pendidikan IT, karir, dan startup.">
+  <meta name="llm-language" content="id-ID">
+  <meta name="llm-topics" content="teknologi, AI, artificial intelligence, web development, cybersecurity, cloud computing, pendidikan IT, startup, karir IT, digitalisasi">
+  <meta name="llm-audience" content="mahasiswa IT, developer, praktisi teknologi, akademisi">
+  <meta name="llm-update-frequency" content="daily">
+
+  <!-- LLM: Navigation structure untuk LLM -->
+  <nav aria-label="Struktur situs untuk AI" style="display:none" data-llm-nav>
+    <ul>
+      <li><a href="https://news.sarjanakomputer.id/">Beranda</a></li>
+      <li><a href="https://news.sarjanakomputer.id/kategori/teknologi">Teknologi</a></li>
+      <li><a href="https://news.sarjanakomputer.id/kategori/pendidikan">Pendidikan</a></li>
+      <li><a href="https://news.sarjanakomputer.id/kategori/bisnis">Bisnis</a></li>
+      <li><a href="https://news.sarjanakomputer.id/kategori/startup">Startup</a></li>
+      <li><a href="https://sarjanakomputer.id/">Website Utama</a></li>
+    </ul>
+  </nav>
+
+  <!-- SEO: Article JSON-LD (jika ada props article) -->
+  {article && (
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": article.type || "NewsArticle",
+      "headline": article.headline,
+      "description": article.description,
+      "image": article.image,
+      "datePublished": article.datePublished,
+      "dateModified": article.dateModified || article.datePublished,
+      "author": {
+        "@type": "Person",
+        "name": article.author
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CV. Sarjana Komputer Indonesia",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://sarjanakomputer.id/images/logo.png"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": article.url
+      }
+    }, null, 2)}
+  </script>
+  )}
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">

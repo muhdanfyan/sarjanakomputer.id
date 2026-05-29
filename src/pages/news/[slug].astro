@@ -40,7 +40,18 @@ const ogImageRaw = news.imageUrl || categoryImages[category] || defaultImage;
 const ogImage = ogImageRaw.startsWith('http') ? ogImageRaw : ogImageRaw.split('?')[0] + '?w=1200';
 ---
 
-<NewsLayout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description} ogImage={ogImage}>
+<NewsLayout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description} ogImage={ogImage}
+  article={{
+    type: 'NewsArticle',
+    headline: title,
+    description: description || '',
+    image: ogImage,
+    datePublished: date,
+    dateModified: date,
+    author: author || 'Tim SKI',
+    url: getNewsDetailUrl(news.slug)
+  }}
+>
   <style is:global>
     /* ===== HERO COMPACT ===== */
     .detail-hero {
