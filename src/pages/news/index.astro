@@ -521,11 +521,15 @@ function formatDate(dateStr: string) {
     @media (max-width: 768px) {
         .news-hero h1 { font-size: 2.2rem; }
         .news-hero { padding: 6rem 0 4rem; }
+        .category-section { padding: 1rem 0 0.75rem; }
+        .category-nav-wrap { gap: 0.5rem; }
     }
 
     /* ===== RESPONSIVE HP: thumbnail kiri, teks kanan ===== */
     @media (max-width: 767px) {
-      .news-grid-container { padding: 1.5rem 0; }
+      .news-grid-container { padding: 1rem 0; }
+      .news-grid-container .section-title { font-size: 1.1rem; }
+      .news-grid-container .mb-5 { margin-bottom: 0.75rem !important; }
       .news-card-v2 {
         border-radius: 12px;
         margin-bottom: 0.25rem;
