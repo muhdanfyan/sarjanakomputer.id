@@ -5,7 +5,10 @@ import { PB_URL } from '../../utils/config.js';
 import { getNewsUrl, getNewsDetailUrl } from '../../utils/routes.js';
 
 const { slug } = Astro.params;
-const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(slug='${slug}')&limit=1`);
+const controller = new AbortController();
+const timeoutId = setTimeout(() => controller.abort(), 5000);
+const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(slug='${slug}')&limit=1`, { signal: controller.signal });
+clearTimeout(timeoutId);
 const data = await res.json();
 const news = data.items && data.items[0];
 
@@ -15,7 +18,13 @@ if (!news) {
 
 const { title, date, category, author, content, description } = news;
 
-const htmlContent = marked.parse(content || '');
+const htmlContent = (function() {
+  try {
+    return marked.parse(content || '');
+  } catch(e) {
+    return '<p>' + (content || 'Konten tidak tersedia.') + '</p>';
+  }
+})();
 
 function formatDate(dateStr: string) {
     var d = new Date(dateStr);
@@ -37,7 +46,9 @@ const categoryImages: Record<string, string> = {
 };
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80&fit=crop';
 const ogImageRaw = news.imageUrl || categoryImages[category] || defaultImage;
-const ogImage = ogImageRaw.startsWith('http') ? ogImageRaw : ogImageRaw.split('?')[0] + '?w=1200';
+const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('http')) 
+  ? ogImageRaw 
+  : (ogImageRaw ? ogImageRaw.split('?')[0] + '?w=1200' : defaultImage);
 ---
 
 <NewsLayout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description} ogImage={ogImage}
