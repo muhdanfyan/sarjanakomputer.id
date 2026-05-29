@@ -1,0 +1,203 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  basePath?: string;
+}
+
+const {
+  title = "News — Portal Berita Teknologi | Sarjana Komputer Indonesia",
+  description = "Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup.",
+  canonical = "https://news.sarjanakomputer.id/",
+  ogImage = "https://sarjanakomputer.id/images/logo.png",
+  basePath = "..",
+} = Astro.props;
+
+const newsHome = "https://news.sarjanakomputer.id/";
+const mainSite = "https://sarjanakomputer.id/";
+const logoPath = `${basePath}/images/logo.png`;
+
+const categories = [
+  { name: 'Beranda', slug: '', icon: 'bi-house-fill' },
+  { name: 'Teknologi', slug: 'teknologi', icon: 'bi-cpu-fill' },
+  { name: 'Pendidikan', slug: 'pendidikan', icon: 'bi-book-fill' },
+  { name: 'Bisnis', slug: 'bisnis', icon: 'bi-briefcase-fill' },
+  { name: 'Startup', slug: 'startup', icon: 'bi-rocket-takeoff-fill' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+  <meta property="og:locale" content="id_ID">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content={title}>
+  <meta name="twitter:description" content={description}>
+  <meta name="twitter:image" content={ogImage}>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JTNZXFB0E"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-9JTNZXFB0E");</script>
+
+  <link rel="shortcut icon" href="/images/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href={`${basePath}/css/subdomain.min.css`}>
+  <link rel="stylesheet" href={`${basePath}/css/homepage.css`}>
+  <style is:global>
+    :root { --primary: #312E5F; --primary-dark: #1A1838; --secondary: #E3386A; --dark: #1A1838; --gray-500: #64748b; --gray-700: #334155; --gray-400: #94a3b8; --gray-50: #f8fafc; --gray-600: #475569; --gray-100: #f1f5f9; --white: #ffffff; --gradient: linear-gradient(135deg, #312E5F 0%, #E3386A 100%); --radius: 16px; --radius-sm: 12px; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Inter',sans-serif; color:var(--gray-700); background:var(--gray-50); overflow-x:hidden; }
+    a { text-decoration:none; }
+
+    /* News Navbar */
+    .news-navbar {
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-100);
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .news-navbar .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.5rem 1.5rem;
+    }
+    .news-navbar .brand-section {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+    .news-navbar .brand-section img {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+    }
+    .news-navbar .brand-section .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+    .news-navbar .brand-section .brand-text .news-label {
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: -1px;
+    }
+    .news-navbar .brand-section .brand-text .brand-name {
+      font-family: 'Plus Jakarta Sans',sans-serif;
+      font-weight: 800;
+      color: var(--dark);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+    .news-navbar .brand-section .brand-text .brand-name span { color: var(--secondary); }
+    .news-navbar .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .news-navbar .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray-600);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .news-navbar .nav-links a:hover,
+    .news-navbar .nav-links a.active { color: var(--primary); background: rgba(49,46,95,0.06); }
+    .news-navbar .nav-links .main-site-btn {
+      background: var(--gradient);
+      color: #fff !important;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      margin-left: 0.5rem;
+    }
+    .news-navbar .nav-links .main-site-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 15px rgba(227,56,106,0.3); }
+
+    /* News Footer */
+    .news-footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,0.6);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .news-footer a { color: var(--secondary); font-weight: 600; }
+    .news-footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .news-navbar .nav-links { gap: 0; }
+      .news-navbar .nav-links a { font-size: 0.75rem; padding: 0.3rem 0.5rem; }
+      .news-navbar .nav-links .main-site-btn { font-size: 0.7rem; padding: 0.25rem 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NEWS NAVBAR ===== -->
+  <nav class="news-navbar">
+    <div class="nav-container">
+      <div class="brand-section">
+        <a href={mainSite}><img src={logoPath} alt="Logo"></a>
+        <div class="brand-text">
+          <span class="news-label"><a href={newsHome} style="color:var(--secondary);">News</a></span>
+          <a href={mainSite} class="brand-name">Sarjana <span>Komputer</span></a>
+        </div>
+      </div>
+      <ul class="nav-links">
+        {categories.map((cat) => (
+          <li><a href={cat.slug ? `${newsHome}kategori/${cat.slug}` : newsHome}>{cat.name}</a></li>
+        ))}
+        <li><a href={mainSite} class="main-site-btn"><i class="bi bi-building"></i> Website Utama</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <slot />
+
+  <!-- ===== NEWS FOOTER ===== -->
+  <footer class="news-footer">
+    <div class="container">
+      <p>&copy; 2026 <a href={mainSite}>CV. Sarjana Komputer Indonesia</a>. All rights reserved.</p>
+      <p style="margin-top:0.3rem;">Ditenagai oleh <a href="https://pocketbase.io" target="_blank">PocketBase</a> &amp; <a href="https://vercel.com" target="_blank">Vercel</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>if('serviceWorker'in navigator){navigator.serviceWorker.register('/sw.js');}</script>
+</body>
+</html>

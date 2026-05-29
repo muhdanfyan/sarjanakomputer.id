@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import NewsLayout from '../../layouts/NewsLayout.astro';
 import { PB_URL } from '../../utils/config.js';
 import { getNewsDetailUrl } from '../../utils/routes.js';
 
@@ -32,7 +32,7 @@ function formatDate(dateStr: string) {
 }
 ---
 
-<Layout title="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
+<NewsLayout title="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
   <style is:global>
     /* ===== News Portal Refinements ===== */
     .news-hero {
@@ -370,4 +370,4 @@ function formatDate(dateStr: string) {
         });
     }
   </script>
-</Layout>
+</NewsLayout>

@@ -1,5 +1,5 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
+import NewsLayout from '../../../layouts/NewsLayout.astro';
 import { PB_URL } from '../../../utils/config.js';
 import { getNewsDetailUrl, getNewsUrl } from '../../../utils/routes.js';
 
@@ -39,7 +39,7 @@ function formatDate(dateStr) {
 }
 ---
 
-<Layout title={`${catTitle} — Portal Berita SKI`} description={`Kumpulan berita ${catLabel} terbaru dari Sarjana Komputer Indonesia.`} canonical={`${getNewsUrl()}kategori/${category}`} basePath="../..">
+<NewsLayout title={`${catTitle} — Portal Berita SKI`} description={`Kumpulan berita ${catLabel} terbaru dari Sarjana Komputer Indonesia.`} canonical={`${getNewsUrl()}kategori/${category}`} basePath="../..">
   <style is:global>
     .category-header {
         background: linear-gradient(135deg, #050a20 0%, #0f172a 100%);
@@ -118,4 +118,4 @@ function formatDate(dateStr) {
       )}
     </div>
   </section>
-</Layout>
+</NewsLayout>

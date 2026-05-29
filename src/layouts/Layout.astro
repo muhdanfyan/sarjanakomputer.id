@@ -39,11 +39,6 @@ const profilPath = getProfilUrl();
 const homePath = getHomeUrl();
 const strukturPath = getStrukturUrl();
 const waLink = "https://wa.me/6282299882200";
-
-// Deteksi apakah ini halaman news subdomain
-const hostname = Astro.request?.headers?.get('host') || '';
-const isNewsSubdomain = hostname.startsWith('news.') || false;
-const currentUrl = Astro.request?.url || '';
 ---
 
 <!DOCTYPE html>
@@ -109,57 +104,36 @@ const currentUrl = Astro.request?.url || '';
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
   <div class="container">
-    <a class="navbar-brand" href={homePath} style="display:flex;align-items:center;gap:0.5rem;">
-      <img src={logoPath} alt="Logo CV. Sarjana Komputer Indonesia" width="36" height="36" style="border-radius:8px;">
-      <div style="display:flex;flex-direction:column;line-height:1.1;">
-        {isNewsSubdomain && <span style="font-size:0.55rem;font-weight:700;color:var(--secondary);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:0;"><a href={newsPath} style="color:var(--secondary);text-decoration:none;">News</a></span>}
-        <span style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;color:var(--dark);font-size:1rem;">Sarjana <span style="color:var(--secondary);">Komputer</span></span>
-      </div>
+    <a class="navbar-brand" href={homePath}>
+      <img src={logoPath} alt="Logo CV. Sarjana Komputer Indonesia" width="36" height="36"> Sarjana <span>Komputer</span>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
       <i class="bi bi-list"></i>
       <i class="bi bi-x-lg"></i>
     </button>
     <div class="collapse navbar-collapse" id="mainNav">
-      {isNewsSubdomain ? (
-        <!-- ===== NAVBAR UNTUK NEWS SUBDOMAIN ===== -->
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href={newsPath}>Beranda</a></li>
-          <li class="nav-item"><a class="nav-link" href={`${newsPath}kategori/teknologi`}>Teknologi</a></li>
-          <li class="nav-item"><a class="nav-link" href={`${newsPath}kategori/pendidikan`}>Pendidikan</a></li>
-          <li class="nav-item"><a class="nav-link" href={`${newsPath}kategori/bisnis`}>Bisnis</a></li>
-          <li class="nav-item"><a class="nav-link" href={`${newsPath}kategori/startup`}>Startup</a></li>
-          <li class="nav-item ms-lg-2">
-            <a class="btn-primary-custom" href={homePath} style="padding:0.45rem 1.3rem;font-size:0.82rem;">
-              <i class="bi bi-building"></i> Website Utama
-            </a>
-          </li>
-        </ul>
-      ) : (
-        <!-- ===== NAVBAR UNTUK WEBSITE UTAMA ===== -->
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href={homePath}>Beranda</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="produkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
-            <ul class="dropdown-menu" aria-labelledby="produkDropdown">
-              <li><a class="dropdown-item" href={aplikasiPath}>Software House</a></li>
-              <li><a class="dropdown-item" href={academyPath}>Academy</a></li>
-              <li><a class="dropdown-item" href={automasiPath}>Automasi Bisnis</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href={`${aplikasiPath}#layanan`}>ERP</a></li>
-              <li><a class="dropdown-item" href={`${aplikasiPath}#layanan`}>E-Gov / Smart City</a></li>
-              <li><a class="dropdown-item" href={`${aplikasiPath}#layanan`}>SuperApp Satu Data</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href={`${aplikasiPath}#portofolio`}>Portofolio</a></li>
-          <li class="nav-item"><a class="nav-link" href={newsPath}>News</a></li>
-          <li class="nav-item ms-lg-2">
-            <a class="btn-primary-custom" href={waLink} style="padding:0.45rem 1.3rem;font-size:0.82rem;" target="_blank" rel="noopener">
-              <i class="bi bi-whatsapp"></i> Hubungi Kami
-            </a>
-          </li>
-        </ul>
-      )}
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        <li class="nav-item"><a class="nav-link" href={homePath}>Beranda</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="produkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Produk</a>
+          <ul class="dropdown-menu" aria-labelledby="produkDropdown">
+            <li><a class="dropdown-item" href={aplikasiPath}>Software House</a></li>
+            <li><a class="dropdown-item" href={academyPath}>Academy</a></li>
+            <li><a class="dropdown-item" href={automasiPath}>Automasi Bisnis</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href={`${aplikasiPath}#layanan`}>ERP</a></li>
+            <li><a class="dropdown-item" href={`${aplikasiPath}#layanan`}>E-Gov / Smart City</a></li>
+            <li><a class="dropdown-item" href={`${aplikasiPath}#layanan`}>SuperApp Satu Data</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" href={`${aplikasiPath}#portofolio`}>Portofolio</a></li>
+        <li class="nav-item"><a class="nav-link" href={newsPath}>News</a></li>
+        <li class="nav-item ms-lg-2">
+          <a class="btn-primary-custom" href={waLink} style="padding:0.45rem 1.3rem;font-size:0.82rem;" target="_blank" rel="noopener">
+            <i class="bi bi-whatsapp"></i> Hubungi Kami
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
