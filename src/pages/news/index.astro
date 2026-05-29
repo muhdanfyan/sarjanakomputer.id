@@ -34,54 +34,220 @@ function formatDate(dateStr: string) {
 
 <NewsLayout title="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
   <style is:global>
-    /* ===== News Portal Refinements ===== */
-    .news-hero {
-        padding: 8rem 0 6rem;
-        background: linear-gradient(135deg, #050a20 0%, #0f172a 100%);
-        position: relative;
-        overflow: hidden;
-        border-bottom: 1px solid rgba(255,255,255,0.05);
+    /* ===== SLIDER HERO — Premium Breaking News ===== */
+    .slider-hero {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      background: #050a20;
     }
-    .news-hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background-image: 
-            radial-gradient(circle at 20% 30%, rgba(227,56,106,0.15) 0%, transparent 40%),
-            radial-gradient(circle at 80% 70%, rgba(59,130,246,0.08) 0%, transparent 40%);
+    .slider-hero .slide-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+      will-change: transform;
     }
-    .news-hero .hero-content { position: relative; z-index: 2; }
-    .news-hero .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(227, 56, 106, 0.15);
-        border: 1px solid rgba(227, 56, 106, 0.3);
-        padding: 0.4rem 1rem;
-        border-radius: 50px;
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: #f4729a;
-        margin-bottom: 1rem;
+    .slider-hero .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      flex-shrink: 0;
     }
-    .news-hero h1 { 
-        font-size: 3.5rem; 
-        font-weight: 800; 
-        letter-spacing: -1.5px;
-        margin-bottom: 1.5rem;
-        color: #ffffff;
+    .slider-hero .slide-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .news-hero h1 span {
-        background: none;
-        -webkit-background-clip: unset;
-        -webkit-text-fill-color: unset;
-        color: #ffffff;
+    .slider-hero .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(5,10,32,0.92) 0%, rgba(5,10,32,0.4) 50%, rgba(5,10,32,0.6) 100%);
     }
-    .news-hero p { 
-        font-size: 1.15rem; 
-        color: rgba(255,255,255,0.6); 
-        max-width: 600px;
-        line-height: 1.8;
+    .slider-hero .slide-overlay::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(0deg, #050a20 0%, transparent 100%);
+    }
+    .slider-hero .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      padding: 3rem 1.5rem;
+    }
+    .slider-hero .slide-content .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .slider-hero .slide-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--secondary);
+      color: #fff;
+      padding: 0.25rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .slider-hero .slide-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      max-width: 720px;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .slider-hero .slide-meta {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .slider-hero .slide-meta i { margin-right: 0.3rem; }
+    .slider-hero .slide-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #fff;
+      background: rgba(227,56,106,0.2);
+      border: 1px solid rgba(227,56,106,0.4);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      margin-top: 0.75rem;
+    }
+    .slider-hero .slide-link:hover {
+      background: var(--secondary);
+      border-color: var(--secondary);
+    }
+
+    /* ===== SLIDER NAV ===== */
+    .slider-nav {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 10;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .slider-nav button {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slider-nav button:hover {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      transform: scale(1.05);
+    }
+
+    /* ===== SLIDER DOTS ===== */
+    .slider-dots {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 1.5rem;
+      z-index: 10;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .slider-dots .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.4s;
+    }
+    .slider-dots .dot.active {
+      width: 28px;
+      border-radius: 4px;
+      background: var(--secondary);
+    }
+
+    /* ===== THUMBNAIL PREVIEW DI SAMPING ===== */
+    .slider-thumbs {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .slider-thumbs .thumb-item {
+      width: 80px;
+      height: 56px;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.4s;
+      opacity: 0.5;
+      position: relative;
+    }
+    .slider-thumbs .thumb-item.active {
+      border-color: var(--secondary);
+      opacity: 1;
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(227,56,106,0.3);
+    }
+    .slider-thumbs .thumb-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slider-thumbs .thumb-item .thumb-label {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .slider-thumbs .thumb-item.active .thumb-label {
+      background: transparent;
+    }
+
+    @media (max-width: 768px) {
+      .slider-hero { height: 380px; }
+      .slider-hero .slide-title { font-size: 1.4rem; }
+      .slider-thumbs { display: none; }
+      .slider-nav { bottom: 1rem; right: 1rem; }
+      .slider-hero .slide-content { padding: 1.5rem; }
     }
 
     /* Category Buttons */
@@ -269,18 +435,90 @@ function formatDate(dateStr: string) {
     }
   </style>
 
-  <!-- ===== HERO ===== -->
-  <section class="news-hero">
-      <div class="container hero-content">
-          <div class="row">
-              <div class="col-lg-8">
-                  <div class="hero-badge"><i class="bi bi-lightning-fill"></i> Portal Berita Teknologi</div>
-                  <h1>Informasi <span>Teknologi</span> Terkini & Insight Digital</h1>
-                  <p>Temukan kabar terbaru seputar AI, Web Development, Cybersecurity, dan tren ekosistem Startup di Indonesia untuk memperluas wawasan digital Anda.</p>
+  <!-- ===== SLIDER HERO ===== -->
+  <section class="slider-hero" id="sliderHero">
+    <div class="slide-track" id="slideTrack">
+      {restNews.slice(0, 5).map((item, i) => (
+        <div class="slide">
+          <img class="slide-img" src={getNewsImage(item)} alt={item.title} />
+          <div class="slide-overlay"></div>
+          <div class="slide-content">
+            <div class="container">
+              <span class="slide-badge"><i class={`bi bi-${i === 0 ? 'lightning-fill' : i === 1 ? 'fire' : 'newspaper'}`}></i> {i === 0 ? 'Breaking' : item.category}</span>
+              <h2 class="slide-title">{item.title}</h2>
+              <div class="slide-meta">
+                <span><i class="bi bi-calendar3"></i> {formatDate(item.date)}</span>
+                <span><i class="bi bi-person"></i> {item.author || 'Tim SKI'}</span>
               </div>
+              <a href={getNewsDetailUrl(item.slug)} class="slide-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></a>
+            </div>
           </div>
-      </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Dots -->
+    <div class="slider-dots" id="sliderDots">
+      {restNews.slice(0, 5).map((_, i) => (
+        <span class="dot {i === 0 ? 'active' : ''}" data-index={i}></span>
+      ))}
+    </div>
+
+    <!-- Nav Buttons -->
+    <div class="slider-nav">
+      <button id="prevSlide"><i class="bi bi-chevron-left"></i></button>
+      <button id="nextSlide"><i class="bi bi-chevron-right"></i></button>
+    </div>
+
+    <!-- Thumbnail Previews -->
+    <div class="slider-thumbs" id="sliderThumbs">
+      {restNews.slice(0, 5).map((item, i) => (
+        <div class="thumb-item {i === 0 ? 'active' : ''}" data-index={i}>
+          <img src={getNewsImage(item)} alt="" />
+          <div class="thumb-label">{i === 0 ? 'Sekarang' : `#${i + 1}`}</div>
+        </div>
+      ))}
+    </div>
   </section>
+
+  <script is:inline>
+    (function() {
+      var track = document.getElementById('slideTrack');
+      if (!track) return;
+      var slides = track.children;
+      var total = slides.length;
+      if (total < 2) return;
+      var current = 0;
+      var dots = document.querySelectorAll('#sliderDots .dot');
+      var thumbs = document.querySelectorAll('#sliderThumbs .thumb-item');
+      var interval;
+
+      function goTo(index) {
+        if (index < 0) index = total - 1;
+        if (index >= total) index = 0;
+        current = index;
+        track.style.transform = 'translateX(-' + (current * 100) + '%)';
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+        thumbs.forEach(function(t, i) { t.classList.toggle('active', i === current); });
+      }
+
+      document.getElementById('nextSlide').addEventListener('click', function() { goTo(current + 1); resetAuto(); });
+      document.getElementById('prevSlide').addEventListener('click', function() { goTo(current - 1); resetAuto(); });
+      dots.forEach(function(d) { d.addEventListener('click', function() { goTo(parseInt(this.dataset.index)); resetAuto(); }); });
+      thumbs.forEach(function(t) { t.addEventListener('click', function() { goTo(parseInt(this.dataset.index)); resetAuto(); }); });
+
+      function resetAuto() { clearInterval(interval); interval = setInterval(function() { goTo(current + 1); }, 5000); }
+      interval = setInterval(function() { goTo(current + 1); }, 5000);
+
+      // Swipe support
+      var startX = 0;
+      track.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; });
+      track.addEventListener('touchend', function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); resetAuto(); }
+      });
+    })();
+  </script>
 
   <!-- ===== CATEGORIES ===== -->
   <section class="section" style="padding:0">
@@ -292,34 +530,6 @@ function formatDate(dateStr: string) {
               <button class="cat-btn" id="btn-Bisnis" onclick="filterNews('Bisnis')"><i class="bi bi-briefcase-fill"></i> Karir & Bisnis</button>
               <button class="cat-btn" id="btn-Startup" onclick="filterNews('Startup')"><i class="bi bi-rocket-takeoff-fill"></i> Startup</button>
           </div>
-      </div>
-  </section>
-
-  <!-- ===== FEATURED SECTION ===== -->
-  <section class="section featured-section">
-      <div class="container">
-          {first ? (
-            <div class="featured-card-v2">
-                <a href={getNewsDetailUrl(first.slug)}>
-                    <div class="card-img-wrapper">
-                        <img src={getNewsImage(first)} alt={first.title}>
-                        <span class="card-badge">{first.category}</span>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-meta"><i class="bi bi-calendar3"></i> {formatDate(first.date)}</div>
-                        <h2 class="card-title">{first.title}</h2>
-                        <p class="card-desc">{first.description}</p>
-                        <div class="card-footer">
-                            <span class="read-link">Baca Selengkapnya <i class="bi bi-arrow-right"></i></span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-          ) : (
-            <div class="text-center py-5">
-                <p>Belum ada artikel publikasi.</p>
-            </div>
-          )}
       </div>
   </section>
 
