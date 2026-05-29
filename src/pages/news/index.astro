@@ -20,7 +20,8 @@ const categoryImages = {
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop';
 
 function getNewsImage(item) {
-  // Always use category-based Unsplash image for now
+  // Prioritaskan imageUrl dari CMS, fallback ke Unsplash berdasarkan kategori
+  if (item.imageUrl && item.imageUrl.startsWith('http')) return item.imageUrl;
   return categoryImages[item.category] || defaultImage;
 }
 

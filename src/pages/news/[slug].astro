@@ -28,7 +28,7 @@ const catClass = catColors[category] || 'teknologi';
 const catIcons: Record<string, string> = { 'teknologi': 'cpu', 'pendidikan': 'book', 'bisnis': 'briefcase', 'startup': 'rocket-takeoff' };
 const catIcon = catIcons[catClass] || 'newspaper';
 
-// Fallback images from Unsplash based on category (same as index)
+// Gunakan imageUrl dari CMS jika ada, fallback ke Unsplash berdasarkan kategori
 const categoryImages: Record<string, string> = {
   'Teknologi': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&fit=crop',
   'Pendidikan': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80&fit=crop',
@@ -36,8 +36,8 @@ const categoryImages: Record<string, string> = {
   'Startup': 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&q=80&fit=crop',
 };
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1200&q=80&fit=crop';
-const ogImageRaw = categoryImages[category] || defaultImage;
-const ogImage = ogImageRaw.split('?')[0] + '?w=1200';
+const ogImageRaw = news.imageUrl || categoryImages[category] || defaultImage;
+const ogImage = ogImageRaw.startsWith('http') ? ogImageRaw : ogImageRaw.split('?')[0] + '?w=1200';
 ---
 
 <Layout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description} ogImage={ogImage}>
