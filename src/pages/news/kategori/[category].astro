@@ -1,0 +1,121 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { PB_URL } from '../../../utils/config.js';
+import { getNewsDetailUrl, getNewsUrl } from '../../../utils/routes.js';
+
+const { category } = Astro.params;
+
+const catNames = {
+  'teknologi': 'Teknologi',
+  'pendidikan': 'Pendidikan', 
+  'bisnis': 'Bisnis',
+  'startup': 'Startup',
+};
+
+const catLabel = catNames[category] || category;
+const catTitle = catLabel.charAt(0).toUpperCase() + catLabel.slice(1);
+
+const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(category='${catTitle}')&sort=-date`);
+const data = await res.json();
+const news = data.items || [];
+
+const categoryImages = {
+  'Teknologi': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&fit=crop',
+  'Pendidikan': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80&fit=crop',
+  'Bisnis': 'https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=600&q=80&fit=crop',
+  'Startup': 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80&fit=crop',
+};
+const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop';
+
+function getNewsImage(item) {
+  if (item.imageUrl && item.imageUrl.startsWith('http')) return item.imageUrl;
+  return categoryImages[item.category] || defaultImage;
+}
+
+function formatDate(dateStr) {
+    var d = new Date(dateStr);
+    var months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+    return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+}
+---
+
+<Layout title={`${catTitle} — Portal Berita SKI`} description={`Kumpulan berita ${catLabel} terbaru dari Sarjana Komputer Indonesia.`} canonical={`${getNewsUrl()}kategori/${category}`} basePath="../..">
+  <style is:global>
+    .category-header {
+        background: linear-gradient(135deg, #050a20 0%, #0f172a 100%);
+        padding: 6rem 0 3rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .category-header h1 { color: #fff; font-size: 2.5rem; font-weight: 800; }
+    .category-header p { color: rgba(255,255,255,0.6); font-size: 1rem; }
+    .category-header .badge {
+        display: inline-block;
+        background: rgba(227,56,106,0.15);
+        border: 1px solid rgba(227,56,106,0.3);
+        padding: 0.3rem 1rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #f4729a;
+        margin-bottom: 1rem;
+    }
+    .news-grid { padding: 3rem 0; }
+    .news-card-v2 {
+        background: #fff; border-radius: 20px; overflow: hidden;
+        border: 1px solid #eef2f6; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        transition: all 0.4s ease; height: 100%; display: flex; flex-direction: column;
+    }
+    .news-card-v2 a { text-decoration: none; color: inherit; display: flex; flex-direction: column; height: 100%; }
+    .news-card-v2:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.08); }
+    .card-img-wrapper { position: relative; padding-top: 60%; overflow: hidden; background: #f1f5f9; }
+    .card-img-wrapper img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .news-card-v2:hover .card-img-wrapper img { transform: scale(1.1); }
+    .card-badge { position: absolute; top: 1rem; left: 1rem; padding: 0.3rem 0.8rem; background: rgba(255,255,255,0.95); border-radius: 50px; font-size: 0.7rem; font-weight: 800; color: #312E5F; z-index: 2; }
+    .card-content { padding: 1.5rem; flex-grow: 1; display: flex; flex-direction: column; }
+    .card-meta { font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.5rem; }
+    .card-title { font-size: 1.1rem; font-weight: 800; line-height: 1.4; margin-bottom: 0.75rem; color: #0a0817; }
+    .card-desc { font-size: 0.85rem; color: #64748b; line-height: 1.7; margin-bottom: 1rem; flex-grow: 1; }
+    .read-link { color: #312E5F; font-weight: 700; font-size: 0.82rem; text-decoration: none; display: flex; align-items: center; gap: 0.3rem; }
+  </style>
+
+  <section class="category-header">
+    <div class="container">
+      <div class="badge"><i class="bi bi-grid-fill"></i> Kategori</div>
+      <h1>{catTitle}</h1>
+      <p>Kumpulan berita seputar {catLabel} — edisi terbaru dari SKI News</p>
+    </div>
+  </section>
+
+  <section class="news-grid">
+    <div class="container">
+      {news.length > 0 ? (
+        <div class="row g-4">
+          {news.map((item) => (
+            <div class="col-md-6 col-lg-4">
+              <div class="news-card-v2">
+                <a href={getNewsDetailUrl(item.slug)}>
+                  <div class="card-img-wrapper">
+                    <img src={getNewsImage(item)} alt={item.title} />
+                    <span class="card-badge">{item.category}</span>
+                  </div>
+                  <div class="card-content">
+                    <div class="card-meta"><i class="bi bi-calendar3"></i> {formatDate(item.date)}</div>
+                    <h3 class="card-title">{item.title}</h3>
+                    <p class="card-desc">{item.description}</p>
+                    <span class="read-link">Baca Artikel <i class="bi bi-arrow-right"></i></span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-5">
+          <p style="color:#94a3b8;font-size:1.1rem;">Belum ada berita di kategori ini.</p>
+          <a href={getNewsUrl()} class="btn btn-primary" style="margin-top:1rem;">Lihat Semua Berita</a>
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>
