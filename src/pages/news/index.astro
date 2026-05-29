@@ -267,42 +267,107 @@ function formatDate(dateStr: string) {
       .slider-dots .dot.active { width: 18px; }
     }
 
-    /* Category Buttons */
-    .category-nav {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.75rem;
-        justify-content: center;
-        margin-top: -2.5rem;
-        position: relative;
-        z-index: 10;
+    /* ===== CATEGORY CARDS (horizontal, kotak2 dipercantik) ===== */
+    .category-section {
+      padding: 1.25rem 0 1.5rem;
+      background: var(--gray-50);
     }
-    .cat-btn {
-        background: var(--white);
-        border: 1px solid var(--gray-100);
-        padding: 0.6rem 1.4rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 700;
-        color: var(--gray-600);
-        box-shadow: var(--shadow-sm);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
+    .category-nav-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.85rem;
     }
-    .cat-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow);
-        border-color: var(--primary);
-        color: var(--primary);
+    .cat-card {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      padding: 0.7rem 1.2rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gray-600);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
     }
-    .cat-btn.active {
-        background: var(--primary);
-        color: var(--white);
-        border-color: var(--primary);
-        box-shadow: 0 10px 20px rgba(49, 46, 95, 0.2);
+    .cat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 12px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .cat-card .cat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      transition: all 0.3s;
+    }
+    .cat-card .cat-icon.semua { background: linear-gradient(135deg, #312E5F 0%, #E3386A 100%); color: #fff; }
+    .cat-card .cat-icon.teknologi { background: #312E5F; color: #fff; }
+    .cat-card .cat-icon.pendidikan { background: #0ea5e9; color: #fff; }
+    .cat-card .cat-icon.bisnis { background: #059669; color: #fff; }
+    .cat-card .cat-icon.startup { background: #f59e0b; color: #fff; }
+    .cat-card .cat-label {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+    .cat-card .cat-label .cat-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--gray-700);
+      transition: color 0.3s;
+    }
+    .cat-card .cat-label .cat-count {
+      font-size: 0.6rem;
+      font-weight: 500;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    .cat-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(49,46,95,0.12);
+      border-color: var(--primary);
+    }
+    .cat-card:hover .cat-name { color: var(--primary); }
+    .cat-card.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      box-shadow: 0 8px 24px rgba(49,46,95,0.25);
+    }
+    .cat-card.active .cat-name { color: #fff; }
+    .cat-card.active .cat-count { color: rgba(255,255,255,0.65); }
+    .cat-card.active .cat-icon {
+      background: rgba(255,255,255,0.2) !important;
+      color: #fff !important;
+    }
+    @media (max-width: 768px) {
+      .cat-card {
+        padding: 0.55rem 0.9rem;
+        gap: 0.45rem;
+        border-radius: 10px;
+      }
+      .cat-card .cat-icon {
+        width: 26px;
+        height: 26px;
+        font-size: 0.7rem;
+        border-radius: 6px;
+      }
+      .cat-card .cat-label .cat-name { font-size: 0.72rem; }
+      .cat-card .cat-label .cat-count { font-size: 0.5rem; }
     }
 
     /* Card Designs */
@@ -544,14 +609,44 @@ function formatDate(dateStr: string) {
   </script>
 
   <!-- ===== CATEGORIES ===== -->
-  <section class="section" style="padding:0">
+  <section class="section category-section">
       <div class="container">
-          <div class="category-nav">
-              <button class="cat-btn active" id="btn-all" onclick="filterNews('all')"><i class="bi bi-grid-fill"></i> Semua</button>
-              <button class="cat-btn" id="btn-Teknologi" onclick="filterNews('Teknologi')"><i class="bi bi-cpu-fill"></i> Teknologi</button>
-              <button class="cat-btn" id="btn-Pendidikan" onclick="filterNews('Pendidikan')"><i class="bi bi-book-fill"></i> Pendidikan</button>
-              <button class="cat-btn" id="btn-Bisnis" onclick="filterNews('Bisnis')"><i class="bi bi-briefcase-fill"></i> Karir & Bisnis</button>
-              <button class="cat-btn" id="btn-Startup" onclick="filterNews('Startup')"><i class="bi bi-rocket-takeoff-fill"></i> Startup</button>
+          <div class="category-nav-wrap">
+              <div class="cat-card active" id="btn-all" onclick="filterNews('all')">
+                <div class="cat-icon semua"><i class="bi bi-grid-fill"></i></div>
+                <div class="cat-label">
+                  <span class="cat-name">Semua</span>
+                  <span class="cat-count">Berita</span>
+                </div>
+              </div>
+              <div class="cat-card" id="btn-Teknologi" onclick="filterNews('Teknologi')">
+                <div class="cat-icon teknologi"><i class="bi bi-cpu-fill"></i></div>
+                <div class="cat-label">
+                  <span class="cat-name">Teknologi</span>
+                  <span class="cat-count">{allNews.filter(n => n.category === 'Teknologi').length} Artikel</span>
+                </div>
+              </div>
+              <div class="cat-card" id="btn-Pendidikan" onclick="filterNews('Pendidikan')">
+                <div class="cat-icon pendidikan"><i class="bi bi-book-fill"></i></div>
+                <div class="cat-label">
+                  <span class="cat-name">Pendidikan</span>
+                  <span class="cat-count">{allNews.filter(n => n.category === 'Pendidikan').length} Artikel</span>
+                </div>
+              </div>
+              <div class="cat-card" id="btn-Bisnis" onclick="filterNews('Bisnis')">
+                <div class="cat-icon bisnis"><i class="bi bi-briefcase-fill"></i></div>
+                <div class="cat-label">
+                  <span class="cat-name">Karir & Bisnis</span>
+                  <span class="cat-count">{allNews.filter(n => n.category === 'Bisnis').length} Artikel</span>
+                </div>
+              </div>
+              <div class="cat-card" id="btn-Startup" onclick="filterNews('Startup')">
+                <div class="cat-icon startup"><i class="bi bi-rocket-takeoff-fill"></i></div>
+                <div class="cat-label">
+                  <span class="cat-name">Startup</span>
+                  <span class="cat-count">{allNews.filter(n => n.category === 'Startup').length} Artikel</span>
+                </div>
+              </div>
           </div>
       </div>
   </section>
@@ -592,7 +687,7 @@ function formatDate(dateStr: string) {
 
   <script is:inline>
     function filterNews(cat){
-        document.querySelectorAll('.cat-btn').forEach(function(b){ b.classList.remove('active'); });
+        document.querySelectorAll('.cat-card').forEach(function(b){ b.classList.remove('active'); });
         var targetId = 'btn-' + (cat === 'all' ? 'all' : cat);
         var btn = document.getElementById(targetId);
         if(btn) btn.classList.add('active');
