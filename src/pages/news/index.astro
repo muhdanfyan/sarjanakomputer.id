@@ -177,11 +177,17 @@ function formatDate(dateStr: string) {
     }
 
     /* ===== SLIDER DOTS (kiri bawah) ===== */
-    .slider-dots {
+.slider-dots {
       position: absolute;
       bottom: 1.65rem;
-      left: 1.5rem;
+      left: 0;
+      right: 0;
       z-index: 10;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .slider-dots .dots-inner {
       display: flex;
       gap: 0.4rem;
       align-items: center;
@@ -190,7 +196,7 @@ function formatDate(dateStr: string) {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.25);
+      background: #ffffff40;
       cursor: pointer;
       transition: all 0.35s;
     }
@@ -257,7 +263,7 @@ function formatDate(dateStr: string) {
       .slider-hero .slide-inner { padding: 0 1rem; }
       .slider-nav { bottom: 1rem; right: 1rem; }
       .slider-nav button { width: 32px; height: 32px; font-size: 0.85rem; }
-      .slider-dots { bottom: 1.15rem; left: 1rem; }
+      .slider-dots { bottom: 1.15rem; padding: 0 1rem; }
       .slider-dots .dot.active { width: 18px; }
     }
 
@@ -474,9 +480,11 @@ function formatDate(dateStr: string) {
 
     <!-- Dots -->
     <div class="slider-dots" id="sliderDots">
-      {restNews.slice(0, 5).map((_, i) => (
-        <span class={"dot" + (i === 0 ? " active" : "")} data-index={i}></span>
-      ))}
+      <div class="dots-inner">
+        {restNews.slice(0, 5).map((_, i) => (
+          <span class={"dot" + (i === 0 ? " active" : "")} data-index={i}></span>
+        ))}
+      </div>
     </div>
 
     <!-- Nav Buttons -->
