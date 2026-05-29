@@ -258,7 +258,19 @@ function formatDate(dateStr: string) {
       .slider-thumbs { display: none; }
     }
     @media (max-width: 768px) {
-      .slider-hero { height: 280px; }
+      .slider-hero {
+        height: auto;
+        aspect-ratio: 16 / 9;
+        max-height: 340px;
+        min-height: 220px;
+        width: 100vw;
+        max-width: 100%;
+      }
+      .slider-hero .slide-track,
+      .slider-hero .slide {
+        width: 100vw;
+        max-width: 100%;
+      }
       .slider-hero .slide-title { font-size: 1.1rem; -webkit-line-clamp: 2; }
       .slider-hero .slide-inner { padding: 0 1rem; }
       .slider-hero .slide-badge { font-size: 0.6rem; padding: 0.15rem 0.65rem; margin-bottom: 0.35rem; }
