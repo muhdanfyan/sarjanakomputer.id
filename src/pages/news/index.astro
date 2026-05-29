@@ -475,7 +475,7 @@ function formatDate(dateStr: string) {
     <!-- Dots -->
     <div class="slider-dots" id="sliderDots">
       {restNews.slice(0, 5).map((_, i) => (
-        <span class="dot {i === 0 ? 'active' : ''}" data-index={i}></span>
+        <span class={"dot" + (i === 0 ? " active" : "")} data-index={i}></span>
       ))}
     </div>
 
@@ -488,7 +488,7 @@ function formatDate(dateStr: string) {
     <!-- Thumbnail Previews -->
     <div class="slider-thumbs" id="sliderThumbs">
       {restNews.slice(0, 5).map((item, i) => (
-        <div class="thumb-item {i === 0 ? 'active' : ''}" data-index={i}>
+        <div class={"thumb-item" + (i === 0 ? " active" : "")} data-index={i}>
           <img src={getNewsImage(item)} alt="" />
           <div class="thumb-num">{i === 0 ? '1' : `#${i + 1}`}</div>
         </div>
