@@ -1,0 +1,249 @@
+---
+import NewsLayout from '../../layouts/NewsLayout.astro';
+
+const recommendations = [
+  {
+    category: "Hosting & VPS",
+    items: [
+      {
+        name: "Niagahoster",
+        description: "Layanan cloud hosting dan VPS terbaik di Indonesia dengan uptime 99.9%. Cocok untuk website berita dan portofolio.",
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80&fit=crop",
+        link: "#",
+        badge: "Rekomendasi Utama",
+        buttonText: "Dapatkan Diskon 70%"
+      },
+      {
+        name: "Dewaweb",
+        description: "Cloud hosting aman, cepat, dan handal yang bersertifikat ISO 27001. Gratis domain seumur hidup.",
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80&fit=crop",
+        link: "#",
+        badge: "Performa Tinggi",
+        buttonText: "Lihat Paket Dewaweb"
+      }
+    ]
+  },
+  {
+    category: "Kursus Online (Coding)",
+    items: [
+      {
+        name: "Dicoding Indonesia",
+        description: "Platform belajar coding standar industri dari Google, Microsoft, dan AWS. Jadilah developer profesional.",
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80&fit=crop",
+        link: "#",
+        badge: "Pilihan Devs",
+        buttonText: "Mulai Belajar Sekarang"
+      },
+      {
+        name: "Skill Academy",
+        description: "Beragam kelas intensif mulai dari programming, digital marketing, hingga UI/UX.",
+        image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80&fit=crop",
+        link: "#",
+        badge: "Karir IT",
+        buttonText: "Pilih Kelas IT"
+      }
+    ]
+  }
+];
+---
+
+<NewsLayout 
+  title="Rekomendasi IT & Hosting — SKI News" 
+  description="Daftar rekomendasi hosting, VPS, dan platform belajar coding terbaik pilihan Sarjana Komputer Indonesia."
+  canonical="https://news.sarjanakomputer.id/rekomendasi"
+>
+  <style is:global>
+    .rekomendasi-hero {
+      background: var(--primary-dark);
+      position: relative;
+      padding: 4rem 1.5rem 5rem;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .rekomendasi-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at center, rgba(227, 56, 106, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .rekomendasi-hero h1 {
+      font-size: 2.5rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .rekomendasi-hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .rekomendasi-hero .badge-top {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: rgba(227, 56, 106, 0.2);
+      color: var(--secondary);
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .rekomendasi-section {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: -3rem auto 0;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .category-block {
+      margin-bottom: 4rem;
+    }
+    .category-block h2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .category-block h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-100);
+      margin-left: 1rem;
+    }
+    
+    .aff-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border: 1px solid var(--gray-50);
+    }
+    .aff-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(49, 46, 95, 0.1);
+    }
+    .aff-img-wrapper {
+      position: relative;
+      height: 200px;
+      overflow: hidden;
+    }
+    .aff-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .aff-card:hover .aff-img-wrapper img {
+      transform: scale(1.05);
+    }
+    .aff-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary);
+      color: #fff;
+      padding: 0.35rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      box-shadow: 0 4px 10px rgba(227, 56, 106, 0.3);
+    }
+    
+    .aff-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .aff-content h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    .aff-content p {
+      font-size: 0.95rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex: 1;
+    }
+    .aff-btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background: var(--gradient);
+      color: #fff !important;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+    .aff-btn:hover {
+      box-shadow: 0 8px 20px rgba(227, 56, 106, 0.4);
+      filter: brightness(1.1);
+    }
+    .aff-btn i {
+      margin-left: 0.4rem;
+    }
+    
+    @media (max-width: 768px) {
+      .rekomendasi-hero h1 { font-size: 2rem; }
+      .rekomendasi-section { margin-top: -2rem; }
+    }
+  </style>
+
+  <section class="rekomendasi-hero">
+    <div class="badge-top"><i class="bi bi-star-fill"></i> Pilihan Terbaik</div>
+    <h1>Rekomendasi IT & Hosting</h1>
+    <p>Kumpulan layanan, produk, dan platform pembelajaran IT terbaik yang sudah kami kurasi khusus untuk menunjang produktivitas dan karir Anda.</p>
+  </section>
+
+  <section class="rekomendasi-section">
+    {recommendations.map(cat => (
+      <div class="category-block">
+        <h2>{cat.category}</h2>
+        <div class="row g-4">
+          {cat.items.map(item => (
+            <div class="col-md-6 col-lg-4">
+              <div class="aff-card">
+                <div class="aff-img-wrapper">
+                  <span class="aff-badge">{item.badge}</span>
+                  <img src={item.image} alt={item.name} loading="lazy" />
+                </div>
+                <div class="aff-content">
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                  <a href={item.link} target="_blank" rel="nofollow noopener" class="aff-btn">
+                    {item.buttonText} <i class="bi bi-box-arrow-up-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+</NewsLayout>

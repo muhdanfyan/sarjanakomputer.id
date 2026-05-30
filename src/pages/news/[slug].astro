@@ -177,6 +177,65 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
         .detail-hero .hero-text h1 { font-size: 1.4rem; }
         .article-body { padding: 1.25rem 1rem 2.5rem; }
     }
+
+    /* ===== AFFILIATE BANNER ===== */
+    .affiliate-promo {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        background: var(--gradient);
+        border-radius: 16px;
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        color: #fff;
+        box-shadow: 0 10px 30px rgba(49, 46, 95, 0.15);
+        position: relative;
+        overflow: hidden;
+    }
+    .affiliate-promo::before {
+        content: '';
+        position: absolute;
+        top: -50px; right: -50px;
+        width: 150px; height: 150px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+    }
+    .aff-promo-content h3 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        color: #fff;
+    }
+    .aff-promo-content p {
+        font-size: 0.95rem;
+        color: rgba(255,255,255,0.85);
+        margin: 0;
+        line-height: 1.5;
+    }
+    .aff-promo-btn {
+        background: #fff;
+        color: var(--primary) !important;
+        padding: 0.8rem 1.5rem;
+        border-radius: 10px;
+        font-weight: 700;
+        text-align: center;
+        white-space: nowrap;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+        z-index: 1;
+    }
+    .aff-promo-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 768px) {
+        .affiliate-promo { flex-direction: column; text-align: center; padding: 1.5rem; margin: 0 1rem 3rem; }
+        .aff-promo-btn { width: 100%; }
+    }
   </style>
 
   <!-- ===== HERO: COVER + OVERLAY + TEXT ===== -->
@@ -202,4 +261,13 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
   <section class="article-body">
       <Fragment set:html={htmlContent} />
   </section>
+
+  <!-- ===== AFFILIATE BANNER ===== -->
+  <div class="affiliate-promo">
+    <div class="aff-promo-content">
+      <h3>🚀 Mulai Website Anda Sendiri!</h3>
+      <p>Dapatkan hosting super cepat & aman dari Niagahoster dengan diskon khusus hingga 70%. Cocok untuk web developer & pemula.</p>
+    </div>
+    <a href="#" target="_blank" rel="nofollow noopener" class="aff-promo-btn">Klaim Diskon 70% <i class="bi bi-arrow-right"></i></a>
+  </div>
 </NewsLayout>
