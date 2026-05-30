@@ -3,9 +3,17 @@ import NewsLayout from '../../layouts/NewsLayout.astro';
 import { PB_URL } from '../../utils/config.js';
 import { getNewsDetailUrl } from '../../utils/routes.js';
 
-const res = await fetch(`${PB_URL}/api/collections/news/records?sort=-date`);
-const data = await res.json();
-const allNews = data.items || [];
+let allNews = [];
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
+  const res = await fetch(`${PB_URL}/api/collections/news/records?sort=-date`, { signal: controller.signal });
+  clearTimeout(timeoutId);
+  const data = await res.json();
+  allNews = data.items || [];
+} catch (e) {
+  console.error("Fetch news failed:", e);
+}
 
 const first = allNews.length > 0 ? allNews[0] : null;
 const restNews = allNews;

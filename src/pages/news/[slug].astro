@@ -5,12 +5,17 @@ import { PB_URL } from '../../utils/config.js';
 import { getNewsUrl, getNewsDetailUrl } from '../../utils/routes.js';
 
 const { slug } = Astro.params;
-const controller = new AbortController();
-const timeoutId = setTimeout(() => controller.abort(), 5000);
-const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(slug='${slug}')&limit=1`, { signal: controller.signal });
-clearTimeout(timeoutId);
-const data = await res.json();
-const news = data.items && data.items[0];
+let news = null;
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
+  const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(slug='${slug}')&limit=1`, { signal: controller.signal });
+  clearTimeout(timeoutId);
+  const data = await res.json();
+  news = data.items && data.items[0];
+} catch (e) {
+  console.error("Fetch news detail failed:", e);
+}
 
 if (!news) {
   return new Response(null, { status: 404, statusText: 'Not Found' });

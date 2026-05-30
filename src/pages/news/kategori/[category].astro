@@ -15,9 +15,17 @@ const catNames = {
 const catLabel = catNames[category] || category;
 const catTitle = catLabel.charAt(0).toUpperCase() + catLabel.slice(1);
 
-const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(category='${catTitle}')&sort=-date`);
-const data = await res.json();
-const news = data.items || [];
+let news = [];
+try {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
+  const res = await fetch(`${PB_URL}/api/collections/news/records?filter=(category='${catTitle}')&sort=-date`, { signal: controller.signal });
+  clearTimeout(timeoutId);
+  const data = await res.json();
+  news = data.items || [];
+} catch (e) {
+  console.error("Fetch category news failed:", e);
+}
 
 const categoryImages = {
   'Teknologi': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&fit=crop',
