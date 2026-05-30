@@ -40,7 +40,7 @@ function formatDate(dateStr: string) {
 }
 ---
 
-<NewsLayout title="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="News — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
+<NewsLayout title="Berita — Portal Berita Teknologi | Sarjana Komputer Indonesia" description="Update teknologi terbaru, tren AI, web development, cybersecurity, cloud computing, dan startup. Portal berita teknologi dari CV. Sarjana Komputer Indonesia." canonical="https://news.sarjanakomputer.id/" basePath=".." ogTitle="Berita — Portal Berita Teknologi | Sarjana Komputer Indonesia" ogDescription="Portal berita teknologi terbaru — AI, web dev, cybersecurity, cloud, dan startup.">
   <style is:global>
     /* ===== SLIDER HERO — Premium Card Style ===== */
     .slider-hero {
@@ -935,7 +935,7 @@ function formatDate(dateStr: string) {
           </div>
           <div class="slide-inner">
             <div class="slide-body">
-              <span class="slide-badge"><i class={`bi bi-${i === 0 ? 'lightning-fill' : 'fire'}`}></i> {i === 0 ? 'BREAKING' : item.category.toUpperCase()}</span>
+              <span class="slide-badge"><i class={`bi bi-${i === 0 ? 'lightning-fill' : 'fire'}`}></i> {i === 0 ? 'TERKINI' : item.category.toUpperCase()}</span>
               <h2 class="slide-title">{item.title}</h2>
               <div class="slide-meta">
                 <span><i class="bi bi-calendar3"></i> {formatDate(item.date)}</span>

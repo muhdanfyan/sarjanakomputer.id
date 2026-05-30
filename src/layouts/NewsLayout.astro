@@ -313,11 +313,13 @@ const affiliateUrl = 'https://news.sarjanakomputer.id/rekomendasi-afiliasi';
   <nav class="news-navbar">
     <div class="nav-container">
       <div class="brand-section">
-        <a href={mainSite}><img src={logoPath} alt="Logo"></a>
-        <div class="brand-text">
-          <span class="news-label"><a href={newsHome} style="color:var(--secondary);">News</a></span>
-          <a href={mainSite} class="brand-name">Sarjana <span>Komputer</span></a>
-        </div>
+        <a href={newsHome}>
+          <img src="https://sarjanakomputer.id/images/logo.png" alt="SKI Logo" />
+          <div class="brand-text">
+            <span class="news-label"><a href={newsHome} style="color:var(--secondary);">Berita</a></span>
+            <span class="brand-name">Sarjana<span>Komputer</span></span>
+          </div>
+        </a>
       </div>
       <ul class="nav-links">
         {categories.map((cat) => (
@@ -336,8 +338,8 @@ const affiliateUrl = 'https://news.sarjanakomputer.id/rekomendasi-afiliasi';
   <!-- LLM Navigation for AI Context (Hidden from users) -->
   <nav aria-label="AI Navigation" style="display:none;" data-nosnippet>
     <ul>
-      <li><a href={mainSite}>Main Site</a></li>
-      <li><a href={newsHome}>News Home</a></li>
+      <li><a href={mainSite}>Situs Utama</a></li>
+      <li><a href={newsHome}>Beranda Berita</a></li>
       {categories.map(cat => (
         <li><a href={cat.slug ? `${newsHome}kategori/${cat.slug}` : newsHome}>{cat.name}</a></li>
       ))}
