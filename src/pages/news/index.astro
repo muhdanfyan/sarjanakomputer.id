@@ -1123,7 +1123,7 @@ function formatDate(dateStr: string) {
                     <div class="news-card-v2">
                         <a href={getNewsDetailUrl(item.slug)}>
                             <div class="card-img-wrapper">
-                                <img src={getNewsImage(item)} alt={item.title}>
+                                <img src={getNewsImage(item)} alt={item.title} loading="lazy">
                                 <span class="card-badge">{item.category}</span>
                             </div>
                             <div class="card-content">
@@ -1140,8 +1140,10 @@ function formatDate(dateStr: string) {
             ))}
           </div>
 
-          <!-- ===== PAGINATION ===== -->
-          <div class="pagination-wrap" id="pagination"></div>
+          <!-- ===== SCROLL TRIGGER ===== -->
+          <div class="scroll-trigger" id="scrollTrigger" style="text-align:center; padding:2rem; color:var(--gray-500); display:none;">
+             <i class="bi bi-arrow-down-circle"></i> Memuat lebih banyak berita...
+          </div>
       </div>
   </section>
 
@@ -1151,14 +1153,14 @@ function formatDate(dateStr: string) {
     document.querySelectorAll('#newsGrid .news-item').forEach(function(el) {
       allItems.push(el);
     });
-    var PER_PAGE = 9;
-    var currentPage = 1;
+    var PER_PAGE = 6;
+    var loadedCount = PER_PAGE;
     var currentCategory = 'all';
 
     // ===== FILTER =====
     function filterNews(cat){
         currentCategory = cat;
-        currentPage = 1;
+        loadedCount = PER_PAGE;
         document.querySelectorAll('.cat-card').forEach(function(b){ b.classList.remove('active'); });
         var targetId = 'btn-' + (cat === 'all' ? 'all' : cat);
         var btn = document.getElementById(targetId);
@@ -1173,7 +1175,7 @@ function formatDate(dateStr: string) {
     if (searchInput) {
       searchInput.addEventListener('input', function() {
         if (searchClear) searchClear.classList.toggle('show', this.value.length > 0);
-        currentPage = 1;
+        loadedCount = PER_PAGE;
         applySearchAndFilter();
       });
     }
@@ -1183,13 +1185,13 @@ function formatDate(dateStr: string) {
           searchInput.value = '';
           searchInput.focus();
           searchClear.classList.remove('show');
-          currentPage = 1;
+          loadedCount = PER_PAGE;
           applySearchAndFilter();
         }
       });
     }
 
-    // ===== PAGINATION =====
+    // ===== INFINITE SCROLL =====
     function applySearchAndFilter() {
       var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
       var filtered = allItems.filter(function(item) {
@@ -1200,55 +1202,50 @@ function formatDate(dateStr: string) {
         return text.indexOf(query) !== -1;
       });
 
-      // pagination
-      var totalPages = Math.ceil(filtered.length / PER_PAGE) || 1;
-      if (currentPage > totalPages) currentPage = totalPages;
-      var start = (currentPage - 1) * PER_PAGE;
-      var end = start + PER_PAGE;
-      var pageItems = filtered.slice(start, end);
-
       // show/hide
       allItems.forEach(function(el) { el.style.display = 'none'; });
-      pageItems.forEach(function(el) { el.style.display = 'block'; });
+      
+      var itemsToShow = filtered.slice(0, loadedCount);
+      itemsToShow.forEach(function(el) { el.style.display = 'block'; });
 
-      renderPagination(totalPages);
+      var trigger = document.getElementById('scrollTrigger');
+      if (trigger) {
+         if (loadedCount < filtered.length) {
+             trigger.style.display = 'block';
+         } else {
+             trigger.style.display = 'none';
+         }
+      }
     }
 
-    function renderPagination(totalPages) {
-      var wrap = document.getElementById('pagination');
-      if (!wrap) return;
-      if (totalPages <= 1) { wrap.innerHTML = ''; return; }
+    // Intersection Observer for Infinite Scroll
+    document.addEventListener('DOMContentLoaded', function() {
+        var trigger = document.getElementById('scrollTrigger');
+        if (!trigger) return;
+        
+        var observer = new IntersectionObserver(function(entries) {
+            if (entries[0].isIntersecting) {
+                var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+                var filtered = allItems.filter(function(item) {
+                  var catMatch = currentCategory === 'all' || (item.dataset.category && item.dataset.category.toLowerCase() === currentCategory.toLowerCase());
+                  if (!catMatch) return false;
+                  if (!query) return true;
+                  return item.textContent.toLowerCase().indexOf(query) !== -1;
+                });
+                
+                if (loadedCount < filtered.length) {
+                    loadedCount += PER_PAGE;
+                    applySearchAndFilter();
+                }
+            }
+        }, { rootMargin: "0px 0px 200px 0px" });
+        
+        observer.observe(trigger);
+        
+        // Initial call
+        applySearchAndFilter();
+    });
 
-      var html = '';
-      // prev
-      html += '<button class="page-btn" onclick="goPage(' + (currentPage - 1) + ')"' + (currentPage <= 1 ? ' disabled' : '') + '><i class="bi bi-chevron-left"></i></button>';
-
-      var startPage = Math.max(1, currentPage - 2);
-      var endPage = Math.min(totalPages, currentPage + 2);
-      if (startPage > 1) {
-        html += '<button class="page-btn" onclick="goPage(1)">1</button>';
-        if (startPage > 2) html += '<span class="page-info">…</span>';
-      }
-      for (var i = startPage; i <= endPage; i++) {
-        html += '<button class="page-btn' + (i === currentPage ? ' active' : '') + '" onclick="goPage(' + i + ')">' + i + '</button>';
-      }
-      if (endPage < totalPages) {
-        if (endPage < totalPages - 1) html += '<span class="page-info">…</span>';
-        html += '<button class="page-btn" onclick="goPage(' + totalPages + ')">' + totalPages + '</button>';
-      }
-
-      // next
-      html += '<button class="page-btn" onclick="goPage(' + (currentPage + 1) + ')"' + (currentPage >= totalPages ? ' disabled' : '') + '><i class="bi bi-chevron-right"></i></button>';
-
-      wrap.innerHTML = html;
-    }
-
-    function goPage(page) {
-      currentPage = page;
-      applySearchAndFilter();
-      // scroll to grid
-      var grid = document.querySelector('.news-grid-container');
-      if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    window.goPage = function() {}; // Prevent undefined error if any old code calls it
   </script>
 </NewsLayout>
