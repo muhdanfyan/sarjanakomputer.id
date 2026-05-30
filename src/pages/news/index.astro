@@ -28,7 +28,11 @@ const categoryImages = {
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop';
 
 function getNewsImage(item) {
-  // Prioritaskan imageUrl dari CMS, fallback ke Unsplash berdasarkan kategori
+  // Prioritaskan file image lokal dari CMS, lalu imageUrl dari CMS, fallback ke Unsplash berdasarkan kategori
+  if (item.image) {
+    if (item.image.startsWith('http')) return item.image;
+    return `${PB_URL}/api/files/news/${item.id}/${item.image}`;
+  }
   if (item.imageUrl && item.imageUrl.startsWith('http')) return item.imageUrl;
   return categoryImages[item.category] || defaultImage;
 }
@@ -1061,11 +1065,11 @@ function formatDate(dateStr: string) {
   <!-- ===== SEARCH BAR ===== -->
   <section class="search-section">
     <div class="container">
-      <div class="search-wrap">
-        <i class="bi bi-search search-icon"></i>
+      <form class="search-wrap" onsubmit="event.preventDefault(); document.getElementById('searchInput').blur();">
+        <button type="submit" class="search-btn" aria-label="Cari" style="background:none;border:none;position:absolute;left:0.85rem;top:50%;transform:translateY(-50%);color:var(--gray-400);font-size:1rem;"><i class="bi bi-search"></i></button>
         <input type="text" id="searchInput" placeholder="Cari berita..." autocomplete="off">
-        <button class="search-clear" id="searchClear"><i class="bi bi-x-lg"></i></button>
-      </div>
+        <button type="button" class="search-clear" id="searchClear"><i class="bi bi-x-lg"></i></button>
+      </form>
     </div>
   </section>
 
