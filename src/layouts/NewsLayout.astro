@@ -28,6 +28,7 @@ const categories = [
   { name: 'Bisnis', slug: 'bisnis', icon: 'bi-briefcase-fill' },
   { name: 'Startup', slug: 'startup', icon: 'bi-rocket-takeoff-fill' },
 ];
+const affiliateUrl = 'https://news.sarjanakomputer.id/rekomendasi-afiliasi';
 ---
 
 <!DOCTYPE html>
@@ -322,7 +323,7 @@ const categories = [
         {categories.map((cat) => (
           <li><a href={cat.slug ? `${newsHome}kategori/${cat.slug}` : newsHome}>{cat.name}</a></li>
         ))}
-        <li><a href={`${newsHome}rekomendasi`} style="color:var(--secondary);"><i class="bi bi-star-fill"></i> Rekomendasi</a></li>
+        <li><a href={affiliateUrl}><i class="bi bi-star-fill" style="color:#f59e0b;"></i> Rekomendasi</a></li>
         <li><a href={mainSite} class="main-site-btn"><i class="bi bi-building"></i> Website Utama</a></li>
       </ul>
       <!-- Hamburger Button (HP only) -->
@@ -359,7 +360,7 @@ const categories = [
       {categories.map((cat) => (
         <li><a href={cat.slug ? `${newsHome}kategori/${cat.slug}` : newsHome} class="sidebar-link"><i class={"bi " + cat.icon}></i> {cat.name}</a></li>
       ))}
-      <li><a href={`${newsHome}rekomendasi`} class="sidebar-link" style="color:var(--secondary);"><i class="bi bi-star-fill"></i> Rekomendasi</a></li>
+      <li><a href={affiliateUrl} class="sidebar-link"><i class="bi bi-star-fill" style="color:#f59e0b;"></i> Rekomendasi</a></li>
       <li><a href={mainSite} class="main-site-sidebar"><i class="bi bi-building"></i> Website Utama</a></li>
     </ul>
   </div>

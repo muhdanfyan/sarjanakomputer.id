@@ -1,0 +1,333 @@
+---
+import NewsLayout from '../layouts/NewsLayout.astro';
+
+const affiliateItems = [
+  {
+    category: "Hosting & VPS",
+    icon: "bi-cloud-arrow-up-fill",
+    color: "#3b82f6",
+    items: [
+      {
+        name: "Niagahoster",
+        desc: "Hosting murah untuk pemula hingga profesional. Mulai Rp 15.900/bulan.",
+        link: "https://www.niagahoster.co.id/",
+        badge: "Diskon 50%",
+        image: "https://www.niagahoster.co.id/assets/images/logos/niagahoster-logo.png"
+      },
+      {
+        name: "Dewaweb",
+        desc: "Cloud hosting premium dengan dukungan 24/7. Cocok untuk website berita.",
+        link: "https://www.dewaweb.com/",
+        badge: "Garansi 30 Hari",
+        image: "https://www.dewaweb.com/assets/images/dewaweb-logo.png"
+      },
+      {
+        name: "IDCloudHost",
+        desc: "VPS murah dengan performa tinggi untuk developer dan startup.",
+        link: "https://idcloudhost.com/",
+        badge: "Mulai Rp 50rb",
+        image: "https://idcloudhost.com/assets/images/logo-idcloudhost.png"
+      },
+      {
+        name: "Vercel (Hosting Gratis)",
+        desc: "Hosting frontend gratis dengan deploy otomatis dari GitHub. Pakai untuk portal berita SKI!",
+        link: "https://vercel.com/",
+        badge: "Gratis",
+        image: "https://assets.vercel.com/image/upload/front/favicon/vercel/57x57.png"
+      }
+    ]
+  },
+  {
+    category: "Kursus & Sertifikasi IT",
+    icon: "bi-mortarboard-fill",
+    color: "#16a34a",
+    items: [
+      {
+        name: "Dicoding",
+        desc: "Platform kursus coding terlengkap di Indonesia. Dapatkan sertifikasi global.",
+        link: "https://www.dicoding.com/",
+        badge: "Sertifikat Resmi",
+        image: "https://www.dicoding.com/blog/wp-content/uploads/2024/01/cropped-favicon-192x192.png"
+      },
+      {
+        name: "Codepolitan",
+        desc: "Belajar coding dari dasar dengan proyek nyata. Tersedia kelas gratis.",
+        link: "https://www.codepolitan.com/",
+        badge: "Kelas Gratis",
+        image: "https://www.codepolitan.com/favicon.ico"
+      },
+      {
+        name: "Skill Academy",
+        desc: "Kursus singkat skill digital dari para praktisi industri.",
+        link: "https://skillacademy.com/",
+        badge: "Multi Disiplin",
+        image: "https://skillacademy.com/favicon.ico"
+      },
+      {
+        name: "BuildWith Angga",
+        desc: "Belajar coding dengan mentor profesional. Fokus ke portofolio.",
+        link: "https://buildwithangga.com/",
+        badge: "Mentor Profesional",
+        image: "https://buildwithangga.com/favicon.ico"
+      }
+    ]
+  },
+  {
+    category: "Perangkat IT",
+    icon: "bi-laptop-fill",
+    color: "#8b5cf6",
+    items: [
+      {
+        name: "Tokopedia — Laptop & PC",
+        desc: "Temukan laptop dan PC terbaik untuk coding, desain, dan pengembangan.",
+        link: "https://www.tokopedia.com/find/laptop",
+        badge: "Banyak Pilihan",
+        image: "https://www.tokopedia.com/favicon.ico"
+      },
+      {
+        name: "Shopee — Gadget IT",
+        desc: "Perangkat keras, monitor, keyboard mekanik, dan aksesoris IT.",
+        link: "https://shopee.co.id/",
+        badge: "Harga Kompetitif",
+        image: "https://shopee.co.id/favicon.ico"
+      },
+      {
+        name: "JetBrains IDE",
+        desc: "IDE profesional untuk developer — IntelliJ, PyCharm, WebStorm, dan lainnya.",
+        link: "https://www.jetbrains.com/",
+        badge: "Diskon Pelajar",
+        image: "https://resources.jetbrains.com/assets/jetbrains.png"
+      },
+      {
+        name: "GitHub Copilot",
+        desc: "AI coding assistant terintegrasi di editor favoritmu.",
+        link: "https://github.com/features/copilot",
+        badge: "Gratis untuk Mahasiswa",
+        image: "https://github.githubassets.com/favicons/favicon-dark.png"
+      }
+    ]
+  }
+];
+---
+
+<NewsLayout title="Rekomendasi & Afiliasi — Sarjana Komputer Indonesia" description="Rekomendasi produk dan layanan IT terbaik — hosting, kursus coding, perangkat keras, dan tools untuk developer Indonesia." canonical="https://news.sarjanakomputer.id/rekomendasi-afiliasi" basePath=".." ogTitle="Rekomendasi Produk IT dan Digital — SKI" ogDescription="Pilihan terbaik hosting, kursus IT, dan perangkat keras untuk belajar dan berkembang.">
+  <style is:global>
+    .aff-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #312E5F 100%);
+      padding: 4rem 0 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .aff-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 60%);
+      animation: affGlow 8s ease-in-out infinite alternate;
+    }
+    @keyframes affGlow {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(10%, 10%); }
+    }
+    .aff-hero h1 {
+      color: #ffffff;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 0 0 0.5rem;
+      position: relative;
+    }
+    .aff-hero p {
+      color: rgba(255,255,255,0.65);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .aff-hero .badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.2);
+      color: #93c5fd;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+    .aff-section {
+      padding: 3rem 0;
+    }
+    .aff-section:nth-child(odd) {
+      background: #ffffff;
+    }
+    .aff-section:nth-child(even) {
+      background: #f8faff;
+    }
+    .aff-category-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    .aff-category-header .cat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .aff-category-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0;
+    }
+    .aff-category-header p {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin: 0.15rem 0 0;
+    }
+    .aff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .aff-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      transition: all 0.25s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .aff-card:hover {
+      border-color: #312E5F;
+      box-shadow: 0 8px 30px rgba(49,46,95,0.1);
+      transform: translateY(-2px);
+    }
+    .aff-card .aff-badge {
+      position: absolute;
+      top: -0.5rem;
+      right: 1rem;
+      background: #312E5F;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+    }
+    .aff-card .aff-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: #f1f5f9;
+      padding: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .aff-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin: 0 0 0.4rem;
+    }
+    .aff-card p {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.5;
+      flex: 1;
+      margin: 0 0 1rem;
+    }
+    .aff-card .aff-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      background: #312E5F;
+      color: #ffffff;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      align-self: flex-start;
+      transition: 0.2s;
+    }
+    .aff-card .aff-btn:hover {
+      background: #231F4F;
+      gap: 0.6rem;
+    }
+    .aff-disclaimer {
+      background: #fef9c3;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      margin: 0 auto 2rem;
+      max-width: 700px;
+      text-align: center;
+    }
+    .aff-disclaimer p {
+      font-size: 0.8rem;
+      color: #92400e;
+      margin: 0;
+    }
+    @media (max-width: 768px) {
+      .aff-hero h1 { font-size: 1.6rem; }
+      .aff-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- HERO -->
+  <section class="aff-hero">
+    <div class="badge">✨ Rekomendasi Tim SKI</div>
+    <h1>Rekomendasi Produk &amp; Layanan IT</h1>
+    <p>Pilihan terbaik yang kami rekomendasikan untuk belajar, coding, dan mengembangkan karir IT Anda.</p>
+  </section>
+
+  <!-- DISCLAIMER -->
+  <section class="aff-section" style="padding: 2rem 0 0;">
+    <div class="container">
+      <div class="aff-disclaimer">
+        <p><strong>🔗 Tautan Afiliasi:</strong> Beberapa tautan di halaman ini adalah tautan afiliasi. Kami mendapat komisi kecil jika Anda membeli melalui tautan tersebut, tanpa biaya tambahan untuk Anda. Terima kasih telah mendukung Sarjana Komputer Indonesia! 🙏</p>
+      </div>
+    </div>
+  </section>
+
+  {affiliateItems.map((cat) => (
+    <section class="aff-section">
+      <div class="container">
+        <div class="aff-category-header">
+          <div class="cat-icon" style="background: {cat.color}">
+            <i class={`bi ${cat.icon}`}></i>
+          </div>
+          <div>
+            <h2>{cat.category}</h2>
+            <p>Rekomendasi terbaik tim SKI</p>
+          </div>
+        </div>
+        <div class="aff-grid">
+          {cat.items.map((item) => (
+            <div class="aff-card">
+              <span class="aff-badge">{item.badge}</span>
+              <img src={item.image} alt={item.name} class="aff-logo" loading="lazy" />
+              <h3>{item.name}</h3>
+              <p>{item.desc}</p>
+              <a href={item.link} target="_blank" rel="nofollow sponsored" class="aff-btn">
+                Kunjungi <i class="bi bi-box-arrow-up-right"></i>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</NewsLayout>

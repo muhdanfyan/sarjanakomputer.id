@@ -172,6 +172,67 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
     .article-body img { max-width: 100%; border-radius: 10px; margin: 1rem 0; }
     .article-body a { color: #312E5F; font-weight: 500; text-decoration: underline; }
 
+    /* ===== AFFILIATE BANNER ===== */
+    .aff-banner {
+      padding: 0 0 3rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .aff-banner-inner {
+      background: linear-gradient(135deg, #312E5F 0%, #E3386A 100%);
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      color: #fff;
+      box-shadow: 0 8px 30px rgba(227,56,106,0.2);
+    }
+    .aff-banner-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .aff-banner-text {
+      flex: 1;
+    }
+    .aff-banner-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 0.2rem;
+      color: #fff;
+    }
+    .aff-banner-text p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+    .aff-banner-btn {
+      background: #fff;
+      color: #312E5F !important;
+      text-decoration: none !important;
+      padding: 0.6rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+    .aff-banner-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
     @media (max-width: 768px) {
         .detail-hero .hero-bg { height: 280px; }
         .detail-hero .hero-text h1 { font-size: 1.4rem; }
@@ -262,12 +323,19 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
       <Fragment set:html={htmlContent} />
   </section>
 
-  <!-- ===== AFFILIATE BANNER ===== -->
-  <div class="affiliate-promo">
-    <div class="aff-promo-content">
-      <h3>🚀 Mulai Website Anda Sendiri!</h3>
-      <p>Dapatkan hosting super cepat & aman dari Niagahoster dengan diskon khusus hingga 70%. Cocok untuk web developer & pemula.</p>
+  <!-- ===== BANNER AFILIASI ===== -->
+  <section class="aff-banner">
+    <div class="container">
+      <div class="aff-banner-inner">
+        <div class="aff-banner-icon"><i class="bi bi-star-fill"></i></div>
+        <div class="aff-banner-text">
+          <h3>Rekomendasi Produk IT Terbaik</h3>
+          <p>Dapatkan hosting, kursus coding, dan perangkat IT dengan harga spesial — rekomendasi tim SKI untuk kamu.</p>
+        </div>
+        <a href="https://news.sarjanakomputer.id/rekomendasi-afiliasi" class="aff-banner-btn" target="_blank" rel="nofollow sponsored">
+          Lihat Rekomendasi <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
     </div>
-    <a href="#" target="_blank" rel="nofollow noopener" class="aff-promo-btn">Klaim Diskon 70% <i class="bi bi-arrow-right"></i></a>
-  </div>
+  </section>
 </NewsLayout>
