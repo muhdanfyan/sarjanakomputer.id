@@ -1118,7 +1118,7 @@ function formatDate(dateStr: string) {
               </div>
           </div>
           <div class="row g-4" id="newsGrid">
-            {restNews.slice(0, 9).map((item) => (
+            {restNews.map((item) => (
                 <div class="col-md-6 col-lg-4 news-item" data-category={item.category}>
                     <div class="news-card-v2">
                         <a href={getNewsDetailUrl(item.slug)}>
