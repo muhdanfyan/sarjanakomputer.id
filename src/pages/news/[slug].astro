@@ -6,6 +6,7 @@ import { getNewsUrl, getNewsDetailUrl } from '../../utils/routes.js';
 
 const { slug } = Astro.params;
 let news = null;
+let popularNews = [];
 try {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -19,6 +20,16 @@ try {
 
 if (!news) {
   return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+// Fetch berita populer (kategori sama, kecuali artikel ini)
+try {
+  const cat = news.category || '';
+  const popRes = await fetch(`${PB_URL}/api/collections/news/records?sort=-date&filter=(category='${cat}')&perPage=5`);
+  const popData = await popRes.json();
+  popularNews = (popData.items || []).filter((n: any) => n.id !== news.id).slice(0, 5);
+} catch (e) {
+  // fallback
 }
 
 const { title, date, category, author, content, description } = news;
@@ -49,7 +60,7 @@ const catClass = catColors[category] || 'teknologi';
 const catIcons: Record<string, string> = { 'teknologi': 'cpu', 'pendidikan': 'book', 'bisnis': 'briefcase', 'startup': 'rocket-takeoff' };
 const catIcon = catIcons[catClass] || 'newspaper';
 
-// Gunakan imageUrl dari CMS jika ada, fallback ke Unsplash berdasarkan kategori
+// Image URL
 const categoryImages: Record<string, string> = {
   'Teknologi': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80&fit=crop',
   'Pendidikan': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80&fit=crop',
@@ -61,6 +72,18 @@ const ogImageRaw = news.imageUrl || categoryImages[category] || defaultImage;
 const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('http')) 
   ? ogImageRaw 
   : (ogImageRaw ? ogImageRaw.split('?')[0] + '?w=1200' : defaultImage);
+
+function getNewsImage(item: any) {
+  if (item.imageUrl && item.imageUrl.startsWith('http')) return item.imageUrl;
+  return categoryImages[item.category] || defaultImage;
+}
+
+const categories = [
+  { name: 'Teknologi', slug: 'teknologi', icon: 'cpu', color: '#3b82f6' },
+  { name: 'Pendidikan', slug: 'pendidikan', icon: 'book', color: '#16a34a' },
+  { name: 'Bisnis', slug: 'bisnis', icon: 'briefcase', color: '#d97706' },
+  { name: 'Startup', slug: 'startup', icon: 'rocket-takeoff', color: '#9333ea' },
+];
 ---
 
 <NewsLayout title={`${title} — SKI News`} description={description || `Membaca artikel teknologi terbaru di Sarjana Komputer Indonesia.`} canonical={getNewsDetailUrl(news.slug)} basePath="../.." ogTitle={`${title} — SKI News`} ogDescription={description} ogImage={ogImage}
@@ -100,7 +123,7 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
         padding: 2rem 0;
     }
     .detail-hero .hero-text .container {
-        max-width: 800px;
+        max-width: 1200px;
     }
     .detail-hero .hero-text h1 {
         color: #ffffff;
@@ -108,6 +131,7 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
         font-weight: 800;
         line-height: 1.25;
         margin: 0.5rem 0 0.75rem;
+        max-width: 800px;
     }
     .detail-hero .hero-text .meta {
         color: rgba(255,255,255,0.6);
@@ -147,12 +171,27 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
     .cat-badge.bisnis { background: rgba(217,119,6,0.2); color: #fcd34d; }
     .cat-badge.startup { background: rgba(147,51,234,0.2); color: #c4b5fd; }
 
+    /* ===== LAYOUT 2 KOLOM ===== */
+    .detail-layout {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2.5rem;
+    }
+    .detail-main {
+      min-width: 0;
+    }
+    .detail-sidebar {
+      position: sticky;
+      top: 5rem;
+      align-self: start;
+    }
+
     /* ===== BODY ===== */
     .article-body {
         padding: 1.5rem 0 3rem;
-        max-width: 800px;
-        margin: 0 auto;
-        font-family: 'Inter', sans-serif;
     }
     .article-body h1 { font-size: 1.6rem; margin-top: 2rem; margin-bottom: 1rem; font-weight: 700; color: #1a1838; line-height: 1.4; }
     .article-body h2 { font-size: 1.35rem; margin-top: 1.75rem; margin-bottom: 0.8rem; font-weight: 700; color: #1a1838; line-height: 1.4; }
@@ -161,8 +200,8 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
         font-size: 1.05rem; 
         line-height: 1.85; 
         color: #334155; 
-        margin-bottom: 1.5rem; 
-        text-align: justify; 
+        margin-bottom: 1.5rem;
+        text-align: justify;
     }
     .article-body ul, .article-body ol { margin-bottom: 1.5rem; padding-left: 1.5rem; }
     .article-body li { font-size: 1.05rem; line-height: 1.85; color: #334155; margin-bottom: 0.5rem; text-align: justify; }
@@ -183,11 +222,95 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
     .article-body img { max-width: 100%; border-radius: 10px; margin: 1rem 0; }
     .article-body a { color: #312E5F; font-weight: 500; text-decoration: underline; }
 
+    /* ===== SIDEBAR WIDGETS ===== */
+    .sidebar-widget {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .sidebar-widget .widget-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #1a1838;
+      margin: 0 0 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid #312E5F;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sidebar-widget .widget-title i { color: #E3386A; }
+
+    /* Popular item */
+    .popular-item {
+      display: flex;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f1f5f9;
+      text-decoration: none;
+    }
+    .popular-item:last-child { border-bottom: none; }
+    .popular-item:hover { opacity: 0.8; }
+    .popular-item .num {
+      width: 24px;
+      height: 24px;
+      background: #f1f5f9;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #312E5F;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .popular-item .num.top { background: #312E5F; color: #fff; }
+    .popular-item .pop-content { flex: 1; min-width: 0; }
+    .popular-item .pop-content h4 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #1a1838;
+      margin: 0 0 0.2rem;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .popular-item .pop-content .pop-meta {
+      font-size: 0.68rem;
+      color: #94a3b8;
+    }
+
+    /* Kategori chips */
+    .cat-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .cat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cat-chip:hover { transform: translateY(-1px); }
+    .cat-chip.teknologi { background: rgba(59,130,246,0.1); color: #2563eb; }
+    .cat-chip.pendidikan { background: rgba(22,163,74,0.1); color: #16a34a; }
+    .cat-chip.bisnis { background: rgba(217,119,6,0.1); color: #d97706; }
+    .cat-chip.startup { background: rgba(147,51,234,0.1); color: #9333ea; }
+
     /* ===== AFFILIATE BANNER ===== */
     .aff-banner {
-      padding: 0 0 3rem;
-      max-width: 800px;
-      margin: 0 auto;
+      padding: 0 0 2rem;
     }
     .aff-banner-inner {
       background: linear-gradient(135deg, #312E5F 0%, #E3386A 100%);
@@ -200,8 +323,7 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
       box-shadow: 0 8px 30px rgba(227,56,106,0.2);
     }
     .aff-banner-icon {
-      width: 52px;
-      height: 52px;
+      width: 52px; height: 52px;
       background: rgba(255,255,255,0.15);
       border-radius: 50%;
       display: flex;
@@ -210,107 +332,33 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
       font-size: 1.6rem;
       flex-shrink: 0;
     }
-    .aff-banner-text {
-      flex: 1;
-    }
-    .aff-banner-text h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin: 0 0 0.2rem;
-      color: #fff;
-    }
-    .aff-banner-text p {
-      font-size: 0.8rem;
-      color: rgba(255,255,255,0.8);
-      margin: 0;
-    }
+    .aff-banner-text { flex: 1; }
+    .aff-banner-text h3 { font-size: 1rem; font-weight: 700; margin: 0 0 0.2rem; color: #fff; }
+    .aff-banner-text p { font-size: 0.8rem; color: rgba(255,255,255,0.8); margin: 0; }
     .aff-banner-btn {
-      background: #fff;
-      color: #312E5F !important;
-      text-decoration: none !important;
-      padding: 0.6rem 1.25rem;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      white-space: nowrap;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      transition: all 0.2s;
-      flex-shrink: 0;
+      background: #fff; color: #312E5F !important; text-decoration: none !important;
+      padding: 0.6rem 1.25rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;
+      white-space: nowrap; display: inline-flex; align-items: center; gap: 0.4rem;
+      transition: all 0.2s; flex-shrink: 0;
     }
-    .aff-banner-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
+    .aff-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
 
     @media (max-width: 768px) {
         .detail-hero .hero-bg { height: 280px; }
         .detail-hero .hero-text h1 { font-size: 1.4rem; }
-        .article-body { padding: 1.25rem 1rem 2.5rem; }
-    }
-
-    /* ===== AFFILIATE BANNER ===== */
-    .affiliate-promo {
-        max-width: 800px;
-        margin: 0 auto 3rem;
-        background: var(--gradient);
-        border-radius: 16px;
-        padding: 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1.5rem;
-        color: #fff;
-        box-shadow: 0 10px 30px rgba(49, 46, 95, 0.15);
-        position: relative;
-        overflow: hidden;
-    }
-    .affiliate-promo::before {
-        content: '';
-        position: absolute;
-        top: -50px; right: -50px;
-        width: 150px; height: 150px;
-        background: rgba(255,255,255,0.1);
-        border-radius: 50%;
-    }
-    .aff-promo-content h3 {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 1.4rem;
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        color: #fff;
-    }
-    .aff-promo-content p {
-        font-size: 0.95rem;
-        color: rgba(255,255,255,0.85);
-        margin: 0;
-        line-height: 1.5;
-    }
-    .aff-promo-btn {
-        background: #fff;
-        color: var(--primary) !important;
-        padding: 0.8rem 1.5rem;
-        border-radius: 10px;
-        font-weight: 700;
-        text-align: center;
-        white-space: nowrap;
-        transition: all 0.3s;
-        text-decoration: none;
-        display: inline-block;
-        z-index: 1;
-    }
-    .aff-promo-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    @media (max-width: 768px) {
-        .affiliate-promo { flex-direction: column; text-align: center; padding: 1.5rem; margin: 0 1rem 3rem; }
-        .aff-promo-btn { width: 100%; }
+        .detail-layout {
+          grid-template-columns: 1fr;
+          padding: 0 1rem;
+          gap: 1.5rem;
+        }
+        .detail-sidebar { position: static; }
+        .article-body { padding: 1rem 0 1.5rem; }
+        .aff-banner-inner { flex-direction: column; text-align: center; padding: 1.25rem; }
+        .aff-banner-btn { width: 100%; justify-content: center; }
     }
   </style>
 
-  <!-- ===== HERO: COVER + OVERLAY + TEXT ===== -->
+  <!-- ===== HERO ===== -->
   <section class="detail-hero">
     <img src={ogImage} alt={title} class="hero-bg" />
     <div class="hero-overlay"></div>
@@ -329,24 +377,60 @@ const ogImage = (ogImageRaw && ogImageRaw.startsWith && ogImageRaw.startsWith('h
     </div>
   </section>
 
-  <!-- ===== ARTICLE BODY ===== -->
-  <section class="article-body">
-      <Fragment set:html={htmlContent} />
-  </section>
+  <!-- ===== LAYOUT 2 KOLOM ===== -->
+  <div class="detail-layout">
+    <!-- MAIN: Artikel -->
+    <div class="detail-main">
+      <section class="article-body">
+          <Fragment set:html={htmlContent} />
+      </section>
 
-  <!-- ===== BANNER AFILIASI ===== -->
-  <section class="aff-banner">
-    <div class="container">
-      <div class="aff-banner-inner">
-        <div class="aff-banner-icon"><i class="bi bi-star-fill"></i></div>
-        <div class="aff-banner-text">
-          <h3>Rekomendasi Produk IT Terbaik</h3>
-          <p>Dapatkan hosting, kursus coding, dan perangkat IT dengan harga spesial — rekomendasi tim SKI untuk kamu.</p>
+      <!-- Banner Afiliasi -->
+      <section class="aff-banner">
+        <div class="aff-banner-inner">
+          <div class="aff-banner-icon"><i class="bi bi-star-fill"></i></div>
+          <div class="aff-banner-text">
+            <h3>Rekomendasi Produk IT Terbaik</h3>
+            <p>Dapatkan hosting, kursus coding, dan perangkat IT dengan harga spesial — rekomendasi tim SKI.</p>
+          </div>
+          <a href="https://news.sarjanakomputer.id/rekomendasi-afiliasi" class="aff-banner-btn" target="_blank" rel="nofollow sponsored">
+            Lihat Rekomendasi <i class="bi bi-arrow-right"></i>
+          </a>
         </div>
-        <a href="https://news.sarjanakomputer.id/rekomendasi-afiliasi" class="aff-banner-btn" target="_blank" rel="nofollow sponsored">
-          Lihat Rekomendasi <i class="bi bi-arrow-right"></i>
-        </a>
-      </div>
+      </section>
     </div>
-  </section>
+
+    <!-- SIDEBAR: Populer + Kategori -->
+    <aside class="detail-sidebar">
+      <!-- Populer -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title"><i class="bi bi-fire"></i> Berita Populer</h3>
+        {popularNews.length > 0 ? (
+          popularNews.map((item: any, i: number) => (
+            <a href={getNewsDetailUrl(item.slug)} class="popular-item">
+              <span class={`num ${i < 3 ? 'top' : ''}`}>{i + 1}</span>
+              <div class="pop-content">
+                <h4>{item.title}</h4>
+                <span class="pop-meta">{item.category} · {formatDate(item.date)}</span>
+              </div>
+            </a>
+          ))
+        ) : (
+          <p style="font-size:0.82rem;color:#94a3b8;margin:0;">Belum ada berita terkait.</p>
+        )}
+      </div>
+
+      <!-- Kategori -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title"><i class="bi bi-grid"></i> Kategori</h3>
+        <div class="cat-chips">
+          {categories.map((cat) => (
+            <a href={`https://news.sarjanakomputer.id/kategori/${cat.slug}`} class={`cat-chip ${cat.slug}`}>
+              <i class={`bi bi-${cat.icon}`}></i> {cat.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </aside>
+  </div>
 </NewsLayout>
