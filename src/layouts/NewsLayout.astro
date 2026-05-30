@@ -129,8 +129,7 @@ const categories = [
 
   <!-- SEO: Article JSON-LD (jika ada props article) -->
   {article && (
-  <script type="application/ld+json">
-    {JSON.stringify({
+  <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": article.type || "NewsArticle",
       "headline": article.headline,
@@ -154,8 +153,7 @@ const categories = [
         "@type": "WebPage",
         "@id": article.url
       }
-    }, null, 2)}
-  </script>
+    })} />
   )}
 
   <!-- Open Graph -->
