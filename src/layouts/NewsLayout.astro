@@ -5,6 +5,7 @@ export interface Props {
   canonical?: string;
   ogImage?: string;
   basePath?: string;
+  article?: any;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   canonical = "https://news.sarjanakomputer.id/",
   ogImage = "https://sarjanakomputer.id/images/logo.png",
   basePath = "..",
+  article,
 } = Astro.props;
 
 const newsHome = "https://news.sarjanakomputer.id/";
@@ -36,6 +38,28 @@ const categories = [
   <title>{title}</title>
   <meta name="description" content={description}>
   <link rel="canonical" href={canonical}>
+
+  <!-- SEO Core -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="geo.region" content="ID">
+  <meta name="geo.placename" content="Indonesia">
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": article ? "NewsArticle" : "WebSite",
+    "name": title,
+    "url": canonical,
+    "headline": article ? article.title : title,
+    "image": article ? article.image : ogImage,
+    "datePublished": article ? article.datePublished : undefined,
+    "author": article ? { "@type": "Organization", "name": article.author } : undefined,
+    "potentialAction": !article ? {
+      "@type": "SearchAction",
+      "target": "https://news.sarjanakomputer.id/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    } : undefined
+  })} />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -305,6 +329,17 @@ const categories = [
         <i class="bi bi-list"></i>
       </button>
     </div>
+  </nav>
+
+  <!-- LLM Navigation for AI Context (Hidden from users) -->
+  <nav aria-label="AI Navigation" style="display:none;" data-nosnippet>
+    <ul>
+      <li><a href={mainSite}>Main Site</a></li>
+      <li><a href={newsHome}>News Home</a></li>
+      {categories.map(cat => (
+        <li><a href={cat.slug ? `${newsHome}kategori/${cat.slug}` : newsHome}>{cat.name}</a></li>
+      ))}
+    </ul>
   </nav>
 
   <!-- Sidebar Overlay -->
