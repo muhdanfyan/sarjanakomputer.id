@@ -6,7 +6,7 @@ export default defineConfig({
   adapter: vercel(),
   outDir: 'dist',
   publicDir: 'public',
-  site: 'https://sarjanakomputer.id',
+  site: 'https://news.sarjanakomputer.id',
   build: {
     format: 'directory',
   },

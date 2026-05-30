@@ -114,56 +114,5 @@
       "permanent": true
     }
   ],
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "news.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/news/$1"
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "academy.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/academy/$1"
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "profil.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/profil/$1"
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "aplikasi.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/aplikasi/$1"
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "automasi.sarjanakomputer.id"
-        }
-      ],
-      "destination": "/automasi/$1"
-    }
-  ]
+  "rewrites": []
 }

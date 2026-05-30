@@ -18,11 +18,14 @@ if (!news) {
 
 const { title, date, category, author, content, description } = news;
 
+const rawContent = content || '';
+const contentSafe = rawContent.length > 10000 ? rawContent.substring(0, 10000) : rawContent;
+
 const htmlContent = (function() {
   try {
-    return marked.parse(content || '');
+    return marked.parse(contentSafe);
   } catch(e) {
-    return '<p>' + (content || 'Konten tidak tersedia.') + '</p>';
+    return '<p>' + contentSafe.replace(/</g, '&lt;') + '</p>';
   }
 })();
 
