@@ -361,6 +361,86 @@ const categories = [
         .article-body { padding: 1rem 0 1.5rem; }
         .aff-banner-inner { flex-direction: column; text-align: center; padding: 1.25rem; }
         .aff-banner-btn { width: 100%; justify-content: center; }
+        .share-bar-inner { flex-direction: column; gap: 0.75rem; }
+        .share-left { width: 100%; justify-content: center; }
+        .share-right { width: 100%; }
+        .copy-link-btn { width: 100%; justify-content: center; }
+    }
+
+    /* ===== SHARE BAR ===== */
+    .share-bar {
+        padding: 0 0 1.5rem;
+    }
+    .share-bar-inner {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1rem 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+    .share-left {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+    .share-label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #64748b;
+        margin-right: 0.25rem;
+    }
+    .share-btn {
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .share-btn:hover { transform: translateY(-2px); }
+    .share-btn.facebook { background: #1877f2; }
+    .share-btn.facebook:hover { box-shadow: 0 4px 12px rgba(24,119,242,0.4); }
+    .share-btn.linkedin { background: #0a66c2; }
+    .share-btn.linkedin:hover { box-shadow: 0 4px 12px rgba(10,102,194,0.4); }
+    .share-btn.instagram { 
+        background: radial-gradient(circle at 30% 30%, #fdf497, #fd5949, #d6249f, #285aeb);
+    }
+    .share-btn.instagram:hover { box-shadow: 0 4px 12px rgba(214,36,159,0.4); }
+    .share-btn.whatsapp { background: #25d366; }
+    .share-btn.whatsapp:hover { box-shadow: 0 4px 12px rgba(37,211,102,0.4); }
+    .share-right {
+        flex-shrink: 0;
+    }
+    .copy-link-btn {
+        background: #312E5F;
+        color: #fff;
+        border: none;
+        border-radius: 50px;
+        padding: 0.55rem 1.2rem;
+        font-size: 0.82rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+    }
+    .copy-link-btn:hover {
+        background: #1A1838;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(49,46,95,0.3);
+    }
+    .copy-link-btn.copied {
+        background: #16a34a;
     }
   </style>
 
@@ -404,6 +484,33 @@ const categories = [
           </a>
         </div>
       </section>
+
+      <!-- Share Bar -->
+      <section class="share-bar">
+        <div class="share-bar-inner">
+          <div class="share-left">
+            <span class="share-label">Bagikan</span>
+            <button class="share-btn facebook" onclick="shareFacebook()" title="Facebook" aria-label="Bagikan ke Facebook">
+              <i class="bi bi-facebook"></i>
+            </button>
+            <button class="share-btn linkedin" onclick="shareLinkedIn()" title="LinkedIn" aria-label="Bagikan ke LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </button>
+            <button class="share-btn instagram" onclick="shareInstagram()" title="Instagram Story" aria-label="Bagikan ke Instagram">
+              <i class="bi bi-instagram"></i>
+            </button>
+            <button class="share-btn whatsapp" onclick="shareWhatsApp()" title="WhatsApp Status" aria-label="Bagikan ke WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </button>
+          </div>
+          <div class="share-right">
+            <button class="copy-link-btn" onclick="copyArticleLink()" id="copyLinkBtn" title="Salin Tautan" aria-label="Salin tautan artikel">
+              <i class="bi bi-link-45deg" id="copyLinkIcon"></i>
+              <span id="copyLinkText">Salin Tautan</span>
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- SIDEBAR: Populer + Kategori -->
@@ -439,4 +546,105 @@ const categories = [
       </div>
     </aside>
   </div>
+  <script is:inline>
+    (function() {
+      var ARTICLE_URL = window.location.href;
+
+      // ===== 1. COPY INTERCEPTOR =====
+      document.addEventListener('copy', function(e) {
+        // Only intercept if selection is inside article body
+        var selection = window.getSelection();
+        if (!selection || !selection.toString().trim()) return;
+
+        var selText = selection.toString().trim();
+        if (selText.length < 20) return; // ignore very short selections
+
+        var articleBody = document.querySelector('.article-body');
+        if (!articleBody || !articleBody.contains(selection.anchorNode)) return;
+
+        // Build new clipboard content: original text + link
+        var appended = selText + '\n\n📖 Lihat selengkapnya: ' + ARTICLE_URL;
+        e.clipboardData.setData('text/plain', appended);
+        e.clipboardData.setData('text/html', selText.replace(/\n/g, '<br>') + '<br><br><a href="' + ARTICLE_URL + '">📖 Lihat selengkapnya</a>');
+        e.preventDefault();
+      });
+
+      // ===== 2. SHARE FUNCTIONS =====
+      window.shareFacebook = function() {
+        var url = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(ARTICLE_URL);
+        window.open(url, '_blank', 'width=600,height=500');
+      };
+
+      window.shareLinkedIn = function() {
+        var url = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(ARTICLE_URL);
+        window.open(url, '_blank', 'width=600,height=500');
+      };
+
+      window.shareInstagram = function() {
+        // Instagram Story doesn't have direct web API; open Instagram site
+        // User can copy link from there
+        var instagramUrl = 'https://www.instagram.com/';
+        // Try native share API first (mobile)
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            url: ARTICLE_URL
+          }).catch(function(){});
+        } else {
+          window.open(instagramUrl, '_blank');
+        }
+      };
+
+      window.shareWhatsApp = function() {
+        var text = encodeURIComponent(document.title + '\n\n' + ARTICLE_URL);
+        // WhatsApp Status doesn't have direct web API
+        // Send to chat as fallback — user can forward to status
+        var waUrl = 'https://wa.me/?text=' + text;
+        // Also try native share for mobile (which offers WhatsApp Status)
+        if (navigator.share) {
+          navigator.share({
+            title: document.title,
+            text: document.title,
+            url: ARTICLE_URL
+          }).catch(function(){});
+        } else {
+          window.open(waUrl, '_blank');
+        }
+      };
+
+      window.copyArticleLink = function() {
+        var btn = document.getElementById('copyLinkBtn');
+        var icon = document.getElementById('copyLinkIcon');
+        var text = document.getElementById('copyLinkText');
+
+        navigator.clipboard.writeText(ARTICLE_URL).then(function() {
+          btn.classList.add('copied');
+          icon.className = 'bi bi-check-lg';
+          text.textContent = 'Tersalin!';
+
+          setTimeout(function() {
+            btn.classList.remove('copied');
+            icon.className = 'bi bi-link-45deg';
+            text.textContent = 'Salin Tautan';
+          }, 2500);
+        }).catch(function() {
+          // Fallback
+          var temp = document.createElement('input');
+          temp.value = ARTICLE_URL;
+          document.body.appendChild(temp);
+          temp.select();
+          document.execCommand('copy');
+          document.body.removeChild(temp);
+          btn.classList.add('copied');
+          icon.className = 'bi bi-check-lg';
+          text.textContent = 'Tersalin!';
+          setTimeout(function() {
+            btn.classList.remove('copied');
+            icon.className = 'bi bi-link-45deg';
+            text.textContent = 'Salin Tautan';
+          }, 2500);
+        });
+      };
+    })();
+  </script>
 </NewsLayout>
