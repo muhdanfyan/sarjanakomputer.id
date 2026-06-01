@@ -62,7 +62,7 @@ export const GET: APIRoute = async () => {
   xmlns:dc="http://purl.org/dc/elements/1.1/"
   xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>SKI News — Portal Berita Teknologi</title>
+    <title>SKOM News — Portal Berita Teknologi</title>
     <link>${newsUrl}/</link>
     <description>Portal berita teknologi Indonesia dari Sarjana Komputer Indonesia. Update AI, web development, cybersecurity, cloud computing, startup, dan pendidikan IT.</description>
     <language>id</language>
@@ -72,7 +72,7 @@ export const GET: APIRoute = async () => {
     <generator>Astro + PocketBase</generator>
     <image>
       <url>${siteUrl}/images/logo.png</url>
-      <title>SKI News — Portal Berita Teknologi</title>
+      <title>SKOM News — Portal Berita Teknologi</title>
       <link>${newsUrl}/</link>
       <width>144</width>
       <height>144</height>
