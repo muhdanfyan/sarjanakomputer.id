@@ -94,18 +94,15 @@ function processRecord(record) {
     if (cloudinaryUrl) {
       console.log("Uploaded successfully to Cloudinary: " + cloudinaryUrl);
       
-      // Update fields
+      // Update fields (only set the imageUrl, keep the local file intact to prevent Admin UI crash)
       record.set('imageUrl', cloudinaryUrl);
-      record.set('image', ''); // Clear the file field to save server disk space
       
       // Save record internally
-      $app.save(record);
-
-      // Delete file from local disk storage
       try {
-        $os.remove(filePath);
+        $app.save(record);
+        console.log("Record updated with Cloudinary URL.");
       } catch (err) {
-        console.log("Error cleaning up file: " + err);
+        console.log("Error saving record with Cloudinary URL: " + err);
       }
     }
   }
