@@ -504,9 +504,9 @@ const categories = [
             </button>
           </div>
           <div class="share-right">
-            <button class="copy-link-btn" onclick="copyArticleLink()" id="copyLinkBtn" title="Salin Tautan" aria-label="Salin tautan artikel">
-              <i class="bi bi-link-45deg" id="copyLinkIcon"></i>
-              <span id="copyLinkText">Salin Tautan</span>
+            <button class="copy-link-btn" onclick="copyArticleText()" id="copyLinkBtn" title="Salin Teks" aria-label="Salin teks artikel">
+              <i class="bi bi-file-text" id="copyLinkIcon"></i>
+              <span id="copyLinkText">Salin Teks</span>
             </button>
           </div>
         </div>
@@ -612,25 +612,26 @@ const categories = [
         }
       };
 
-      window.copyArticleLink = function() {
+      window.copyArticleText = function() {
         var btn = document.getElementById('copyLinkBtn');
         var icon = document.getElementById('copyLinkIcon');
         var text = document.getElementById('copyLinkText');
+        var copyContent = document.title + '\n' + ARTICLE_URL;
 
-        navigator.clipboard.writeText(ARTICLE_URL).then(function() {
+        navigator.clipboard.writeText(copyContent).then(function() {
           btn.classList.add('copied');
           icon.className = 'bi bi-check-lg';
           text.textContent = 'Tersalin!';
 
           setTimeout(function() {
             btn.classList.remove('copied');
-            icon.className = 'bi bi-link-45deg';
-            text.textContent = 'Salin Tautan';
+            icon.className = 'bi bi-file-text';
+            text.textContent = 'Salin Teks';
           }, 2500);
         }).catch(function() {
           // Fallback
           var temp = document.createElement('input');
-          temp.value = ARTICLE_URL;
+          temp.value = copyContent;
           document.body.appendChild(temp);
           temp.select();
           document.execCommand('copy');
@@ -640,8 +641,8 @@ const categories = [
           text.textContent = 'Tersalin!';
           setTimeout(function() {
             btn.classList.remove('copied');
-            icon.className = 'bi bi-link-45deg';
-            text.textContent = 'Salin Tautan';
+            icon.className = 'bi bi-file-text';
+            text.textContent = 'Salin Teks';
           }, 2500);
         });
       };
