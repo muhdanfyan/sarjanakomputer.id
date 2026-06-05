@@ -4,7 +4,7 @@ import { PB_URL } from '../../utils/config.js';
 import { getAcademyUrl } from '../../utils/routes.js';
 
 // Fetch courses
-const coursesRes = await fetch(`${PB_URL}/api/collections/courses/records?sort=created`);
+const coursesRes = await fetch(`${PB_URL}/api/collections/courses/records`);
 const coursesData = await coursesRes.json();
 const courses = coursesData.items || [];
 
