@@ -99,9 +99,9 @@ const icons = {
           return (
             <div class="col-md-6 col-lg-4">
               <a href={`/academy/course/${course.slug}`} class="udemy-card d-block text-decoration-none">
-                <div class="card-img-wrapper">
+                <div class="card-img-wrapper position-relative">
                   <img src={course.image ? `${PB_URL}/api/files/${course.collectionId}/${course.id}/${course.image}` : `https://sarjanakomputer.id/images/img2.png`} alt={course.title} loading="lazy" style={!course.image ? "object-fit: cover; opacity: 0.8;" : ""} />
-                  <span class="badge category-badge">{course.category || 'Programming'}</span>
+                  <span class="badge bg-dark position-absolute top-0 start-0 m-2" style="z-index: 2; opacity: 0.85;">{course.category || 'Programming'}</span>
                 </div>
                 <div class="card-body">
                   <h5 class="course-title">{course.title}</h5>
@@ -149,9 +149,9 @@ const icons = {
           return (
             <div class="col-md-6 col-lg-4">
               <a href={`/academy/class/${cls.slug}`} class="udemy-card h-100 d-flex flex-column text-decoration-none">
-                <div class="card-img-wrapper">
+                <div class="card-img-wrapper position-relative">
                   <img src="https://sarjanakomputer.id/images/img2.png" alt={cls.name} loading="lazy" style="object-fit: cover; opacity: 0.9;" />
-                  <span class={`badge status-badge bg-${statusColor}`}>{cls.status}</span>
+                  <span class={`badge bg-${statusColor} position-absolute top-0 end-0 m-2`} style="z-index: 2;">{cls.status}</span>
                 </div>
                 <div class="card-body flex-grow-1 d-flex flex-column">
                   <h5 class="course-title">{cls.name}</h5>
@@ -328,27 +328,7 @@ const icons = {
       height: 100%;
       object-fit: cover;
     }
-    .udemy-card .category-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.7rem;
-      padding: 0.3rem 0.6rem;
-      backdrop-filter: blur(4px);
-      border-radius: 4px;
-    }
-    .udemy-card .status-badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-weight: 600;
-      font-size: 0.7rem;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-    }
+
     .udemy-card .card-body {
       padding: 1.2rem;
       text-align: left;
