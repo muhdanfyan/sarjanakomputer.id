@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import AcademyLayout from '../../layouts/AcademyLayout.astro';
 import { PB_URL } from '../../utils/config.js';
 import { getAcademyUrl } from '../../utils/routes.js';
 
@@ -32,15 +32,15 @@ const icons = {
 };
 ---
 
-<Layout title="Sarjana Komputer Academy — Bootcamp & Pelatihan IT" description="Sarjana Komputer Academy — Bootcamp IT, bimbingan skripsi, dan pelatihan digital untuk mencetak talenta IT profesional." canonical={getAcademyUrl()} basePath=".." ogTitle="Sarjana Komputer Academy — Bootcamp & Pelatihan IT" ogDescription="Sarjana Komputer Academy — bootcamp coding, bimbingan skripsi, pelatihan IT, dan pengembangan talenta digital untuk siap bersaing di industri teknologi.">
+<AcademyLayout title="Sarjana Komputer Academy — Pelatihan IT & Bimbingan Skripsi" description="Sarjana Komputer Academy — Pelatihan digital untuk tingkat SMP, SMA, dan Mahasiswa. Mulai dari bootcamp IT hingga bimbingan skripsi eksklusif." canonical={getAcademyUrl()} basePath="..">
   <!-- HERO -->
   <section class="hero-section">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-7">
           <div class="hero-badge"><i class="bi bi-mortarboard-fill"></i> Sarjana Komputer Academy</div>
-          <h1>Bimbingan Skripsi — Jadi Sarjana Komputer <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Profesional</span></h1>
-          <p>Wadah pendidikan dan pelatihan IT untuk mencetak talenta digital unggulan — dari bootcamp intensif hingga bimbingan skripsi dan magang project-based.</p>
+          <h1>Pelatihan IT & Bimbingan Skripsi untuk <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Pelajar & Mahasiswa</span></h1>
+          <p>Mulai dari tingkat SMP, SMA, hingga tingkat Kuliah. Bersama <strong>Sarjana Komputer Academy</strong>, asah skill digital Anda lewat bootcamp interaktif, magang <i>project-based</i>, hingga layanan bimbingan skripsi eksklusif bagi mahasiswa tingkat akhir.</p>
           <div class="d-flex flex-wrap gap-2 mt-3">
             <a href="#program" class="btn-primary-custom"><i class="bi bi-book"></i> Lihat Program</a>
             <a href="#daftar" class="btn-outline-custom" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);">Daftar Sekarang <i class="bi bi-arrow-right"></i></a>
@@ -313,4 +313,4 @@ const icons = {
       .price-card .amount{font-size:1.2rem}
     }
   </style>
-</Layout>
+</AcademyLayout>

@@ -2,12 +2,17 @@ import fs from 'fs';
 import path from 'path';
 
 // Configuration
+// Remote (Source) Production
 const REMOTE_PB_URL = 'https://cms.sarjanakomputer.id';
-const LOCAL_PB_URL = 'http://127.0.0.1:8095'; // Assuming local PB is running or will be run for this folder
-const EMAIL = 'admin@sarjanakomputer.id';
-const PASS = 'Skomindo2026Admin';
+const REMOTE_EMAIL = 'admin@sarjanakomputer.id';
+const REMOTE_PASS = 'Skomindo2026Admin';
 
-const COLLECTIONS = ['news', 'profiles', 'courses', 'classes'];
+// Local (Destination)
+const LOCAL_PB_URL = 'http://127.0.0.1:8095';
+const LOCAL_EMAIL = 'admin@sarjanakomputer.id';
+const LOCAL_PASS = 'Piblajar2020';
+
+const COLLECTIONS = ['news', 'profiles', 'courses', 'classes', 'portfolios'];
 
 async function syncAll() {
   console.log(`=== SYNCING ALL COLLECTIONS: ${REMOTE_PB_URL} -> ${LOCAL_PB_URL} ===`);
@@ -18,7 +23,7 @@ async function syncAll() {
     const loginRes = await fetch(`${LOCAL_PB_URL}/api/collections/_superusers/auth-with-password`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ identity: EMAIL, password: PASS })
+      body: JSON.stringify({ identity: LOCAL_EMAIL, password: LOCAL_PASS })
     });
 
     if (!loginRes.ok) {

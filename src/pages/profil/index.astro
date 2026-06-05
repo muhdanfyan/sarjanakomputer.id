@@ -1,5 +1,5 @@
 ---
-import Layout from '../../layouts/Layout.astro';
+import ProfilLayout from '../../layouts/ProfilLayout.astro';
 import { PB_URL } from '../../utils/config.js';
 import { getProfilUrl, getAplikasiUrl, getAcademyUrl, getNewsUrl } from '../../utils/routes.js';
 
@@ -9,7 +9,7 @@ const profile = data.items[0] || {};
 profile.email = profile.email_address;
 ---
 
-<Layout title={`${profile.title} — ${profile.companyName}`} description={`Profil resmi ${profile.companyName} — Solusi IT profesional dari Baubau, Sulawesi Tenggara`} canonical={getProfilUrl()} basePath=".." ogTitle={`${profile.title} — ${profile.companyName}`} ogDescription={`Profil resmi ${profile.companyName} — mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional dari Baubau, Sulawesi Tenggara.`}>
+<ProfilLayout title={`${profile.title} — ${profile.companyName}`} description={`Profil resmi ${profile.companyName} — Solusi IT profesional dari Baubau, Sulawesi Tenggara`} canonical={getProfilUrl()} basePath=".." ogTitle={`${profile.title} — ${profile.companyName}`} ogDescription={`Profil resmi ${profile.companyName} — mitra terdepan transformasi digital dan jembatan karier menuju industri global. Solusi IT profesional dari Baubau, Sulawesi Tenggara.`}>
   <!-- HERO -->
   <section class="hero-section">
     <div class="container">

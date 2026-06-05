@@ -1,0 +1,229 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  basePath?: string;
+}
+
+const {
+  title = "Automasi & AI — Sarjana Komputer Indonesia",
+  description = "Solusi otomatisasi proses bisnis dan implementasi AI untuk efisiensi operasional maksimal.",
+  canonical = "https://automasi.sarjanakomputer.id/",
+  ogImage = "https://sarjanakomputer.id/images/logo.png",
+  basePath = "..",
+} = Astro.props;
+
+const automasiHome = "https://automasi.sarjanakomputer.id/";
+const mainSite = "https://sarjanakomputer.id/";
+
+const navLinks = [
+  { name: 'Beranda', href: '#', icon: 'bi-house' },
+  { name: 'Solusi', href: '#solusi', icon: 'bi-robot' },
+  { name: 'Cara Kerja', href: '#cara-kerja', icon: 'bi-gear-wide-connected' },
+  { name: 'Keuntungan', href: '#manfaat', icon: 'bi-graph-up-arrow' },
+  { name: 'Konsultasi', href: '#konsultasi', icon: 'bi-chat-dots' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+
+  <!-- SEO -->
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="ID">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JTNZXFB0E"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-9JTNZXFB0E");</script>
+
+  <link rel="shortcut icon" href="/images/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href={`${basePath}/css/subdomain.min.css`}>
+  <link rel="stylesheet" href={`${basePath}/css/homepage.css`}>
+
+  <style is:global>
+    :root { 
+      --auto-primary: #f59e0b; 
+      --primary: #312E5F; 
+      --secondary: #E3386A; 
+      --dark: #1A1838; 
+    }
+    
+    .auto-nav {
+      background: rgba(10, 8, 23, 0.95); /* Deep dark for automation */
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.7rem 0;
+    }
+    .auto-nav .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .auto-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+    .auto-nav .brand img { width: 32px; height: 32px; border-radius: 6px; }
+    .auto-nav .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+    .auto-nav .brand-name { 
+      color: #fff; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      font-weight: 800; 
+      font-size: 0.95rem; 
+    }
+    .auto-nav .brand-sub { 
+      color: var(--auto-primary); 
+      font-size: 0.6rem; 
+      font-weight: 800; 
+      text-transform: uppercase; 
+      letter-spacing: 2px; 
+    }
+    
+    .auto-nav .menu { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0; }
+    .auto-nav .menu a {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.45rem 0.75rem;
+      border-radius: 8px;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .auto-nav .menu a:hover { color: var(--auto-primary); background: rgba(245, 158, 11, 0.1); }
+    
+    .btn-auto-nav {
+      background: linear-gradient(135deg, #f59e0b, #f97316);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-left: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: 0.3s;
+    }
+    .btn-auto-nav:hover { transform: translateY(-1.5px); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); }
+
+    .auto-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .auto-footer {
+      background: #050a20;
+      color: rgba(255,255,255,0.4);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .auto-footer a { color: var(--auto-primary); text-decoration: none; font-weight: 600; }
+    
+    @media (max-width: 991px) {
+      .auto-nav .menu { display: none; }
+      .auto-hamburger { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="auto-nav">
+    <div class="nav-container">
+      <a href={automasiHome} class="brand">
+        <img src="https://sarjanakomputer.id/images/logo.png" alt="SKI Logo" />
+        <div class="brand-text">
+          <span class="brand-name">Sarjana<span>Komputer</span></span>
+          <span class="brand-sub">Automasi</span>
+        </div>
+      </a>
+      
+      <div class="d-flex align-items-center">
+        <ul class="menu">
+          {navLinks.map(link => (
+            <li><a href={link.href}>{link.name}</a></li>
+          ))}
+        </ul>
+        <a href="#konsultasi" class="btn-auto-nav d-none d-sm-inline-flex">
+          <i class="bi bi-robot"></i> Coba AI
+        </a>
+        <button class="auto-hamburger" id="autoHam">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenuAuto" style="display:none; position:fixed; inset:0; background:#0a0817; z-index:2000; padding:2rem;">
+     <div class="d-flex justify-content-between align-items-center mb-4">
+        <span style="color:#fff; font-weight:800;">Menu Automasi</span>
+        <button id="closeMenuAuto" style="background:none; border:none; color:#fff; font-size:1.8rem;"><i class="bi bi-x-lg"></i></button>
+     </div>
+     <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:0.75rem;">
+        {navLinks.map(link => (
+          <li><a href={link.href} class="mob-link-auto" style="color:#fff; font-weight:600; font-size:1.1rem; text-decoration:none; display:flex; align-items:center; gap:0.8rem; padding:0.5rem 0;"><i class={`bi ${link.icon}`}></i> {link.name}</a></li>
+        ))}
+        <li><hr style="border-color:rgba(255,255,255,0.1)"></li>
+        <li><a href={mainSite} style="color:rgba(255,255,255,0.4); text-decoration:none; font-size:0.9rem;"><i class="bi bi-arrow-left"></i> Kembali ke Website Utama</a></li>
+     </ul>
+  </div>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="auto-footer">
+    <div class="container">
+      <p>&copy; 2026 <a href={mainSite}>Sarjana Komputer Automasi</a>. AI & Automation Experts.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script is:inline>
+    (function() {
+      const ham = document.getElementById('autoHam');
+      const close = document.getElementById('closeMenuAuto');
+      const menu = document.getElementById('mobileMenuAuto');
+      if(!ham || !menu || !close) return;
+      
+      ham.onclick = () => { menu.style.display = 'block'; document.body.style.overflow = 'hidden'; };
+      close.onclick = () => { menu.style.display = 'none'; document.body.style.overflow = ''; };
+      
+      document.querySelectorAll('.mob-link-auto').forEach(l => {
+        l.onclick = () => { menu.style.display = 'none'; document.body.style.overflow = ''; };
+      });
+    })();
+  </script>
+</body>
+</html>

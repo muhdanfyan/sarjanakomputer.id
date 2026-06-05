@@ -1,0 +1,242 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  basePath?: string;
+}
+
+const {
+  title = "Sarjana Komputer Academy — Bootcamp & Pelatihan IT",
+  description = "Wadah pendidikan dan pelatihan IT untuk mencetak talenta digital unggulan — dari bootcamp intensif hingga bimbingan skripsi.",
+  canonical = "https://academy.sarjanakomputer.id/",
+  ogImage = "https://sarjanakomputer.id/images/logo.png",
+  basePath = "..",
+} = Astro.props;
+
+const academyHome = "https://academy.sarjanakomputer.id/";
+const mainSite = "https://sarjanakomputer.id/";
+
+const navLinks = [
+  { name: 'Beranda', href: '#', icon: 'bi-house' },
+  { name: 'Program', href: '#program', icon: 'bi-book' },
+  { name: 'Jadwal', href: '#kelas', icon: 'bi-calendar-event' },
+  { name: 'Mentor', href: '#mentor', icon: 'bi-people' },
+  { name: 'Biaya', href: '#biaya', icon: 'bi-wallet2' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+  <link rel="canonical" href={canonical}>
+
+  <!-- SEO -->
+  <meta name="robots" content="index, follow">
+  <meta name="geo.region" content="ID">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:url" content={canonical}>
+  <meta property="og:image" content={ogImage}>
+
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9JTNZXFB0E"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-9JTNZXFB0E");</script>
+
+  <link rel="shortcut icon" href="/images/logo.png" type="image/png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href={`${basePath}/css/subdomain.min.css`}>
+  <link rel="stylesheet" href={`${basePath}/css/homepage.css`}>
+
+  <style is:global>
+    :root { 
+      --academy-primary: #10b981; 
+      --academy-dark: #064e3b;
+      --academy-light: #d1fae5;
+      --primary: #312E5F; 
+      --secondary: #E3386A; 
+      --dark: #1A1838; 
+    }
+    
+    /* Dedicated Academy Navbar */
+    .academy-nav {
+      background: rgba(26, 24, 56, 0.95); /* Dark theme for academy navbar */
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0.75rem 0;
+      transition: all 0.3s ease;
+    }
+    .academy-nav .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .academy-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .academy-nav .brand img { width: 34px; height: 34px; border-radius: 8px; }
+    .academy-nav .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+    .academy-nav .brand-name { 
+      color: #fff; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      font-weight: 800; 
+      font-size: 1rem; 
+    }
+    .academy-nav .brand-sub { 
+      color: var(--academy-primary); 
+      font-size: 0.65rem; 
+      font-weight: 700; 
+      text-transform: uppercase; 
+      letter-spacing: 1.5px; 
+    }
+    
+    .academy-nav .menu { display: flex; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
+    .academy-nav .menu a {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 0.85rem;
+      border-radius: 10px;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .academy-nav .menu a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    
+    .btn-register-nav {
+      background: var(--academy-primary);
+      color: #fff !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-left: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: 0.3s;
+    }
+    .btn-register-nav:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(16,185,129,0.4); }
+
+    .academy-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+
+    /* Academy Footer */
+    .academy-footer {
+      background: #0a0817;
+      color: rgba(255,255,255,0.5);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .academy-footer a { color: var(--academy-primary); text-decoration: none; font-weight: 600; }
+    
+    @media (max-width: 991px) {
+      .academy-nav .menu { display: none; }
+      .academy-hamburger { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== ACADEMY NAVBAR ===== -->
+  <nav class="academy-nav">
+    <div class="nav-container">
+      <a href={academyHome} class="brand">
+        <img src="https://sarjanakomputer.id/images/logo.png" alt="SKI Logo" />
+        <div class="brand-text">
+          <span class="brand-name">Sarjana<span>Komputer</span></span>
+          <span class="brand-sub">Academy</span>
+        </div>
+      </a>
+      
+      <div class="d-flex align-items-center">
+        <ul class="menu">
+          {navLinks.map(link => (
+            <li><a href={link.href}>{link.name}</a></li>
+          ))}
+        </ul>
+        <a href="#daftar" class="btn-register-nav d-none d-sm-inline-flex">
+          <i class="bi bi-pencil-square"></i> Daftar Sekarang
+        </a>
+        <button class="academy-hamburger" id="academyHam">
+          <i class="bi bi-list"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu (Overlay) -->
+  <div id="mobileMenu" style="display:none; position:fixed; inset:0; background:#1A1838; z-index:2000; padding:2rem;">
+     <div class="d-flex justify-content-between align-items-center mb-4">
+        <span style="color:#fff; font-weight:800;">Menu Academy</span>
+        <button id="closeMenu" style="background:none; border:none; color:#fff; font-size:1.8rem;"><i class="bi bi-x-lg"></i></button>
+     </div>
+     <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:1rem;">
+        {navLinks.map(link => (
+          <li><a href={link.href} class="mob-link" style="color:#fff; font-size:1.2rem; text-decoration:none; display:flex; align-items:center; gap:0.8rem;"><i class={`bi ${link.icon}`}></i> {link.name}</a></li>
+        ))}
+        <li><hr style="border-color:rgba(255,255,255,0.1)"></li>
+        <li><a href={mainSite} style="color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.9rem;"><i class="bi bi-arrow-left"></i> Kembali ke Website Utama</a></li>
+     </ul>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- ACADEMY FOOTER -->
+  <footer class="academy-footer">
+    <div class="container">
+      <p>&copy; 2026 <a href={mainSite}>Sarjana Komputer Academy</a>. Mencetak Talenta Digital Unggulan.</p>
+      <div class="mt-2" style="font-size:0.75rem;">
+        <a href={mainSite} style="color:rgba(255,255,255,0.4)">Main Site</a> · 
+        <a href="https://news.sarjanakomputer.id" style="color:rgba(255,255,255,0.4)">Tech News</a> · 
+        <a href="https://wa.me/6283134086899" style="color:rgba(255,255,255,0.4)">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script is:inline>
+    (function() {
+      const ham = document.getElementById('academyHam');
+      const close = document.getElementById('closeMenu');
+      const menu = document.getElementById('mobileMenu');
+      if(!ham || !menu || !close) return;
+      
+      ham.onclick = () => { menu.style.display = 'block'; document.body.style.overflow = 'hidden'; };
+      close.onclick = () => { menu.style.display = 'none'; document.body.style.overflow = ''; };
+      
+      document.querySelectorAll('.mob-link').forEach(l => {
+        l.onclick = () => { menu.style.display = 'none'; document.body.style.overflow = ''; };
+      });
+    })();
+  </script>
+</body>
+</html>
