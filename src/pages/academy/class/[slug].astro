@@ -1,0 +1,96 @@
+---
+import AcademyLayout from '../../../layouts/AcademyLayout.astro';
+import { PB_URL } from '../../../utils/config.js';
+
+export async function getStaticPaths() {
+  const url = 'https://cms.sarjanakomputer.id'; // Hardcoded for build time safety
+  const res = await fetch(`${url}/api/collections/classes/records`);
+  const data = await res.json();
+  const classes = data.items || [];
+  
+  return classes.map((cls: any) => ({
+    params: { slug: cls.slug },
+    props: { cls },
+  }));
+}
+
+const { cls } = Astro.props;
+---
+
+<AcademyLayout title={`Kelas: ${cls.name} | Sarjana Komputer Academy`} description={`Daftar kelas ${cls.name} untuk program ${cls.course} di Sarjana Komputer Academy.`} basePath="../..">
+  <section class="section" style="padding-top: 6rem; padding-bottom: 4rem;">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/academy">Academy</a></li>
+          <li class="breadcrumb-item"><a href="/academy#kelas">Kelas</a></li>
+          <li class="breadcrumb-item active" aria-current="page">{cls.name}</li>
+        </ol>
+      </nav>
+
+      <div class="row justify-content-center mt-4">
+        <div class="col-lg-8">
+          <div class="card-custom p-4 p-md-5 text-center">
+            <span class={`badge bg-${cls.status === 'Open' ? 'success' : (cls.status === 'Ongoing' ? 'warning' : 'danger')} mb-3 px-3 py-2`} style="font-size: 0.9rem;">
+              Status Pendaftaran: {cls.status}
+            </span>
+            <h1 class="mb-2" style="font-size: 2.2rem; font-weight: 800;">{cls.name}</h1>
+            <p class="lead text-muted mb-5">Program: <strong>{cls.course}</strong></p>
+
+            <div class="row g-4 text-start mb-5">
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-3" style="background: var(--gray-50); border-radius: 12px;">
+                  <div style="background: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);">
+                    <i class="bi bi-person-video3 text-primary" style="font-size: 1.2rem;"></i>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--gray-500); font-weight: 600;">Mentor Pengajar</div>
+                    <div style="font-weight: 600; font-size: 1.1rem;">{cls.mentor}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="d-flex align-items-center gap-3 p-3" style="background: var(--gray-50); border-radius: 12px;">
+                  <div style="background: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);">
+                    <i class="bi bi-calendar-event text-primary" style="font-size: 1.2rem;"></i>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.75rem; color: var(--gray-500); font-weight: 600;">Tanggal Mulai</div>
+                    <div style="font-weight: 600; font-size: 1.1rem;">{new Date(cls.startDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' })}</div>
+                  </div>
+                </div>
+              </div>
+              {cls.capacity && (
+                <div class="col-sm-6">
+                  <div class="d-flex align-items-center gap-3 p-3" style="background: var(--gray-50); border-radius: 12px;">
+                    <div style="background: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-sm);">
+                      <i class="bi bi-people text-primary" style="font-size: 1.2rem;"></i>
+                    </div>
+                    <div>
+                      <div style="font-size: 0.75rem; color: var(--gray-500); font-weight: 600;">Kapasitas Peserta</div>
+                      <div style="font-weight: 600; font-size: 1.1rem;">{cls.capacity} Slot Tersedia</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {cls.status === 'Open' ? (
+              <a href={cls.registrationLink || `https://wa.me/6283134086899?text=Halo%20Admin,%20saya%20ingin%20mendaftar%20kelas%20${encodeURIComponent(cls.name)}%20untuk%20program%20${encodeURIComponent(cls.course)}`} class="btn-primary-custom d-inline-flex px-5 py-3" style="font-size: 1.1rem; border-radius: 50px;">
+                <i class="bi bi-pencil-square me-2"></i> Konfirmasi Pendaftaran
+              </a>
+            ) : (
+              <div class="alert alert-secondary d-inline-block">
+                <i class="bi bi-info-circle me-2"></i> Pendaftaran untuk kelas ini telah ditutup atau sedang berjalan.
+              </div>
+            )}
+            
+            <div class="mt-4">
+               <a href="/academy" class="text-decoration-none text-muted" style="font-size: 0.9rem;"><i class="bi bi-arrow-left"></i> Kembali ke Katalog</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</AcademyLayout>

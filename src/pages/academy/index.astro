@@ -98,7 +98,7 @@ const icons = {
           const gradient = gradients[index % gradients.length];
           return (
             <div class="col-md-6 col-lg-4">
-              <a href="#daftar" class="udemy-card d-block text-decoration-none">
+              <a href={`/academy/course/${course.slug}`} class="udemy-card d-block text-decoration-none">
                 <div class="card-img-wrapper">
                   <img src={course.image ? `${PB_URL}/api/files/${course.collectionId}/${course.id}/${course.image}` : `https://placehold.co/600x340/312e5f/ffffff?text=${encodeURIComponent(course.title)}`} alt={course.title} loading="lazy" />
                   <span class="badge category-badge">{course.category || 'Programming'}</span>
@@ -148,7 +148,7 @@ const icons = {
           
           return (
             <div class="col-md-6 col-lg-4">
-              <div class="udemy-card h-100 d-flex flex-column">
+              <a href={`/academy/class/${cls.slug}`} class="udemy-card h-100 d-flex flex-column text-decoration-none">
                 <div class="card-img-wrapper">
                   <img src={`https://placehold.co/600x340/10b981/ffffff?text=${encodeURIComponent(cls.name)}`} alt={cls.name} loading="lazy" />
                   <span class={`badge status-badge bg-${statusColor}`}>{cls.status}</span>
@@ -175,7 +175,7 @@ const icons = {
                     )}
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           );
         })}
