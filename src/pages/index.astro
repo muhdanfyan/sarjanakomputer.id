@@ -14,7 +14,7 @@ try {
 
 let latestNews = [];
 try {
-  const newsRes = await fetch(`${PB_URL}/api/collections/news/records?sort=-date&perPage=3`);
+  const newsRes = await fetch(`${PB_URL}/api/collections/news/records?sort=-date&perPage=3&_t=${Date.now()}`);
   const newsData = await newsRes.json();
   latestNews = newsData.items || [];
 } catch (e) {
