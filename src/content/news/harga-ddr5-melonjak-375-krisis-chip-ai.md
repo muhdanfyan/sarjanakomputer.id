@@ -1,0 +1,11 @@
+---
+title: "Harga DDR5 Melonjak ke $375 — Krisis Chip AI Terus Tekan Industri PC"
+date: "2026-06-04"
+category: "teknologi"
+author: "Aiman"
+description: "Harga DDR5 32GB tembus $375, tertinggi sepanjang sejarah, akibat prioritas produksi chip untuk pusat data AI. Industri PC global dan Indonesia merasakan dampaknya."
+image: "screenshot_2026_06_05_06_29_01_814_com_android_246xjjbs5q.chrome-edit.jpg"
+tags: ["DDR5","AI","semikonduktor","harga RAM","PC"]
+---
+
+<p>Harga modul memori DDR5 32GB kini mencapai <strong>$375</strong>, level tertinggi dalam sejarah, akibat kelangkaan pasokan yang dipicu oleh pertumbuhan pusat data AI. Tom's Hardware melaporkan bahwa lonjakan harga ini memperpanjang tren kenaikan yang dimulai sejak 2024, ketika permintaan chip AI mulai menggeser alokasi produksi global.</p><h2>Penyebab Lonjakan</h2><p>Akar masalah terletak pada alokasi produksi semikonduktor. Pabrik-pabrik DRAM — termasuk raksasa seperti Samsung, SK Hynix, dan Micron — semakin memprioritaskan produksi memori berkecepatan tinggi dan berkapasitas besar untuk server AI (seperti HBM3/HBM4), yang harganya jauh lebih menguntungkan dibanding chip konsumen DDR5.</p><p>"Ini adalah efek <em>crowding out</em> klasik," jelas seorang analis industri. "Setiap wafer yang dipakai untuk HBM adalah wafer yang tidak bisa dipakai untuk DDR5 konsumen." Dampaknya, pasokan DDR5 untuk PC desktop dan laptop menyusut drastis sementara permintaan tetap tinggi.</p><h2>Dampak di Indonesia</h2><p>Kenaikan harga DDR5 langsung terasa di pasar PC Indonesia. Para <em>gamer</em>, <em>creative professional</em>, dan perakit PC menghadapi lonjakan biaya build yang signifikan. Beberapa toko ritel melaporkan penurunan penjualan PC kelas menengah-atas karena konsumen menunda upgrade.</p><p>Solusi sementara? Banyak pengguna beralih ke platform DDR4 yang masih terjangkau, atau menunggu stabilisasi harga yang diperkirakan terjadi paling cepat kuartal pertama 2027.</p><p><em>Sumber: <a href="https://www.tomshardware.com/pc-components/ddr5/32gb-of-ddr5-now-costs-usd375-minimum-ai-shortage-continues-to-squeeze-pc-building" target="_blank">tomshardware.com</a></em></p>

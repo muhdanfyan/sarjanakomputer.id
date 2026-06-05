@@ -35,7 +35,11 @@ const categoryImages = {
 };
 const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop';
 
-function getNewsImage(item) {
+function getNewsImage(item: any) {
+  if (item.image) {
+    if (item.image.startsWith('http')) return item.image;
+    return `${PB_URL}/api/files/news/${item.id}/${item.image}`;
+  }
   if (item.imageUrl && item.imageUrl.startsWith('http')) return item.imageUrl;
   return categoryImages[item.category] || defaultImage;
 }

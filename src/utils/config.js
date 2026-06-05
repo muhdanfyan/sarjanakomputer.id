@@ -4,8 +4,9 @@
 export const isProd = import.meta.env.PROD;
 
 // PocketBase API URL
-// In production: uses the secure Traefik domain
-// In development: uses the local container port
-export const PB_URL = isProd 
-  ? 'https://cms.sarjanakomputer.id' 
-  : 'http://127.0.0.1:8095';
+// Pointing to remote CMS by default to ensure data is always available
+export const PB_URL = 'https://cms.sarjanakomputer.id';
+
+// Use this for local development if needed:
+// export const PB_URL = isProd ? 'https://cms.sarjanakomputer.id' : 'http://127.0.0.1:8095';
+

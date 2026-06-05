@@ -1,0 +1,11 @@
+---
+title: "Nilai Mahasiswa Anjlok Akibat AI: Studi UC Berkeley Ungkap Krisis Matematika"
+date: "2026-06-04"
+category: "pendidikan"
+author: "Aiman"
+description: "Studi UC Berkeley ungkap nilai gagal mahasiswa melonjak seiring penggunaan AI. Kemampuan matematika dasar menurun drastis, picu perdebatan soal kebijakan AI di pendidikan tinggi global."
+image: "screenshot_2026_06_05_06_35_46_841_com_android_w755mcpebr.chrome-edit.jpg"
+tags: ["AI","pendidikan","universitas","matematika","UC Berkeley"]
+---
+
+<p>Penggunaan kecerdasan buatan (AI) di kalangan mahasiswa Universitas California, Berkeley, dikaitkan dengan penurunan drastis nilai akademik, terutama dalam kemampuan matematika. Sebuah laporan dari <em>The Daily Californian</em> mengungkap bahwa nilai kegagalan (<em>failing grades</em>) melonjak tajam seiring meningkatnya penggunaan AI oleh mahasiswa.</p><h2>Temuan Studi</h2><p>Laporan tersebut menyoroti kelas Ilmu Komputer di Berkeley — salah satu program CS terbaik dunia — di mana dosen melaporkan penurunan kemampuan matematika dasar mahasiswa. "Mereka bisa menulis kode dengan bantuan AI, tapi tidak bisa menjelaskan cara kerja algoritma yang mereka tulis," kata salah satu pengajar.</p><p>Fenomena ini bukan hanya terjadi di Berkeley. Perguruan tinggi di seluruh dunia mulai menghadapi dilema serupa: AI meningkatkan efisiensi tetapi juga menggerogoti pemahaman fundamental. Di Indonesia, beberapa universitas telah mulai merumuskan kebijakan penggunaan AI yang lebih ketat di kelas.</p><h2>Respons Akademik</h2><p>Berkeley sendiri telah memperkenalkan ujian <em>offline</em> tanpa akses AI dan tugas yang dirancang khusus untuk menguji pemahaman konseptual. Beberapa dosen bahkan menggunakan alat deteksi AI untuk mengidentifikasi tugas yang dikerjakan sepenuhnya oleh AI.</p><p>"Pendidikan harus beradaptasi, bukan melarang AI. Tapi kita harus pastikan mahasiswa tetap belajar, bukan sekadar menyalin jawaban," kata seorang pengamat pendidikan tinggi.</p><p><em>Sumber: <a href="https://www.dailycal.org/news/campus/academics/failing-grades-soar-as-professors-see-greater-ai-usage-dwindling-math-skills-in-uc-berkeley/article_16fad0bf-02cb-4b8c-8d88-888ffd9f8608.html" target="_blank">dailycal.org</a></em></p>

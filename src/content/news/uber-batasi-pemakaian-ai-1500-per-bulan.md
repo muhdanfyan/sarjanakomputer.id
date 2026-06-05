@@ -1,0 +1,11 @@
+---
+title: "Uber Batasi Pemakaian AI $1.500 per Bulan — Sinyal Baru Harga Tools AI"
+date: "2026-06-04"
+category: "teknologi"
+author: "Aiman"
+description: "Uber menetapkan batas pemakaian alat AI $1.500/bulan per pengguna, memberi gambaran nyata biaya operasional AI enterprise. Langkah ini jadi tolok ukur baru harga tools AI global."
+image: "screenshot_2026_06_05_06_38_56_504_com_google_android_6zmxazfxlg.cksearchbox-edit.jpg"
+tags: ["AI","Uber","harga AI","enterprise","teknologi"]
+---
+
+<p>Uber resmi membatasi penggunaan alat kecerdasan buatan (AI) internal sebesar <strong>$1.500 per bulan per pengguna</strong>, sebuah langkah yang disebut pengamat sebagai sinyal penting bagi industri AI global. Kebijakan ini pertama kali diungkap oleh pengembang Simon Willison, yang mencatat bahwa batasan ini memberikan gambaran nyata tentang biaya operasional AI di perusahaan besar.</p><h2>Batas Pemakaian dan Implikasinya</h2><p>Dalam unggahan blognya, Willison menjelaskan bahwa batas $1.500 per bulan mencakup berbagai alat AI internal Uber, termasuk asisten kode dan chatbot. Angka ini jauh lebih tinggi dari langganan individu seperti ChatGPT Plus ($20/bulan) atau GitHub Copilot ($10/bulan), namun mencerminkan <em>enterprise-grade usage</em> dengan volume pemrosesan tinggi.</p><p>"Ini adalah sinyal pasar yang berharga," tulis Willison. "Ketika perusahaan sebesar Uber menetapkan batas seperti ini, kita bisa mulai memahami berapa biaya <em>scaling</em> AI yang sebenarnya."</p><h2>Dampak bagi Ekosistem AI</h2><p>Kebijakan Uber muncul di tengah meningkatnya tekanan biaya di industri AI. Klaster server GPU dan API dari penyedia seperti OpenAI, Anthropic, dan Google Cloud masih tergolong mahal untuk penggunaan skala besar. Bagi perusahaan rintisan dan perusahaan menengah, batasan seperti ini bisa menjadi tolok ukur dalam merencanakan anggaran AI mereka.</p><p>Di Indonesia, tren serupa mulai terlihat — beberapa perusahaan teknologi lokal mulai mengevaluasi ulang penggunaan AI setelah biaya operasional melonjak. Para pengamat menyarankan pendekatan <em>hybrid</em> antara API komersial dan model <em>open-source</em> untuk menekan biaya.</p><p><em>Sumber: <a href="https://simonwillison.net/2026/Jun/3/uber-caps-usage/" target="_blank">simonwillison.net</a></em></p>

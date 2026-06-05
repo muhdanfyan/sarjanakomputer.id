@@ -3,13 +3,41 @@ import Layout from '../layouts/Layout.astro';
 import { PB_URL } from '../utils/config.js';
 import { getNewsDetailUrl, getNewsUrl, getProfilUrl, getAplikasiUrl, getAcademyUrl, getAutomasiUrl } from '../utils/routes.js';
 
-const profileRes = await fetch(`${PB_URL}/api/collections/profiles/records?limit=1`);
-const profileData = await profileRes.json();
-const profile = profileData.items[0] || { visi: '', misi: [], tim: [] };
+let profile = { visi: '', misi: [], tim: [] };
+try {
+  const profileRes = await fetch(`${PB_URL}/api/collections/profiles/records?limit=1`);
+  const profileData = await profileRes.json();
+  profile = profileData.items[0] || profile;
+} catch (e) {
+  console.error("Fetch profile failed:", e.message);
+}
 
-const newsRes = await fetch(`${PB_URL}/api/collections/news/records?sort=-date&perPage=3`);
-const newsData = await newsRes.json();
-const latestNews = newsData.items || [];
+let latestNews = [];
+try {
+  const newsRes = await fetch(`${PB_URL}/api/collections/news/records?sort=-date&perPage=3`);
+  const newsData = await newsRes.json();
+  latestNews = newsData.items || [];
+} catch (e) {
+  console.error("Fetch news failed:", e.message);
+}
+
+// Fallback images from Unsplash based on category
+const categoryImages = {
+  'Teknologi': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&fit=crop',
+  'Pendidikan': 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80&fit=crop',
+  'Bisnis': 'https://images.unsplash.com/photo-1664575602276-acd073f104c1?w=600&q=80&fit=crop',
+  'Startup': 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80&fit=crop',
+};
+const defaultImage = 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop';
+
+function getNewsImage(item: any) {
+  if (item.image) {
+    if (item.image.startsWith('http')) return item.image;
+    return `${PB_URL}/api/files/news/${item.id}/${item.image}`;
+  }
+  if (item.imageUrl && item.imageUrl.startsWith('http')) return item.imageUrl;
+  return categoryImages[item.category] || defaultImage;
+}
 
 function formatDate(dateStr) {
     var d = new Date(dateStr);
@@ -312,7 +340,7 @@ function formatDate(dateStr) {
             <div class="col-md-4">
               <a href={getNewsDetailUrl(item.slug)} style="text-decoration:none;color:inherit">
                 <div class="blog-preview-card">
-                  <div class="bp-img" style={`background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),url('${item.imageUrl || item.image || "https://placehold.co/600x400?text=No+Image"}')`}></div>
+                  <div class="bp-img" style={`background-image:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.3)),url('${getNewsImage(item)}')`}></div>
                   <div class="bp-body">
                     <div class="bp-cat">{item.category}</div>
                     <h6>{item.title}</h6>

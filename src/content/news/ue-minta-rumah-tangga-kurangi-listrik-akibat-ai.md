@@ -1,0 +1,11 @@
+---
+title: "UE Minta Rumah Tangga Kurangi Pemakaian Listrik — Permintaan Energi AI Melonjak"
+date: "2026-06-04"
+category: "teknologi"
+author: "Aiman"
+description: "Uni Eropa minta rumah tangga kurangi konsumsi listrik jam sibuk karena pusat data AI boros energi. Peringatan bagi Indonesia yang juga sedang membangun infrastruktur AI."
+image: "screenshot_2026_06_05_06_26_43_186_com_google_android_c37cme2yrx.cksearchbox-edit.jpg"
+tags: ["AI","energi","Uni Eropa","pusat data","listrik"]
+---
+
+<p>Uni Eropa secara resmi meminta rumah tangga untuk mengurangi konsumsi listrik pada jam sibuk, seiring dengan melonjaknya permintaan energi dari pusat data kecerdasan buatan (AI). Laporan dari Politico mengungkap bahwa komisi energi Eropa menghadapi tekanan besar karena klaster server AI menyerap daya dalam jumlah yang belum pernah terjadi sebelumnya.</p><h2>Krisis Energi AI</h2><p>Pusat data AI modern — yang menjalankan ribuan GPU 24/7 — membutuhkan daya yang sangat besar. Satu klaster server AI besar bisa mengonsumsi listrik setara dengan kota kecil. Di Eropa, pertumbuhan pusat data ini terjadi bersamaan dengan transisi energi hijau yang belum sepenuhnya matang.</p><p>"Kita tidak bisa lagi mengabaikan dampak energi dari AI," kata seorang pejabat Komisi Eropa. "Permintaan dari pusat data tumbuh jauh lebih cepat dari yang diprediksi, dan ini mempengaruhi jaringan listrik seluruh benua."</p><h2>Apa Artinya bagi Indonesia?</h2><p>Meski belum ada kebijakan serupa di Indonesia, pertumbuhan pusat data AI di kawasan Asia Tenggara — termasuk Indonesia — mulai menimbulkan kekhawatiran serupa. Pemerintah Indonesia sendiri tengah mendorong pembangunan pusat data untuk mendukung transformasi digital, namun dampak energinya perlu dihitung secara cermat.</p><p>Para ahli energi menyarankan agar Indonesia mengadopsi kebijakan <em>green data center</em> sejak awal: mewajibkan penggunaan energi terbarukan dan efisiensi daya untuk setiap pusat data baru. Ini bisa mencegah krisis energi di masa depan.</p><p><em>Sumber: <a href="https://www.politico.eu/article/eu-households-electricity-energy-artificial-intelligence-ai/" target="_blank">politico.eu</a></em></p>
