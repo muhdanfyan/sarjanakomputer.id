@@ -3,19 +3,16 @@ import AcademyLayout from '../../../layouts/AcademyLayout.astro';
 import { PB_URL } from '../../../utils/config.js';
 import { marked } from 'marked';
 
-export async function getStaticPaths() {
-  const url = 'https://cms.sarjanakomputer.id'; // Hardcoded for build time safety
-  const res = await fetch(`${url}/api/collections/courses/records`);
-  const data = await res.json();
-  const courses = data.items || [];
-  
-  return courses.map((course: any) => ({
-    params: { slug: course.slug },
-    props: { course },
-  }));
+const { slug } = Astro.params;
+const url = 'https://cms.sarjanakomputer.id';
+const res = await fetch(`${url}/api/collections/courses/records?filter=(slug='${slug}')`);
+const data = await res.json();
+const course = data.items && data.items.length > 0 ? data.items[0] : null;
+
+if (!course) {
+  return Astro.redirect('/academy');
 }
 
-const { course } = Astro.props;
 const contentHtml = course.content ? marked.parse(course.content) : '';
 ---
 

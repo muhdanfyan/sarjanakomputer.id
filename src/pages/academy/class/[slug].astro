@@ -2,19 +2,15 @@
 import AcademyLayout from '../../../layouts/AcademyLayout.astro';
 import { PB_URL } from '../../../utils/config.js';
 
-export async function getStaticPaths() {
-  const url = 'https://cms.sarjanakomputer.id'; // Hardcoded for build time safety
-  const res = await fetch(`${url}/api/collections/classes/records`);
-  const data = await res.json();
-  const classes = data.items || [];
-  
-  return classes.map((cls: any) => ({
-    params: { slug: cls.slug },
-    props: { cls },
-  }));
-}
+const { slug } = Astro.params;
+const url = 'https://cms.sarjanakomputer.id';
+const res = await fetch(`${url}/api/collections/classes/records?filter=(slug='${slug}')`);
+const data = await res.json();
+const cls = data.items && data.items.length > 0 ? data.items[0] : null;
 
-const { cls } = Astro.props;
+if (!cls) {
+  return Astro.redirect('/academy');
+}
 ---
 
 <AcademyLayout title={`Kelas: ${cls.name} | Sarjana Komputer Academy`} description={`Daftar kelas ${cls.name} untuk program ${cls.course} di Sarjana Komputer Academy.`} basePath="../..">
