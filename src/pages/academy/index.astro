@@ -100,7 +100,7 @@ const icons = {
             <div class="col-md-6 col-lg-4">
               <a href={`/academy/course/${course.slug}`} class="udemy-card d-block text-decoration-none">
                 <div class="card-img-wrapper">
-                  <img src={course.image ? `${PB_URL}/api/files/${course.collectionId}/${course.id}/${course.image}` : `https://placehold.co/600x340/312e5f/ffffff?text=${encodeURIComponent(course.title)}`} alt={course.title} loading="lazy" />
+                  <img src={course.image ? `${PB_URL}/api/files/${course.collectionId}/${course.id}/${course.image}` : `https://sarjanakomputer.id/images/img2.png`} alt={course.title} loading="lazy" style={!course.image ? "object-fit: cover; opacity: 0.8;" : ""} />
                   <span class="badge category-badge">{course.category || 'Programming'}</span>
                 </div>
                 <div class="card-body">
@@ -150,16 +150,16 @@ const icons = {
             <div class="col-md-6 col-lg-4">
               <a href={`/academy/class/${cls.slug}`} class="udemy-card h-100 d-flex flex-column text-decoration-none">
                 <div class="card-img-wrapper">
-                  <img src={`https://placehold.co/600x340/10b981/ffffff?text=${encodeURIComponent(cls.name)}`} alt={cls.name} loading="lazy" />
+                  <img src="https://sarjanakomputer.id/images/img2.png" alt={cls.name} loading="lazy" style="object-fit: cover; opacity: 0.9;" />
                   <span class={`badge status-badge bg-${statusColor}`}>{cls.status}</span>
                 </div>
                 <div class="card-body flex-grow-1 d-flex flex-column">
                   <h5 class="course-title">{cls.name}</h5>
-                  <p class="course-desc" style="margin-bottom:0.5rem"><strong>Program:</strong> {cls.course}</p>
-                  <p class="course-desc" style="font-size:0.8rem">
-                    <i class="bi bi-person-video3"></i> Mentor: {cls.mentor}
-                  </p>
-                  <div class="course-meta mt-auto pt-3">
+                  <div class="course-desc" style="margin-bottom: 0.8rem;">
+                    <span class="d-block fw-bold" style="color: var(--primary); font-size: 0.85rem; margin-bottom: 0.3rem;">{cls.course || 'Program Reguler'}</span>
+                    <span class="d-block" style="font-size: 0.8rem;"><i class="bi bi-person-video3 me-1"></i> Mentor: {cls.mentor || 'Tim Pengajar'}</span>
+                  </div>
+                  <div class="course-meta mt-auto pt-3 border-top">
                     <span class="date"><i class="bi bi-calendar3"></i> {new Date(cls.startDate).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                     {cls.capacity && <span class="capacity"><i class="bi bi-people"></i> {cls.capacity} Slot</span>}
                   </div>
