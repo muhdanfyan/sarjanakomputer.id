@@ -5,7 +5,7 @@ category: "AI"
 author: "Redaksi SKOM"
 description: "Microsoft perkenalkan Scout, AI agent pribadi berbasis OpenClaw, dan Project Solara di ajang Build 2026. Langkah strategis menuju era AI agent otonom."
 image: "whats_app_image_2026_06_03_at_15_13_3136fs7s5o.45.jpeg"
-tags: ["AI", "Microsoft", "OpenClaw"]
+tags: ["AI","Microsoft","OpenClaw"]
 ---
 
 <div style="text-align: justify;">
