@@ -58,34 +58,82 @@ import { getAutomasiUrl } from '../../utils/routes.js';
     </div>
   </section>
 
-  <!-- SOLUSI -->
+  <!-- SOLUSI & INTEGRASI -->
   <section class="section section-alt" id="solusi">
     <div class="container">
-      <div class="text-center">
-        <div class="hero-badge" style="background:rgba(16,185,129,0.08);color:#10b981;border-color:rgba(16,185,129,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-check-circle"></i> Solusi</div>
-        <h2 class="section-title">Solusi Automasi dari Kami</h2>
-        <p class="section-subtitle">Tiga level solusi yang bisa disesuaikan dengan kebutuhan perusahaan Anda</p>
+      <div class="text-center mb-5">
+        <div class="hero-badge" style="background:rgba(16,185,129,0.08);color:#10b981;border-color:rgba(16,185,129,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-lightbulb"></i> Solusi Terintegrasi</div>
+        <h2 class="section-title">Apa yang Bisa Kami Automasi?</h2>
+        <p class="section-subtitle">Tiga pilar utama untuk melipatgandakan produktivitas bisnis Anda</p>
       </div>
-      <div class="row g-3">
-        <div class="col-md-4">
-          <div class="solution-card">
-            <div class="icon" style="background:linear-gradient(135deg,var(--primary),var(--primary-light))"><i class="bi bi-file-earmark-text"></i></div>
-            <h5>Otomasi Administratif</h5>
-            <p>Bebaskan staf dari tugas administrasi berulang. Absensi QR otomatis, surat menyurat digital, approval online, semuanya terekam rapi di dashboard.</p>
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="solution-card h-100">
+            <div class="icon" style="background:linear-gradient(135deg,var(--primary),var(--primary-light))"><i class="bi bi-link-45deg"></i></div>
+            <h5>ERP Bridge & Integrasi</h5>
+            <p>Jembatan cerdas untuk sistem existing (SAP, Odoo, Accurate). Notifikasi approval via WhatsApp, auto-generate laporan visual, dan AI auto-fill data tanpa input manual.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="solution-card">
-            <div class="icon" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><i class="bi bi-graph-up-arrow"></i></div>
-            <h5>Otomasi Operasional</h5>
-            <p>Otomatiskan proses inti bisnis Anda. Laporan keuangan auto-generate, stok barang real-time, follow-up pelanggan otomatis via WA & email tanpa sentuh.</p>
+        <div class="col-lg-4">
+          <div class="solution-card h-100">
+            <div class="icon" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><i class="bi bi-megaphone"></i></div>
+            <h5>Marketing & Promo Bridge</h5>
+            <p>Hubungkan Meta Ads ke CRM/ERP. Follow-up leads otomatis dalam 5 detik via WA, kirim kode promo instan, dan tracking ROI marketing secara real-time.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="solution-card">
+        <div class="col-lg-4">
+          <div class="solution-card h-100">
             <div class="icon" style="background:linear-gradient(135deg,#8b5cf6,var(--secondary))"><i class="bi bi-cpu"></i></div>
-            <h5>AI-Powered Automasi</h5>
-            <p>Tingkatkan bisnis Anda dengan kecerdasan buatan. Chatbot customer service 24 jam, scan dokumen auto-fill, laporan langsung dari data mentah dalam Bahasa Indonesia.</p>
+            <h5>Internal Ops & AI</h5>
+            <p>Sistem inventaris real-time, auto re-order barang, absensi QR, hingga Chatbot AI 24/7 yang menjawab 70% pertanyaan pelanggan secara otomatis.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT TABLE (BEFORE VS AFTER) -->
+  <section class="section" id="kasus">
+    <div class="container">
+      <div class="text-center mb-5">
+        <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-lightning-charge"></i> Dampak Nyata</div>
+        <h2 class="section-title">Mengapa Bisnis Anda Butuh Ini?</h2>
+        <p class="section-subtitle">Transformasi operasional dari lambat & rawan salah menjadi cepat & akurat</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="case-study-table-wrapper">
+            <table class="case-study-table">
+              <thead>
+                <tr>
+                  <th>Proses</th>
+                  <th class="before-col">Cara Lama (Manual)</th>
+                  <th class="after-col">Cara Baru (Automasi)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Respon Leads</strong></td>
+                  <td class="before-col">Tunggu CS balas (1-2 jam)</td>
+                  <td class="after-col">Respon Instan WA (< 5 detik)</td>
+                </tr>
+                <tr>
+                  <td><strong>Input Data</strong></td>
+                  <td class="before-col">Ketik manual, rawan typo</td>
+                  <td class="after-col">AI Auto-fill, Akurasi 99%</td>
+                </tr>
+                <tr>
+                  <td><strong>Approval</strong></td>
+                  <td class="before-col">Login sistem, cek email</td>
+                  <td class="after-col">Sekali klik via WhatsApp</td>
+                </tr>
+                <tr>
+                  <td><strong>Laporan</strong></td>
+                  <td class="before-col">Rekap manual sore hari</td>
+                  <td class="after-col">Dashboard Real-time 24/7</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -93,60 +141,61 @@ import { getAutomasiUrl } from '../../utils/routes.js';
   </section>
 
   <!-- PAKET & HARGA -->
-  <section class="section" id="tier">
+  <section class="section section-alt" id="tier">
     <div class="container">
       <div class="text-center">
         <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-layers"></i> Paket & Harga</div>
-        <h2 class="section-title">Pilih Level Automasi yang Tepat</h2>
+        <h2 class="section-title">Pilih Paket yang Sesuai untuk Bisnis Anda</h2>
         <p class="section-subtitle">Dari UMKM hingga korporasi — semua bisa automasi dengan investasi yang terjangkau</p>
       </div>
       <div class="row g-3 justify-content-center">
         <div class="col-md-6 col-lg-4">
           <div class="tier-card">
-            <div class="tier-icon">🥉</div>
-            <h5>Bronze — Otomasi Dasar</h5>
-            <div class="tier-price">Rp3-5jt <span>build + Rp500rb/bln</span></div>
-            <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Target: UMKM, toko kecil, jasa</p>
+            <div class="tier-icon">🚀</div>
+            <h5>Starter — Basic Automation</h5>
+            <div class="tier-price">Rp3jt <span>(One-time setup)</span></div>
+            <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Target: UMKM & Startup tahap awal</p>
+            <p style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem">Fokus: Automasi 1-2 alur kerja utama</p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> 1-2 proses otomasi</li>
-              <li><i class="bi bi-check-circle"></i> Dashboard monitoring</li>
-              <li><i class="bi bi-check-circle"></i> Support email</li>
-              <li><i class="bi bi-check-circle"></i> Maintenance bulanan</li>
+              <li><i class="bi bi-check-circle"></i> Dashboard standar</li>
+              <li><i class="bi bi-check-circle"></i> Integrasi Google Sheets</li>
+              <li><i class="bi bi-check-circle"></i> Support Email</li>
+              <li><i class="bi bi-check-circle"></i> Maintenance dasar</li>
             </ul>
-            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20tertarik%20paket%20Bronze%20Otomasi%20Dasar.%20Minta%20info%20lebih%20lanjut." target="_blank" class="btn-outline-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem"><i class="bi bi-whatsapp"></i> Konsultasi Gratis</a>
+            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20tertarik%20paket%20Starter%20Basic%20Automation." target="_blank" class="btn-outline-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem"><i class="bi bi-whatsapp"></i> Konsultasi Gratis</a>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="tier-card" style="border-color:var(--primary);box-shadow:0 0 0 2px var(--primary);position:relative">
             <div class="popular-badge" style="position:absolute;top:-0.75rem;left:50%;transform:translateX(-50%);padding:0.3rem 1rem;background:var(--gradient);color:white;border-radius:50px;font-size:0.7rem;font-weight:700">REKOMENDASI</div>
-            <div class="tier-icon">🥈</div>
-            <h5>Silver — Otomasi Bisnis</h5>
-            <div class="tier-price">Rp8-15jt <span>build + Rp1-2jt/bln</span></div>
-            <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Target: Perusahaan menengah</p>
+            <div class="tier-icon">⚡</div>
+            <h5>Growth — Advanced Workflows</h5>
+            <div class="tier-price">Rp8jt <span>(One-time setup)</span></div>
+            <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Target: Bisnis menengah yang berkembang</p>
+            <p style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem">Fokus: Integrasi & automasi operasional</p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> 3-5 proses otomasi + integrasi</li>
-              <li><i class="bi bi-check-circle"></i> Dashboard + laporan otomatis</li>
-              <li><i class="bi bi-check-circle"></i> Support WA/telepon prioritas</li>
+              <li><i class="bi bi-check-circle"></i> Custom Dashboard</li>
+              <li><i class="bi bi-check-circle"></i> Integrasi API & Bot WhatsApp</li>
+              <li><i class="bi bi-check-circle"></i> Support Prioritas</li>
               <li><i class="bi bi-check-circle"></i> Pelatihan staf</li>
-              <li><i class="bi bi-check-circle"></i> SLA 2x24 jam</li>
             </ul>
-            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20tertarik%20paket%20Silver%20Otomasi%20Bisnis.%20Minta%20info%20lebih%20lanjut." target="_blank" class="btn-primary-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem"><i class="bi bi-whatsapp"></i> Pilih Paket Silver</a>
+            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20tertarik%20paket%20Growth%20Advanced%20Workflows." target="_blank" class="btn-primary-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem"><i class="bi bi-whatsapp"></i> Pilih Paket Growth</a>
           </div>
         </div>
         <div class="col-md-6 col-lg-4">
           <div class="tier-card">
-            <div class="tier-icon">🥇</div>
-            <h5>Gold — Enterprise AI</h5>
-            <div class="tier-price">Custom <span>konsultasi</span></div>
-            <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Target: Pemerintah/korporasi</p>
+            <div class="tier-icon">🏢</div>
+            <h5>Enterprise — Full Ecosystem</h5>
+            <div class="tier-price">Custom <span>Hubungi Kami</span></div>
+            <p style="font-size:0.8rem;color:var(--gray-500);margin-bottom:1rem">Target: Korporasi & Instansi Pemerintah</p>
+            <p style="font-size:0.82rem;font-weight:600;margin-bottom:0.5rem">Fokus: AI & sistem ekosistem kustom</p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Semua fitur Silver + AI</li>
-              <li><i class="bi bi-check-circle"></i> AI chatbot / document processing</li>
-              <li><i class="bi bi-check-circle"></i> Integrasi sistem existing</li>
-              <li><i class="bi bi-check-circle"></i> Dedicated support</li>
-              <li><i class="bi bi-check-circle"></i> SLA 1x24 jam prioritas</li>
+              <li><i class="bi bi-check-circle"></i> AI Document Processing</li>
+              <li><i class="bi bi-check-circle"></i> Dedicated Server & Support</li>
+              <li><i class="bi bi-check-circle"></i> On-site Training</li>
+              <li><i class="bi bi-check-circle"></i> SLA 99.9%</li>
             </ul>
-            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20tertarik%20paket%20Gold%20Enterprise%20AI.%20Minta%20konsultasi." target="_blank" class="btn-outline-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem"><i class="bi bi-whatsapp"></i> Hubungi Kami</a>
+            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20tertarik%20paket%20Enterprise%20Full%20Ecosystem." target="_blank" class="btn-outline-custom" style="font-size:0.8rem;padding:0.4rem 1.2rem"><i class="bi bi-whatsapp"></i> Hubungi Kami</a>
           </div>
         </div>
       </div>
@@ -158,180 +207,43 @@ import { getAutomasiUrl } from '../../utils/routes.js';
     <div class="container">
       <div class="text-center">
         <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-journal-text"></i> Studi Kasus</div>
-        <h2 class="section-title">Dampak Nyata Automasi untuk Klien Kami</h2>
-        <p class="section-subtitle">Efisiensi bukan teori — ini hasil yang sudah kami buktikan</p>
+        <h2 class="section-title">Dampak Nyata Automasi: Sebelum vs Sesudah</h2>
+        <p class="section-subtitle">Mari kita lihat perbedaannya dari sudut pandang pelanggan Anda</p>
       </div>
-      <div class="row g-3">
-        <div class="col-md-6">
-          <div class="case-study">
-            <span class="tag">Otomasi Administratif</span>
-            <h5 style="font-size:0.95rem;margin-bottom:0.3rem">Instansi Pemerintah — Automasi Surat Menyurat</h5>
-            <p style="font-size:0.82rem;color:var(--gray-500);line-height:1.7">Sebelum: Setiap surat butuh 15-20 menit pembuatan + antar ruang untuk approval. Sesudah: Template digital, approval online via WA, 3 menit per surat. Efisiensi 80%. Biaya operasional turun drastis.</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="case-study">
-            <span class="tag">AI-Powered</span>
-            <h5 style="font-size:0.95rem;margin-bottom:0.3rem">Perusahaan Jasa — Chatbot Customer Service</h5>
-            <p style="font-size:0.82rem;color:var(--gray-500);line-height:1.7">Sebelum: 5 orang CS kewalahan handle 300+ chat/hari. Sesudah: Chatbot AI jawab 70% pertanyaan otomatis 24 jam. Tim CS fokus ke pertanyaan kompleks. Kepuasan pelanggan naik 40%.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KUSTOMISASI & RISET -->
-  <section class="section section-alt" id="kustom">
-    <div class="container">
-      <div class="text-center">
-        <div class="hero-badge" style="background:rgba(245,158,11,0.08);color:var(--accent);border-color:rgba(245,158,11,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-sliders"></i> Kustom & Riset</div>
-        <h2 class="section-title">Automasi yang Sesuai Kebutuhan Anda</h2>
-        <p class="section-subtitle">Setiap bisnis unik — solusi automasi juga harus disesuaikan, bukan dipaksakan</p>
-      </div>
-      <div class="row g-3 mb-4">
-        <div class="col-md-6">
-          <div class="kustom-card">
-            <div class="kustom-icon"><i class="bi bi-sliders"></i></div>
-            <h5>Sesuaikan Sendiri Kebutuhan Anda</h5>
-            <p>Tidak ada paket yang kaku. Setiap layanan automasi bisa dirancang khusus sesuai dengan kebutuhan bisnis Anda. Mulai dari proses yang ingin diotomatiskan, jumlah pengguna, hingga tingkat kompleksitas — semua bisa disesuaikan. Tim teknis kami akan mendampingi Anda menentukan spesifikasi yang tepat, sehingga Anda tidak membayar untuk fitur yang tidak diperlukan.</p>
-            <p style="margin-top:0.5rem;font-size:0.85rem;color:var(--primary);font-weight:600"><i class="bi bi-check-circle-fill"></i> Pilih sendiri proses yang mau diotomatiskan</p>
-            <p style="font-size:0.85rem;color:var(--primary);font-weight:600"><i class="bi bi-check-circle-fill"></i> Tentukan budget sesuai kemampuan</p>
-            <p style="font-size:0.85rem;color:var(--primary);font-weight:600"><i class="bi bi-check-circle-fill"></i> Tambah atau kurangi fitur kapan saja</p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="kustom-card">
-            <div class="kustom-icon" style="background:linear-gradient(135deg,#f59e0b,#f97316)"><i class="bi bi-search-heart"></i></div>
-            <h5>Riset & Analisis Kebutuhan Gratis</h5>
-            <p>Sebelum menentukan solusi, kami lakukan riset mendalam terlebih dahulu. Klien cukup menjelaskan topik masalah yang dihadapi — misalnya: <em>"Saya kesulitan merekap laporan keuangan dari 3 toko berbeda"</em> atau <em>"Staf saya kewalahan handle 500 chat pelanggan per hari"</em>. Dari situ kami analisa pola masalahnya, lalu rekomendasikan solusi automasi yang paling tepat. <strong>Riset pertama GRATIS tanpa komitmen.</strong></p>
-            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20mau%20konsultasi%20gratis%20riset%20kebutuhan%20automasi%20bisnis" target="_blank" class="btn-primary-custom" style="font-size:0.85rem;padding:0.5rem 1.4rem;display:inline-flex;margin-top:0.5rem"><i class="bi bi-whatsapp"></i> Konsultasi Gratis Sekarang</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- TOPIK MASALAH -->
-      <div class="text-center mt-5">
-        <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-tags"></i> Topik Masalah</div>
-        <h2 class="section-title" style="font-size:1.5rem">Topik Masalah yang Sering Kami Tangani</h2>
-        <p class="section-subtitle">Pilih topik yang paling sesuai dengan kondisi bisnis Anda — atau ceritakan masalah unik Anda</p>
-      </div>
-      <div class="row g-3">
-        <div class="col-md-6 col-lg-4">
-          <div class="topik-card">
-            <div class="topik-icon" style="background:linear-gradient(135deg,#10b981,#34d399)"><i class="bi bi-currency-dollar"></i></div>
-            <h5>Keuangan & Akuntansi</h5>
-            <p>Rekonsiliasi bank manual, laporan keuangan telat, invoice belum tertagih, penggajian ribet.</p>
-            <span class="topik-solusi">Solusi: Automasi laporan keuangan, invoice reminder otomatis, integrasi payment gateway.</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="topik-card">
-            <div class="topik-icon" style="background:linear-gradient(135deg,#3b82f6,#60a5fa)"><i class="bi bi-box-seam"></i></div>
-            <h5>Operasional & Inventory</h5>
-            <p>Stok barang sering kehabisan tanpa tahu, order masuk campur aduk, pengiriman tidak terpantau.</p>
-            <span class="topik-solusi">Solusi: Inventory real-time, auto reorder, tracking pengiriman otomatis.</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="topik-card">
-            <div class="topik-icon" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)"><i class="bi bi-headset"></i></div>
-            <h5>Customer Service</h5>
-            <p>CS kewalahan, pelanggan lama menunggu, banyak chat tidak terbalas, jam operasional terbatas.</p>
-            <span class="topik-solusi">Solusi: Chatbot AI 24 jam, auto-reply pintar, routing ke CS manusia untuk kasus kompleks.</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="topik-card">
-            <div class="topik-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"><i class="bi bi-people"></i></div>
-            <h5>Administrasi & HR</h5>
-            <p>Absensi manual, surat menyurat lama, approval cuti/reimbursement ribet, data karyawan tercecer.</p>
-            <span class="topik-solusi">Solusi: HRIS sederhana, e-office, approval workflow digital, absensi QR.</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="topik-card">
-            <div class="topik-icon" style="background:linear-gradient(135deg,#ef4444,#f87171)"><i class="bi bi-megaphone"></i></div>
-            <h5>Pemasaran & Sales</h5>
-            <p>Follow-up pelanggan tidak konsisten, lead hilang, campaign manual, ROI tidak terukur.</p>
-            <span class="topik-solusi">Solusi: CRM automasi, WA blast terjadwal, pipeline tracking, auto-reminder pelanggan.</span>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <div class="topik-card">
-            <div class="topik-icon" style="background:linear-gradient(135deg,#312E5F,#5C5991)"><i class="bi bi-bar-chart"></i></div>
-            <h5>Laporan & Dashboard</h5>
-            <p>Data dari 5 sistem berbeda, butuh 2 hari bikin laporan, pimpinan selalu nunggu data.</p>
-            <span class="topik-solusi">Solusi: Dashboard real-time, laporan auto-generate, export PDF/Excel satu klik.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CARA KERJA -->
-  <section class="section" id="cara-kerja">
-    <div class="container">
-      <div class="text-center">
-        <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-gear"></i> Proses</div>
-        <h2 class="section-title">Bagaimana Kami Bekerja?</h2>
-        <p class="section-subtitle">Empat langkah sederhana menuju bisnis yang lebih efisien</p>
-      </div>
-      <div class="row g-3">
-        <div class="col-md-6 col-lg-3">
-          <div class="problem-card" style="text-align:center">
-            <div class="icon" style="background:var(--gradient);width:64px;height:64px;border-radius:50%"><i class="bi bi-chat-dots" style="font-size:1.5rem"></i></div>
-            <h5 style="font-size:1rem">1. Konsultasi Gratis</h5>
-            <p style="font-size:0.82rem;color:var(--gray-500);margin:0">Hubungi kami via WA atau temu langsung. Kita analisa masalah operasional dan kebutuhan bisnis Anda.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="problem-card" style="text-align:center">
-            <div class="icon" style="background:var(--gradient);width:64px;height:64px;border-radius:50%"><i class="bi bi-file-earmark-text" style="font-size:1.5rem"></i></div>
-            <h5 style="font-size:1rem">2. Proposal Solusi</h5>
-            <p style="font-size:0.82rem;color:var(--gray-500);margin:0">Kami rancang sistem automasi yang tepat untuk Anda, lengkap dengan RAB jelas tanpa biaya tersembunyi.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="problem-card" style="text-align:center">
-            <div class="icon" style="background:var(--gradient);width:64px;height:64px;border-radius:50%"><i class="bi bi-code-slash" style="font-size:1.5rem"></i></div>
-            <h5 style="font-size:1rem">3. Development & Integrasi</h5>
-            <p style="font-size:0.82rem;color:var(--gray-500);margin:0">Tim kami bangun sistem dan integrasikan dengan software existing Anda. Progress laporan berkala.</p>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="problem-card" style="text-align:center">
-            <div class="icon" style="background:var(--gradient);width:64px;height:64px;border-radius:50%"><i class="bi bi-rocket-takeoff" style="font-size:1.5rem"></i></div>
-            <h5 style="font-size:1rem">4. Go Live + Training</h5>
-            <p style="font-size:0.82rem;color:var(--gray-500);margin:0">Sistem jalan, staf dilatih, kami pantau 7 hari pertama. Anda dapat support penuh selama maintenance.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DOWNLOAD PDF -->
-  <section class="section" id="download">
-    <div class="container">
-      <div class="text-center">
-        <div class="hero-badge" style="background:rgba(220,38,38,0.08);color:#dc2626;border-color:rgba(220,38,38,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-filetype-pdf"></i> Download</div>
-        <h2 class="section-title">Unduh Proposal Lengkap</h2>
-        <p class="section-subtitle">Bawa proposal ini ke atasan atau instansi Anda — format PDF rapi siap cetak</p>
-      </div>
+      
       <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="download-card">
-            <div class="row align-items-center">
-              <div class="col-md-4 text-center">
-                <i class="bi bi-filetype-pdf" style="font-size:5rem;color:#dc2626"></i>
-              </div>
-              <div class="col-md-8">
-                <h5 style="font-size:1.1rem;margin-bottom:0.5rem">Proposal Automasi Bisnis — CV. Sarjana Komputer Indonesia</h5>
-                <p style="font-size:0.85rem;color:var(--gray-500);line-height:1.7">Dokumen lengkap berisi penjelasan layanan, paket harga, studi kasus, analisis bisnis, dan studi banding dengan perusahaan automasi lain. Format A4, 8 halaman, siap cetak dan presentasi.</p>
-                <div class="d-flex flex-wrap gap-2 mt-3">
-                  <a href="/files/proposal_automasi_bisnis.pdf" download class="btn-primary-custom" style="font-size:0.85rem;padding:0.55rem 1.5rem"><i class="bi bi-download"></i> Download PDF</a>
-                  <a href="https://drive.google.com/drive/folders/1jHdFM4gB8vCgSMsyK71Bt2iSHaj1PEHb" target="_blank" class="btn-outline-custom" style="font-size:0.85rem;padding:0.55rem 1.5rem"><i class="bi bi-google-drive"></i> Lihat di Google Drive</a>
-                </div>
-              </div>
+        <div class="col-lg-10">
+          <div class="case-study-table-wrapper">
+            <table class="case-study-table">
+              <thead>
+                <tr>
+                  <th>Proses Bisnis</th>
+                  <th class="before-col">Sebelum Automasi (Manual)</th>
+                  <th class="after-col">Sesudah Automasi (Cerdas)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Respon Leads/Iklan</strong></td>
+                  <td class="before-col">Customer chat → Tunggu 1-2 jam dibalas CS → Ditanya data lagi → CS cek manual.</td>
+                  <td class="after-col">Customer klik iklan → Isi form → Dapet WA otomatis & kode unik dalam <span class="badge bg-success">5 detik</span>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Verifikasi Pembayaran</strong></td>
+                  <td class="before-col">Customer transfer → Kirim bukti manual → CS cek mutasi bank manual → Konfirmasi lambat.</td>
+                  <td class="after-col">Sistem cek otomatis → Konfirmasi instan → Invoice terbit otomatis tanpa campur tangan manusia.</td>
+                </tr>
+                <tr>
+                  <td><strong>Update Laporan</strong></td>
+                  <td class="before-col">Admin rekap manual ke Excel setiap sore → Capek & rawan salah input → Laporan baru siap besok.</td>
+                  <td class="after-col">Setiap transaksi masuk, dashboard <span class="badge bg-primary">Real-time</span> terupdate otomatis. Boss bisa pantau kapan saja.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-center mt-4">
+            <div class="alert style-2" style="display:inline-block;padding:0.75rem 2rem;background:#fff;border:1px solid var(--primary-light)">
+              <span class="text-primary" style="font-weight:700">Hasil Akhir:</span> Customer puas karena respon instan, Bisnis tumbuh karena efisiensi operasional.
             </div>
           </div>
         </div>
@@ -339,33 +251,90 @@ import { getAutomasiUrl } from '../../utils/routes.js';
     </div>
   </section>
 
-  <!-- TOPIK LAIN -->
-  <section class="section section-alt" id="topik-lain">
-    <div class="container text-center">
-      <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-chat-quote"></i> Saran</div>
-      <h2 class="section-title">Punya Topik Masalah Lain?</h2>
-      <p class="section-subtitle" style="max-width:700px">Tidak masalah. Setiap bisnis punya tantangan unik. Ceritakan masalah operasional Anda, dan tim kami akan menganalisa serta menawarkan solusi automasi yang tepat — GRATIS tanpa biaya.</p>
-      <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20punya%20masalah%20operasional%20yang%20ingin%20didiskusikan%20untuk%20solusi%20automasi" target="_blank" class="btn-primary-custom" style="font-size:1rem;padding:0.8rem 2.5rem"><i class="bi bi-whatsapp"></i> Konsultasi Gratis via WA</a>
-      <p style="font-size:0.8rem;color:var(--gray-500);margin-top:1rem">WA: 0831-3408-6899 | Email: info@sarjanakomputer.id</p>
+  <!-- KUSTOMISASI -->
+  <section class="section section-alt" id="kustom">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="hero-badge" style="background:rgba(245,158,11,0.08);color:var(--accent);border-color:rgba(245,158,11,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-sliders"></i> Kustomisasi</div>
+          <h2 class="section-title" style="text-align:left;margin-left:0">Solusi Unik untuk Masalah Unik</h2>
+          <p class="section-subtitle" style="text-align:left;margin-left:0;max-width:100%">Kami menganalisa pola masalah Anda dan membangun automasi yang pas, bukan paket kaku yang dipaksakan.</p>
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="p-3 bg-white rounded-3 border text-center">
+                <i class="bi bi-search text-primary mb-2 d-block" style="font-size:1.5rem"></i>
+                <h6 class="small mb-0">Riset Gratis</h6>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 bg-white rounded-3 border text-center">
+                <i class="bi bi-cpu text-primary mb-2 d-block" style="font-size:1.5rem"></i>
+                <h6 class="small mb-0">Tech Modern</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card p-4 border-0 shadow-sm" style="border-radius:20px">
+            <h5 class="mb-4" style="font-size:1rem"><i class="bi bi-tags-fill text-primary"></i> Sektor yang Kami Tangani:</h5>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge bg-light text-dark p-2 px-3 border">Keuangan & Akuntansi</span>
+              <span class="badge bg-light text-dark p-2 px-3 border">Operasional & Logistik</span>
+              <span class="badge bg-light text-dark p-2 px-3 border">Customer Service (AI)</span>
+              <span class="badge bg-light text-dark p-2 px-3 border">HR & Administrasi</span>
+              <span class="badge bg-light text-dark p-2 px-3 border">Marketing & CRM</span>
+            </div>
+            <hr class="my-4">
+            <a href="https://wa.me/6283134086899?text=Halo%20Sarjana%20Komputer%2C%20saya%20punya%20masalah%20operasional%20yang%20ingin%20didiskusikan" target="_blank" class="btn-primary-custom w-100 py-3"><i class="bi bi-whatsapp"></i> Konsultasi Masalah Anda</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA KERJA & DOWNLOAD -->
+  <section class="section" id="proses">
+    <div class="container">
+      <div class="row g-4 align-items-center">
+        <div class="col-lg-7">
+          <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-gear"></i> Proses</div>
+          <h2 class="section-title" style="text-align:left;margin-left:0">4 Langkah Menuju Efisiensi</h2>
+          <div class="row g-3 mt-2">
+            <div class="col-6"><h6 class="mb-1">1. Konsultasi</h6><p class="small text-muted">Analisis masalah operasional gratis.</p></div>
+            <div class="col-6"><h6 class="mb-1">2. Proposal</h6><p class="small text-muted">RAB jelas tanpa biaya tersembunyi.</p></div>
+            <div class="col-6"><h6 class="mb-1">3. Development</h6><p class="small text-muted">Membangun & integrasi sistem.</p></div>
+            <div class="col-6"><h6 class="mb-1">4. Go Live</h6><p class="small text-muted">Training staf & pendampingan.</p></div>
+          </div>
+        </div>
+        <div class="col-lg-5">
+          <div class="p-4 bg-light rounded-4 border text-center">
+            <i class="bi bi-file-earmark-pdf text-danger mb-3 d-block" style="font-size:3rem"></i>
+            <h6>Butuh Proposal Cetak?</h6>
+            <p class="small text-muted">Unduh file PDF resmi untuk keperluan presentasi atau pengajuan anggaran.</p>
+            <a href="/files/proposal_automasi_bisnis.pdf" download class="btn btn-outline-danger btn-sm w-100 py-2">Download Proposal PDF</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section section-alt" id="faq">
-    <div class="container">
-      <div class="text-center">
-        <div class="hero-badge" style="background:rgba(49,46,95,0.08);color:var(--primary);border-color:rgba(49,46,95,0.15);display:inline-flex;margin-bottom:1rem"><i class="bi bi-question-circle"></i> FAQ</div>
-        <h2 class="section-title">Pertanyaan Umum</h2>
         <p class="section-subtitle">Seputar layanan automasi & AI — semua yang perlu Anda tahu sebelum memulai</p>
       </div>
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apa itu automasi bisnis dan apa manfaatnya untuk usaha saya? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Automasi bisnis adalah penggunaan teknologi untuk mengotomatiskan tugas-tugas manual berulang sehingga bisnis Anda berjalan lebih efisien. Tiga manfaat utamanya: (1) Hemat waktu operasional hingga 70%, (2) Kurangi human error hingga nyaris nol, (3) Data real-time untuk pengambilan keputusan lebih cepat dan tepat.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah data perusahaan saya aman? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Keamanan data adalah prioritas kami. Kami menerapkan enkripsi data, akses berbasis peran (RBAC), backup rutin harian, dan server berlokasi di Indonesia. Data perusahaan sepenuhnya milik Anda — tidak ada pihak ketiga yang mengakses tanpa izin.</div></div>
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Berapa lama waktu implementasi automasi? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tergantung kompleksitas kebutuhan Anda: Paket Bronze (Otomasi Dasar) 1-2 minggu, Paket Silver (Otomasi Bisnis) 3-6 minggu, Paket Gold (Enterprise AI) 1-3 bulan termasuk konsultasi, pengembangan, dan penyesuaian sistem.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Berapa lama waktu implementasi automasi? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tergantung kompleksitas kebutuhan Anda: Paket Starter (Basic Automation) 1-2 minggu, Paket Growth (Advanced Workflows) 3-6 minggu, Paket Enterprise (Full Ecosystem) 1-3 bulan termasuk konsultasi, pengembangan, dan penyesuaian sistem.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Bisakah integrasi dengan sistem yang sudah ada? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Sangat bisa. Kami mendukung integrasi dengan berbagai sistem existing: API, database (MySQL, PostgreSQL), file Excel/CSV, Google Sheets, hingga aplikasi ERP dan CRM yang sudah berjalan di perusahaan Anda. Tim teknis kami akan menganalisa dan memastikan kompatibilitas penuh.</div></div>
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah ada garansi atau dukungan setelah implementasi? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tentu. Setiap paket dilengkapi maintenance bulanan dengan SLA sesuai level paket. Bronze: support email. Silver: support WA/telepon prioritas + SLA 2x24 jam. Gold: dedicated support + SLA 1x24 jam prioritas. Kami juga memberikan garansi perbaikan bug dan pendampingan operasional di awal.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah ada garansi atau dukungan setelah implementasi? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tentu. Setiap paket dilengkapi maintenance bulanan dengan SLA sesuai level paket. Starter: support email. Growth: support WA/telepon prioritas + SLA 2x24 jam. Enterprise: dedicated support + SLA 1x24 jam prioritas. Kami juga memberikan garansi perbaikan bug dan pendampingan operasional di awal.</div></div>
           <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah saya bisa custom paket sesuai kebutuhan spesifik? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tentu. Tidak ada paket yang kaku — setiap layanan bisa disesuaikan dengan kebutuhan spesifik bisnis Anda. Mulai dari jumlah proses, tingkat kompleksitas, hingga budget. Konsultasi gratis dulu, kami analisa, baru kami rekomendasikan solusi tepat tanpa paksaan. Bahkan jika tidak ada paket yang cocok, kami bisa merancang paket khusus untuk Anda.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah automasi akan menggantikan peran karyawan saya? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tidak. Automasi dirancang untuk membebaskan karyawan dari tugas rutin yang membosankan dan repetitif, sehingga mereka bisa fokus pada tugas strategis, kreatif, dan pelayanan pelanggan yang membutuhkan sentuhan manusia lebih mendalam.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah bisnis kecil/UMKM benar-benar butuh automasi? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Sangat butuh. UMKM seringkali memiliki keterbatasan staf. Automasi membantu UMKM bekerja seperti perusahaan besar dengan produktivitas tinggi namun biaya operasional minimal, memungkinkan bisnis Anda berkembang lebih cepat tanpa harus menambah beban gaji yang besar di awal.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Bagaimana jika sistem mengalami kendala teknis (down)? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Kami menyediakan sistem monitoring dan dukungan teknis cepat sesuai SLA paket Anda. Untuk sistem kritis, kami merancang arsitektur dengan backup otomatis dan failover agar operasional bisnis Anda tetap berjalan lancar meski terjadi kendala teknis pada server utama.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Berapa ROI (Return on Investment) yang bisa saya harapkan? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Rata-rata klien kami mencapai BEP (Break Even Point) dalam 4-8 bulan. Investasi automasi terbayar melalui penghematan ribuan jam kerja staf per tahun, pengurangan kesalahan operasional yang mahal harganya, dan peningkatan kecepatan respon layanan ke pelanggan.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah saya perlu keahlian teknis khusus untuk mengelola sistem ini? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Tidak perlu. Kami merancang dashboard yang user-friendly dalam Bahasa Indonesia. Seluruh kompleksitas teknologi kami sembunyikan di balik layar. Kami juga memberikan sesi pelatihan lengkap untuk tim Anda hingga benar-benar mahir menggunakan sistem tersebut.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Apakah solusi automasi ini bisa dikembangkan di masa depan? <i class="bi bi-chevron-down"></i></div><div class="faq-a">Sangat bisa. Kami membangun sistem dengan arsitektur modular yang skalabel. Anda bisa mulai dari mengotomatiskan satu proses kecil hari ini, lalu menambah fitur atau proses lain secara bertahap seiring pertumbuhan dan kebutuhan bisnis Anda di masa depan.</div></div>
         </div>
       </div>
     </div>
@@ -382,6 +351,28 @@ import { getAutomasiUrl } from '../../utils/routes.js';
       <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin-top:1rem">WA: 0831-3408-6899 | Email: info@sarjanakomputer.id</p>
     </div>
   </section>
+
+  <script is:inline>
+    function toggleFaq(el) {
+      const parent = el.parentElement;
+      const answer = parent.querySelector('.faq-a');
+      const icon = el.querySelector('i');
+      
+      // Close others in the same section
+      const allItems = parent.parentElement.querySelectorAll('.faq-item');
+      allItems.forEach(item => {
+        const a = item.querySelector('.faq-a');
+        const q = item.querySelector('.faq-q');
+        if (a !== answer) {
+          a.classList.remove('show');
+          q.classList.remove('open');
+        }
+      });
+      
+      answer.classList.toggle('show');
+      el.classList.toggle('open');
+    }
+  </script>
 
   <style>
     .problem-card{text-align:center;padding:1.5rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%;transition:0.4s}
@@ -403,6 +394,31 @@ import { getAutomasiUrl } from '../../utils/routes.js';
     .tier-card ul{text-align:left;list-style:none;padding:0;margin:1rem 0}
     .tier-card ul li{padding:0.35rem 0;font-size:0.82rem;display:flex;align-items:center;gap:0.5rem}
     .tier-card ul li i{color:#10b981}
+    .manfaat-card{padding:2rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%;position:relative;transition:0.4s;overflow:hidden}
+    .manfaat-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--primary-light)}
+    .manfaat-card .num{position:absolute;top:-1rem;right:-1rem;font-size:5rem;font-weight:900;color:rgba(49,46,95,0.03);line-height:1}
+    .manfaat-card h5{font-size:1rem;margin-bottom:0.75rem;color:var(--dark);position:relative;z-index:1}
+    .manfaat-card p{font-size:0.85rem;color:var(--gray-500);margin:0;line-height:1.7;position:relative;z-index:1}
+    .erp-feature-item{display:flex;gap:1.25rem;margin-bottom:1.5rem}
+    .erp-feature-icon{width:44px;height:44px;background:rgba(49,46,95,0.05);color:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+    .erp-feature-item h6{font-size:0.95rem;margin-bottom:0.25rem;color:var(--dark)}
+    .erp-feature-item p{font-size:0.82rem;color:var(--gray-500);margin:0;line-height:1.6}
+    .bridge-card{padding:2rem;border-radius:var(--radius);height:100%;border:1px solid var(--gray-100);transition:0.3s}
+    .bridge-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg)}
+    .bridge-card.advantages{background:#f0fdf4;border-color:#bbf7d0}
+    .bridge-card.limitations{background:#fff7ed;border-color:#fed7aa}
+    .bridge-card h5{font-size:1.1rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
+    .bridge-item{margin-bottom:1.25rem}
+    .bridge-item h6{font-size:0.9rem;margin-bottom:0.25rem}
+    .bridge-item p{font-size:0.82rem;color:var(--gray-600);margin:0;line-height:1.6}
+    .case-study-table-wrapper{background:white;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--gray-100)}
+    .case-study-table{width:100%;border-collapse:collapse}
+    .case-study-table th{background:var(--dark);color:white;padding:1.25rem;font-size:0.9rem;text-align:left}
+    .case-study-table td{padding:1.25rem;font-size:0.85rem;border-bottom:1px solid var(--gray-50);vertical-align:top}
+    .case-study-table .before-col{background:#fff5f5;color:#991b1b}
+    .case-study-table .after-col{background:#f0fdf4;color:#166534}
+    .case-study-table th.before-col{background:#991b1b}
+    .case-study-table th.after-col{background:#166534}
 .kustom-card{padding:1.8rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%;transition:0.4s}
 .kustom-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
 .kustom-card .kustom-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:white;margin-bottom:1rem;background:var(--gradient)}
@@ -423,13 +439,15 @@ import { getAutomasiUrl } from '../../utils/routes.js';
 .btn-cta-white:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,0.25);color:var(--primary-dark)}
     .case-study{padding:1.5rem;border-radius:var(--radius);background:var(--white);border:1px solid var(--gray-100);height:100%}
     .case-study .tag{display:inline-block;padding:0.15rem 0.6rem;background:rgba(49,46,95,0.08);color:var(--primary);border-radius:4px;font-size:0.7rem;font-weight:600;margin-bottom:0.5rem}
-    .faq-item{padding:1rem 0;border-bottom:1px solid var(--gray-100)}
-    .faq-item:last-child{border-bottom:none}
-    .faq-q{font-weight:600;font-size:0.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--dark)}
+    .faq-item{margin-bottom:0.75rem;border:1px solid var(--gray-100);border-radius:12px;overflow:hidden;background:var(--white);transition:0.3s}
+    .faq-item:hover{border-color:var(--primary-light)}
+    .faq-q{padding:1.25rem;font-weight:600;font-size:0.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--dark);transition:0.3s}
+    .faq-q:hover{background:var(--gray-50)}
     .faq-q i{transition:0.3s;font-size:0.8rem;color:var(--gray-400)}
-    .faq-q.open i{transform:rotate(180deg)}
-    .faq-a{font-size:0.85rem;color:var(--gray-500);padding-top:0.5rem;line-height:1.7;display:none}
-    .faq-a.show{display:block}
+    .faq-q.open{color:var(--primary);background:var(--gray-50)}
+    .faq-q.open i{transform:rotate(180deg);color:var(--primary)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height 0.3s ease-out, padding 0.3s ease;font-size:0.85rem;color:var(--gray-500);line-height:1.7;padding:0 1.25rem}
+    .faq-a.show{max-height:500px;padding:0 1.25rem 1.25rem;border-top:1px solid var(--gray-50);padding-top:1rem}
     @media(max-width:767px){.tier-card{padding:1.5rem 1rem}}
   </style>
-</Layout>
+</AutomasiLayout>
