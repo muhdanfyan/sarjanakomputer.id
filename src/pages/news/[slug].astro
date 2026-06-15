@@ -355,9 +355,111 @@ const categories = [
       background: #fff; color: #312E5F !important; text-decoration: none !important;
       padding: 0.6rem 1.25rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700;
       white-space: nowrap; display: inline-flex; align-items: center; gap: 0.4rem;
-      transition: all 0.2s; flex-shrink: 0;
+    .copy-link-btn.copied {
+        background: #16a34a;
     }
-    .aff-banner-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+
+    /* ===== DONATE CTA (Bawah Artikel) ===== */
+    .donate-cta {
+        padding: 0 0 1.5rem;
+    }
+    .donate-cta-inner {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+    }
+    .donate-cta-icon {
+        width: 48px; height: 48px;
+        background: linear-gradient(135deg, #312E5F 0%, #E3386A 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: #fff;
+        flex-shrink: 0;
+    }
+    .donate-cta-text { flex: 1; }
+    .donate-cta-text h3 {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #1a1838;
+        margin: 0 0 0.2rem;
+    }
+    .donate-cta-text p {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin: 0;
+    }
+    .donate-cta-buttons {
+        display: flex;
+        gap: 0.5rem;
+        flex-shrink: 0;
+    }
+    .donate-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-decoration: none !important;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+    .donate-cta-btn:hover { transform: translateY(-2px); }
+    .donate-cta-btn-saweria {
+        background: linear-gradient(135deg, #312E5F 0%, #E3386A 100%);
+        color: #fff !important;
+    }
+    .donate-cta-btn-saweria:hover { box-shadow: 0 4px 15px rgba(227,56,106,0.3); }
+    .donate-cta-btn-trakteer {
+        background: #f1f5f9;
+        color: #312E5F !important;
+    }
+    .donate-cta-btn-trakteer:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+
+    /* ===== DONATE SIDEBAR WIDGET ===== */
+    .sidebar-donate .donate-text {
+        font-size: 0.8rem;
+        color: #64748b;
+        margin: 0 0 1rem;
+        line-height: 1.5;
+    }
+    .sidebar-donate .donate-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+    .sidebar-donate .donate-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0.6rem 1rem;
+        border-radius: 50px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none !important;
+        transition: all 0.2s;
+    }
+    .sidebar-donate .donate-btn:hover { transform: translateY(-1px); }
+    .sidebar-donate .donate-btn-saweria {
+        background: linear-gradient(135deg, #312E5F 0%, #E3386A 100%);
+        color: #fff !important;
+    }
+    .sidebar-donate .donate-btn-saweria:hover { box-shadow: 0 4px 15px rgba(227,56,106,0.3); }
+    .sidebar-donate .donate-btn-trakteer {
+        background: #f1f5f9;
+        color: #312E5F !important;
+        border: 1px solid #e2e8f0;
+    }
+    .sidebar-donate .donate-btn-trakteer:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
 
     @media (max-width: 768px) {
         .detail-hero .hero-bg { height: 280px; }
@@ -375,6 +477,9 @@ const categories = [
         .share-left { width: 100%; justify-content: center; }
         .share-right { width: 100%; }
         .copy-link-btn { width: 100%; justify-content: center; }
+        .donate-cta-inner { flex-direction: column; text-align: center; padding: 1.25rem; }
+        .donate-cta-buttons { flex-direction: column; width: 100%; }
+        .donate-cta-btn { width: 100%; justify-content: center; }
     }
 
     /* ===== SHARE BAR ===== */
@@ -481,6 +586,25 @@ const categories = [
           <Fragment set:html={htmlContent} />
       </section>
 
+      <!-- CTA Donasi Bawah Artikel -->
+      <section class="donate-cta">
+        <div class="donate-cta-inner">
+          <div class="donate-cta-icon"><i class="bi bi-cup-hot-fill"></i></div>
+          <div class="donate-cta-text">
+            <h3>Bermanfaat? Traktir kami kopi</h3>
+            <p>Dukung kemandirian berita teknologi Indonesia dengan donasi kecil Anda. Konten tetap gratis untuk semua.</p>
+          </div>
+          <div class="donate-cta-buttons">
+            <a href="https://saweria.co/sarjanakomputer" target="_blank" rel="noopener noreferrer" class="donate-cta-btn donate-cta-btn-saweria">
+              <i class="bi bi-cup-hot-fill"></i> Traktir Kopi
+            </a>
+            <a href="https://trakteer.id/sarjanakomputer" target="_blank" rel="noopener noreferrer" class="donate-cta-btn donate-cta-btn-trakteer">
+              <i class="bi bi-heart-fill"></i> Trakteer
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- Banner Konsultasi WA -->
       <section class="aff-banner">
         <div class="aff-banner-inner" style="background: linear-gradient(135deg, #128C7E 0%, #25D366 100%); box-shadow: 0 8px 30px rgba(37,211,102,0.2);">
@@ -552,6 +676,20 @@ const categories = [
               <i class={`bi bi-${cat.icon}`}></i> {cat.name}
             </a>
           ))}
+        </div>
+      </div>
+
+      <!-- Dukung Kami -->
+      <div class="sidebar-widget sidebar-donate" style="position:sticky; top:5rem;">
+        <h3 class="widget-title"><i class="bi bi-cup-hot-fill"></i> Dukung Kami</h3>
+        <p class="donate-text">Bantu kami menjaga konten berita teknologi tetap gratis dan independen.</p>
+        <div class="donate-buttons">
+          <a href="https://saweria.co/sarjanakomputer" target="_blank" rel="noopener noreferrer" class="donate-btn donate-btn-saweria">
+            <i class="bi bi-cup-hot-fill"></i> Traktir Kopi
+          </a>
+          <a href="https://trakteer.id/sarjanakomputer" target="_blank" rel="noopener noreferrer" class="donate-btn donate-btn-trakteer">
+            <i class="bi bi-heart-fill"></i> Trakteer
+          </a>
         </div>
       </div>
     </aside>

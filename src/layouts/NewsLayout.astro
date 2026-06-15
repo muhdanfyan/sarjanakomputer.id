@@ -308,6 +308,75 @@ const affiliateUrl = 'https://wa.me/6283134086899';
       .news-navbar .nav-links { display: none; }
       .hamburger-btn { display: flex; align-items: center; justify-content: center; }
     }
+
+    /* ===== DONASI SIDEBAR ===== */
+    .donasi-sidebar {
+      position: fixed;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: none;
+    }
+    .donasi-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      padding: 1.25rem;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .donasi-card .donasi-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .donasi-card h4 { margin: 0 0 0.4rem; font-size: 1rem; color: #1f2937; }
+    .donasi-card p { font-size: 0.8rem; color: #6b7280; margin-bottom: 0.8rem; line-height: 1.4; }
+    .donasi-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white !important;
+      padding: 0.5rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .donasi-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(245,158,11,0.3);
+    }
+    @media (min-width: 1200px) {
+      .donasi-sidebar { display: block; }
+    }
+
+    /* ===== DONASI INLINE (bawah artikel) ===== */
+    .donasi-inline {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .donasi-inner {
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      border: 1px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .donasi-inner .donasi-emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+    .donasi-inner p { color: #92400e; font-size: 0.95rem; margin-bottom: 1rem; }
+
+    /* ===== DONASI FOOTER ===== */
+    .footer-donasi {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .footer-donasi p { margin: 0.3rem 0; font-size: 0.85rem; }
+    .footer-donasi a { color: #f59e0b; }
   </style>
 </head>
 <body>
@@ -370,12 +439,41 @@ const affiliateUrl = 'https://wa.me/6283134086899';
     </ul>
   </div>
 
+  <!-- ===== DONASI SIDEBAR STICKY (di luar slot, muncul di semua halaman) ===== -->
+  <div class="donasi-sidebar">
+    <div class="donasi-card">
+      <div class="donasi-icon">☕</div>
+      <h4>Dukung Kami</h4>
+      <p>Bantu kami menjaga berita teknologi tetap gratis dan independen.</p>
+      <a href="https://saweria.co/sarjanakomputer" target="_blank" rel="noopener noreferrer" class="donasi-btn">
+        <i class="bi bi-cup-hot-fill"></i> Traktir Kopi
+      </a>
+    </div>
+  </div>
+
   <!-- ===== MAIN CONTENT ===== -->
   <slot />
+
+  <!-- ===== DONASI BAWAH ARTIKEL (inline) ===== -->
+  <div class="donasi-inline" id="donasiInline">
+    <div class="donasi-inner">
+      <span class="donasi-emoji">☕</span>
+      <p>Bermanfaat? <strong>Traktir kami kopi</strong> — bantu berita teknologi Indonesia tetap gratis.</p>
+      <a href="https://saweria.co/sarjanakomputer" target="_blank" rel="noopener noreferrer" class="donasi-btn">
+        <i class="bi bi-cup-hot-fill"></i> Dukung Sekarang
+      </a>
+    </div>
+  </div>
 
   <!-- ===== NEWS FOOTER ===== -->
   <footer class="news-footer">
     <div class="container">
+      <div class="footer-donasi">
+        <p><strong>Dukung Kemandirian Berita Teknologi Indonesia</strong></p>
+        <p>Berita ini gratis dan terbuka untuk semua. Jika bermanfaat, dukung kami di 
+          <a href="https://saweria.co/sarjanakomputer" target="_blank" rel="noopener noreferrer">Saweria</a>.
+        </p>
+      </div>
       <p>&copy; 2026 <a href={mainSite}>CV. Sarjana Komputer Indonesia</a>. All rights reserved.</p>
       <p style="margin-top:0.3rem;">Ditenagai oleh <a href="https://pocketbase.io" target="_blank">PocketBase</a> &amp; <a href="https://vercel.com" target="_blank">Vercel</a></p>
     </div>
