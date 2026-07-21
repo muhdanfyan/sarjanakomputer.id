@@ -26,3 +26,13 @@ Website resmi CV. Sarjana Komputer Indonesia — lembaga pengembangan mahasiswa 
 
 ## Deploy
 Deployed via **Vercel** → https://sarjanakomputer.id
+
+---
+
+## 🔧 Referensi Teknologi & Open Source
+
+Repo ini juga mendokumentasikan referensi teknologi open-source yang relevan untuk pengembangan solusi IT kami:
+
+- **[Onyx AI Platform](knowledge/onyx-ai-platform.md)** — Open-source AI platform (31k+ stars, No. 1 DeepResearch Bench). Alternatif self-hosted untuk Claude/ChatGPT dengan RAG, Agents, Deep Research, MCP.
+
+Lihat folder [`knowledge/`](knowledge/) untuk referensi lainnya.
