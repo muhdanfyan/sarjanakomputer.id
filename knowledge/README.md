@@ -14,8 +14,10 @@ Folder ini berisi dokumentasi perencanaan, diskusi, dan knowledge base pengemban
 | [academy.md](academy.md) | Rencana Sarjana Komputer Academy |
 | [automation.md](automation.md) | Rencana jasa automasi & AI |
 | [tech-news.md](tech-news.md) | Rencana blog Tech News |
+| [onyx-ai-platform.md](onyx-ai-platform.md) | Referensi: Onyx AI Platform — alternatif self-hosted Claude/ChatGPT |
+| [bolt-slides.md](bolt-slides.md) | Referensi: Bolt Slides — presentasi sebagai web app interaktif (StackBlitz, MIT) |
 
 ---
 
 > Dokumen ini akan terus berkembang seiring diskusi.
-> Last updated: 20 Mei 2026
+> Last updated: 25 Sep 2026

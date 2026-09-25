@@ -34,5 +34,6 @@ Deployed via **Vercel** → https://sarjanakomputer.id
 Repo ini juga mendokumentasikan referensi teknologi open-source yang relevan untuk pengembangan solusi IT kami:
 
 - **[Onyx AI Platform](knowledge/onyx-ai-platform.md)** — Open-source AI platform (31k+ stars, No. 1 DeepResearch Bench). Alternatif self-hosted untuk Claude/ChatGPT dengan RAG, Agents, Deep Research, MCP.
+- **[Bolt Slides](knowledge/bolt-slides.md)** — Presentasi sebagai web app interaktif (StackBlitz, MIT, 1k+ stars). Satu prompt ke AI agent → deck slide React yang bisa di-share via link.
 
 Lihat folder [`knowledge/`](knowledge/) untuk referensi lainnya.
